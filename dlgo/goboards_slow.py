@@ -109,8 +109,104 @@ class Board():
         :return:
         """
 
+        # Verificare daca mutarea e pe tabla si ca punctul nu e deja ocupat de alta piesa
         assert self.is_on_grid(point)
         assert self._grid.get(point) is None
+
+        # Initializare puncte vecine mutarii
         adjacent_same_color = []
         adjacent_opposite_color = []
         liberties = []
+
+        # Luam fiecare punct vecin punctului pe care vrem sa il plasam
+        for neighbor in point.neighbors():
+            # Daca punctul vecin nu e pe tabla, continua (piesa de mutat e in colt/pe latura)
+            if not self.is_on_grid(neighbor):
+                continue
+
+            # Acum vreau sa salvez acele puncte de pe tabla neocupate care reprezinta libertatile piesei plasate
+            neighbor_string = self._grid.get(neighbor)
+            if neighbor_string is None:
+                liberties.append(neighbor)
+
+            # Creem grupuri de pise de culori comune si le facem GoString daca piesa plasata se conecteaza de alte piese
+            elif neighbor_string.color == player:
+                if neighbor_string not in adjacent_same_color:
+                    adjacent_same_color.append(neighbor_string)
+                else:
+                    if neighbor_string not in adjacent_opposite_color:
+                        adjacent_opposite_color.append(neighbor_string)
+
+            new_string = GoString(player, [point], liberties)
+
+            for same_color_string in adjacent_same_color:
+                new_string = new_string.merged_with(same_color_string)
+
+                # Actiune 1: Uneste orice piese adiacente intr-un singur grup de piese de aceeasi culoare
+                for new_string_point in new_string.stones:
+                    self._grid[new_string_point] = new_string
+
+                # Actiune 2: Reduce libertatile pentru grupurile de piese de culoare opusa care au libertati comune
+                for other_color_string in adjacent_opposite_color:
+                    other_color_string.remove_liberty(point)
+
+                # Actiune 3: Daca exista piese cu 0 libertati - indeparteaza => CAPTURA
+                for other_color_string in adjacent_opposite_color:
+                    if other_color_string.num_liberties == 0:
+                        self._remove_string(other_color_string)
+
+    def is_on_grid(self, point):
+        """
+        Metoda se asigura ca piesa ce va fi mutata e in interiorul tablei de joc
+
+        :return: boolean: True daca piesa e in interiorul tablei, False daca nu
+        """
+
+        return 1 <= point.row <= self.num_rows and 1 <= point.col <= self.num_cols
+
+    def get(self, point):
+        """
+        Metoda care returneaza continutul unui punct de pe tabla
+
+        :param point: Punctul ce va fi plasat pe tabla
+        :return: Continutul unui punct de pe tabla: Culoarea jucatorului daca pozitia e jucata, None daca nu
+        """
+        string = self._grid.get(point)
+
+        if string is None:
+            return None
+        return string.color
+
+    def get_go_string(self, point):
+        """
+        Metoda care returneaza intregul sir de piese de aceeasi culoare (grup) asociat unui punct pe tabla
+        :param point: Punctul ce va fi plasat pe tabla
+        :return: Un grup de piese din care face parte punctul analizat, daca nu exista, atunci None
+        """
+        string = self._grid.get(point)
+        if string is None:
+            return None
+        return string
+
+    def _remove_string(self, string):
+        """
+        Metoda care realizeaza captura pe tabla - atunci cand o piesa sau un grup de piese isi pierde toate libertatile,
+        acele piese sunt indepartate de pe tabla si devin prizonierii adversarului
+
+        :param string: String-ul de piese care va fi indepartat (1 sau mai multe piese)
+        """
+
+        # Parcurg pietrele din grup
+        for point in string.stones:
+
+            # !! OBS: Indepartarea unui grup de piese genereaza libertati suplimentare pentru grupurile din jur
+            for neighbor in point.neighbors():
+                neighbor_string = self._grid.get(neighbor)
+                if neighbor_string is None:
+                    continue
+                if neighbor_string is not string:
+                    neighbor_string.add_liberty(point)
+
+            # Indeparteaza piesa
+            self._grid[point] = None
+
