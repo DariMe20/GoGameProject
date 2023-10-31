@@ -52,7 +52,7 @@ class Move:
 
 class GoString:
     """
-    Aceasta metoda creaza structura unui grup de piese pe tabla si se caracterizeaza prin culoarea pieselor,
+    Aceasta clasa creaza structura unui grup de piese pe tabla ce se caracterizeaza prin culoarea pieselor,
     pietrele din care este compus grupul si numarul de libertati pentru a verifica statusul de viata/captura - in cod
     este reprezentat printr-un set de pozitii ce compun lista libertatilor
     """
@@ -63,9 +63,19 @@ class GoString:
         self.liberties = set(liberties)
 
     def remove_liberty(self, point):
+        """
+        Metoda pentru a indeparta libertatile unei piese de pe tabla
+
+        :param point: punctul care va genera indepartarea unei libertati pentru un GoString
+        """
         self.liberties.remove(point)
 
     def add_liberty(self, point):
+        """
+        Metoda pentru a adauga o libertate unui GoString  de pe tabla
+
+        :param point: punctul care va genera adaugarea  unei libertati pentru un GoString
+        """
         self.liberties.add(point)
 
     def merged_with(self, go_string):
