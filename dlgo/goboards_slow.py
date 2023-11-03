@@ -16,7 +16,7 @@ class Move:
 
         # Initializari
         self.point = point
-        self.is_play = (self.point is not None)
+        self.is_play = self.point is not None
         self.is_pass = is_pass
         self.is_resign = is_resign
 
@@ -43,10 +43,10 @@ class Move:
     @classmethod
     def resign(cls):
         """
-       Metoda pentru a ceda partida adversarului (jucatorul se declara invins)
+        Metoda pentru a ceda partida adversarului (jucatorul se declara invins)
 
-       :return: Obiect Move cu caracteristica de mutare: Resign
-       """
+        :return: Obiect Move cu caracteristica de mutare: Resign
+        """
         return Move(is_resign=True)
 
 
@@ -89,18 +89,25 @@ class GoString:
         """
         assert go_string.color == self.color
         combined_stones = self.stones | go_string.stones
-        return GoString(self.color, combined_stones, (self.liberties | go_string.liberties) - combined_stones)
+        return GoString(
+            self.color,
+            combined_stones,
+            (self.liberties | go_string.liberties) - combined_stones,
+        )
 
     def num_liberties(self):
         return len(self.liberties)
 
     def __eq__(self, other):
-        return isinstance(other, GoString) and \
-               self.color == other.color and \
-               self.stones == other.stones and \
-               self.liberties == other.liberties
+        return (
+            isinstance(other, GoString)
+            and self.color == other.color
+            and self.stones == other.stones
+            and self.liberties == other.liberties
+        )
 
-class Board():
+
+class Board:
     def __init__(self, num_rows, num_cols):
         """
         Constructor pentru initializarea tablei de GO avand un numar specificat de randuri si coloane
@@ -109,7 +116,7 @@ class Board():
         """
         self.num_rows = num_rows
         self.num_cols = num_cols
-        self._grid = {}     # private variable as dictionary
+        self._grid = {}  # private variable as dictionary
 
     def place_stone(self, player, point):
         """
@@ -208,7 +215,6 @@ class Board():
 
         # Parcurg pietrele din grup
         for point in string.stones:
-
             # !! OBS: Indepartarea unui grup de piese genereaza libertati suplimentare pentru grupurile din jur
             for neighbor in point.neighbors():
                 neighbor_string = self._grid.get(neighbor)
@@ -220,32 +226,49 @@ class Board():
             # Indeparteaza piesa
             self._grid[point] = None
 
-class GameState():
-     def __init__(self, board, next_player, previous, move):
-         self.board = board
-         self.next_player = next_player
-         self.previous_state = previous
-         self.last_move = move
-     def apply_move(self, move):
-         if move.is_play:
-             next_board = copy.deepcopy(self.board)
-             next_board.place_stone(self.next_player, move.point)
-         else:
-             next_board = self.board
-         return GameState(next_board, self.next_player.other, self, move)
-     @classmethod
-     def new_game(cls, board_size):
+
+class GameState:
+    def __init__(self, board, next_player, previous, move):
+        self.board = board
+        self.next_player = next_player
+        self.previous_state = previous
+        self.last_move = move
+
+    def apply_move(self, move):
+        """
+        Metoda care returneaza un nou GameState upa ce o mutare este plasata
+        :param move: Mutarea efectuata - plasare piesa, cedare (resign) sau pass
+        :return: GameState -  noul status al jocului
+        """
+        if move.is_play:
+            next_board = copy.deepcopy(self.board)
+            next_board.place_stone(self.next_player, move.point)
+        else:
+            next_board = self.board
+        return GameState(next_board, self.next_player.other, self, move)
+
+    @classmethod
+    def new_game(cls, board_size):
+        """
+        Metoda care initializeaza datele si tabla pentru un nou joc
+        :param board_size: Dimensiunile tablei - rows = cols
+        :return: GameState pentru o tabla noua
+        """
         if isinstance(board_size, int):
             board_size = (board_size, board_size)
         board = Board(*board_size)
         return GameState(board, Player.black, None, None)
 
-     def is_over(self):
-         if self.last_move is None:
-             return False
-         if self.last_move.is_resign:
-             return True
-         second_last_move = self.previous_state.last_move
-         if second_last_move is None:
-             return False
-         return self.last_move.is_pass and second_last_move.is_pass
+    def is_over(self):
+        """
+        Metoda pentru a detecta finalizarea unui joc -  fie ambii jucatori zic pass, fie unul dintre ei cedeaza
+        :return: Valoare booleana - True daca jocul e gata, False daca jocul inca continua
+        """
+        if self.last_move is None:
+            return False
+        if self.last_move.is_resign:
+            return True
+        second_last_move = self.previous_state.last_move
+        if second_last_move is None:
+            return False
+        return self.last_move.is_pass and second_last_move.is_pass
