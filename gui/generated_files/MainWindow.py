@@ -19,7 +19,7 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName("centralwidget")
         self.widget_GoBoard = QtWidgets.QWidget(self.centralwidget)
         self.widget_GoBoard.setGeometry(QtCore.QRect(20, 60, 900, 900))
-        self.widget_GoBoard.setMinimumSize(QtCore.QSize(900, 900))
+        self.widget_GoBoard.setMinimumSize(QtCore.QSize(800, 800))
         self.widget_GoBoard.setMaximumSize(QtCore.QSize(900, 900))
         self.widget_GoBoard.setObjectName("widget_GoBoard")
         self.graphicsView_GoBoard = QtWidgets.QGraphicsView(self.widget_GoBoard)
