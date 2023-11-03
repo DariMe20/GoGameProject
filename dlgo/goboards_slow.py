@@ -275,8 +275,9 @@ class GameState:
 
     def is_move_self_capture(self, player, move):
         """
-        In Go un jucator se poate autosabota prin plasarea unei piese pe tabla care ar duce automat la capturare
-        Aceasta metoda evita autocaptura prin verificarea numarului de libertati
+        In Go un jucator se poate autosabota prin plasarea unei piese pe tabla care ar duce automat la sinucidere
+        Sinuciderea nu ese permisa, nu poti plasa o piesa pe tabla care ti-ar reduce libertatile la 0
+        Aceasta metoda evita sinuciderea prin verificarea numarului de libertati
 
         :param player: Jucatorul care face mutarea
         :param move: Tipul mutarii
@@ -329,3 +330,19 @@ class GameState:
                 return True
             past_state = past_state.previous_state
         return False
+
+    def is_valid_move(self, move):
+        """
+        Metoda care verifica corectitudinea unei plasari pe tabla - nu e sinucidere si nu incalca regula de ko
+        :param move: tipul mutarii - plasare, reisgn, pass
+        :return: valoare booleana - True daca mutarea e valida, False daca mutarea nu e valida
+        """
+        if self.is_over():
+            return False
+        if move.is_pass or move.is_resign:
+            return True
+        return (
+            self.board.get(move.point) is None
+            and not self.is_move_self_capture(self.next_player, move)
+            and not self.does_move_violate_ko(self.next_player, move)
+        )
