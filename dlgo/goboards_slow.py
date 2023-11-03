@@ -289,3 +289,43 @@ class GameState:
         next_board.place_stone(player, move.point)
         new_string = next_board.get_go_string(move.point)
         return new_string.num_liberties == 0
+
+    @property
+    def situation(self):
+        """
+        Metoda pentru a returna situatia de pe tabla
+        :return: urmatorul jucator, tabla actuala
+        """
+        return self.next_player, self.board
+
+    def does_move_violate_ko(self, player, move):
+        """
+        Ko este o situatie speciala in jocul de Go care ar putea duce la un ciclu infinit de capturi
+        Aceasta metoda implementeaza o formulare cunoscuta si ca regula "situational superko" prin care nu lasa jucatorul
+        actual sa captureze piesa in ko pana cand nu da o amenintare in alta parte
+        Metoda foloseste proprietatea faptului ca fiecare instanta GameState pastreaza un pointer catre starea precedenta
+        iar din acest motiv, se poate implementa regula de ko prin traversarea inapoi a arborlui de stari
+
+        :param player:Jucatorul activ
+        :param move: Tipul mutarii
+        :return: valoare booleana - True daca mutarea nu incalca regula de Ko, False altfel
+        """
+
+        if not move.is_play:
+            return False
+
+        # Copiem tabla actuala si plasam noua piesa
+        next_board = copy.deepcopy(self.board)
+        next_board.place_stone(player, move.point)
+
+        # Creem urmatoare situatie de pe tabla
+        next_situation = (player.other, next_board)
+        past_state = self.previous_state
+
+        # Incercam sa verificam ca la fiecare mutare in care ko-ul este inca activ, unul dintre jucatori nu incearca sa
+        # realizeze capturi succesive in acelasi ko
+        while past_state is not None:
+            if past_state.situation == next_situation:
+                return True
+            past_state = past_state.previous_state
+        return False
