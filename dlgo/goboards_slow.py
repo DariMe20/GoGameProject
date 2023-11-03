@@ -92,20 +92,15 @@ class GoString:
         return GoString(
             self.color,
             combined_stones,
-            (self.liberties | go_string.liberties) - combined_stones,
-        )
+            (self.liberties | go_string.liberties) - combined_stones)
 
+    @property
     def num_liberties(self):
         return len(self.liberties)
 
     def __eq__(self, other):
-        return (
-            isinstance(other, GoString)
-            and self.color == other.color
-            and self.stones == other.stones
+        return isinstance(other, GoString) and self.color == other.color and self.stones == other.stones \
             and self.liberties == other.liberties
-        )
-
 
 class Board:
     def __init__(self, num_rows, num_cols):
@@ -150,27 +145,28 @@ class Board:
             elif neighbor_string.color == player:
                 if neighbor_string not in adjacent_same_color:
                     adjacent_same_color.append(neighbor_string)
-                else:
-                    if neighbor_string not in adjacent_opposite_color:
-                        adjacent_opposite_color.append(neighbor_string)
+            else:
+                if neighbor_string not in adjacent_opposite_color:
+                    adjacent_opposite_color.append(neighbor_string)
 
-            new_string = GoString(player, [point], liberties)
+        new_string = GoString(player, [point], liberties)
 
-            for same_color_string in adjacent_same_color:
-                new_string = new_string.merged_with(same_color_string)
+        for same_color_string in adjacent_same_color:
+            new_string = new_string.merged_with(same_color_string)
+        
+        # Actiune 1: Uneste orice piese adiacente intr-un singur grup de piese de aceeasi culoare
+        for new_string_point in new_string.stones:
+            self._grid[new_string_point] = new_string
+        
+        # Actiune 2: Reduce libertatile pentru grupurile de piese de culoare opusa care au libertati comune
+        for other_color_string in adjacent_opposite_color:
+            other_color_string.remove_liberty(point)
+        
+        # Actiune 3: Daca exista piese cu 0 libertati - indeparteaza => CAPTURA
+        for other_color_string in adjacent_opposite_color:
+            if other_color_string.num_liberties == 0:
+                self._remove_string(other_color_string)
 
-                # Actiune 1: Uneste orice piese adiacente intr-un singur grup de piese de aceeasi culoare
-                for new_string_point in new_string.stones:
-                    self._grid[new_string_point] = new_string
-
-                # Actiune 2: Reduce libertatile pentru grupurile de piese de culoare opusa care au libertati comune
-                for other_color_string in adjacent_opposite_color:
-                    other_color_string.remove_liberty(point)
-
-                # Actiune 3: Daca exista piese cu 0 libertati - indeparteaza => CAPTURA
-                for other_color_string in adjacent_opposite_color:
-                    if other_color_string.num_liberties == 0:
-                        self._remove_string(other_color_string)
 
     def is_on_grid(self, point):
         """
@@ -201,9 +197,8 @@ class Board:
         :return: Un grup de piese din care face parte punctul analizat, daca nu exista, atunci None
         """
         string = self._grid.get(point)
-        if string is None:
-            return None
-        return string
+        if string:
+            return string
 
     def _remove_string(self, string):
         """
