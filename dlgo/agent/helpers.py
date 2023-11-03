@@ -1,5 +1,6 @@
 from dlgo.gotypes import Point
 
+
 def is_point_an_eye(board, point, color):
     """
     Metoda care verifica daca un punct de pe tabla este un ochi al unui grup (nu vrem ca programul sa considere acel
