@@ -1,4 +1,5 @@
 from PyQt5 import QtWidgets, QtCore
+from PyQt5.QtGui import QPixmap
 
 from dlgo import goboards_slow, gotypes, agent
 from dlgo.agent import naive
@@ -14,10 +15,19 @@ class MainWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
         self.game = None
         self.board = None
         self.scene = None
+
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.board_size = 19
+        self.board_size = 9
         self.init_GoBoard()
+
+        pixmapW = QPixmap("../resources/TigerW.jpg")
+        self.ui.label_IconW.setPixmap(pixmapW)
+        self.ui.label_IconW.setScaledContents(True)
+
+        pixmapB = QPixmap("../resources/TigerB.jpg")
+        self.ui.label_IconB.setPixmap(pixmapB)
+        self.ui.label_IconB.setScaledContents(True)
 
     def init_GoBoard(self):
         self.scene = QtWidgets.QGraphicsScene()

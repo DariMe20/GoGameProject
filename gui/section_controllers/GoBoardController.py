@@ -15,11 +15,11 @@ class GoBoardController(QtWidgets.QGraphicsItem):
     def paint(self, painter, option, widget):
         start = 30
         end = 840
-        cell_size = round((end-start) / (self.board_size - 1))
+        cell_size = round((end - start) / (self.board_size - 1))
         for row in range(self.board_size):
             for col in range(self.board_size):
                 # Desenarea liniilor verticale
-                painter.drawLine(start + col*cell_size, start, start + col*cell_size, end)
+                painter.drawLine(start + col * cell_size, start, start + col * cell_size, end)
                 # Desenarea liniilor orizontale
                 painter.drawLine(start, start + row * cell_size, end, start + row * cell_size)
 
@@ -59,7 +59,6 @@ class GoBoardController(QtWidgets.QGraphicsItem):
         color = QtCore.Qt.black if stone == gotypes.Player.black else QtCore.Qt.white
         painter.setBrush(QtGui.QBrush(color))
         painter.drawEllipse(QtCore.QPointF(center_x, center_y), radius, radius)
-
 
     def update_game(self, game):
         # actualizează starea internă și re-desenează tabloul
