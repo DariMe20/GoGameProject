@@ -26,6 +26,7 @@ class Ui_MainWindow(object):
         self.graphicsView_GoBoard.setGeometry(QtCore.QRect(0, 0, 900, 900))
         self.graphicsView_GoBoard.setMinimumSize(QtCore.QSize(900, 900))
         self.graphicsView_GoBoard.setMaximumSize(QtCore.QSize(900, 900))
+        self.graphicsView_GoBoard.setStyleSheet("background-color: rgb(186, 124, 92);")
         self.graphicsView_GoBoard.setObjectName("graphicsView_GoBoard")
         self.horizontalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
         self.horizontalLayoutWidget.setGeometry(QtCore.QRect(20, 30, 901, 22))

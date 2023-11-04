@@ -56,6 +56,9 @@
        <height>900</height>
       </size>
      </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(186, 124, 92);</string>
+     </property>
     </widget>
    </widget>
    <widget class="QWidget" name="horizontalLayoutWidget">
