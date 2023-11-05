@@ -1,4 +1,5 @@
 import os
+import sys
 
 from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtGui import QPixmap
@@ -56,10 +57,38 @@ class MainWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
             self.game = self.game.apply_move(bot_move)
             self.board.update_game(self.game)
 
+    @staticmethod
+    def adjust_scale_factor():
+        temp_app = QtWidgets.QApplication(sys.argv)  # Instanță temporară pentru a obține informații despre ecran
+        screen = temp_app.primaryScreen()
+        resolution = screen.size()                   # Ia rezolutia ecranului
+        scale_factor = "1"                           # Factor de scalare default
+
+        high_res_threshold_width = 2560              # threshold latime
+        high_res_threshold_height = 1440             # threshold lungime
+
+        # Daca avem o rezolutie a ecranului foarte mare, setam factorul de scalare la 1.5
+        if resolution.width() > high_res_threshold_width and resolution.height() > high_res_threshold_height:
+            scale_factor = "1.5"
+
+        # Setare factor de scalare
+        os.environ["QT_SCALE_FACTOR"] = scale_factor
+        temp_app.quit()                             # Închideți instanța temporară
+
+
+# Main
 if __name__ == "__main__":
-    os.environ["QT_SCALE_FACTOR"] = "1.5"   # Schimbați acesta la factorul de scalare dorit
-    app = QtWidgets.QApplication([])
+
+    # Ajustez factorul de scalare înainte de a crea QApplication
+    MainWindowController.adjust_scale_factor()
+
+    # Generearea instanței reale pentru aplicație
+    app = QtWidgets.QApplication(sys.argv)
+    # Instantiere obiect
     ui = MainWindowController()
+    # Afisare obiect in fereastra deschisa larg
     ui.showMaximized()
+    # Incepere joc
     ui.start_bot_game()
-    app.exec_()
+    # Inchidere aplicatie
+    sys.exit(app.exec_())
