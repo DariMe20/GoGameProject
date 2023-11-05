@@ -1,3 +1,5 @@
+import os
+
 from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtGui import QPixmap
 
@@ -55,6 +57,7 @@ class MainWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
             self.board.update_game(self.game)
 
 if __name__ == "__main__":
+    os.environ["QT_SCALE_FACTOR"] = "1.5"   # Schimbați acesta la factorul de scalare dorit
     app = QtWidgets.QApplication([])
     ui = MainWindowController()
     ui.showMaximized()
