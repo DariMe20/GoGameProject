@@ -36,10 +36,10 @@ class MainWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
         self.scene = QtWidgets.QGraphicsScene()
         self.board = GoBoardController(self.board_size)
         self.scene.addItem(self.board)
-        self.scene.setSceneRect(0, 0, 880, 880)  # Updated to match GoBoardController's boundingRect dimensions
+        self.scene.setSceneRect(0, 0, 1000, 1000)  # Updated to match GoBoardController's boundingRect dimensions
         self.ui.graphicsView_GoBoard.setScene(self.scene)
         self.ui.graphicsView_GoBoard.setViewportMargins(0, 0, 0, 0)
-        self.ui.graphicsView_GoBoard.centerOn(450, 450)
+        self.ui.graphicsView_GoBoard.centerOn(500, 500)
 
     def start_bot_game(self):
         self.game = goboards_slow.GameState.new_game(self.board_size)
