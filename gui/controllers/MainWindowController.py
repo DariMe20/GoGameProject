@@ -2,7 +2,7 @@ import os
 import sys
 
 from PyQt5 import QtWidgets, QtCore
-from PyQt5.QtGui import QPixmap
+from PyQt5.QtGui import QPixmap, QFont
 
 from dlgo import goboards_slow, gotypes, agent
 from dlgo.agent import naive
@@ -70,6 +70,7 @@ class MainWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
         # Daca avem o rezolutie a ecranului foarte mare, setam factorul de scalare la 1.5
         if resolution.width() > high_res_threshold_width and resolution.height() > high_res_threshold_height:
             scale_factor = "1.5"
+
 
         # Setare factor de scalare
         os.environ["QT_SCALE_FACTOR"] = scale_factor
