@@ -26,3 +26,5 @@ def print_board(board):
             line.append(STONE_TO_CHAR[stone])
         print("%s%d %s" % (bump, row, "".join(line)))
     print("    " + "  ".join(COLS[: board.num_cols]))
+
+

@@ -30,7 +30,10 @@ class MainWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
 
         pixmapB = QPixmap("../resources/TigerB.jpg")
         self.ui.label_IconB.setPixmap(pixmapB)
-        self.ui.label_IconB.setScaledContents(True)\
+        self.ui.label_IconB.setScaledContents(True)
+
+        # BUTTON CONNECTIONS
+        self.ui.pushButton_BotVBot.clicked.connect(self.start_bot_game)
 
 
     def draw_coordinates(self):
@@ -92,7 +95,5 @@ if __name__ == "__main__":
     ui = MainWindowController()
     # Afisare obiect in fereastra deschisa larg
     ui.showMaximized()
-    # Incepere joc
-    ui.start_bot_game()
     # Inchidere aplicatie
     sys.exit(app.exec_())
