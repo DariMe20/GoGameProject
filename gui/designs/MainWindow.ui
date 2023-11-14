@@ -41,22 +41,22 @@
     <widget class="QGraphicsView" name="graphicsView_GoBoard">
      <property name="geometry">
       <rect>
-       <x>25</x>
-       <y>25</y>
-       <width>850</width>
-       <height>850</height>
+       <x>0</x>
+       <y>0</y>
+       <width>900</width>
+       <height>900</height>
       </rect>
      </property>
      <property name="minimumSize">
       <size>
-       <width>850</width>
-       <height>850</height>
+       <width>900</width>
+       <height>900</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>850</width>
-       <height>850</height>
+       <width>900</width>
+       <height>900</height>
       </size>
      </property>
      <property name="styleSheet">
@@ -244,7 +244,7 @@
     <property name="currentIndex">
      <number>0</number>
     </property>
-    <widget class="QWidget" name="stackedWidget_MenuPage1" native="true">
+    <widget class="QWidget" name="stackedWidget_MenuPage1">
      <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
@@ -1003,7 +1003,7 @@ background: rgba(255, 241, 224, 180)</string>
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>1250</x>

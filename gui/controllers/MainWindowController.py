@@ -21,7 +21,7 @@ class MainWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
 
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.board_size = 9
+        self.board_size = 19
         self.init_GoBoard()
 
         pixmapW = QPixmap("../resources/TigerW.jpg")
@@ -30,16 +30,19 @@ class MainWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
 
         pixmapB = QPixmap("../resources/TigerB.jpg")
         self.ui.label_IconB.setPixmap(pixmapB)
-        self.ui.label_IconB.setScaledContents(True)
+        self.ui.label_IconB.setScaledContents(True)\
 
+
+    def draw_coordinates(self):
+        pass
     def init_GoBoard(self):
         self.scene = QtWidgets.QGraphicsScene()
         self.board = GoBoardController(self.board_size)
         self.scene.addItem(self.board)
-        self.scene.setSceneRect(0, 0, 1000, 1000)  # Updated to match GoBoardController's boundingRect dimensions
+        self.scene.setSceneRect(0, 0, 850, 850)  # Updated to match GoBoardController's boundingRect dimensions
         self.ui.graphicsView_GoBoard.setScene(self.scene)
         self.ui.graphicsView_GoBoard.setViewportMargins(0, 0, 0, 0)
-        self.ui.graphicsView_GoBoard.centerOn(500, 500)
+        self.ui.graphicsView_GoBoard.centerOn(425, 425)
 
     def start_bot_game(self):
         self.game = goboards_slow.GameState.new_game(self.board_size)
