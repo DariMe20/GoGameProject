@@ -314,7 +314,7 @@ class GameState:
         next_board = copy.deepcopy(self.board)
         next_board.place_stone(player, move.point)
 
-        # Creem urmatoare situatie de pe tabla
+        # Creem urmatoarea situatie de pe tabla
         next_situation = (player.other, next_board)
         past_state = self.previous_state
 
