@@ -1,10 +1,11 @@
 from PyQt5 import QtWidgets, QtCore, QtGui
-from PyQt5.QtCore import QPointF
+from PyQt5.QtCore import QPointF, pyqtSignal
 
 from dlgo import gotypes
 
 
-class GoBoardController(QtWidgets.QGraphicsItem):
+class GoBoardController(QtWidgets.QGraphicsObject):
+    clicked = pyqtSignal(object)
     def __init__(self, board_size):
         super().__init__()
         self.game = None
@@ -20,7 +21,6 @@ class GoBoardController(QtWidgets.QGraphicsItem):
         self.view_size = 850 # Dimensiunea zonei de vizualizare grafică
         self.cell_size = None
         self.update_cell_size()
-
 
     def boundingRect(self):
         return QtCore.QRectF(0, 0, self.view_size, self.view_size)
@@ -78,6 +78,39 @@ class GoBoardController(QtWidgets.QGraphicsItem):
         color = QtCore.Qt.black if stone == gotypes.Player.black else QtCore.Qt.white
         painter.setBrush(QtGui.QBrush(color))
         painter.drawEllipse(QtCore.QPointF(center_x, center_y), radius, radius)
+
+    def mousePressEvent(self, event):
+        # Calculează coordonatele intersecției
+        click_pos = event.pos()
+        closest_row, closest_col = self.get_closest_intersection(click_pos)
+    
+        if closest_row is not None and closest_col is not None:
+            self.clicked.emit((closest_row, closest_col))
+    
+    
+    def get_closest_intersection(self, click_pos):
+        closest_row = closest_col = None
+        min_distance = float("inf")  # Inițializează cu o distanță foarte mare
+    
+        for row in range(self.board_size):
+            for col in range(self.board_size):
+                intersection_x = self.margin + col * self.cell_size
+                intersection_y = self.margin + row * self.cell_size
+    
+                distance = (click_pos.x() - intersection_x) ** 2 + (
+                    click_pos.y() - intersection_y
+                ) ** 2
+    
+                if distance < min_distance:
+                    min_distance = distance
+                    closest_row = row
+                    closest_col = col
+    
+        # Verifică dacă distanța este într-un anumit prag (de exemplu, jumătate din dimensiunea celulei)
+        if min_distance <= (self.cell_size / 2) ** 2:
+            return closest_row + 1, closest_col + 1  # Returnează coordonatele 1-indexate
+        else:
+            return None, None
 
     def update_game(self, game):
         self.game = game
