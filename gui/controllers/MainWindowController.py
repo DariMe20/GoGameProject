@@ -2,10 +2,11 @@ import os
 import sys
 
 from PyQt5 import QtWidgets, QtCore
+from PyQt5.QtCore import QTimer
 from PyQt5.QtGui import QPixmap, QFont
 
+from MonteCarloTreeSearch.MCTS import MCTSAgent
 from dlgo import goboards_slow, gotypes, agent
-from dlgo.agent import naive
 from gui.generated_files.MainWindow import Ui_MainWindow
 from gui.section_controllers.GoBoardController import GoBoardController
 
@@ -13,17 +14,19 @@ from gui.section_controllers.GoBoardController import GoBoardController
 class MainWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
+        self.bot_black = None
+        self.bot_white = None
         self.bot = None
         self.is_player_turn = True
         self.bots = None
-        self.timer = None
         self.game = None
         self.board = None
         self.scene = None
+        self.timer = QtCore.QTimer
 
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.board_size = 9
+        self.board_size = 5
         self.init_GoBoard()
 
         pixmapW = QPixmap("../resources/TigerW.jpg")
@@ -55,13 +58,13 @@ class MainWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
     def start_player_game(self):
         try:
             self.game = goboards_slow.GameState.new_game(self.board_size)
-            self.bot = agent.naive.RandomBot()  # Inițializează botul
+            self.bot = MCTSAgent(num_rounds=1000)  # Inițializează botul
             self.is_player_turn = True  # Setează rândul jucătorului
 
             # Conectează un eveniment de clic pe tablă la o metodă care gestionează mișcările jucătorului
             self.board.clicked.connect(self.player_move)
         except Exception as e:
-            print(f"An error occurend: {e}")
+            print(f"An error occurend in start player_game: {e}")
 
     def player_move(self, point):
         try:
@@ -72,33 +75,54 @@ class MainWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
                     self.game = self.game.apply_move(move)
                     self.board.update_game(self.game)
                     self.is_player_turn = False
-                    self.step_bot_game_player()  # Permite botului să facă o mișcare
+                    self.agent_move()
         except Exception as e:
-            print(f"An error occurend: {e}")
+            print(f"An error occurend in player_move: {e}")
+
+    def agent_move(self):
+        if not self.game.is_over() and not self.is_player_turn:
+            bot_move = self.bot.select_moveMCTS(self.game)
+            self.game = self.game.apply_move(bot_move)
+            self.board.update_game(self.game)
+            self.is_player_turn = True
 
     def step_bot_game_player(self):
         try:
             if not self.game.is_over() and not self.is_player_turn:
-                bot_move = self.bot.select_move(self.game)
+                bot_move = self.bot.select_moveMCTS(self.game)
                 self.game = self.game.apply_move(bot_move)
                 self.board.update_game(self.game)
                 self.is_player_turn = True
         except Exception as e:
-            print(f"An error occurend: {e}")
+            print(f"An error occurend in step_bot_game_player: {e}")
 
     def start_bot_game(self):
         self.game = goboards_slow.GameState.new_game(self.board_size)
-        self.bots = {
-            gotypes.Player.black: agent.naive.RandomBot(),
-            gotypes.Player.white: agent.naive.RandomBot(),
-        }
+        self.bot_black = MCTSAgent(num_rounds=1000)
+        self.bot_white = MCTSAgent(num_rounds=1000)
         self.timer = QtCore.QTimer()
-        self.timer.timeout.connect(self.step_bot_game)
-        self.timer.start(300)
+        self.timer.timeout.connect(self.step_mcts_bot_game)
+        self.timer.start(1000)  # De exemplu, o mutare la fiecare secundă
+
+    def step_mcts_bot_game(self):
+        if not self.game.is_over():
+            current_player = self.game.next_player
+            bot_move = (
+                self.bot_black
+                if current_player == gotypes.Player.black
+                else self.bot_white
+            ).select_moveMCTS(self.game)
+            self.game = self.game.apply_move(bot_move)
+            self.board.update_game(self.game)
 
     def step_bot_game(self):
         if not self.game.is_over():
-            bot_move = self.bots[self.game.next_player].select_move(self.game)
+            current_player = self.game.next_player
+            bot_move = (
+                self.bot_black
+                if current_player == gotypes.Player.black
+                else self.bot_white
+            ).select_moveMCTS(self.game)
             self.game = self.game.apply_move(bot_move)
             self.board.update_game(self.game)
 

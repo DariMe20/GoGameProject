@@ -1,5 +1,7 @@
 import copy
-from dlgo.gotypes import Player
+
+from dlgo import gotypes
+from dlgo.gotypes import Player, Point
 
 
 class Move:
@@ -221,9 +223,25 @@ class Board:
             # Indeparteaza piesa
             self._grid[point] = None
 
+    def count_stones(self, player):
+        """
+        Numără pietrele pe tablă pentru un jucător specific.
+    
+        :param player: Jucătorul pentru care se numără pietrele.
+        :return: Numărul de pietre ale jucătorului pe tablă.
+        """
+        count = 0
+        for row in range(1, self.num_rows + 1):
+            for col in range(1, self.num_cols + 1):
+                point = Point(row, col)
+                if self.get(point) == player:
+                    count += 1
+        return count
+
 
 class GameState:
     def __init__(self, board, next_player, previous, move):
+        self.komi = 6.5
         self.board = board
         self.next_player = next_player
         self.previous_state = previous
@@ -341,3 +359,35 @@ class GameState:
             and not self.is_move_self_capture(self.next_player, move)
             and not self.does_move_violate_ko(self.next_player, move)
         )
+
+    def legal_moves(self):
+        """
+        Returnează o listă de obiecte Move care sunt mutări legale în starea curentă a jocului.
+        """
+        moves = []
+        for row in range(1, self.board.num_rows + 1):
+            for col in range(1, self.board.num_cols + 1):
+                move = Move.play(Point(row, col))
+                if self.is_valid_move(move):
+                    moves.append(move)
+
+        # Adaugă mutări speciale, cum ar fi 'pass' și 'resign'
+        moves.append(Move.pass_turn())
+        moves.append(Move.resign())
+
+        return moves
+
+    def winner(self):
+        # Implementează logica de determinare a câștigătorului
+        # Aceasta este o implementare foarte simplificată și probabil că va trebui să fie ajustată
+        black_score = self.board.count_stones(gotypes.Player.black)
+        white_score = (
+            self.board.count_stones(gotypes.Player.white) + self.komi
+        )  # presupunând că ai o valoare de komi
+    
+        if black_score > white_score:
+            return gotypes.Player.black
+        elif white_score > black_score:
+            return gotypes.Player.white
+        else:
+            return None  # Egalitate sau jocul nu s-a terminat
