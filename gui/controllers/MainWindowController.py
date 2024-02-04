@@ -6,7 +6,7 @@ from PyQt5.QtCore import QTimer
 from PyQt5.QtGui import QPixmap, QFont
 
 from MonteCarloTreeSearch.MCTS import MCTSAgent
-from dlgo import goboards_slow, gotypes, agent
+from dlgo import gotypes, agent, goboard
 from gui.generated_files.MainWindow import Ui_MainWindow
 from gui.section_controllers.GoBoardController import GoBoardController
 
@@ -14,6 +14,7 @@ from gui.section_controllers.GoBoardController import GoBoardController
 class MainWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
+        self.current_player = None
         self.bot_black = None
         self.bot_white = None
         self.bot = None
@@ -26,7 +27,7 @@ class MainWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
 
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.board_size = 5
+        self.board_size = 9
         self.init_GoBoard()
 
         pixmapW = QPixmap("../resources/TigerW.jpg")
@@ -40,6 +41,7 @@ class MainWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
         # BUTTON CONNECTIONS
         self.ui.pushButton_BotVBot.clicked.connect(self.start_bot_game)
         self.ui.pushButton_PlayBot.clicked.connect(self.start_player_game)
+        self.ui.pushButton_CreateSGF.clicked.connect(self.create_sgf_game)
 
     def draw_coordinates(self):
         pass
@@ -55,22 +57,39 @@ class MainWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
         self.ui.graphicsView_GoBoard.setViewportMargins(0, 0, 0, 0)
         self.ui.graphicsView_GoBoard.centerOn(425, 425)
 
+    def create_sgf_game(self):
+        self.game = goboard.GameState.new_game(self.board_size)
+        self.current_player = gotypes.Player.black
+        self.board.clicked.connect(self.player_move)
+
+    def player_move(self, point):
+        if not self.game.is_over():
+            row, col = point  # Despachetarea tuplei
+            move = goboard.Move.play(gotypes.Point(row, col))
+            if self.game.is_valid_move(move) and self.game.next_player == self.current_player:
+                self.game = self.game.apply_move(move)
+                self.board.update_game(self.game)
+                # Alternează între jucătorul negru și alb
+                self.current_player = gotypes.Player.white if self.current_player == gotypes.Player.black else gotypes.Player.black
+            else:
+                print("Mutare invalidă sau nu este rândul jucătorului!")
+
     def start_player_game(self):
         try:
-            self.game = goboards_slow.GameState.new_game(self.board_size)
-            self.bot = MCTSAgent(num_rounds=1000)  # Inițializează botul
+            self.game = goboard.GameState.new_game(self.board_size)
+            self.bot = MCTSAgent(num_rounds=5)  # Inițializează botul
             self.is_player_turn = True  # Setează rândul jucătorului
 
             # Conectează un eveniment de clic pe tablă la o metodă care gestionează mișcările jucătorului
-            self.board.clicked.connect(self.player_move)
+            self.board.clicked.connect(self.player_move_against_bot)
         except Exception as e:
             print(f"An error occurend in start player_game: {e}")
 
-    def player_move(self, point):
+    def player_move_against_bot(self, point):
         try:
             if self.is_player_turn and not self.game.is_over():
                 row, col = point  # Despachetarea tuplei
-                move = goboards_slow.Move.play(gotypes.Point(row, col))
+                move = goboard.Move.play(gotypes.Point(row, col))
                 if self.game.is_valid_move(move):
                     self.game = self.game.apply_move(move)
                     self.board.update_game(self.game)
@@ -97,11 +116,11 @@ class MainWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
             print(f"An error occurend in step_bot_game_player: {e}")
 
     def start_bot_game(self):
-        self.game = goboards_slow.GameState.new_game(self.board_size)
-        self.bot_black = MCTSAgent(num_rounds=1000)
-        self.bot_white = MCTSAgent(num_rounds=1000)
+        self.game = goboard.GameState.new_game(self.board_size)
+        self.bot_black = MCTSAgent(num_rounds=5)
+        self.bot_white = MCTSAgent(num_rounds=5)
         self.timer = QtCore.QTimer()
-        self.timer.timeout.connect(self.step_mcts_bot_game)
+        self.timer.timeout.connect(self.step_bot_game)
         self.timer.start(1000)  # De exemplu, o mutare la fiecare secundă
 
     def step_mcts_bot_game(self):
@@ -133,15 +152,15 @@ class MainWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
         )  # Instanță temporară pentru a obține informații despre ecran
         screen = temp_app.primaryScreen()
         resolution = screen.size()  # Ia rezolutia ecranului
-        scale_factor = "1"  # Factor de scalare default
+        scale_factor = "1.5"  # Factor de scalare default
 
         high_res_threshold_width = 2560  # threshold latime
         high_res_threshold_height = 1440  # threshold lungime
 
         # Daca avem o rezolutie a ecranului foarte mare, setam factorul de scalare la 1.5
         if (
-            resolution.width() > high_res_threshold_width
-            and resolution.height() > high_res_threshold_height
+                resolution.width() > high_res_threshold_width
+                and resolution.height() > high_res_threshold_height
         ):
             scale_factor = "1.5"
 
@@ -160,6 +179,6 @@ if __name__ == "__main__":
     # Instantiere obiect
     ui = MainWindowController()
     # Afisare obiect in fereastra deschisa larg
-    ui.showMaximized()
+    ui.show()
     # Inchidere aplicatie
     sys.exit(app.exec_())
