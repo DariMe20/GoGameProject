@@ -6,6 +6,7 @@ from dlgo import gotypes
 
 class GoBoardController(QtWidgets.QGraphicsObject):
     clicked = pyqtSignal(object)
+
     def __init__(self, board_size):
         super().__init__()
         self.game = None
@@ -18,7 +19,7 @@ class GoBoardController(QtWidgets.QGraphicsObject):
         else:
             self.margin = 47
 
-        self.view_size = 850 # Dimensiunea zonei de vizualizare grafică
+        self.view_size = 850  # Dimensiunea zonei de vizualizare grafică
         self.cell_size = None
         self.update_cell_size()
 
@@ -38,7 +39,7 @@ class GoBoardController(QtWidgets.QGraphicsObject):
                 painter.drawLine(start + col * self.cell_size, start, start + col * self.cell_size, end)
                 painter.drawLine(start, start + row * self.cell_size, end, start + row * self.cell_size)
 
-          # Adaugarea coordonatelor pe marginea tablei
+        # Adaugarea coordonatelor pe marginea tablei
         font = painter.font()
         font.setPointSize(8)
         painter.setFont(font)
@@ -51,13 +52,13 @@ class GoBoardController(QtWidgets.QGraphicsObject):
             painter.drawText(QPointF(start + i * self.cell_size - painter.fontMetrics().width(cols[i]) / 2,
                                      0), cols[i])
             painter.drawText(QPointF(start + i * self.cell_size - painter.fontMetrics().width(cols[i]) / 2,
-                                     end+self.margin+10), cols[i])
+                                     end + self.margin + 10), cols[i])
 
             # Coordonatele din stânga și din dreapta
             # Centrare pe linie verticală
             painter.drawText(QPointF(0, start + i * self.cell_size + painter.fontMetrics().ascent() / 2),
                              str(self.board_size - i))
-            painter.drawText(QPointF(end+self.margin,
+            painter.drawText(QPointF(end + self.margin,
                                      start + i * self.cell_size + painter.fontMetrics().ascent() / 2),
                              str(self.board_size - i))
 
@@ -68,7 +69,6 @@ class GoBoardController(QtWidgets.QGraphicsObject):
                     stone = board.get(gotypes.Point(row + 1, col + 1))
                     if stone is not None:
                         self.draw_stone(painter, row, col, stone)
-
 
     def draw_stone(self, painter, row, col, stone):
         # Calculul centrului și razei pentru pietre
@@ -83,29 +83,28 @@ class GoBoardController(QtWidgets.QGraphicsObject):
         # Calculează coordonatele intersecției
         click_pos = event.pos()
         closest_row, closest_col = self.get_closest_intersection(click_pos)
-    
+
         if closest_row is not None and closest_col is not None:
             self.clicked.emit((closest_row, closest_col))
-    
-    
+
     def get_closest_intersection(self, click_pos):
         closest_row = closest_col = None
         min_distance = float("inf")  # Inițializează cu o distanță foarte mare
-    
+
         for row in range(self.board_size):
             for col in range(self.board_size):
                 intersection_x = self.margin + col * self.cell_size
                 intersection_y = self.margin + row * self.cell_size
-    
+
                 distance = (click_pos.x() - intersection_x) ** 2 + (
-                    click_pos.y() - intersection_y
+                        click_pos.y() - intersection_y
                 ) ** 2
-    
+
                 if distance < min_distance:
                     min_distance = distance
                     closest_row = row
                     closest_col = col
-    
+
         # Verifică dacă distanța este într-un anumit prag (de exemplu, jumătate din dimensiunea celulei)
         if min_distance <= (self.cell_size / 2) ** 2:
             return closest_row + 1, closest_col + 1  # Returnează coordonatele 1-indexate
@@ -115,4 +114,3 @@ class GoBoardController(QtWidgets.QGraphicsObject):
     def update_game(self, game):
         self.game = game
         self.update()
-
