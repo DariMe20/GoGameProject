@@ -10,12 +10,12 @@ def to_python(player_state):
         return Player.black
     return Player.white
 
+
 MAX63 = 0x7fffffffffffffff
-table = {}
-empty_board = 0
+global HASH_CODE, EMPTY_BOARD
+HASH_CODE = {}
 for row in range(1, 20):
     for col in range(1, 20):
         for state in (Player.black, Player.white):
-            code = random.randint(0, MAX63)
-            table[Point(row, col), state] = code
-
+            HASH_CODE[Point(row, col), state] = random.randint(0, MAX63)
+    EMPTY_BOARD = 0
