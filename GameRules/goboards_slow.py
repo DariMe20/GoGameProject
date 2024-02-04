@@ -1,7 +1,7 @@
 import copy
 
-from dlgo import zobrist, gotypes
-from dlgo.gotypes import Player, Point
+from GameRules import gotypes
+from GameRules.gotypes import Player, Point
 
 
 class Move:
@@ -61,26 +61,24 @@ class GoString:
 
     def __init__(self, color, stones, liberties):
         self.color = color
-        self.stones = frozenset(stones)
-        self.liberties = frozenset(liberties)
+        self.stones = set(stones)
+        self.liberties = set(liberties)
 
-    def without_liberty(self, point):
+    def remove_liberty(self, point):
         """
         Metoda pentru a indeparta libertatile unei piese de pe tabla
 
         :param point: punctul care va genera indepartarea unei libertati pentru un GoString
         """
-        new_liberties = self.liberties - set([point])
-        return GoString(self.color, self.stones, new_liberties)
+        self.liberties.remove(point)
 
-    def with_liberty(self, point):
+    def add_liberty(self, point):
         """
         Metoda pentru a adauga o libertate unui GoString  de pe tabla
 
         :param point: punctul care va genera adaugarea  unei libertati pentru un GoString
         """
-        new_liberties = self.liberties | set([point])
-        return GoString(self.color, self.stones, new_liberties)
+        self.liberties.add(point)
 
     def merged_with(self, go_string):
         """
@@ -104,8 +102,7 @@ class GoString:
 
     def __eq__(self, other):
         return isinstance(other, GoString) and self.color == other.color and self.stones == other.stones \
-               and self.liberties == other.liberties
-
+            and self.liberties == other.liberties
 
 class Board:
     def __init__(self, num_rows, num_cols):
@@ -117,7 +114,6 @@ class Board:
         self.num_rows = num_rows
         self.num_cols = num_cols
         self._grid = {}  # private variable as dictionary
-        self._hash = zobrist.EMPTY_BOARD
 
     def place_stone(self, player, point):
         """
@@ -159,24 +155,20 @@ class Board:
 
         for same_color_string in adjacent_same_color:
             new_string = new_string.merged_with(same_color_string)
-
+        
         # Actiune 1: Uneste orice piese adiacente intr-un singur grup de piese de aceeasi culoare
         for new_string_point in new_string.stones:
             self._grid[new_string_point] = new_string
-
-        self._hash ^= zobrist.HASH_CODE[point, player]
-
+        
         # Actiune 2: Reduce libertatile pentru grupurile de piese de culoare opusa care au libertati comune
         for other_color_string in adjacent_opposite_color:
-            replacement = other_color_string.without_liberty(point)
-            if replacement.num_liberties:
-                self._replace_string(other_color_string.without_liberty(point))
-            else:
+            other_color_string.remove_liberty(point)
+        
+        # Actiune 3: Daca exista piese cu 0 libertati - indeparteaza => CAPTURA
+        for other_color_string in adjacent_opposite_color:
+            if other_color_string.num_liberties == 0:
                 self._remove_string(other_color_string)
 
-    def _replace_string(self, new_string):
-        for point in new_string.stones:
-            self._grid[point] = new_string
 
     def is_on_grid(self, point):
         """
@@ -226,10 +218,10 @@ class Board:
                 if neighbor_string is None:
                     continue
                 if neighbor_string is not string:
-                    self._replace_string(neighbor_string.with_liberty(point))
-            self._grid[point] = None
+                    neighbor_string.add_liberty(point)
 
-            self._hash ^= zobrist.HASH_CODE[point, string.color]
+            # Indeparteaza piesa
+            self._grid[point] = None
 
     def count_stones(self, player):
         """
@@ -246,9 +238,6 @@ class Board:
                     count += 1
         return count
 
-    def zobrist_hash(self):
-        return self._hash
-
 
 class GameState:
     def __init__(self, board, next_player, previous, move):
@@ -256,13 +245,6 @@ class GameState:
         self.board = board
         self.next_player = next_player
         self.previous_state = previous
-
-        if self.previous_state is None:
-            self.previous_states = frozenset()
-        else:
-            self.previous_states = frozenset(
-                previous.previous_states | {(previous.next_player, previous.board.zobrist_hash())})
-
         self.last_move = move
 
     def apply_move(self, move):
@@ -350,9 +332,17 @@ class GameState:
         next_board = copy.deepcopy(self.board)
         next_board.place_stone(player, move.point)
 
-        # Creem urmatoare situatie de pe tabla
-        next_situation = (player.other, next_board.zobrist_hash())
-        return next_situation in self.previous_states
+        # Creem urmatoarea situatie de pe tabla
+        next_situation = (player.other, next_board)
+        past_state = self.previous_state
+
+        # Incercam sa verificam ca la fiecare mutare in care ko-ul este inca activ, unul dintre jucatori nu incearca sa
+        # realizeze capturi succesive in acelasi ko
+        while past_state is not None:
+            if past_state.situation == next_situation:
+                return True
+            past_state = past_state.previous_state
+        return False
 
     def is_valid_move(self, move):
         """
@@ -365,9 +355,9 @@ class GameState:
         if move.is_pass or move.is_resign:
             return True
         return (
-                self.board.get(move.point) is None
-                and not self.is_move_self_capture(self.next_player, move)
-                and not self.does_move_violate_ko(self.next_player, move)
+            self.board.get(move.point) is None
+            and not self.is_move_self_capture(self.next_player, move)
+            and not self.does_move_violate_ko(self.next_player, move)
         )
 
     def legal_moves(self):
@@ -392,9 +382,9 @@ class GameState:
         # Aceasta este o implementare foarte simplificată și probabil că va trebui să fie ajustată
         black_score = self.board.count_stones(gotypes.Player.black)
         white_score = (
-                self.board.count_stones(gotypes.Player.white) + self.komi
+            self.board.count_stones(gotypes.Player.white) + self.komi
         )  # presupunând că ai o valoare de komi
-
+    
         if black_score > white_score:
             return gotypes.Player.black
         elif white_score > black_score:

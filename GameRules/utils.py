@@ -1,4 +1,4 @@
-from dlgo import gotypes
+from GameRules import gotypes
 
 COLS = 'ABCDEFGHJKLMNOPQRST'
 STONE_TO_CHAR = {

@@ -1,7 +1,7 @@
 import math
 import random
-from dlgo import gotypes
-from dlgo.agent.base import Agent
+from GameRules import gotypes
+from GameRules.agent.base import Agent
 
 
 class MCTSNode(object):
@@ -13,7 +13,7 @@ class MCTSNode(object):
             gotypes.Player.black: 0,
             gotypes.Player.white: 0,
         }
-        self.num_rollouts = 100
+        self.num_rollouts = 0
         self.children = []
         self.unvisited_moves = game_state.legal_moves()
 
@@ -38,17 +38,18 @@ class MCTSNode(object):
     def winning_frac(self, player):
         return float(self.win_counts[player]) / float(self.num_rollouts)
 
-    @staticmethod
-    def uct_score(parent_rollouts, child_rollouts, win_pct, temperature):
-        exploration = math.sqrt(math.log(parent_rollouts) / child_rollouts)
-        return win_pct + temperature * exploration
-
 
 class MCTSAgent(Agent):
+
     def __init__(self, num_rounds):
         super().__init__()
         self.temperature = 1.2
         self.num_rounds = num_rounds
+
+    @staticmethod
+    def uct_score(parent_rollouts, child_rollouts, win_pct, temperature):
+        exploration = math.sqrt(math.log(parent_rollouts) / child_rollouts)
+        return win_pct + temperature * exploration
 
     def select_moveMCTS(self, game_state):
         root = MCTSNode(game_state)
@@ -58,6 +59,7 @@ class MCTSAgent(Agent):
                 node = self.select_child(node)
             if node.can_add_child():
                 node = node.add_random_child()
+
             winner = self.simulate_random_game(node.game_state)
             while node is not None:
                 node.record_win(winner)
@@ -76,17 +78,19 @@ class MCTSAgent(Agent):
         return best_move
 
     def select_child(self, node):
+        total_rollouts = sum(child.num_rollouts for child in node.children)
         best_score = -1
         best_child = None
         for child in node.children:
-            # Utilizează winning_frac în loc de winning_pct
-            win_rate = child.winning_frac(node.game_state.next_player)
-            exploration_factor = math.sqrt(math.log(node.num_rollouts) / child.num_rollouts)
-            ucb_score = win_rate + self.temperature * exploration_factor
-            if ucb_score > best_score:
-                best_score = ucb_score
+            score = self.uct_score(total_rollouts,
+                                   child.num_rollouts,
+                                   child.winning_pct(node.game_state.next_player),
+                                   self.temperature)
+            if score > best_score:
+                best_score = score
                 best_child = child
         return best_child
+
     def simulate_random_game(self, game_state):
         state = game_state
         while not state.is_over():
@@ -96,4 +100,3 @@ class MCTSAgent(Agent):
         return (
             state.winner()
         )  # presupunând că GameState are o metodă winner() care determină câștigătorul
-

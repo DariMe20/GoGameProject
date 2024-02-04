@@ -6,7 +6,7 @@ from PyQt5.QtCore import QTimer
 from PyQt5.QtGui import QPixmap, QFont
 
 from MonteCarloTreeSearch.MCTS import MCTSAgent
-from dlgo import gotypes, agent, goboard
+from GameRules import gotypes, agent, goboard
 from gui.generated_files.MainWindow import Ui_MainWindow
 from gui.section_controllers.GoBoardController import GoBoardController
 
@@ -27,7 +27,7 @@ class MainWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
 
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.board_size = 9
+        self.board_size = 4
         self.init_GoBoard()
 
         pixmapW = QPixmap("../resources/TigerW.jpg")
