@@ -27,7 +27,7 @@ class MainWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
 
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.board_size = 4
+        self.board_size = 9
         self.init_GoBoard()
 
         pixmapW = QPixmap("../resources/TigerW.jpg")
@@ -117,8 +117,8 @@ class MainWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def start_bot_game(self):
         self.game = goboard.GameState.new_game(self.board_size)
-        self.bot_black = MCTSAgent(num_rounds=5)
-        self.bot_white = MCTSAgent(num_rounds=5)
+        self.bot_black = MCTSAgent()
+        self.bot_white = MCTSAgent()
         self.timer = QtCore.QTimer()
         self.timer.timeout.connect(self.step_bot_game)
         self.timer.start(1000)  # De exemplu, o mutare la fiecare secundă

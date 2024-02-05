@@ -1,6 +1,8 @@
+import cProfile
+import copy
 import math
 import random
-from GameRules import gotypes
+from GameRules import gotypes, goboard
 from GameRules.agent.base import Agent
 
 
@@ -41,13 +43,15 @@ class MCTSNode(object):
 
 class MCTSAgent(Agent):
 
-    def __init__(self, num_rounds):
+    def __init__(self, num_rounds=10):
         super().__init__()
-        self.temperature = 1.2
+        self.temperature = 1.9
         self.num_rounds = num_rounds
 
     @staticmethod
     def uct_score(parent_rollouts, child_rollouts, win_pct, temperature):
+        if child_rollouts == 0:
+            return float('inf')  # Asigură explorarea nodurilor nevizitate
         exploration = math.sqrt(math.log(parent_rollouts) / child_rollouts)
         return win_pct + temperature * exploration
 
@@ -91,12 +95,61 @@ class MCTSAgent(Agent):
                 best_child = child
         return best_child
 
+    def heuristic_select_move(self, possible_moves, game_state):
+        capture_moves = []
+        extend_moves = []
+        for move in possible_moves:
+            if move.is_play:
+                # Verifică dacă mutarea capturează pietre adversare
+                if self.does_move_capture(move, game_state):
+                    capture_moves.append(move)
+                # Verifică dacă mutarea extinde un grup existent
+                elif self.does_move_extend(move, game_state):
+                    extend_moves.append(move)
+        if capture_moves:
+            return random.choice(capture_moves)
+        elif extend_moves:
+            return random.choice(extend_moves)
+        else:
+            return random.choice(possible_moves)
+
+    def does_move_capture(self, move, game_state):
+        if not move.is_play:
+            return False
+        next_board = copy.deepcopy(game_state.board)
+        next_board.place_stone(game_state.next_player, move.point)
+        # Verifică dacă vreo piesă adversă rămâne fără libertăți
+        for neighbor in move.point.neighbors():
+            if not next_board.is_on_grid(neighbor):
+                continue
+            neighbor_string = next_board.get_go_string(neighbor)
+            if neighbor_string is None or neighbor_string.color == game_state.next_player:
+                continue
+            if neighbor_string.num_liberties == 0:
+                return True
+        return False
+
+    def does_move_extend(self, move, game_state):
+        if not move.is_play:
+            return False
+        for neighbor in move.point.neighbors():
+            if not game_state.board.is_on_grid(neighbor):
+                continue
+            neighbor_string = game_state.board.get_go_string(neighbor)
+            if neighbor_string is not None and neighbor_string.color == game_state.next_player:
+                # Verifică dacă mutarea extinde un grup existent al jucătorului
+                return True
+        return False
+
     def simulate_random_game(self, game_state):
+        print("In simulate")
         state = game_state
         while not state.is_over():
             possible_moves = state.legal_moves()
-            move = random.choice(possible_moves)
+            move = self.heuristic_select_move(possible_moves, state)
             state = state.apply_move(move)
+            print("WInner is: ", state.winner())
         return (
+
             state.winner()
-        )  # presupunând că GameState are o metodă winner() care determină câștigătorul
+        )
