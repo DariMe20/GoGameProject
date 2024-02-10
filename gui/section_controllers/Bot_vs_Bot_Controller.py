@@ -20,6 +20,7 @@ class BvBController(QtWidgets.QWidget):
         self.board = self.GOwin.board
         self.count_pass = 0
         self.timer = QtCore.QTimer
+        self.GOwin.init_GoBoard()
 
         self.GOwin.ui.pushButton_StartGame.clicked.connect(self.start_bot_game)
 
@@ -30,18 +31,26 @@ class BvBController(QtWidgets.QWidget):
         self.deep_learning_agent = DeepLearningAgent(self.model, self.encoder)
 
     def start_bot_game(self):
+        if self.GOwin.reset == 1:
+            return
+
         self.game = goboard.GameState.new_game(self.board_size)
         self.bot_black = DeepLearningAgent(self.model, self.encoder)
         self.bot_white = DeepLearningAgent(self.model, self.encoder)
+        self.GOwin.ui.verticalWidget.setStyleSheet('#verticalWidget{border:1px solid blue;}')
+        self.GOwin.ui.verticalWidget_2.setStyleSheet("#verticalWidget_2{border:none}")
         self.timer = QtCore.QTimer()
         self.timer.timeout.connect(self.step_bot_game)
-        self.timer.start(1000)
+        self.timer.start(2000)
         if self.count_pass == 2:
             self.GOwin.ui.label.setText("BOTH BOTS PASSED. GAME IS OVER")
             return
 
     def step_bot_game(self):
         try:
+            if self.GOwin.reset == 1:
+                return
+
             if not self.game.is_over():
                 current_player = self.game.next_player
                 bot_move = (
@@ -50,16 +59,13 @@ class BvBController(QtWidgets.QWidget):
                     else self.bot_white
                 ).select_move(self.game)
 
+                self.GOwin.emphasise_player_turn(current_player)
+
                 if bot_move.is_play:
                     self.game = self.game.apply_move(bot_move)
                     self.board.update_game(self.game)
 
-                    row, col = bot_move.point
-                    go_coord = self.point_to_coord(bot_move.point, self.board_size)
-                    player_color = "B" if current_player == gotypes.Player.black else "W"
-                    next_player = "Black" if current_player == gotypes.Player.white else "White"
-                    self.GOwin.ui.label.setText(f"Move {player_color} - {go_coord}. {next_player} to play.")
-
+                    self.GOwin.view_move(bot_move, current_player)
 
                 elif bot_move.is_pass:
                     if current_player == gotypes.Player.black:
@@ -76,9 +82,3 @@ class BvBController(QtWidgets.QWidget):
 
         except Exception as e:
             print(f"An error occurend in bot_v_bot game: {e}")
-
-    def point_to_coord(self, point, board_size):
-        col_names = "ABCDEFGHJKLMNOPQRST"
-        row = board_size - point.row + 1
-        col = col_names[point.col - 1]
-        return f"{col}{row}"
