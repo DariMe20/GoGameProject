@@ -224,6 +224,12 @@ background-color: rgba(255, 255, 255, 0);</string>
                   <height>19</height>
                  </size>
                 </property>
+                <property name="font">
+                 <font>
+                  <family>MS Shell Dlg 2</family>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
                 <property name="styleSheet">
                  <string>
 background-color: rgba(255, 255, 255, 0);</string>
@@ -244,6 +250,21 @@ background-color: rgba(255, 255, 255, 0);</string>
               </item>
               <item alignment="Qt::AlignHCenter|Qt::AlignBottom">
                <widget class="QLineEdit" name="lineEdit_BlackCaptures">
+                <property name="font">
+                 <font>
+                  <family>MS Shell Dlg 2</family>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background:transparent;</string>
+                </property>
+                <property name="frame">
+                 <bool>false</bool>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                 <property name="readOnly">
                  <bool>true</bool>
                 </property>
@@ -357,6 +378,12 @@ background-color: rgba(255, 255, 255, 0);</string>
                   <height>19</height>
                  </size>
                 </property>
+                <property name="font">
+                 <font>
+                  <family>MS Shell Dlg 2</family>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
                 <property name="styleSheet">
                  <string>
 background-color: rgba(255, 255, 255, 0);</string>
@@ -380,6 +407,21 @@ background-color: rgba(255, 255, 255, 0);</string>
               </item>
               <item alignment="Qt::AlignHCenter|Qt::AlignBottom">
                <widget class="QLineEdit" name="lineEdit_WhiteCaptures">
+                <property name="font">
+                 <font>
+                  <family>MS Shell Dlg 2</family>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background:transparent;</string>
+                </property>
+                <property name="frame">
+                 <bool>false</bool>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                 <property name="readOnly">
                  <bool>true</bool>
                 </property>
