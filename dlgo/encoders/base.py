@@ -1,4 +1,4 @@
-import importlib
+from importlib import import_module
 
 
 class Encoder:
@@ -25,4 +25,7 @@ class Encoder:
     # Forma structurii codificate
     def shape(self):
         raise NotImplementedError()
+
+    def create(self, board_size):
+        return NotImplementedError()
 

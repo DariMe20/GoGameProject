@@ -1,9 +1,9 @@
 
-from GameRules import agent
-from GameRules import goboards_slow
-from GameRules import gotypes
-from GameRules.agent import naive
-from GameRules.utils import print_board, print_move
+from dlgo import agent
+from dlgo import goboards_slow
+from dlgo import gotypes
+from dlgo.agent import naive
+from dlgo.utils import print_board, print_move
 import time
 
 

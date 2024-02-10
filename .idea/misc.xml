@@ -2,7 +2,10 @@
 <project version="4">
   <component name="Black">
     <option name="enabledOnReformat" value="true" />
-    <option name="sdkUUID" value="dcc14939-7e71-472c-9719-e2d18e16205d" />
+    <option name="sdkName" value="GoGameProject" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.11" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="GoGameProject (2)" project-jdk-type="Python SDK" />
+  <component name="PythonCompatibilityInspectionAdvertiser">
+    <option name="version" value="3" />
+  </component>
 </project>

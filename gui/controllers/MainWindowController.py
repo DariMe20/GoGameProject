@@ -1,12 +1,16 @@
 import os
 import sys
 
+import h5py
 from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtCore import QTimer
 from PyQt5.QtGui import QPixmap, QFont
-
+from tensorflow.keras.models import load_model
+from dlgo.agent.predict import DeepLearningAgent
+from dlgo.encoders.oneplane import OnePlaneEncoder
+from dlgo.kerasutil import load_model_from_hdf5_group
 from MonteCarloTreeSearch.MCTS import MCTSAgent
-from GameRules import gotypes, agent, goboard
+from dlgo import gotypes, agent, goboard
 from gui.generated_files.MainWindow import Ui_MainWindow
 from gui.section_controllers.GoBoardController import GoBoardController
 
@@ -23,6 +27,7 @@ class MainWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
         self.game = None
         self.board = None
         self.scene = None
+        self.count_pass = 0
         self.timer = QtCore.QTimer
 
         self.ui = Ui_MainWindow()
@@ -42,6 +47,12 @@ class MainWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
         self.ui.pushButton_BotVBot.clicked.connect(self.start_bot_game)
         self.ui.pushButton_PlayBot.clicked.connect(self.start_player_game)
         self.ui.pushButton_CreateSGF.clicked.connect(self.create_sgf_game)
+
+        model_path = 'C:\\DARIA\\1.FSEGA\\LICENTA\\GoGameProject\\dlgo\\keras_networks\\model2.h5'
+
+        self.model = load_model(model_path)
+        self.encoder = OnePlaneEncoder(board_size=(self.board_size, self.board_size))
+        self.deep_learning_agent = DeepLearningAgent(self.model, self.encoder)
 
     def draw_coordinates(self):
         pass
@@ -77,8 +88,7 @@ class MainWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
     def start_player_game(self):
         try:
             self.game = goboard.GameState.new_game(self.board_size)
-            self.bot = MCTSAgent(num_rounds=5)  # Inițializează botul
-            self.is_player_turn = True  # Setează rândul jucătorului
+            self.bot = DeepLearningAgent(self.model, self.encoder)  # Inițializează botul
 
             # Conectează un eveniment de clic pe tablă la o metodă care gestionează mișcările jucătorului
             self.board.clicked.connect(self.player_move_against_bot)
@@ -100,9 +110,14 @@ class MainWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def agent_move(self):
         if not self.game.is_over() and not self.is_player_turn:
-            bot_move = self.bot.select_moveMCTS(self.game)
-            self.game = self.game.apply_move(bot_move)
-            self.board.update_game(self.game)
+            bot_move = self.deep_learning_agent.select_move(self.game)
+            if bot_move.is_play:
+                self.game = self.game.apply_move(bot_move)
+                self.board.update_game(self.game)
+            elif bot_move.is_pass:
+                print("Bot passed")
+            elif bot_move.is_resign:
+                print("Bot resigned")
             self.is_player_turn = True
 
     def step_bot_game_player(self):
@@ -117,33 +132,36 @@ class MainWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def start_bot_game(self):
         self.game = goboard.GameState.new_game(self.board_size)
-        self.bot_black = MCTSAgent()
-        self.bot_white = MCTSAgent()
+        self.bot_black = DeepLearningAgent(self.model, self.encoder)
+        self.bot_white = DeepLearningAgent(self.model, self.encoder)
         self.timer = QtCore.QTimer()
         self.timer.timeout.connect(self.step_bot_game)
         self.timer.start(1000)  # De exemplu, o mutare la fiecare secundă
+        if self.count_pass == 2:
+            print("Game is over")
+            return
 
-    def step_mcts_bot_game(self):
-        if not self.game.is_over():
-            current_player = self.game.next_player
-            bot_move = (
-                self.bot_black
-                if current_player == gotypes.Player.black
-                else self.bot_white
-            ).select_moveMCTS(self.game)
-            self.game = self.game.apply_move(bot_move)
-            self.board.update_game(self.game)
 
     def step_bot_game(self):
-        if not self.game.is_over():
-            current_player = self.game.next_player
-            bot_move = (
-                self.bot_black
-                if current_player == gotypes.Player.black
-                else self.bot_white
-            ).select_moveMCTS(self.game)
-            self.game = self.game.apply_move(bot_move)
-            self.board.update_game(self.game)
+        try:
+            if not self.game.is_over():
+                current_player = self.game.next_player
+                bot_move = (
+                    self.bot_black
+                    if current_player == gotypes.Player.black
+                    else self.bot_white
+                ).select_move(self.game)
+
+                if bot_move.is_play:
+                    self.game = self.game.apply_move(bot_move)
+                    self.board.update_game(self.game)
+                elif bot_move.is_pass:
+                    self.count_pass += 1
+                    print(f"Bot {current_player} passed")
+                elif bot_move.is_resign:
+                    print(f"Bot {current_player} resigned")
+        except Exception as e:
+            print(f"An error occurend in bot_v_bot game: {e}")
 
     @staticmethod
     def adjust_scale_factor():
@@ -152,7 +170,7 @@ class MainWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
         )  # Instanță temporară pentru a obține informații despre ecran
         screen = temp_app.primaryScreen()
         resolution = screen.size()  # Ia rezolutia ecranului
-        scale_factor = "1.5"  # Factor de scalare default
+        scale_factor = "1"  # Factor de scalare default
 
         high_res_threshold_width = 2560  # threshold latime
         high_res_threshold_height = 1440  # threshold lungime

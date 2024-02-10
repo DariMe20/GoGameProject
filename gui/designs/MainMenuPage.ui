@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>790</width>
-    <height>530</height>
+    <width>782</width>
+    <height>501</height>
    </rect>
   </property>
   <property name="maximumSize">
@@ -58,6 +58,8 @@
        </property>
        <property name="font">
         <font>
+         <family>MS Shell Dlg 2</family>
+         <pointsize>8</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
@@ -88,6 +90,8 @@ background: rgba(255, 241, 224, 180)</string>
        </property>
        <property name="font">
         <font>
+         <family>MS Shell Dlg 2</family>
+         <pointsize>8</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
@@ -118,6 +122,8 @@ background: rgba(255, 241, 224, 180)</string>
        </property>
        <property name="font">
         <font>
+         <family>MS Shell Dlg 2</family>
+         <pointsize>8</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
@@ -148,6 +154,8 @@ background: rgba(255, 241, 224, 180)</string>
        </property>
        <property name="font">
         <font>
+         <family>MS Shell Dlg 2</family>
+         <pointsize>8</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
@@ -193,6 +201,8 @@ background: rgba(255, 241, 224, 180)</string>
        </property>
        <property name="font">
         <font>
+         <family>MS Shell Dlg 2</family>
+         <pointsize>8</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
@@ -232,6 +242,7 @@ background: rgba(255, 241, 224, 180)</string>
     </property>
     <property name="font">
      <font>
+      <family>MS Shell Dlg 2</family>
       <pointsize>35</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -270,16 +281,31 @@ background: rgba(255, 241, 224, 180)</string>
     </property>
     <property name="font">
      <font>
+      <family>MS Shell Dlg 2</family>
       <pointsize>10</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
-    <widget class="QWidget" name="page"/>
-    <widget class="QWidget" name="page_2">
+    <widget class="QWidget" name="page_Hello">
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>250</x>
+        <y>110</y>
+        <width>251</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Prima Pagina</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_CreateSGF">
      <widget class="QLabel" name="label_CreateSGF">
       <property name="geometry">
        <rect>
@@ -314,298 +340,667 @@ background: rgba(255, 241, 224, 180)</string>
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QSplitter" name="splitter">
+     <widget class="QPushButton" name="pushButton_CreateOk">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>200</y>
+        <width>75</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Ok</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="">
       <property name="geometry">
        <rect>
         <x>240</x>
         <y>90</y>
-        <width>491</width>
-        <height>41</height>
+        <width>498</width>
+        <height>43</height>
        </rect>
       </property>
-      <property name="minimumSize">
-       <size>
-        <width>431</width>
-        <height>41</height>
-       </size>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <widget class="QLabel" name="label_4">
-       <property name="minimumSize">
-        <size>
-         <width>80</width>
-         <height>41</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>Board Size</string>
-       </property>
-      </widget>
-      <widget class="QSpinBox" name="spinBox_BoardSize">
-       <property name="minimumSize">
-        <size>
-         <width>55</width>
-         <height>41</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QSpinBox {
-    background-color: #f0e4d7; /* un maro deschis, pastelat */
-    color: #8b5a2b; /* textul într-o nuanță mai închisă de maro */
-    border: 1px solid #a0522d; /* marginea într-o nuanță mai închisă */
-    border-radius: 5px; /* colțuri rotunjite pentru un aspect modern */
-    padding: 5px; /* spațiu suplimentar în interiorul spin box-ului */
-}
-
-QSpinBox::up-button {
-    background-color: #ffa07a; /* o nuanță pastelată de portocaliu */
-    border: 1px solid #cd853f; /* marginea într-o nuanță mai închisă de portocaliu */
-    border-top-right-radius: 4px; /* rotunjirea colțului superior drept */
-    min-width: 15px; /* lățimea minimă a butonului de creștere */
-}
-
-QSpinBox::down-button {
-    background-color: #ffa07a; /* similar cu butonul de creștere */
-    border: 1px solid #cd853f;
-    border-bottom-right-radius: 4px; /* rotunjirea colțului inferior drept */
-    min-width: 15px;
-}
-
-QSpinBox::up-arrow {
-    image: url('up-arrow.png'); /* înlocuiește cu calea imaginii pentru săgeata în sus */
-    width: 10px; /* lățimea săgeții */
-    height: 10px;
-}
-
-QSpinBox::down-arrow {
-    image: url('down-arrow.png'); /* înlocuiește cu calea imaginii pentru săgeata în jos */
-    width: 10px;
-    height: 10px;
-}
-</string>
-       </property>
-       <property name="buttonSymbols">
-        <enum>QAbstractSpinBox::PlusMinus</enum>
-       </property>
-       <property name="specialValueText">
-        <string/>
-       </property>
-       <property name="minimum">
-        <number>9</number>
-       </property>
-       <property name="maximum">
-        <number>19</number>
-       </property>
-       <property name="singleStep">
-        <number>4</number>
-       </property>
-       <property name="stepType">
-        <enum>QAbstractSpinBox::DefaultStepType</enum>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_5">
-       <property name="minimumSize">
-        <size>
-         <width>80</width>
-         <height>41</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>Handicap</string>
-       </property>
-      </widget>
-      <widget class="QSpinBox" name="spinBox_Handicap">
-       <property name="minimumSize">
-        <size>
-         <width>56</width>
-         <height>41</height>
-        </size>
-       </property>
-       <property name="mouseTracking">
-        <bool>true</bool>
-       </property>
-       <property name="contextMenuPolicy">
-        <enum>Qt::ActionsContextMenu</enum>
-       </property>
-       <property name="wrapping">
-        <bool>true</bool>
-       </property>
-       <property name="buttonSymbols">
-        <enum>QAbstractSpinBox::PlusMinus</enum>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_6">
-       <property name="minimumSize">
-        <size>
-         <width>79</width>
-         <height>41</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>Komi </string>
-       </property>
-      </widget>
-      <widget class="QDoubleSpinBox" name="doubleSpinBox_Komi">
-       <property name="minimumSize">
-        <size>
-         <width>56</width>
-         <height>41</height>
-        </size>
-       </property>
-       <property name="wrapping">
-        <bool>true</bool>
-       </property>
-       <property name="buttonSymbols">
-        <enum>QAbstractSpinBox::PlusMinus</enum>
-       </property>
-       <property name="decimals">
-        <number>1</number>
-       </property>
-       <property name="minimum">
-        <double>-1444.000000000000000</double>
-       </property>
-       <property name="maximum">
-        <double>1444.000000000000000</double>
-       </property>
-       <property name="value">
-        <double>6.500000000000000</double>
-       </property>
-      </widget>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="label_4">
+         <property name="minimumSize">
+          <size>
+           <width>91</width>
+           <height>41</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>91</width>
+           <height>41</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Board Size</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="spinBox_BoardSize">
+         <property name="minimumSize">
+          <size>
+           <width>56</width>
+           <height>41</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>56</width>
+           <height>41</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>MS Shell Dlg 2</family>
+           <pointsize>10</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="readOnly">
+          <bool>false</bool>
+         </property>
+         <property name="buttonSymbols">
+          <enum>QAbstractSpinBox::UpDownArrows</enum>
+         </property>
+         <property name="specialValueText">
+          <string/>
+         </property>
+         <property name="minimum">
+          <number>9</number>
+         </property>
+         <property name="maximum">
+          <number>19</number>
+         </property>
+         <property name="singleStep">
+          <number>4</number>
+         </property>
+         <property name="stepType">
+          <enum>QAbstractSpinBox::DefaultStepType</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_5">
+         <property name="minimumSize">
+          <size>
+           <width>90</width>
+           <height>41</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>90</width>
+           <height>41</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Handicap</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="spinBox_Handicap">
+         <property name="minimumSize">
+          <size>
+           <width>56</width>
+           <height>41</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>56</width>
+           <height>41</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="mouseTracking">
+          <bool>true</bool>
+         </property>
+         <property name="contextMenuPolicy">
+          <enum>Qt::ActionsContextMenu</enum>
+         </property>
+         <property name="wrapping">
+          <bool>true</bool>
+         </property>
+         <property name="buttonSymbols">
+          <enum>QAbstractSpinBox::PlusMinus</enum>
+         </property>
+         <property name="suffix">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_6">
+         <property name="minimumSize">
+          <size>
+           <width>90</width>
+           <height>41</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>90</width>
+           <height>41</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Komi </string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDoubleSpinBox" name="doubleSpinBox_Komi">
+         <property name="minimumSize">
+          <size>
+           <width>83</width>
+           <height>41</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>83</width>
+           <height>41</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>MS Shell Dlg 2</family>
+           <pointsize>10</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+           <kerning>true</kerning>
+          </font>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::ClickFocus</enum>
+         </property>
+         <property name="contextMenuPolicy">
+          <enum>Qt::NoContextMenu</enum>
+         </property>
+         <property name="acceptDrops">
+          <bool>false</bool>
+         </property>
+         <property name="autoFillBackground">
+          <bool>true</bool>
+         </property>
+         <property name="inputMethodHints">
+          <set>Qt::ImhPreferNumbers</set>
+         </property>
+         <property name="wrapping">
+          <bool>true</bool>
+         </property>
+         <property name="buttonSymbols">
+          <enum>QAbstractSpinBox::PlusMinus</enum>
+         </property>
+         <property name="decimals">
+          <number>1</number>
+         </property>
+         <property name="minimum">
+          <double>-1444.000000000000000</double>
+         </property>
+         <property name="maximum">
+          <double>1444.000000000000000</double>
+         </property>
+         <property name="value">
+          <double>6.500000000000000</double>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
-     <widget class="QSplitter" name="splitter_2">
+     <widget class="QWidget" name="">
       <property name="geometry">
        <rect>
         <x>20</x>
         <y>60</y>
-        <width>201</width>
-        <height>101</height>
+        <width>203</width>
+        <height>106</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QLabel" name="label_WhiteName">
+         <property name="minimumSize">
+          <size>
+           <width>201</width>
+           <height>19</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>201</width>
+           <height>19</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>MS Shell Dlg 2</family>
+           <pointsize>10</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>White Player's Name</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_WhiteName">
+         <property name="minimumSize">
+          <size>
+           <width>201</width>
+           <height>24</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>201</width>
+           <height>24</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>MS Shell Dlg 2</family>
+           <pointsize>11</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: none;</string>
+         </property>
+         <property name="placeholderText">
+          <string>White</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_BlackName">
+         <property name="minimumSize">
+          <size>
+           <width>201</width>
+           <height>19</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>201</width>
+           <height>19</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>MS Shell Dlg 2</family>
+           <pointsize>10</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Black Player's Name </string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_BlackName">
+         <property name="minimumSize">
+          <size>
+           <width>201</width>
+           <height>24</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>201</width>
+           <height>24</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>MS Shell Dlg 2</family>
+           <pointsize>11</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: none;</string>
+         </property>
+         <property name="placeholderText">
+          <string>Black</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page">
+     <widget class="QLabel" name="label_CreateSGF_2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>731</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="minimumSize">
        <size>
-        <width>201</width>
-        <height>101</height>
+        <width>731</width>
+        <height>41</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
-        <width>201</width>
-        <height>101</height>
+        <width>731</width>
+        <height>41</height>
        </size>
       </property>
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
+      <property name="text">
+       <string>Play With Bot</string>
       </property>
-      <widget class="QLabel" name="label_2">
-       <property name="minimumSize">
-        <size>
-         <width>201</width>
-         <height>19</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>201</width>
-         <height>19</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>White Player's Name</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="lineEdit">
-       <property name="minimumSize">
-        <size>
-         <width>201</width>
-         <height>24</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>201</width>
-         <height>24</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>11</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="autoFillBackground">
-        <bool>false</bool>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background: none;</string>
-       </property>
-       <property name="placeholderText">
-        <string>White</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_3">
-       <property name="minimumSize">
-        <size>
-         <width>201</width>
-         <height>19</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>201</width>
-         <height>19</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Black Player's Name </string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="lineEdit_2">
-       <property name="minimumSize">
-        <size>
-         <width>201</width>
-         <height>24</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>201</width>
-         <height>24</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>11</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="autoFillBackground">
-        <bool>false</bool>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background: none;</string>
-       </property>
-       <property name="placeholderText">
-        <string>Black</string>
-       </property>
-      </widget>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QWidget" name="layoutWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>100</y>
+        <width>741</width>
+        <height>43</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QLabel" name="label_PlayerColor">
+         <property name="text">
+          <string>Your Color</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="radioButton_Black">
+         <property name="font">
+          <font>
+           <family>MS Shell Dlg 2</family>
+           <pointsize>8</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Black</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="radioButton_White">
+         <property name="font">
+          <font>
+           <family>MS Shell Dlg 2</family>
+           <pointsize>8</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>White</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="Line" name="line">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_PBoardSize">
+         <property name="minimumSize">
+          <size>
+           <width>91</width>
+           <height>41</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>91</width>
+           <height>41</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Board Size</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="spinBox_BoardSizeP">
+         <property name="minimumSize">
+          <size>
+           <width>56</width>
+           <height>41</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>56</width>
+           <height>41</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>MS Shell Dlg 2</family>
+           <pointsize>10</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="readOnly">
+          <bool>false</bool>
+         </property>
+         <property name="buttonSymbols">
+          <enum>QAbstractSpinBox::UpDownArrows</enum>
+         </property>
+         <property name="specialValueText">
+          <string/>
+         </property>
+         <property name="minimum">
+          <number>9</number>
+         </property>
+         <property name="maximum">
+          <number>19</number>
+         </property>
+         <property name="singleStep">
+          <number>4</number>
+         </property>
+         <property name="stepType">
+          <enum>QAbstractSpinBox::DefaultStepType</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_9">
+         <property name="minimumSize">
+          <size>
+           <width>90</width>
+           <height>41</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>90</width>
+           <height>41</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Handicap</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="spinBox_HandicapP">
+         <property name="minimumSize">
+          <size>
+           <width>56</width>
+           <height>41</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>56</width>
+           <height>41</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="mouseTracking">
+          <bool>true</bool>
+         </property>
+         <property name="contextMenuPolicy">
+          <enum>Qt::ActionsContextMenu</enum>
+         </property>
+         <property name="wrapping">
+          <bool>true</bool>
+         </property>
+         <property name="buttonSymbols">
+          <enum>QAbstractSpinBox::PlusMinus</enum>
+         </property>
+         <property name="suffix">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_10">
+         <property name="minimumSize">
+          <size>
+           <width>90</width>
+           <height>41</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>90</width>
+           <height>41</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Komi </string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDoubleSpinBox" name="doubleSpinBox_KomiP">
+         <property name="minimumSize">
+          <size>
+           <width>83</width>
+           <height>41</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>83</width>
+           <height>41</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>MS Shell Dlg 2</family>
+           <pointsize>10</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+           <kerning>true</kerning>
+          </font>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::ClickFocus</enum>
+         </property>
+         <property name="contextMenuPolicy">
+          <enum>Qt::NoContextMenu</enum>
+         </property>
+         <property name="acceptDrops">
+          <bool>false</bool>
+         </property>
+         <property name="autoFillBackground">
+          <bool>true</bool>
+         </property>
+         <property name="inputMethodHints">
+          <set>Qt::ImhPreferNumbers</set>
+         </property>
+         <property name="wrapping">
+          <bool>true</bool>
+         </property>
+         <property name="buttonSymbols">
+          <enum>QAbstractSpinBox::PlusMinus</enum>
+         </property>
+         <property name="decimals">
+          <number>1</number>
+         </property>
+         <property name="minimum">
+          <double>-1444.000000000000000</double>
+         </property>
+         <property name="maximum">
+          <double>1444.000000000000000</double>
+         </property>
+         <property name="value">
+          <double>6.500000000000000</double>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QPushButton" name="pushButton_PlayWithBotOk">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>210</y>
+        <width>75</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Ok</string>
+      </property>
      </widget>
     </widget>
    </widget>
@@ -615,8 +1010,8 @@ QSpinBox::down-arrow {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>790</width>
-     <height>22</height>
+     <width>782</width>
+     <height>20</height>
     </rect>
    </property>
   </widget>

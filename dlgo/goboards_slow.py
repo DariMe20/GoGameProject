@@ -1,7 +1,7 @@
 import copy
 
-from GameRules import gotypes
-from GameRules.gotypes import Player, Point
+from dlgo import gotypes
+from dlgo.gotypes import Player, Point
 
 
 class Move:

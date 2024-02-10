@@ -15,11 +15,22 @@
       </option>
     </inspection_tool>
     <inspection_tool class="PyMandatoryEncodingInspection" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="PyMethodFirstArgAssignmentInspection" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="PyMissingOrEmptyDocstringInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="PyMissingTypeHintsInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="PyPep8Inspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
       <option name="ignoredErrors">
         <list>
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
           <option value="W29" />
           <option value="E501" />
           <option value="W29" />
@@ -44,8 +55,12 @@
       <option name="ignoredIdentifiers">
         <list>
           <option value="PyQt5.QtCore.timeout.connect" />
+          <option value="tuple.encode" />
+          <option value="tuple.num_points" />
+          <option value="tuple.encode_point" />
         </list>
       </option>
     </inspection_tool>
+    <inspection_tool class="SyntaxError" enabled="false" level="ERROR" enabled_by_default="false" />
   </profile>
 </component>

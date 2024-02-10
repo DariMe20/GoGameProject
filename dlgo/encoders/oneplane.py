@@ -1,6 +1,7 @@
 import numpy as np
-from GameRules.encoders.base import Encoder
-from GameRules.goboard import Point
+
+from dlgo.encoders.base import Encoder
+from dlgo.goboard import Point
 
 
 class OnePlaneEncoder(Encoder):
@@ -39,4 +40,6 @@ class OnePlaneEncoder(Encoder):
 
     def num_points(self):
         return self.board_width * self.board_height
- 
+
+    def create(self, board_size):
+        return OnePlaneEncoder(board_size)
