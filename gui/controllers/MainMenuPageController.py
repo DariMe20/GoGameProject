@@ -2,7 +2,7 @@ import os
 import sys
 from PyQt5 import QtWidgets
 
-from gui.controllers.MainWindowController import MainWindowController
+from gui.controllers.GoWindowController import GoWindowController
 from gui.generated_files.MainMenuPage import Ui_MainWindow
 
 
@@ -22,18 +22,56 @@ class MainMenuPageController(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def createSGF(self):
         self.ui.stackedWidget.setCurrentIndex(1)
+        self.ui.pushButton_CreateOk.clicked.connect(self.createSGF_game)
+
+    def createSGF_game(self):
+        nameW = self.ui.lineEdit_WhiteName.text()
+        nameB = self.ui.lineEdit_BlackName.text()
+        board_size = self.ui.spinBox_BoardSize.value()
+        handicap = self.ui.spinBox_Handicap.value()
+        komi = self.ui.doubleSpinBox_Komi.value()
+
+        try:
+            self.GoGameWindow = GoWindowController(nameB, nameW, 1, 0, board_size, handicap, komi)
+            self.GoGameWindow.show()
+        except Exception as e:
+            print(f"Error in bot vs bot create: {e}")
+
 
     def editSGF(self):
         pass
 
     def playerVSbot(self):
         self.ui.stackedWidget.setCurrentIndex(2)
+        self.ui.pushButton_PlayWithBotOk.clicked.connect(self.playerVSbot_game)
+
+    def playerVSbot_game(self):
+        if self.ui.radioButton_Black.isChecked():
+            nameB = "You"
+            nameW = "Bot"
+            player_color = 0
+        elif self.ui.radioButton_White.isChecked():
+            nameB = "Bot"
+            nameW = "You"
+            player_color = 1
+        else:
+            QtWidgets.QMessageBox.critical(self, "Eroare de selecție", "Te rog alege culoarea cu care dorești să joci!")
+            return
+
+        board_size = self.ui.spinBox_BoardSizeP.value()
+        handicap = self.ui.spinBox_HandicapP.value()
+        komi = self.ui.doubleSpinBox_KomiP.value()
+
+        try:
+            self.GoGameWindow = GoWindowController(nameB, nameW, 3, player_color, board_size, handicap, komi)
+            self.GoGameWindow.show()
+        except Exception as e:
+            print(f"Error in bot vs bot create: {e}")
 
     def botVSbot(self):
         try:
-            if self.GoGameWindow is None:
-                self.GoGameWindow = MainWindowController()
-                # Afisează fereastra
+            self.GoGameWindow = GoWindowController("Black Bot", "White Bot", 4)
+            # Afisează fereastra
             self.GoGameWindow.show()
         except Exception as e:
             print(f"Error in bot vs bot create: {e}")
