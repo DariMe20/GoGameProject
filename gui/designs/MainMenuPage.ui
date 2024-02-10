@@ -43,7 +43,7 @@
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item alignment="Qt::AlignHCenter">
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="pushButton_CreateSGF">
        <property name="minimumSize">
         <size>
          <width>120</width>
@@ -59,23 +59,30 @@
        <property name="font">
         <font>
          <family>MS Shell Dlg 2</family>
-         <pointsize>8</pointsize>
+         <pointsize>10</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
        </property>
-       <property name="styleSheet">
-        <string notr="true">border: 1px solid black;
-border-radius: 10px;
-background: rgba(255, 241, 224, 180)</string>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
        </property>
        <property name="text">
         <string>Create SGF</string>
        </property>
+       <property name="autoDefault">
+        <bool>true</bool>
+       </property>
+       <property name="default">
+        <bool>false</bool>
+       </property>
+       <property name="flat">
+        <bool>false</bool>
+       </property>
       </widget>
      </item>
      <item alignment="Qt::AlignHCenter">
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="pushButton_EditSGF">
        <property name="minimumSize">
         <size>
          <width>120</width>
@@ -91,23 +98,30 @@ background: rgba(255, 241, 224, 180)</string>
        <property name="font">
         <font>
          <family>MS Shell Dlg 2</family>
-         <pointsize>8</pointsize>
+         <pointsize>10</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
        </property>
-       <property name="styleSheet">
-        <string notr="true">border: 1px solid black;
-border-radius: 10px;
-background: rgba(255, 241, 224, 180)</string>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
        </property>
        <property name="text">
         <string>Edit SGF</string>
        </property>
+       <property name="autoDefault">
+        <bool>true</bool>
+       </property>
+       <property name="default">
+        <bool>false</bool>
+       </property>
+       <property name="flat">
+        <bool>false</bool>
+       </property>
       </widget>
      </item>
-     <item alignment="Qt::AlignHCenter">
-      <widget class="QPushButton" name="pushButton_7">
+     <item>
+      <widget class="QPushButton" name="pushButton_PlayerVSBot">
        <property name="minimumSize">
         <size>
          <width>120</width>
@@ -123,18 +137,25 @@ background: rgba(255, 241, 224, 180)</string>
        <property name="font">
         <font>
          <family>MS Shell Dlg 2</family>
-         <pointsize>8</pointsize>
+         <pointsize>10</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
        </property>
-       <property name="styleSheet">
-        <string notr="true">border: 1px solid black;
-border-radius: 10px;
-background: rgba(255, 241, 224, 180)</string>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
        </property>
        <property name="text">
         <string>Play with Bot</string>
+       </property>
+       <property name="autoDefault">
+        <bool>true</bool>
+       </property>
+       <property name="default">
+        <bool>false</bool>
+       </property>
+       <property name="flat">
+        <bool>false</bool>
        </property>
       </widget>
      </item>
@@ -155,7 +176,7 @@ background: rgba(255, 241, 224, 180)</string>
        <property name="font">
         <font>
          <family>MS Shell Dlg 2</family>
-         <pointsize>8</pointsize>
+         <pointsize>10</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
@@ -165,11 +186,6 @@ background: rgba(255, 241, 224, 180)</string>
        </property>
        <property name="focusPolicy">
         <enum>Qt::ClickFocus</enum>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">border: 1px solid black;
-border-radius: 10px;
-background: rgba(255, 241, 224, 180)</string>
        </property>
        <property name="text">
         <string>Bot VS Bot</string>
@@ -181,12 +197,15 @@ background: rgba(255, 241, 224, 180)</string>
         <bool>true</bool>
        </property>
        <property name="default">
-        <bool>true</bool>
+        <bool>false</bool>
+       </property>
+       <property name="flat">
+        <bool>false</bool>
        </property>
       </widget>
      </item>
      <item alignment="Qt::AlignHCenter">
-      <widget class="QPushButton" name="pushButton_9">
+      <widget class="QPushButton" name="pushButton_AboutGo">
        <property name="minimumSize">
         <size>
          <width>120</width>
@@ -202,18 +221,25 @@ background: rgba(255, 241, 224, 180)</string>
        <property name="font">
         <font>
          <family>MS Shell Dlg 2</family>
-         <pointsize>8</pointsize>
+         <pointsize>10</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
        </property>
-       <property name="styleSheet">
-        <string notr="true">border: 1px solid black;
-border-radius: 10px;
-background: rgba(255, 241, 224, 180)</string>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
        </property>
        <property name="text">
         <string>About GO</string>
+       </property>
+       <property name="autoDefault">
+        <bool>true</bool>
+       </property>
+       <property name="default">
+        <bool>true</bool>
+       </property>
+       <property name="flat">
+        <bool>false</bool>
        </property>
       </widget>
      </item>
@@ -288,7 +314,7 @@ background: rgba(255, 241, 224, 180)</string>
      </font>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="page_Hello">
      <widget class="QLabel" name="label_7">
