@@ -135,6 +135,7 @@ class Board:
         adjacent_same_color = []
         adjacent_opposite_color = []
         liberties = []
+        captured_stones = 0
 
         # Luam fiecare punct vecin punctului pe care vrem sa il plasam
         for neighbor in point.neighbors():
@@ -173,6 +174,13 @@ class Board:
                 self._replace_string(other_color_string.without_liberty(point))
             else:
                 self._remove_string(other_color_string)
+
+        for other_color_string in adjacent_opposite_color:
+            if other_color_string.num_liberties == 1:
+                captured_stones += len(other_color_string.stones)  # Adaugă numărul de pietre capturate
+                self._remove_string(other_color_string)
+
+        return captured_stones
 
     def _replace_string(self, new_string):
         for point in new_string.stones:
@@ -217,7 +225,7 @@ class Board:
 
         :param string: String-ul de piese care va fi indepartat (1 sau mai multe piese)
         """
-
+        num_captured = len(string.stones)
         # Parcurg pietrele din grup
         for point in string.stones:
             # !! OBS: Indepartarea unui grup de piese genereaza libertati suplimentare pentru grupurile din jur
@@ -230,6 +238,7 @@ class Board:
             self._grid[point] = None
 
             self._hash ^= zobrist.HASH_CODE[point, string.color]
+        return num_captured
 
     def count_stones(self, player):
         """
@@ -251,7 +260,7 @@ class Board:
 
 
 class GameState:
-    def __init__(self, board, next_player, previous, move):
+    def __init__(self, board, next_player, previous, move, black_prisoners=0, white_prisoners=0):
         self.komi = 6.5
         self.board = board
         self.next_player = next_player
@@ -259,9 +268,13 @@ class GameState:
 
         if self.previous_state is None:
             self.previous_states = frozenset()
+            self.black_prisoners = black_prisoners
+            self.white_prisoners = white_prisoners
         else:
             self.previous_states = frozenset(
                 previous.previous_states | {(previous.next_player, previous.board.zobrist_hash())})
+            self.black_prisoners = previous.black_prisoners
+            self.white_prisoners = previous.white_prisoners
 
         self.last_move = move
 
@@ -273,7 +286,11 @@ class GameState:
         """
         if move.is_play:
             next_board = copy.deepcopy(self.board)
-            next_board.place_stone(self.next_player, move.point)
+            captured = next_board.place_stone(self.next_player, move.point)
+            if self.next_player == Player.black:
+                self.white_prisoners += captured
+            else:
+                self.black_prisoners += captured
         else:
             next_board = self.board
         return GameState(next_board, self.next_player.other, self, move)
