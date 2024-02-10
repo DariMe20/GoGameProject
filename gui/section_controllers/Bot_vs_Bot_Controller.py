@@ -80,5 +80,8 @@ class BvBController(QtWidgets.QWidget):
                     else:
                         self.GOwin.ui.label.setText("White resigned")
 
+                self.GOwin.ui.lineEdit_BlackCaptures.setText(str(self.game.white_prisoners)+" Prisoners")
+                self.GOwin.ui.lineEdit_WhiteCaptures.setText(str(self.game.black_prisoners) + " Prisoners")
+
         except Exception as e:
             print(f"An error occurend in bot_v_bot game: {e}")

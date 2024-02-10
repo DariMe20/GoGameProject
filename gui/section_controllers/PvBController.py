@@ -64,6 +64,8 @@ class PvBController(QtWidgets.QWidget):
                     self.board.update_game(self.game)
                     self.is_player_turn = False
                     self.timer.singleShot(1000, self.agent_move)
+            self.GOwin.ui.lineEdit_BlackCaptures.setText(str(self.game.white_prisoners)+" Prisoners")
+            self.GOwin.ui.lineEdit_WhiteCaptures.setText(str(self.game.black_prisoners) + " Prisoners")
         except Exception as e:
             print(f"An error occurend in player_move: {e}")
 
@@ -81,3 +83,5 @@ class PvBController(QtWidgets.QWidget):
             elif bot_move.is_resign:
                 print("Bot resigned")
             self.is_player_turn = True
+        self.GOwin.ui.lineEdit_BlackCaptures.setText(str(self.game.white_prisoners)+" Prisoners")
+        self.GOwin.ui.lineEdit_WhiteCaptures.setText(str(self.game.black_prisoners) + " Prisoners")

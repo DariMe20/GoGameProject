@@ -31,6 +31,8 @@ class CreateSGFController(QtWidgets.QWidget):
     def create_sgf_game(self):
         self.game = goboard.GameState.new_game(self.board_size)
         self.current_player = gotypes.Player.black
+        self.GOwin.ui.lineEdit_BlackCaptures.setText(str(self.game.white_prisoners)+" Prisoners")
+        self.GOwin.ui.lineEdit_WhiteCaptures.setText(str(self.game.black_prisoners) + " Prisoners")
         self.board.clicked.connect(self.player_move)
 
     def player_move(self, point):
@@ -47,3 +49,6 @@ class CreateSGFController(QtWidgets.QWidget):
 
                 # Alternează între jucătorul negru și alb
                 self.current_player = gotypes.Player.white if self.current_player == gotypes.Player.black else gotypes.Player.black
+
+            self.GOwin.ui.lineEdit_BlackCaptures.setText(str(self.game.white_prisoners)+" Prisoners")
+            self.GOwin.ui.lineEdit_WhiteCaptures.setText(str(self.game.black_prisoners) + " Prisoners")
