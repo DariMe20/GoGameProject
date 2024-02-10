@@ -33,7 +33,7 @@ class GoBoardController(QtWidgets.QGraphicsObject):
         start = self.margin
         end = self.view_size - self.margin
 
-        # Draw the Go board grid lines only
+        # Deseneaza liniile grilei
         for row in range(self.board_size):
             for col in range(self.board_size):
                 painter.drawLine(start + col * self.cell_size, start, start + col * self.cell_size, end)
@@ -62,6 +62,12 @@ class GoBoardController(QtWidgets.QGraphicsObject):
                                      start + i * self.cell_size + painter.fontMetrics().ascent() / 2),
                              str(self.board_size - i))
 
+        # Desenează intersecțiile principale (Hoshi) pentru o tablă de 9x9
+        if self.board_size == 9:
+            hoshi_positions = [(3, 3), (3, 7), (7, 3), (7, 7), (5, 5)]
+            for pos in hoshi_positions:
+                self.draw_hoshi(painter, *pos)
+
         if self.game is not None:
             board = self.game.board
             for row in range(self.board_size):
@@ -69,6 +75,17 @@ class GoBoardController(QtWidgets.QGraphicsObject):
                     stone = board.get(gotypes.Point(row + 1, col + 1))
                     if stone is not None:
                         self.draw_stone(painter, row, col, stone)
+
+    def draw_hoshi(self, painter, row, col):
+        # Calculează centrul și raza pentru hoshi
+        row -= 1
+        col -= 1
+        center_x = self.margin + col * self.cell_size
+        center_y = self.margin + row * self.cell_size
+        radius = self.cell_size * 0.05  # Raza poate fi ajustată în funcție de preferințe
+
+        painter.setBrush(QtGui.QBrush(QtCore.Qt.black))
+        painter.drawEllipse(QtCore.QPointF(center_x, center_y), radius, radius)
 
     def draw_stone(self, painter, row, col, stone):
         # Calculul centrului și razei pentru pietre
