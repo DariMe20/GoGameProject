@@ -16,7 +16,7 @@ from gui.section_controllers.GoBoardController import GoBoardController
 
 
 class MainWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
-    def __init__(self):
+    def __init__(self, nameW, nameB, player_color=0, board_size=9, handicap=0, komi=6.5):
         super().__init__()
         self.current_player = None
         self.bot_black = None
@@ -30,9 +30,16 @@ class MainWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
         self.count_pass = 0
         self.timer = QtCore.QTimer
 
+        # INITIALIZATORI
+        self.nameW = nameW
+        self.nameB = nameB
+        self.player_color = player_color
+        self.board_size = board_size
+        self.handicap = handicap
+        self.komi = komi
+
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.board_size = 9
         self.init_GoBoard()
 
         pixmapW = QPixmap("../resources/TigerW.jpg")
@@ -42,6 +49,11 @@ class MainWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
         pixmapB = QPixmap("../resources/TigerB.jpg")
         self.ui.label_IconB.setPixmap(pixmapB)
         self.ui.label_IconB.setScaledContents(True)
+
+        # LINE EDITS
+        self.ui.BlackPlayerName.setText(self.nameB)
+        self.ui.WhitePlayerName.setText(self.nameW)
+        self.ui.label.setText("Empty board. Black to play.")
 
         # # BUTTON CONNECTIONS
         # self.ui.pushButton_BotVBot.clicked.connect(self.start_bot_game)
