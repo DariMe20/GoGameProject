@@ -405,16 +405,77 @@ class GameState:
         return moves
 
     def winner(self):
-        # Implementează logica de determinare a câștigătorului
-        # Aceasta este o implementare foarte simplificată și probabil că va trebui să fie ajustată
-        black_score = self.board.count_stones(gotypes.Player.black)
-        white_score = (
-                self.board.count_stones(gotypes.Player.white) + self.komi
-        )  # presupunând că ai o valoare de komi
-
-        if black_score > white_score:
+        winner, scores = self.evaluate_territory()
+        black_score = scores[Player.black] - 40.5
+        white_score = scores[Player.white] - 40.5
+        print(f"GAME OVER - {winner}")
+        if black_score > 0:
+            print(f"Black won by {black_score}")
             return gotypes.Player.black
-        elif white_score > black_score:
+        elif white_score > 0:
+            print(f"White won by {white_score}")
             return gotypes.Player.white
         else:
-            return None  # Egalitate sau jocul nu s-a terminat
+            return None
+
+    def evaluate_territory(self):
+        black_score = 0
+        white_score = 0
+        total_points = self.board.num_rows * self.board.num_cols
+        half_total_points = total_points / 2
+        komi = self.komi
+
+        for row in range(1, self.board.num_rows + 1):
+            for col in range(1, self.board.num_cols + 1):
+                point = Point(row, col)
+                stone = self.board.get(point)
+                if stone == Player.black:
+                    black_score += 1
+                elif stone == Player.white:
+                    white_score += 1
+                else:
+                    # Dacă punctul este liber, determină cui aparține teritoriul
+                    territory, borders = self.collect_territory(self.board, point)
+                    if len(borders) == 1:
+                        player_border = borders.pop()
+                        if player_border == Player.black:
+                            black_score += len(territory)
+                        elif player_border == Player.white:
+                            white_score += len(territory)
+
+        adjusted_black_score = black_score - komi / 2
+        adjusted_white_score = total_points - adjusted_black_score
+
+        if adjusted_black_score > half_total_points:
+            winner = "Black wins by " + str(adjusted_black_score - half_total_points) + " points"
+        else:
+            winner = "White wins by " + str(adjusted_white_score - half_total_points) + " points"
+
+        return winner, {
+            Player.black: adjusted_black_score,
+            Player.white: adjusted_white_score,
+        }
+
+    def collect_territory(self, board, start_point):
+        territory = set()
+        borders = set()
+        queue = [start_point]
+        visited = set([start_point])
+
+        while queue:
+            point = queue.pop()
+            neighbors = point.neighbors()
+            territory.add(point)
+
+            for neighbor in neighbors:
+                if not board.is_on_grid(neighbor):
+                    continue
+                neighbor_stone = board.get(neighbor)
+                if neighbor_stone is None:
+                    if neighbor not in visited:
+                        queue.append(neighbor)
+                        visited.add(neighbor)
+                else:
+                    borders.add(neighbor_stone)
+
+        return territory, borders

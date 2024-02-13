@@ -3,6 +3,7 @@ import sys
 from PyQt5 import QtWidgets
 from PyQt5.QtGui import QPixmap
 from dlgo import gotypes
+from dlgo.gotypes import Player, Point
 from gui.generated_files.MainWindow import Ui_MainWindow
 from gui.section_controllers.Bot_vs_Bot_Controller import BvBController
 from gui.section_controllers.CreateSGFController import CreateSGFController
@@ -95,6 +96,15 @@ class GoWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
     def closeEvent(self, event):
         self.reset = 1
         super().closeEvent(event)
+
+    def evaluate_territory_action(self, game_state):
+        if game_state:  # Asigură-te că există o instanță de tablă de Go
+            winner, scores = game_state.evaluate_territory()
+            black_score = scores[Player.black]
+            white_score = scores[Player.white]
+            territory_message = f"Black Territory: {black_score}, White Territory: {white_score}"
+            self.ui.plainTextEdit_Probs.setPlainText(territory_message)  # Presupunând că ai o etichetă statusLabel pentru mesaje
+            self.ui.label.setText(f"GAME OVER - {winner}")
 
     @staticmethod
     def adjust_scale_factor():

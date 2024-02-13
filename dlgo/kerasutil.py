@@ -8,19 +8,19 @@ from keras.models import load_model, save_model
 
 
 def save_model_to_hdf5_group(model, f):
-    # Use Keras save_model to save the full model (including optimizer
-    # state) to a file.
-    # Then we can embed the contents of that HDF5 file inside ours.
-    tempfd, tempfname = tempfile.mkstemp(prefix='tmp-kerasmodel')
+    # Crează un director temporar în loc de un fișier temporar
+    tempdir = tempfile.mkdtemp(prefix='dlgo_')
+    tempfname = os.path.join(tempdir, 'model.h5')  # Nume de fișier în directorul temporar
     try:
-        os.close(tempfd)
+        # Salvarea modelului în fișierul specificat
         save_model(model, tempfname)
-        serialized_model = h5py.File(tempfname, 'r')
-        root_item = serialized_model.get('/')
-        serialized_model.copy(root_item, f, 'kerasmodel')
-        serialized_model.close()
+        with h5py.File(tempfname, 'r') as serialized_model:
+            root_item = serialized_model.get('/')
+            serialized_model.copy(root_item, f, 'kerasmodel')
     finally:
-        os.unlink(tempfname)
+        # Îndepărtarea directorului temporar și a tuturor fișierelor sale
+        os.remove(tempfname)
+        os.rmdir(tempdir)
 
 
 def load_model_from_hdf5_group(f, custom_objects=None):

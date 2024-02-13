@@ -1,14 +1,19 @@
 from PyQt5 import QtWidgets, QtCore
 from tensorflow.keras.models import load_model
+
+from dlgo.agent.policy_agent import PolicyAgent
 from dlgo.agent.predict import DeepLearningAgent
 from dlgo.encoders.oneplane import OnePlaneEncoder
 from dlgo import gotypes, goboard
+from dlgo.encoders.simple import SimpleEncoder
 
 
 class BvBController(QtWidgets.QWidget):
     def __init__(self, GoWin):
         super().__init__()
 
+        self.white_pass = False
+        self.black_pass = False
         self.GOwin = GoWin
         self.GOwin.ui.label.setText("BOT VS BOT YAAY")
         
@@ -21,67 +26,79 @@ class BvBController(QtWidgets.QWidget):
         self.count_pass = 0
         self.timer = QtCore.QTimer
         self.GOwin.init_GoBoard()
+        self.game_over = False
 
         self.GOwin.ui.pushButton_StartGame.clicked.connect(self.start_bot_game)
 
-        model_path = 'C:\\DARIA\\1.FSEGA\\LICENTA\\GoGameProject\\dlgo\\keras_networks\\model2.h5'
+        model_path_policy = 'C:\\DARIA\\1.FSEGA\\LICENTA\\GoGameProject\\dlgo\\keras_networks\\black_agent_model2.h5'
+        model_path_predict = 'C:\\DARIA\\1.FSEGA\\LICENTA\\GoGameProject\\dlgo\\keras_networks\\model2.h5'
 
-        self.model = load_model(model_path)
-        self.encoder = OnePlaneEncoder(board_size=(self.board_size, self.board_size))
-        self.deep_learning_agent = DeepLearningAgent(self.model, self.encoder)
+        self.model_policy = load_model(model_path_policy)
+        self.model_predict = load_model(model_path_predict)
+        self.encoder = SimpleEncoder(board_size=(self.board_size, self.board_size))
+
+
 
     def start_bot_game(self):
         if self.GOwin.reset == 1:
             return
 
         self.game = goboard.GameState.new_game(self.board_size)
-        self.bot_black = DeepLearningAgent(self.model, self.encoder)
-        self.bot_white = DeepLearningAgent(self.model, self.encoder)
+        # self.bot_black = DeepLearningAgent(self.model, self.encoder)
+        # self.bot_white = DeepLearningAgent(self.model, self.encoder)
+        self.bot_black = PolicyAgent(self.model_policy, self.encoder, gotypes.Player.black)
+        self.bot_white = DeepLearningAgent(self.model_predict, self.encoder)
         self.GOwin.ui.verticalWidget.setStyleSheet('#verticalWidget{border:1px solid blue;}')
         self.GOwin.ui.verticalWidget_2.setStyleSheet("#verticalWidget_2{border:none}")
         self.timer = QtCore.QTimer()
+
         self.timer.timeout.connect(self.step_bot_game)
-        self.timer.start(2000)
-        if self.count_pass == 2:
-            self.GOwin.ui.label.setText("BOTH BOTS PASSED. GAME IS OVER")
-            return
+        self.timer.start(5000)
+
 
     def step_bot_game(self):
         try:
-            if self.GOwin.reset == 1:
+            if self.GOwin.reset == 1 or self.game_over:
                 return
 
-            if not self.game.is_over():
-                current_player = self.game.next_player
-                bot_move = (
-                    self.bot_black
-                    if current_player == gotypes.Player.black
-                    else self.bot_white
-                ).select_move(self.game)
+            current_player = self.game.next_player
+            bot_agent = self.bot_black if current_player == gotypes.Player.black else self.bot_white
 
-                self.GOwin.emphasise_player_turn(current_player)
+            bot_move = bot_agent.select_move(self.game)
 
-                if bot_move.is_play:
-                    self.game = self.game.apply_move(bot_move)
-                    self.board.update_game(self.game)
+            # Aplică mutarea și actualizează starea jocului
+            self.game = self.game.apply_move(bot_move)
+            self.update_prisoners()
 
-                    self.GOwin.view_move(bot_move, current_player)
+            # Verifică pentru două pasări consecutive
+            if self.game.last_move.is_pass and self.game.previous_state.last_move.is_pass:
+                self.finalize_game()
+                return
 
-                elif bot_move.is_pass:
-                    if current_player == gotypes.Player.black:
-                        self.GOwin.ui.label.setText("Black passed")
-                    else:
-                        self.GOwin.ui.label.setText("White passed")
-                    self.count_pass += 1
+            if not bot_move.is_pass:
+                self.GOwin.view_move(bot_move, current_player)
+                self.GOwin.emphasise_player_turn(current_player.other)
+            else:
+                self.GOwin.ui.label.setText(f"{current_player} passed")
 
-                elif bot_move.is_resign:
-                    if current_player == gotypes.Player.black:
-                        self.GOwin.ui.label.setText("Black resigned")
-                    else:
-                        self.GOwin.ui.label.setText("White resigned")
+            # Actualizează tabla de joc GUI
+            self.board.update_game(self.game)
 
-                self.GOwin.ui.lineEdit_BlackCaptures.setText(str(self.game.white_prisoners)+" Prisoners")
-                self.GOwin.ui.lineEdit_WhiteCaptures.setText(str(self.game.black_prisoners) + " Prisoners")
-
+            if bot_move.is_resign:
+                self.GOwin.ui.label.setText(f"{current_player} resigned")
+                self.game_over = True
+                self.timer.stop()
         except Exception as e:
-            print(f"An error occurend in bot_v_bot game: {e}")
+            print("Error in step_bot_game: ", e)
+
+    def finalize_game(self):
+        self.GOwin.evaluate_territory_action(self.game)
+        self.game_over = True
+        self.timer.stop()
+
+
+    def update_prisoners(self):
+        self.GOwin.ui.lineEdit_BlackCaptures.setText(str(self.game.white_prisoners) + " Prisoners")
+        self.GOwin.ui.lineEdit_WhiteCaptures.setText(str(self.game.black_prisoners) + " Prisoners")
+
+
