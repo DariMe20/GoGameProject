@@ -1,6 +1,16 @@
 import numpy as np
 
 
+def prepare_experience_data(experience, board_width, board_height):
+    experience_size = experience.actions.shape[0]
+    target_vectors = np.zeros((experience_size, board_width * board_height))
+    for i in range(experience_size):
+        action = experience.actions[i]
+        reward = experience.rewards[i]
+        target_vectors[i][action] = reward
+    return target_vectors
+
+
 class ExperienceBuffer:
     def __init__(self, states, actions, rewards):
         self.states = states

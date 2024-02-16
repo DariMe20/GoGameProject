@@ -46,8 +46,10 @@ class MCTSNode(object):
 
 class MCTSAgent(Agent):
 
-    def __init__(self, num_rounds, temperature):
+    def __init__(self, model, encoder, num_rounds=1600, temperature=1.0):
         super().__init__()
+        self.model = model
+        self.encoder = encoder
         self.temperature = temperature
         self.num_rounds = num_rounds
 
@@ -109,4 +111,3 @@ class MCTSAgent(Agent):
             bot_move = bots[state.next_player].select_move(state)
             state = state.apply_move(bot_move)
         return state.winner()
-

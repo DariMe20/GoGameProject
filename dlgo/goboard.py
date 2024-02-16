@@ -119,6 +119,9 @@ class Board:
         self._grid = {}  # private variable as dictionary
         self._hash = zobrist.EMPTY_BOARD
 
+    def get_grid(self):
+        return self._grid
+
     def place_stone(self, player, point):
         """
         Metoda pentru plasarea unei piese de go pe tabla
@@ -260,11 +263,12 @@ class Board:
 
 
 class GameState:
-    def __init__(self, board, next_player, previous, move, black_prisoners=0, white_prisoners=0):
+    def __init__(self, board, next_player, previous, move, black_prisoners=0, white_prisoners=0, move_number=0):
         self.komi = 6.5
         self.board = board
         self.next_player = next_player
         self.previous_state = previous
+        self.move_number = move_number
 
         if self.previous_state is None:
             self.previous_states = frozenset()
@@ -275,6 +279,7 @@ class GameState:
                 previous.previous_states | {(previous.next_player, previous.board.zobrist_hash())})
             self.black_prisoners = previous.black_prisoners
             self.white_prisoners = previous.white_prisoners
+            self.move_number = previous.move_number + 1
 
         self.last_move = move
 
@@ -284,6 +289,9 @@ class GameState:
         :param move: Mutarea efectuata - plasare piesa, cedare (resign) sau pass
         :return: GameState -  noul status al jocului
         """
+        if not self.is_valid_move(move):
+            return
+
         if move.is_play:
             next_board = copy.deepcopy(self.board)
             captured = next_board.place_stone(self.next_player, move.point)
@@ -369,23 +377,28 @@ class GameState:
 
         # Creem urmatoare situatie de pe tabla
         next_situation = (player.other, next_board.zobrist_hash())
+        if next_situation in self.previous_states:
+            print("Move violates Ko")
         return next_situation in self.previous_states
 
     def is_valid_move(self, move):
-        """
-        Metoda care verifica corectitudinea unei plasari pe tabla - nu e sinucidere si nu incalca regula de ko
-        :param move: tipul mutarii - plasare, reisgn, pass
-        :return: valoare booleana - True daca mutarea e valida, False daca mutarea nu e valida
-        """
-        if self.is_over():
-            return False
-        if move.is_pass or move.is_resign:
-            return True
-        return (
-                self.board.get(move.point) is None
-                and not self.is_move_self_capture(self.next_player, move)
-                and not self.does_move_violate_ko(self.next_player, move)
-        )
+        try:
+            """
+            Metoda care verifica corectitudinea unei plasari pe tabla - nu e sinucidere si nu incalca regula de ko
+            :param move: tipul mutarii - plasare, reisgn, pass
+            :return: valoare booleana - True daca mutarea e valida, False daca mutarea nu e valida
+            """
+            if self.is_over():
+                return False
+            if move.is_pass or move.is_resign:
+                return True
+            return (
+                    self.board.get(move.point) is None
+                    and not self.is_move_self_capture(self.next_player, move)
+                    and not self.does_move_violate_ko(self.next_player, move)
+            )
+        except Exception as e:
+            print(f"Exception in move validation method: {e}")
 
     def legal_moves(self):
         """
@@ -411,10 +424,10 @@ class GameState:
         print(f"GAME OVER - {winner}")
         if black_score > 0:
             print(f"Black won by {black_score}")
-            return gotypes.Player.black
+            return gotypes.Player.black, black_score
         elif white_score > 0:
             print(f"White won by {white_score}")
-            return gotypes.Player.white
+            return gotypes.Player.white, white_score
         else:
             return None
 
@@ -479,3 +492,131 @@ class GameState:
                     borders.add(neighbor_stone)
 
         return territory, borders
+
+    def find_atari_groups(self, color):
+        """
+        Identifică grupurile de pietre de o anumită culoare care sunt în Atari.
+
+        :param board: Instanța curentă a tablei de joc.
+        :param color: Culoarea grupurilor de pietre de verificat.
+        :return: O listă de tuple, fiecare conținând un GoString reprezentând grupul în Atari și punctul său de libertate.
+        """
+        atari_groups = []
+        for point, go_string in self.board.grid.items():
+            if go_string is None:
+                return
+            if go_string.color == color and go_string.num_liberties == 1:
+                liberty = next(iter(go_string.liberties))  # obține singura libertate a grupului
+                atari_groups.append((go_string, liberty))
+        return atari_groups
+
+    def atari_places(self, color):
+        """
+        Identifică punctele unde pietrele adversarului de o anumită culoare sunt în Atari și pot fi capturate.
+
+        :param color: Culoarea pietrelor agentului cu care jucam
+        :return: O listă de puncte unde pietrele de culoarea specificată pot fi capturate.
+        """
+        # Identifică culoarea adversarului
+        opponent_color = gotypes.Player.black if color == gotypes.Player.white else gotypes.Player.white
+
+        # Găsește grupurile adversarului care sunt în Atari
+        atari_groups = self.find_atari_groups(opponent_color)
+
+        if atari_groups:
+            # Extrag punctele de libertate ale grupurilor în Atari, care reprezintă locațiile de capturare
+            capture_points = [liberty for _, liberty in atari_groups]
+            return capture_points
+        else:
+            return None
+
+    def is_move_on_edge(self, move):
+        """
+        Verifică dacă o mutare este pe marginea tablei de joc.
+
+        :param move: Instanța mutării care va fi verificată.
+        :return: True dacă mutarea este pe margine, altfel False.
+        """
+        if not move.is_play or self.move_number >= 35:
+            return False  # Pas și cedare nu sunt considerate pe margine
+
+        # Verifică dacă mutarea este pe prima sau ultima linie/coloană
+        # print(f"move:{move}=  row: {move.point.row}   col:{move.point.col}")
+        is_on_edge_row = move.point.row == 1 or move.point.row == self.board.num_rows
+        is_on_edge_col = move.point.col == 1 or move.point.col == self.board.num_cols
+
+        return is_on_edge_row or is_on_edge_col
+
+    def is_move_atari(self, move):
+        if not move.is_play:
+            return False
+        # Simulează mutarea
+        next_board = copy.deepcopy(self.board)
+        next_board.place_stone(self.next_player, move.point)
+        # Verifică dacă vreun grup advers are o singură libertate
+        for neighbor in move.point.neighbors():
+            if not next_board.is_on_grid(neighbor):
+                continue
+            neighbor_string = next_board.get_go_string(neighbor)
+            if neighbor_string is None:
+                continue
+            if neighbor_string.color != self.next_player and neighbor_string.num_liberties == 1:
+                return True
+        return False
+
+    def is_move_protect(self, move):
+        if not move.is_play:
+            return False
+
+        # Find friendly strings next to the move point that are in Atari.
+        at_risk_groups = [
+            self.board.get_go_string(neighbor)
+            for neighbor in move.point.neighbors()
+            if self.board.is_on_grid(neighbor) and
+               self.board.get_go_string(neighbor) and
+               self.board.get_go_string(neighbor).color == self.next_player and
+               self.board.get_go_string(neighbor).num_liberties == 1
+        ]
+
+        # Simulate the move
+        next_board = copy.deepcopy(self.board)
+        next_board.place_stone(self.next_player, move.point)
+
+        # Check if any at-risk group now has more liberties
+        for group in at_risk_groups:
+            # You have to find the corresponding group on the new board
+            new_group = next_board.get_go_string(list(group.stones)[0])
+            if new_group and new_group.num_liberties > 1:
+                return True
+
+        return False
+
+
+    def is_move_capture(self, move):
+        if not move.is_play or not self.is_valid_move(move):
+            return False
+        original_board = copy.deepcopy(self.board)
+        captured_stones = original_board.place_stone(self.next_player, move.point)
+        return captured_stones > 0
+
+
+    def is_move_reducing_opponent_liberties(self, move):
+        if not move.is_play:
+            return False
+        next_board = copy.deepcopy(self.board)
+        next_board.place_stone(self.next_player, move.point)
+        for neighbor in move.point.neighbors():
+            if not next_board.is_on_grid(neighbor):
+                continue
+            neighbor_string = next_board.get_go_string(neighbor)
+            if neighbor_string is None or neighbor_string.color == self.next_player:
+                continue
+            if neighbor_string.num_liberties < self.board.get_go_string(neighbor).num_liberties:
+                return True
+        return False
+
+
+
+
+
+

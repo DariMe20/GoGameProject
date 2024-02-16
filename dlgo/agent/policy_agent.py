@@ -38,13 +38,7 @@ class PolicyAgent(Agent):
         # generare probabilitati
         move_probs = self._model.predict(X)[0]
         move_probs = clip_probs(move_probs)
-        i = 0
-        for row in range(9):
-            row_formatted = []
-            for col in range(9):
-                row_formatted.append('{:.3f}'.format(move_probs[i]))
-                i += 1  # Acesta trebuie să fie în interiorul buclei `for col`
-            print(' '.join(row_formatted))
+        print_probs(move_probs, 9,9)
 
         # preluare numar total de mutari
         num_moves = self._encoder.board_width * self._encoder.board_height
@@ -61,9 +55,10 @@ class PolicyAgent(Agent):
             move = goboard.Move.play(point)
             is_valid = game_state.is_valid_move(move)
             is_an_eye = is_point_an_eye(game_state.board, point, game_state.next_player)
+            is_on_edge = game_state.is_move_on_edge(move)
 
             # alege mutarea
-            if is_valid and (not is_an_eye):
+            if is_valid and (not is_an_eye) and (not is_on_edge):
 
                 # notific collectorul ca agentul a ales o mutare
                 if self.collector is not None:
@@ -81,6 +76,14 @@ class PolicyAgent(Agent):
         self.collector = collector
 
 
+def print_probs(move_probs, board_width, board_height):
+    i = 0
+    for row in range(board_height):
+        row_formatted = []
+        for col in range(board_width):
+            row_formatted.append('{:.3f}'.format(move_probs[i]))
+            i += 1
+        print(' '.join(row_formatted))
 
 def clip_probs(original_probs):
     min_p = 1e-5

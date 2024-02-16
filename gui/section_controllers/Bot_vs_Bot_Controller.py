@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets, QtCore
-from tensorflow.keras.models import load_model
+from keras.models import load_model
 
 from dlgo.agent.policy_agent import PolicyAgent
 from dlgo.agent.predict import DeepLearningAgent
@@ -30,8 +30,8 @@ class BvBController(QtWidgets.QWidget):
 
         self.GOwin.ui.pushButton_StartGame.clicked.connect(self.start_bot_game)
 
-        model_path_policy = 'C:\\DARIA\\1.FSEGA\\LICENTA\\GoGameProject\\dlgo\\keras_networks\\black_agent_model2.h5'
-        model_path_predict = 'C:\\DARIA\\1.FSEGA\\LICENTA\\GoGameProject\\dlgo\\keras_networks\\model2.h5'
+        model_path_policy = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\keras_networks\\black_agent_model6.h5'
+        model_path_predict = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\keras_networks\\model2.h5'
 
         self.model_policy = load_model(model_path_policy)
         self.model_predict = load_model(model_path_predict)
@@ -53,7 +53,7 @@ class BvBController(QtWidgets.QWidget):
         self.timer = QtCore.QTimer()
 
         self.timer.timeout.connect(self.step_bot_game)
-        self.timer.start(5000)
+        self.timer.start(500)
 
 
     def step_bot_game(self):

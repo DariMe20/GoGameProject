@@ -1,5 +1,4 @@
 from PyQt5 import QtWidgets, QtCore
-from tensorflow.keras.models import load_model
 from dlgo.agent.predict import DeepLearningAgent
 from dlgo.encoders.oneplane import OnePlaneEncoder
 from dlgo import gotypes, goboard

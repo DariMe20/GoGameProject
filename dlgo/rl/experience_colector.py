@@ -16,14 +16,16 @@ class ExperienceCollector:
     def begin_episode(self):
         self.current_episode_states = []
         self.current_episode_actions = []
+        self.current_episode_rewards = []
 
     def record_decision(self, state, action, reward=0):
-        assert isinstance(state, GameState), "State must be a GameState instance"
+
         self.states.append(state)
         self.actions.append(action)
         self.rewards.append(reward)
         
     def complete_episode(self, reward):
+        print("Completed episode with reward: ", reward)
         num_states = len(self.current_episode_states)
         self.states += self.current_episode_states
         self.actions += self.current_episode_actions
