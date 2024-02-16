@@ -9,34 +9,26 @@ class ExperienceCollector:
         self.states = []
         self.actions = []
         self.rewards = []
-        self.current_episode_states = []
-        self.current_episode_actions = []
-        self.current_episode_rewards = []
+
+        self._current_episode_states = []
+        self._current_episode_actions = []
 
     def begin_episode(self):
-        self.current_episode_states = []
-        self.current_episode_actions = []
-        self.current_episode_rewards = []
+        self._current_episode_states = []
+        self._current_episode_actions = []
 
-    def record_decision(self, state, action, reward=0):
+    def record_decision(self, state, action, estimated_value=0):
+        self._current_episode_states.append(state)
+        self._current_episode_actions.append(action)
 
-        self.states.append(state)
-        self.actions.append(action)
-        self.rewards.append(reward)
-        
     def complete_episode(self, reward):
-        print("Completed episode with reward: ", reward)
-        num_states = len(self.current_episode_states)
-        self.states += self.current_episode_states
-        self.actions += self.current_episode_actions
+        num_states = len(self._current_episode_states)
+        self.states += self._current_episode_states
+        self.actions += self._current_episode_actions
+        self.rewards += [reward for _ in range(num_states)]
 
-        # Aici poți ajusta recompensa în funcție de rezultatul jocului și de capturi
-        final_rewards = [reward + additional_reward for additional_reward in self.current_episode_rewards]
-
-        self.rewards += final_rewards
-        self.current_episode_states = []
-        self.current_episode_actions = []
-        self.current_episode_rewards = []
+        self._current_episode_states = []
+        self._current_episode_actions = []
 
     def to_buffer(self):
         return ExperienceBuffer(

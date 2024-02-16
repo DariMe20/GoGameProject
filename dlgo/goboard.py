@@ -419,15 +419,14 @@ class GameState:
 
     def winner(self):
         winner, scores = self.evaluate_territory()
-        black_score = scores[Player.black] - 40.5
-        white_score = scores[Player.white] - 40.5
-        print(f"GAME OVER - {winner}")
+        black_score = scores[Player.black] - scores[Player.white]
+        white_score = scores[Player.white] - scores[Player.black]
         if black_score > 0:
             print(f"Black won by {black_score}")
-            return gotypes.Player.black, black_score
+            return gotypes.Player.black
         elif white_score > 0:
             print(f"White won by {white_score}")
-            return gotypes.Player.white, white_score
+            return gotypes.Player.white
         else:
             return None
 

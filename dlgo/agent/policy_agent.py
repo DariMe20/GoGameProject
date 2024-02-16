@@ -15,12 +15,12 @@ from dlgo.rl.experience import ExperienceBuffer
 from dlgo.rl.experience_colector import ExperienceCollector
 
 class PolicyAgent(Agent):
-    def __init__(self, model, encoder, color):
+    def __init__(self, model, encoder):
         super().__init__()
         self.collector = None
         self._model = model
         self._encoder = encoder
-        self.color = color
+        # self.color = color
 
     def serialize(self, h5file):
         h5file.create_group('encoder')
@@ -38,7 +38,7 @@ class PolicyAgent(Agent):
         # generare probabilitati
         move_probs = self._model.predict(X)[0]
         move_probs = clip_probs(move_probs)
-        print_probs(move_probs, 9,9)
+        print_probs(move_probs, 9, 9)
 
         # preluare numar total de mutari
         num_moves = self._encoder.board_width * self._encoder.board_height
@@ -58,12 +58,12 @@ class PolicyAgent(Agent):
             is_on_edge = game_state.is_move_on_edge(move)
 
             # alege mutarea
-            if is_valid and (not is_an_eye) and (not is_on_edge):
+            if is_valid and (not is_an_eye):
 
                 # notific collectorul ca agentul a ales o mutare
                 if self.collector is not None:
                     self.collector.record_decision(
-                        state=game_state,
+                        state=board_tensor,
                         action=point_idx
                     )
 

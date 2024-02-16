@@ -1,16 +1,6 @@
 import numpy as np
 
 
-def prepare_experience_data(experience, board_width, board_height):
-    experience_size = experience.actions.shape[0]
-    target_vectors = np.zeros((experience_size, board_width * board_height))
-    for i in range(experience_size):
-        action = experience.actions[i]
-        reward = experience.rewards[i]
-        target_vectors[i][action] = reward
-    return target_vectors
-
-
 class ExperienceBuffer:
     def __init__(self, states, actions, rewards):
         self.states = states
@@ -19,12 +9,23 @@ class ExperienceBuffer:
 
     def serialize(self, h5file):
         h5file.create_group('experience')
-        h5file['experience'].create_dataset(
-            'states', data=self.states)
-        h5file['experience'].create_dataset(
-            'actions', data=self.actions)
-        h5file['experience'].create_dataset(
-            'rewards', data=self.rewards)
+        actions_numeric = np.array(self.actions, dtype=np.int32)
+        rewards_numeric = np.array(self.rewards, dtype=np.int32)
+
+        h5file['experience'].create_dataset('states', data=self.states)
+        h5file['experience'].create_dataset('actions', data=actions_numeric)
+        h5file['experience'].create_dataset('rewards', data=rewards_numeric)
+
+
+def combine_experience(collectors):
+    combined_states = np.concatenate([np.array(c.states) for c in collectors])
+    combined_actions = np.concatenate([np.array(c.actions) for c in collectors])
+    combined_rewards = np.concatenate([np.array(c.rewards) for c in collectors])
+
+    return ExperienceBuffer(
+        combined_states,
+        combined_actions,
+        combined_rewards)
 
 
 def load_experience(h5file):
