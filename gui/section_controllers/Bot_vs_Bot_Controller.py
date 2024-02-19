@@ -1,7 +1,8 @@
+import h5py
 from PyQt5 import QtWidgets, QtCore
 from keras.models import load_model
 
-from dlgo.agent.policy_agent import PolicyAgent
+from dlgo.agent.policy_agent import PolicyAgent, load_policy_agent
 from dlgo.agent.predict import DeepLearningAgent
 from dlgo.encoders.oneplane import OnePlaneEncoder
 from dlgo import gotypes, goboard
@@ -30,31 +31,39 @@ class BvBController(QtWidgets.QWidget):
 
         self.GOwin.ui.pushButton_StartGame.clicked.connect(self.start_bot_game)
 
-        model_path_policy = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\keras_networks\\black_agent_model6.h5'
-        model_path_predict = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\keras_networks\\model2.h5'
+        # model_path_policy = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\keras_networks\\model_gradient2.h5'
+        # model_path_predict = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\keras_networks\\model2.h5'
 
-        self.model_policy = load_model(model_path_policy)
-        self.model_predict = load_model(model_path_predict)
+        model_path1 = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\keras_networks\\model_gradient2.h5'
+        self.model_p1 = load_model(model_path1)
+
+        model_path2 = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\keras_networks\\model_gradient1.h5'
+        self.model_p2 = load_model(model_path2)
+
+        # self.model_policy = load_policy_agent(model_path_policy)
+        # self.model_predict = load_model(model_path_predict)
         self.encoder = SimpleEncoder(board_size=(self.board_size, self.board_size))
 
 
 
     def start_bot_game(self):
-        if self.GOwin.reset == 1:
-            return
+        try:
+            if self.GOwin.reset == 1:
+                return
 
-        self.game = goboard.GameState.new_game(self.board_size)
-        # self.bot_black = DeepLearningAgent(self.model, self.encoder)
-        # self.bot_white = DeepLearningAgent(self.model, self.encoder)
-        self.bot_black = PolicyAgent(self.model_policy, self.encoder, gotypes.Player.black)
-        self.bot_white = DeepLearningAgent(self.model_predict, self.encoder)
-        self.GOwin.ui.verticalWidget.setStyleSheet('#verticalWidget{border:1px solid blue;}')
-        self.GOwin.ui.verticalWidget_2.setStyleSheet("#verticalWidget_2{border:none}")
-        self.timer = QtCore.QTimer()
+            self.game = goboard.GameState.new_game(self.board_size)
+            self.bot_black = PolicyAgent(self.model_p1, self.encoder)
+            self.bot_white = PolicyAgent(self.model_p2, self.encoder)
+            # self.bot_black = load_policy_agent(h5py.File(self.model_path_policy))
+            # self.bot_white = DeepLearningAgent(self.model_predict, self.encoder)
+            self.GOwin.ui.verticalWidget.setStyleSheet('#verticalWidget{border:1px solid blue;}')
+            self.GOwin.ui.verticalWidget_2.setStyleSheet("#verticalWidget_2{border:none}")
+            self.timer = QtCore.QTimer()
 
-        self.timer.timeout.connect(self.step_bot_game)
-        self.timer.start(500)
-
+            self.timer.timeout.connect(self.step_bot_game)
+            self.timer.start(500)
+        except Exception as e:
+            print("Error in start bot game: ", e)
 
     def step_bot_game(self):
         try:
