@@ -459,9 +459,9 @@ class GameState:
         adjusted_white_score = total_points - adjusted_black_score
 
         if adjusted_black_score > half_total_points:
-            winner = "Black wins by " + str(adjusted_black_score - half_total_points) + " points"
+            winner = "Black wins by " + str(adjusted_black_score - adjusted_white_score) + " points"
         else:
-            winner = "White wins by " + str(adjusted_white_score - half_total_points) + " points"
+            winner = "White wins by " + str(adjusted_white_score - adjusted_black_score) + " points"
 
         return winner, {
             Player.black: adjusted_black_score,
