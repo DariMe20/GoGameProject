@@ -9,7 +9,7 @@ from keras.models import load_model, save_model
 
 def save_model_to_hdf5_group(model, f):
     # Crează un director temporar în loc de un fișier temporar
-    tempdir = tempfile.mkdtemp(prefix='dlgo_')
+    tempdir = tempfile.mkdtemp(prefix='_')
     tempfname = os.path.join(tempdir, 'model.h5')  # Nume de fișier în directorul temporar
     try:
         # Salvarea modelului în fișierul specificat
