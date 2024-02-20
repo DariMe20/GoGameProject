@@ -73,11 +73,11 @@ class GoWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
             self.ui.graphicsView_GoBoard.setViewportMargins(0, 0, 0, 0)
             self.ui.graphicsView_GoBoard.centerOn(425, 425)
 
-    def view_move(self, move, current_player):
+    def view_move(self, state, move, current_player):
         go_coord = self.point_to_coord(move.point, self.board_size)
         player_color = "B" if current_player == gotypes.Player.black else "W"
         next_player = "Black" if current_player == gotypes.Player.white else "White"
-        self.ui.label.setText(f"Move {player_color} - {go_coord}. {next_player} to play.")
+        self.ui.label.setText(f"Move {state.move_number}: {player_color} - {go_coord}. {next_player} to play.")
 
     def point_to_coord(self, point, board_size):
         col_names = "ABCDEFGHJKLMNOPQRST"
@@ -103,9 +103,8 @@ class GoWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
             black_score = scores[Player.black]
             white_score = scores[Player.white]
             territory_message = f"Black Territory: {black_score}, White Territory: {white_score}"
-            self.ui.plainTextEdit_Probs.setPlainText(territory_message)  # Presupunând că ai o etichetă statusLabel pentru mesaje
+            self.ui.textEdit_Probs.setText(territory_message)  # Presupunând că ai o etichetă statusLabel pentru mesaje
             self.ui.label.setText(f"GAME OVER - {winner}")
-
     @staticmethod
     def adjust_scale_factor():
         temp_app = QtWidgets.QApplication(
