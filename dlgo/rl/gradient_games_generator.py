@@ -17,7 +17,7 @@ model = Sequential()
 model_path1 = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\keras_networks\\model_gradient2.h5'
 model_p1 = load_model(model_path1)
 
-model_path2 = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\keras_networks\\model_gradient1.h5'
+model_path2 = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\keras_networks\\model_gradient2.h5'
 model_p2 = load_model(model_path2)
 
 agent1 = PolicyAgent(model_p1, encoder)
@@ -40,7 +40,6 @@ def play_game(agent_black, agent_white, board_size):
         Player.black: agent_black,
         Player.white: agent_white
     }
-    last_num_prisoners = 0
 
     while not state.is_over():
         next_player = state.next_player
@@ -52,7 +51,7 @@ def play_game(agent_black, agent_white, board_size):
 
 
 # SETAREA NUMARULUI DE EPISOADE SI APELAREA METODELOR DE ANTRENARE
-num_episodes = 10
+num_episodes = 300
 
 for episode in range(num_episodes):
     collector1.begin_episode()
@@ -72,7 +71,7 @@ for episode in range(num_episodes):
 
 
 experience_combined = experience.combine_experience([collector1, collector2])
-experience_filename = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\experience_files\\experience20.h5'
+experience_filename = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\experience_files\\experience21.h5'
 with h5py.File(experience_filename, 'w') as experience_outf:
     experience_combined.serialize(experience_outf)
 
