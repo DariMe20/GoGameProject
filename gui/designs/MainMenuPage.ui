@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>782</width>
-    <height>501</height>
+    <width>783</width>
+    <height>524</height>
    </rect>
   </property>
   <property name="maximumSize">
@@ -71,7 +71,7 @@
         <string>Create SGF</string>
        </property>
        <property name="autoDefault">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
        <property name="default">
         <bool>false</bool>
@@ -110,7 +110,7 @@
         <string>Edit SGF</string>
        </property>
        <property name="autoDefault">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
        <property name="default">
         <bool>false</bool>
@@ -149,7 +149,7 @@
         <string>Play with Bot</string>
        </property>
        <property name="autoDefault">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
        <property name="default">
         <bool>false</bool>
@@ -194,7 +194,7 @@
         <bool>false</bool>
        </property>
        <property name="autoDefault">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
        <property name="default">
         <bool>false</bool>
@@ -233,10 +233,10 @@
         <string>About GO</string>
        </property>
        <property name="autoDefault">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
        <property name="default">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
        <property name="flat">
         <bool>false</bool>
@@ -314,7 +314,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="page_Hello">
      <widget class="QLabel" name="label_7">
@@ -379,7 +379,7 @@
        <string>Ok</string>
       </property>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>240</x>
@@ -450,9 +450,6 @@
          </property>
          <property name="singleStep">
           <number>4</number>
-         </property>
-         <property name="stepType">
-          <enum>QAbstractSpinBox::DefaultStepType</enum>
          </property>
         </widget>
        </item>
@@ -591,7 +588,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>20</x>
@@ -724,7 +721,7 @@
       </layout>
      </widget>
     </widget>
-    <widget class="QWidget" name="page">
+    <widget class="QWidget" name="page_PlayWithBot">
      <widget class="QLabel" name="label_CreateSGF_2">
       <property name="geometry">
        <rect>
@@ -874,9 +871,6 @@
          </property>
          <property name="singleStep">
           <number>4</number>
-         </property>
-         <property name="stepType">
-          <enum>QAbstractSpinBox::DefaultStepType</enum>
          </property>
         </widget>
        </item>
@@ -1029,6 +1023,202 @@
       </property>
      </widget>
     </widget>
+    <widget class="QWidget" name="page_bot_vs_bot">
+     <widget class="QLabel" name="label_CreateSGF_3">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>731</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>731</width>
+        <height>41</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>731</width>
+        <height>41</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>Bot vs Bot Game</string>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="comboBox_WhiteBot">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>100</y>
+        <width>171</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="currentText">
+       <string>Drop down to choose</string>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
+      <item>
+       <property name="text">
+        <string>Drop down to choose</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Random Bot</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Deep Learning Bot</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Policy Gradient 1</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Policy Gradient 2</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QComboBox" name="comboBox_WhiteBot_2">
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>100</y>
+        <width>171</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="currentText">
+       <string>Drop down to choose</string>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
+      <item>
+       <property name="text">
+        <string>Drop down to choose</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Random Bot</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Deep Learning Bot</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Policy Gradient 1</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Policy Gradient 2</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QLabel" name="label_WhiteName_2">
+      <property name="geometry">
+       <rect>
+        <x>21</x>
+        <y>71</y>
+        <width>201</width>
+        <height>19</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>201</width>
+        <height>19</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>201</width>
+        <height>19</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>MS Shell Dlg 2</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>White Bot</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_BlackName_2">
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>70</y>
+        <width>201</width>
+        <height>19</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>201</width>
+        <height>19</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>201</width>
+        <height>19</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>MS Shell Dlg 2</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Black Bot</string>
+      </property>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -1036,8 +1226,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>782</width>
-     <height>20</height>
+     <width>783</width>
+     <height>21</height>
     </rect>
    </property>
   </widget>
