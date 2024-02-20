@@ -1,6 +1,6 @@
 import numpy as np
+from keras import Sequential
 from keras.layers import Conv2D, Dropout, MaxPooling2D, Flatten, Dense
-from tensorflow.keras import Sequential
 import os
 from keras.optimizers import Adagrad
 
