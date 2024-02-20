@@ -37,7 +37,8 @@ class PolicyAgent(Agent):
         self._model = model
         self._encoder = encoder
         self._collector = None
-        self._temperature = 0.5
+        self._temperature = 0.2
+        self.probs_for_gui = ""
 
     def predict(self, game_state):
         encoded_state = self._encoder.encode(game_state)
@@ -69,7 +70,8 @@ class PolicyAgent(Agent):
         # Re-normalize to get another probability distribution.
         move_probs = move_probs / np.sum(move_probs)
 
-        print_probs(move_probs, self._encoder.board_width, self._encoder.board_height)
+        # print_probs(move_probs, self._encoder.board_width, self._encoder.board_height)
+        self.probs_for_gui = probs_for_gui(move_probs, self._encoder.board_width, self._encoder.board_height)
 
         # Turn the probabilities into a ranked list of moves.
         candidates = np.arange(num_moves)
@@ -97,7 +99,7 @@ class PolicyAgent(Agent):
         h5file.create_group('model')
         save_model(self._model, h5file)
 
-    def train(self, experience, lr=0.009, clipnorm=1.0, batch_size=712):
+    def train(self, experience, lr=0.0008, clipnorm=1.0, batch_size=712):
         opt = SGD(learning_rate=lr, clipnorm=clipnorm)
         self._model.compile(loss='categorical_crossentropy', optimizer=opt)
 
@@ -130,6 +132,7 @@ def load_policy_agent(h5file):
         (board_width, board_height))
     return PolicyAgent(model, encoder)
 
+
 # Afișează probabilitățile într-un format lizibil
 def print_probs(move_probs, board_width, board_height):
     i = 0
@@ -140,3 +143,53 @@ def print_probs(move_probs, board_width, board_height):
             row_formatted.append('{:.2f}'.format(mi) + "%")
             i += 1
         print(' '.join(row_formatted))
+
+
+def probs_for_gui(move_probs, board_width, board_height):
+    # CSS pentru a ajusta dimensiunea și spațiul tabelei
+    css_style = """
+    <style>
+        table {
+            width: 500px;
+            height: 400px;
+            border: none;
+
+        }
+        td, th {
+            overflow: hidden;
+            font-size: 12px; 
+            width:50px;
+            height:50px;
+            padding: 3px;
+        }
+        
+        th{ 
+            color:brown;
+            font-weight: bold;
+        }
+    </style>
+    """
+
+    # Definim headerul cu literele A-I și creăm un tabel HTML
+    letters = 'ABCDEFGHIJ'[0:board_width]  # Adaptat pentru lățimea tabelei
+    header = ''.join(f'<th>{letter}</th>' for letter in letters)
+    header_footer = f'<tr><th></th>{header}<th></th></tr>'
+
+    # Începem construcția tabelului HTML
+    board_html = f"<html><head>{css_style}</head><body><table><tbody>"
+    board_html += header_footer  # Header cu litere
+
+    i = 0
+    for row in range(board_height, 0, -1):
+        row_html = f"<tr><th>{row}</th>"  # Numărul rândului la început
+        for col in range(board_width):
+            mi = move_probs[i] * 100
+            row_html += f'<td>{mi:.2f}%</td>'
+            i += 1
+        row_html += f"<th>{row}</th></tr>"  # Numărul rândului la sfârșit
+        board_html += row_html
+
+    board_html += header_footer  # Footer cu litere
+    board_html += "</tbody></table></body></html>"
+
+    return board_html
