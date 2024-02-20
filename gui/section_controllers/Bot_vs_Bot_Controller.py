@@ -2,9 +2,7 @@ import h5py
 from PyQt5 import QtWidgets, QtCore
 from keras.models import load_model
 
-from dlgo.agent.policy_agent import PolicyAgent, load_policy_agent
-from dlgo.agent.predict import DeepLearningAgent
-from dlgo.encoders.oneplane import OnePlaneEncoder
+from dlgo.agent.policy_agent import PolicyAgent
 from dlgo import gotypes, goboard
 from dlgo.encoders.simple import SimpleEncoder
 
@@ -61,7 +59,7 @@ class BvBController(QtWidgets.QWidget):
             self.timer = QtCore.QTimer()
 
             self.timer.timeout.connect(self.step_bot_game)
-            self.timer.start(500)
+            self.timer.start(1000)
         except Exception as e:
             print("Error in start bot game: ", e)
 
@@ -74,6 +72,7 @@ class BvBController(QtWidgets.QWidget):
             bot_agent = self.bot_black if current_player == gotypes.Player.black else self.bot_white
 
             bot_move = bot_agent.select_move(self.game)
+            self.GOwin.ui.textEdit_Probs.setHtml(bot_agent.probs_for_gui)
 
             # Aplică mutarea și actualizează starea jocului
             self.game = self.game.apply_move(bot_move)
@@ -85,7 +84,7 @@ class BvBController(QtWidgets.QWidget):
                 return
 
             if not bot_move.is_pass:
-                self.GOwin.view_move(bot_move, current_player)
+                self.GOwin.view_move(self.game, bot_move, current_player)
                 self.GOwin.emphasise_player_turn(current_player.other)
             else:
                 self.GOwin.ui.label.setText(f"{current_player} passed")

@@ -44,7 +44,7 @@ class CreateSGFController(QtWidgets.QWidget):
                 self.game = self.game.apply_move(move)
                 self.board.update_game(self.game)
 
-                self.GOwin.view_move(move, self.current_player)
+                self.GOwin.view_move(self.game, move, self.current_player)
 
                 # Alternează între jucătorul negru și alb
                 self.current_player = gotypes.Player.white if self.current_player == gotypes.Player.black else gotypes.Player.black
