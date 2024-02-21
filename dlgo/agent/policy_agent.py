@@ -37,7 +37,7 @@ class PolicyAgent(Agent):
         self._model = model
         self._encoder = encoder
         self._collector = None
-        self._temperature = 0.2
+        self._temperature = 0.3
         self.probs_for_gui = ""
 
     def predict(self, game_state):
@@ -51,7 +51,7 @@ class PolicyAgent(Agent):
     def set_collector(self, collector):
         self._collector = collector
 
-    def select_move(self, game_state):
+    def get_move_probs(self, game_state):
         num_moves = self._encoder.board_width * self._encoder.board_height
 
         board_tensor = self._encoder.encode(game_state)
@@ -70,13 +70,24 @@ class PolicyAgent(Agent):
         # Re-normalize to get another probability distribution.
         move_probs = move_probs / np.sum(move_probs)
 
+        return move_probs, board_tensor, num_moves
+
+    def generate_gui_formatted_probs(self, game_state):
+        move_probs, board_tensor, num_moves = self.get_move_probs(game_state)
+
         # print_probs(move_probs, self._encoder.board_width, self._encoder.board_height)
         self.probs_for_gui = probs_for_gui(move_probs, self._encoder.board_width, self._encoder.board_height)
+        return self.probs_for_gui
+
+    def select_move(self, game_state):
+        move_probs, board_tensor, num_moves = self.get_move_probs(game_state)
+
+        # print_probs(move_probs, self._encoder.board_width, self._encoder.board_height)
 
         # Turn the probabilities into a ranked list of moves.
         candidates = np.arange(num_moves)
-        ranked_moves = np.random.choice(
-            candidates, num_moves, replace=False, p=move_probs)
+        ranked_moves = np.random.choice(candidates, num_moves, replace=False, p=move_probs)
+
         for point_idx in ranked_moves:
             point = self._encoder.decode_point_index(point_idx)
             if game_state.is_valid_move(goboard.Move.play(point)) \
@@ -99,7 +110,7 @@ class PolicyAgent(Agent):
         h5file.create_group('model')
         save_model(self._model, h5file)
 
-    def train(self, experience, lr=0.0008, clipnorm=1.0, batch_size=712):
+    def train(self, experience, lr=0.001, clipnorm=1.0, batch_size=712):
         opt = SGD(learning_rate=lr, clipnorm=clipnorm)
         self._model.compile(loss='categorical_crossentropy', optimizer=opt)
 
