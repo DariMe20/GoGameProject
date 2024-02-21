@@ -103,7 +103,7 @@ class GoWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
             black_score = scores[Player.black]
             white_score = scores[Player.white]
             territory_message = f"Black Territory: {black_score}, White Territory: {white_score}"
-            self.ui.textEdit_Probs.setText(territory_message)  # Presupunând că ai o etichetă statusLabel pentru mesaje
+            self.ui.textEdit_Probs.setText(territory_message)
             self.ui.label.setText(f"GAME OVER - {winner}")
     @staticmethod
     def adjust_scale_factor():
