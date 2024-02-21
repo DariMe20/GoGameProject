@@ -14,11 +14,11 @@ board_size = 9
 encoder = SimpleEncoder((board_size, board_size))
 model = Sequential()
 
-model_path1 = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\keras_networks\\model_gradient2.h5'
+model_path1 = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\keras_networks\\model_gradient4.h5'
 model_p1 = load_model(model_path1)
 
-model_path2 = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\keras_networks\\model_gradient2.h5'
-model_p2 = load_model(model_path2)
+model_path2 = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\keras_networks\\model_gradient3.h5'
+model_p2 = load_model(model_path1)
 
 agent1 = PolicyAgent(model_p1, encoder)
 agent2 = PolicyAgent(model_p2, encoder)
@@ -51,7 +51,7 @@ def play_game(agent_black, agent_white, board_size):
 
 
 # SETAREA NUMARULUI DE EPISOADE SI APELAREA METODELOR DE ANTRENARE
-num_episodes = 300
+num_episodes = 100
 
 for episode in range(num_episodes):
     collector1.begin_episode()
@@ -71,13 +71,8 @@ for episode in range(num_episodes):
 
 
 experience_combined = experience.combine_experience([collector1, collector2])
-experience_filename = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\experience_files\\experience21.h5'
+experience_filename = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\experience_files\\experience27.h5'
 with h5py.File(experience_filename, 'w') as experience_outf:
     experience_combined.serialize(experience_outf)
 
 print(f"Black wins: {black_wins} \ {num_episodes} \n White wins: {white_wins} \ {num_episodes}")
-# SALVARE MODELE
-# model_policy.save('C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\keras_networks\\black_agent_model5.h5')
-# model_white.save('C:\\DARIA\\1.FSEGA\\LICENTA\\GoGameProject\\dlgo\\keras_networks\\white_agent_model.h5')
-
-# model.save('C:\\DARIA\\1.FSEGA\\LICENTA\\GoGameProject\\dlgo\\keras_networks\\model3.h5')
