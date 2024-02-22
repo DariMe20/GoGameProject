@@ -4,6 +4,7 @@ from PyQt5 import QtWidgets
 
 from gui.controllers.GoWindowController import GoWindowController
 from gui.generated_files.MainMenuPage import Ui_MainWindow
+from utils import constants
 
 
 class MainMenuPageController(QtWidgets.QMainWindow, Ui_MainWindow):
@@ -16,7 +17,10 @@ class MainMenuPageController(QtWidgets.QMainWindow, Ui_MainWindow):
         self.ui.pushButton_CreateSGF.clicked.connect(self.createSGF)
         self.ui.pushButton_EditSGF.clicked.connect(self.editSGF)
         self.ui.pushButton_PlayerVSBot.clicked.connect(self.playerVSbot)
-        self.ui.pushButton_BotVBot.clicked.connect(self.botVSbot)
+        self.ui.pushButton_BotVBot.clicked.connect(self.bot_vs_bot_settings)
+
+        self.ui.comboBox_BlackBot.addItems(list(constants.BOTS.keys()))
+        self.ui.comboBox_WhiteBot.addItems(list(constants.BOTS.keys()))
 
         self.GoGameWindow = None
 
@@ -68,9 +72,16 @@ class MainMenuPageController(QtWidgets.QMainWindow, Ui_MainWindow):
         except Exception as e:
             print(f"Error in bot vs bot create: {e}")
 
+    def bot_vs_bot_settings(self):
+        self.ui.stackedWidget.setCurrentIndex(3)
+        self.ui.pushButton_BotVsBotOK.clicked.connect(self.botVSbot)
+
     def botVSbot(self):
         try:
-            self.GoGameWindow = GoWindowController("Black Bot", "White Bot", 4)
+            black_name = self.ui.comboBox_BlackBot.currentText()
+            white_name = self.ui.comboBox_WhiteBot.currentText()
+
+            self.GoGameWindow = GoWindowController(black_name, white_name, 4)
             # Afisează fereastra
             self.GoGameWindow.show()
         except Exception as e:
