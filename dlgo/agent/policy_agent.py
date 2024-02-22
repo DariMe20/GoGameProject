@@ -6,7 +6,7 @@ from keras.src.saving.saving_api import save_model
 
 from dlgo.agent.base import Agent
 from dlgo.agent.helpers import is_point_an_eye
-from dlgo import encoders
+from dlgo import encoders, utils
 from dlgo import goboard
 from dlgo import kerasutil
 
@@ -32,13 +32,14 @@ def normalize(x):
 
 class PolicyAgent(Agent):
     """An agent that uses a deep policy network to select moves."""
-    def __init__(self, model, encoder):
+    def __init__(self, model, encoder, compute_probs=True):
         Agent.__init__(self)
         self._model = model
         self._encoder = encoder
         self._collector = None
-        self._temperature = 0.3
+        self._temperature = 0.2
         self.probs_for_gui = ""
+        self.compute_probs = compute_probs
 
     def predict(self, game_state):
         encoded_state = self._encoder.encode(game_state)
@@ -76,7 +77,7 @@ class PolicyAgent(Agent):
         move_probs, board_tensor, num_moves = self.get_move_probs(game_state)
 
         # print_probs(move_probs, self._encoder.board_width, self._encoder.board_height)
-        self.probs_for_gui = probs_for_gui(move_probs, self._encoder.board_width, self._encoder.board_height)
+        self.probs_for_gui = utils.probs_for_gui(move_probs, self._encoder.board_width, self._encoder.board_height)
         return self.probs_for_gui
 
     def select_move(self, game_state):
@@ -110,7 +111,7 @@ class PolicyAgent(Agent):
         h5file.create_group('model')
         save_model(self._model, h5file)
 
-    def train(self, experience, lr=0.001, clipnorm=1.0, batch_size=712):
+    def train(self, experience, lr=0.0005, clipnorm=1.0, batch_size=712):
         opt = SGD(learning_rate=lr, clipnorm=clipnorm)
         self._model.compile(loss='categorical_crossentropy', optimizer=opt)
 
@@ -155,52 +156,3 @@ def print_probs(move_probs, board_width, board_height):
             i += 1
         print(' '.join(row_formatted))
 
-
-def probs_for_gui(move_probs, board_width, board_height):
-    # CSS pentru a ajusta dimensiunea și spațiul tabelei
-    css_style = """
-    <style>
-        table {
-            width: 500px;
-            height: 400px;
-            border: none;
-
-        }
-        td, th {
-            overflow: hidden;
-            font-size: 12px; 
-            width:50px;
-            height:50px;
-            padding: 3px;
-        }
-        
-        th{ 
-            color:brown;
-            font-weight: bold;
-        }
-    </style>
-    """
-
-    # Definim headerul cu literele A-I și creăm un tabel HTML
-    letters = 'ABCDEFGHIJ'[0:board_width]  # Adaptat pentru lățimea tabelei
-    header = ''.join(f'<th>{letter}</th>' for letter in letters)
-    header_footer = f'<tr><th></th>{header}<th></th></tr>'
-
-    # Începem construcția tabelului HTML
-    board_html = f"<html><head>{css_style}</head><body><table><tbody>"
-    board_html += header_footer  # Header cu litere
-
-    i = 0
-    for row in range(board_height, 0, -1):
-        row_html = f"<tr><th>{row}</th>"  # Numărul rândului la început
-        for col in range(board_width):
-            mi = move_probs[i] * 100
-            row_html += f'<td>{mi:.2f}%</td>'
-            i += 1
-        row_html += f"<th>{row}</th></tr>"  # Numărul rândului la sfârșit
-        board_html += row_html
-
-    board_html += header_footer  # Footer cu litere
-    board_html += "</tbody></table></body></html>"
-
-    return board_html

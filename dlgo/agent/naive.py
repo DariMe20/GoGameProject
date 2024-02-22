@@ -6,6 +6,10 @@ from dlgo.gotypes import Point
 
 
 class RandomBot(Agent):
+    def __init__(self, compute_probs=False):
+        super().__init__()
+        self.compute_probs = compute_probs
+
     def select_move(self, game_state):
         """Choose a random valid move that preserves our own eyes."""
         candidates = []

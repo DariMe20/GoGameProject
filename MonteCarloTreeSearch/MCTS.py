@@ -46,12 +46,13 @@ class MCTSNode(object):
 
 class MCTSAgent(Agent):
 
-    def __init__(self, model, encoder, num_rounds=1600, temperature=1.0):
+    def __init__(self, model, encoder, num_rounds=10, temperature=0.1, compute_probs=False):
         super().__init__()
         self.model = model
         self.encoder = encoder
         self.temperature = temperature
         self.num_rounds = num_rounds
+        self.compute_probs = compute_probs
 
     @staticmethod
     def uct_score(parent_rollouts, child_rollouts, win_pct, temperature):

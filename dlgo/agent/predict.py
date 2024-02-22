@@ -9,11 +9,12 @@ from dlgo import kerasutil
 
 
 class DeepLearningAgent(Agent):
-    def __init__(self, model, encoder):
+    def __init__(self, model, encoder, compute_probs=True):
         Agent.__init__(self)
         self.probs_for_gui = None
         self.model = model
         self.encoder = encoder
+        self.compute_probs = compute_probs
 
     def predict(self, game_state):
         encoded_state = self.encoder.encode(game_state)

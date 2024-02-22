@@ -110,8 +110,9 @@ class BvBController(QtWidgets.QWidget):
 
             bot_probs = self.bot_black if current_player == gotypes.Player.white else self.bot_white
 
-            move_probs_html = bot_probs.generate_gui_formatted_probs(self.game)
-            self.GOwin.ui.textEdit_Probs.setHtml(move_probs_html)
+            if bot_probs.compute_probs is True:
+                move_probs_html = bot_probs.generate_gui_formatted_probs(self.game)
+                self.GOwin.ui.textEdit_Probs.setHtml(move_probs_html)
             bot_move = bot_agent.select_move(self.game)
 
             # Aplică mutarea și actualizează starea jocului
