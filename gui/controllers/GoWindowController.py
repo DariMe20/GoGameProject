@@ -9,6 +9,7 @@ from gui.section_controllers.Bot_vs_Bot_Controller import BvBController
 from gui.section_controllers.CreateSGFController import CreateSGFController
 from gui.section_controllers.GoBoardController import GoBoardController
 from gui.section_controllers.PvBController import PvBController
+from utils import constants
 
 
 class GoWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
@@ -59,7 +60,13 @@ class GoWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
             self.PvBController = PvBController(self)
 
         if self.situation_controller == 4:
-            self.BvBController = BvBController(self)
+            bot_black, bot_white = self.get_bots()
+            self.BvBController = BvBController(self, bot_black, bot_white)
+
+    def get_bots(self):
+        bot_black = constants.BOTS[self.nameB]
+        bot_white = constants.BOTS[self.nameW]
+        return bot_black, bot_white
 
     def init_GoBoard(self):
         if not self.scene and not self.board:
