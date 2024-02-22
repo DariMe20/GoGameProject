@@ -1,7 +1,7 @@
 from keras import Sequential
 from keras.src.saving.saving_api import load_model
 
-import MonteCarloTreeSearch.MCTS
+from MonteCarloTreeSearch.MCTS import MCTSAgent
 from dlgo.agent import RandomBot, PolicyAgent, DeepLearningAgent
 from dlgo.encoders.oneplane import OnePlaneEncoder
 from dlgo.encoders.simple import SimpleEncoder
@@ -28,7 +28,6 @@ model_DL = load_model(path_DL)
 
 # BOT INITIALIZERS
 RANDOM_BOT = RandomBot()
-MCTS_BOT = MonteCarloTreeSearch.MCTS.MCTSAgent(model, oneplane)
 PG_1 = PolicyAgent(model_pg1, encoder)
 PG_2 = PolicyAgent(model_pg2, encoder)
 PG_3 = PolicyAgent(model_pg3, encoder)
@@ -38,7 +37,6 @@ DL_BOT = DeepLearningAgent(model_DL, oneplane)
 # DICTIONARY FOR BOTS
 BOTS = {
     "Random Bot": RANDOM_BOT,
-    "MCTS": MCTS_BOT,
     "Policy Gradient 1": PG_1,
     "Policy Gradient 2": PG_2,
     "Policy Gradient 3": PG_3,
