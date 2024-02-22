@@ -44,10 +44,11 @@ class BvBController(QtWidgets.QWidget):
         self.GOwin.ui.pushButton_PlayStop.clicked.connect(self.toggle_play_stop)
 
         # SLIDER SETTINGS
-        self.GOwin.ui.horizontalSlider.setMaximum(1000)
+        self.GOwin.ui.horizontalSlider.setMaximum(1500)
         self.GOwin.ui.horizontalSlider.setMinimum(50)
-        self.GOwin.ui.horizontalSlider.setTickInterval(250)
-        self.GOwin.ui.horizontalSlider.setValue(200)
+        self.GOwin.ui.horizontalSlider.setTickInterval(200)
+        self.GOwin.ui.horizontalSlider.setValue(1000)
+        self.update_slider_labels(1000)
         self.GOwin.ui.horizontalSlider.setInvertedAppearance(True)
         self.GOwin.ui.horizontalSlider.setTickPosition(QtWidgets.QSlider.TicksBelow)
         self.GOwin.ui.horizontalSlider.valueChanged.connect(self.update_timer_interval)
