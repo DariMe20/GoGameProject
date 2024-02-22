@@ -3,7 +3,7 @@ import random
 
 from dlgo.agent.base import Agent
 from dlgo.agent.helpers import is_point_an_eye
-from dlgo import encoders
+from dlgo import encoders, utils
 from dlgo import goboard
 from dlgo import kerasutil
 
@@ -11,6 +11,7 @@ from dlgo import kerasutil
 class DeepLearningAgent(Agent):
     def __init__(self, model, encoder):
         Agent.__init__(self)
+        self.probs_for_gui = None
         self.model = model
         self.encoder = encoder
 
@@ -20,19 +21,31 @@ class DeepLearningAgent(Agent):
 
         return self.model.predict(input_tensor)[0]
 
+    def get_move_probs(self, game_state):
+        num_moves = self.encoder.board_width * self.encoder.board_height
+        move_probs = self.predict(game_state)
+
+        move_probs **= 2
+        eps = 1e-6
+        # Previne probabilitatile sa se blocheze la 0 sau 1
+        move_probs = np.clip(move_probs, eps, 1 - eps)
+        move_probs = move_probs / np.sum(move_probs)
+
+        moves = [self.encoder.decode_point_index(i) for i in range(num_moves)]
+        chosen_move = random.choices(moves, weights=move_probs)[0]
+
+        return move_probs, chosen_move, num_moves
+
+    def generate_gui_formatted_probs(self, game_state):
+        move_probs, board_tensor, num_moves = self.get_move_probs(game_state)
+
+        # print_probs(move_probs, self._encoder.board_width, self._encoder.board_height)
+        self.probs_for_gui = utils.probs_for_gui(move_probs, self.encoder.board_width, self.encoder.board_height)
+        return self.probs_for_gui
+
     def select_move(self, game_state):
         try:
-            num_moves = self.encoder.board_width * self.encoder.board_height
-            move_probs = self.predict(game_state)
-
-            move_probs **= 2
-            eps = 1e-6
-            # Previne probabilitatile sa se blocheze la 0 sau 1
-            move_probs = np.clip(move_probs, eps, 1 - eps)
-            move_probs = move_probs / np.sum(move_probs)
-
-            moves = [self.encoder.decode_point_index(i) for i in range(num_moves)]
-            chosen_move = random.choices(moves, weights=move_probs)[0]
+            move_probs, chosen_move, num_moves = self.get_move_probs(game_state)
 
             if game_state.is_valid_move(goboard.Move.play(chosen_move)) and \
                     not is_point_an_eye(game_state.board, chosen_move, game_state.next_player):
