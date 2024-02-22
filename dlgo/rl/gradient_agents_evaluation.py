@@ -1,6 +1,8 @@
 
 from keras.src.saving.saving_api import load_model
 from keras.models import Sequential
+
+import utils.constants
 from dlgo.agent.policy_agent import PolicyAgent
 from dlgo.encoders.simple import SimpleEncoder
 from dlgo.goboard import GameState
@@ -10,14 +12,14 @@ board_size = 9
 encoder = SimpleEncoder((board_size, board_size))
 model = Sequential()
 
-model_path1 = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\keras_networks\\model_gradient4.h5'
+model_path1 = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\keras_networks\\model_gradient3.h5'
 model_p1 = load_model(model_path1)
 
-model_path2 = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\keras_networks\\model_gradient3.h5'
+model_path2 = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\keras_networks\\model_gradient4.h5'
 model_p2 = load_model(model_path2)
 
-agent1 = PolicyAgent(model_p1, encoder)
-agent2 = PolicyAgent(model_p2, encoder)
+agent1 = utils.constants.BOTS["Policy Gradient 3"]
+agent2 = utils.constants.BOTS["Policy Gradient 4"]
 
 black_wins = 0
 white_wins = 0
