@@ -9,7 +9,7 @@ from dlgo.gotypes import Player
 
 
 class BvBController(QtWidgets.QWidget):
-    def __init__(self, GoWin):
+    def __init__(self, GoWin, bot_black, bot_white):
         super().__init__()
 
         self.completed_simulations = 0
@@ -26,8 +26,8 @@ class BvBController(QtWidgets.QWidget):
         # INITIALIZERS
         self.board_size = self.GOwin.board_size
         self.game = None
-        self.bot_black = None
-        self.bot_white = None
+        self.bot_black = bot_black
+        self.bot_white = bot_white
         self.board = self.GOwin.board
         self.count_pass = 0
         self.timer = QtCore.QTimer()
@@ -44,27 +44,13 @@ class BvBController(QtWidgets.QWidget):
         self.GOwin.ui.pushButton_PlayStop.clicked.connect(self.toggle_play_stop)
 
         # SLIDER SETTINGS
-        self.GOwin.ui.horizontalSlider.setMaximum(3500)
-        self.GOwin.ui.horizontalSlider.setMinimum(100)
-        self.GOwin.ui.horizontalSlider.setTickInterval(500)
-        self.GOwin.ui.horizontalSlider.setValue(500)
+        self.GOwin.ui.horizontalSlider.setMaximum(1000)
+        self.GOwin.ui.horizontalSlider.setMinimum(50)
+        self.GOwin.ui.horizontalSlider.setTickInterval(250)
+        self.GOwin.ui.horizontalSlider.setValue(200)
         self.GOwin.ui.horizontalSlider.setInvertedAppearance(True)
         self.GOwin.ui.horizontalSlider.setTickPosition(QtWidgets.QSlider.TicksBelow)
         self.GOwin.ui.horizontalSlider.valueChanged.connect(self.update_timer_interval)
-        self.update_timer_interval(250)
-
-        # model_path_policy = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\keras_networks\\model_gradient2.h5'
-        # model_path_predict = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\keras_networks\\model2.h5'
-
-        model_path1 = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\keras_networks\\model_gradient2.h5'
-        self.model_p1 = load_model(model_path1)
-
-        model_path2 = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\keras_networks\\model_gradient4.h5'
-        self.model_p2 = load_model(model_path2)
-
-        # self.model_policy = load_policy_agent(model_path_policy)
-        # self.model_predict = load_model(model_path_predict)
-        self.encoder = SimpleEncoder(board_size=(self.board_size, self.board_size))
 
     #SLIDER METHODS
     def update_timer_interval(self, value):
@@ -75,6 +61,8 @@ class BvBController(QtWidgets.QWidget):
     def update_slider_labels(self, value):
         # Aici puteți actualiza etichetele dacă aveți nevoie
         self.GOwin.ui.label_2.setText(f"Playing speed: {value} ms")
+
+    # TOGGLER
     def toggle_play_stop(self):
         if self.start == 1:
             self.timer.stop()
@@ -84,6 +72,8 @@ class BvBController(QtWidgets.QWidget):
             self.start = 1
             self.timer.start()
             self.GOwin.ui.pushButton_PlayStop.setText('Stop Game')
+
+    # PLAY METHODS
     def start_bot_game(self):
         try:
             self.total_simulations = self.GOwin.ui.spinBox_numberOfSimulations.value()
@@ -99,12 +89,9 @@ class BvBController(QtWidgets.QWidget):
             self.game_over = True
             return
         self.game = goboard.GameState.new_game(self.board_size)
-        self.bot_black = PolicyAgent(self.model_p1, self.encoder)
-        self.bot_white = PolicyAgent(self.model_p2, self.encoder)
         self.game_over = False
-        # self.bot_black = load_policy_agent(h5py.File(self.model_path_policy))
-        # self.bot_white = DeepLearningAgent(self.model_predict, self.encoder)
-        self.GOwin.ui.verticalWidget.setStyleSheet('#verticalWidget{border:1px solid blue;}')
+
+        self.GOwin.ui.verticalWidget.setStyleSheet('#verticalWidget{border:1px solid grey;}')
         self.GOwin.ui.verticalWidget_2.setStyleSheet("#verticalWidget_2{border:none}")
         self.timer = QtCore.QTimer()
 
@@ -122,6 +109,7 @@ class BvBController(QtWidgets.QWidget):
             self.GOwin.ui.label_FinalResults.setText(f"Showing probs for agent: {current_player}")
 
             bot_probs = self.bot_black if current_player == gotypes.Player.white else self.bot_white
+
             move_probs_html = bot_probs.generate_gui_formatted_probs(self.game)
             self.GOwin.ui.textEdit_Probs.setHtml(move_probs_html)
             bot_move = bot_agent.select_move(self.game)
