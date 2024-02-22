@@ -82,45 +82,6 @@
       </widget>
      </item>
      <item alignment="Qt::AlignHCenter">
-      <widget class="QPushButton" name="pushButton_EditSGF">
-       <property name="minimumSize">
-        <size>
-         <width>120</width>
-         <height>40</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>120</width>
-         <height>40</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <family>MS Shell Dlg 2</family>
-         <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="cursor">
-        <cursorShape>PointingHandCursor</cursorShape>
-       </property>
-       <property name="text">
-        <string>Edit SGF</string>
-       </property>
-       <property name="autoDefault">
-        <bool>false</bool>
-       </property>
-       <property name="default">
-        <bool>false</bool>
-       </property>
-       <property name="flat">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
       <widget class="QPushButton" name="pushButton_PlayerVSBot">
        <property name="minimumSize">
         <size>
@@ -192,6 +153,45 @@
        </property>
        <property name="checkable">
         <bool>false</bool>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+       <property name="default">
+        <bool>false</bool>
+       </property>
+       <property name="flat">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item alignment="Qt::AlignHCenter">
+      <widget class="QPushButton" name="pushButton_EditSGF">
+       <property name="minimumSize">
+        <size>
+         <width>120</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>120</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>MS Shell Dlg 2</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="text">
+        <string>Open SGF</string>
        </property>
        <property name="autoDefault">
         <bool>false</bool>
@@ -314,7 +314,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="page_Hello">
      <widget class="QLabel" name="label_7">
@@ -1061,8 +1061,8 @@
      <widget class="QComboBox" name="comboBox_WhiteBot">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>100</y>
+        <x>350</x>
+        <y>110</y>
         <width>171</width>
         <height>22</height>
        </rect>
@@ -1082,34 +1082,14 @@
       <item>
        <property name="text">
         <string>Drop down to choose</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Random Bot</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Deep Learning Bot</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Policy Gradient 1</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Policy Gradient 2</string>
        </property>
       </item>
      </widget>
-     <widget class="QComboBox" name="comboBox_WhiteBot_2">
+     <widget class="QComboBox" name="comboBox_BlackBot">
       <property name="geometry">
        <rect>
-        <x>330</x>
-        <y>100</y>
+        <x>40</x>
+        <y>110</y>
         <width>171</width>
         <height>22</height>
        </rect>
@@ -1129,34 +1109,14 @@
       <item>
        <property name="text">
         <string>Drop down to choose</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Random Bot</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Deep Learning Bot</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Policy Gradient 1</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Policy Gradient 2</string>
        </property>
       </item>
      </widget>
      <widget class="QLabel" name="label_WhiteName_2">
       <property name="geometry">
        <rect>
-        <x>21</x>
-        <y>71</y>
+        <x>351</x>
+        <y>81</y>
         <width>201</width>
         <height>19</height>
        </rect>
@@ -1188,8 +1148,8 @@
      <widget class="QLabel" name="label_BlackName_2">
       <property name="geometry">
        <rect>
-        <x>330</x>
-        <y>70</y>
+        <x>30</x>
+        <y>80</y>
         <width>201</width>
         <height>19</height>
        </rect>
@@ -1216,6 +1176,19 @@
       </property>
       <property name="text">
        <string>Black Bot</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_BotVsBotOK">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>180</y>
+        <width>75</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Ok</string>
       </property>
      </widget>
     </widget>
