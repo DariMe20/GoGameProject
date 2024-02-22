@@ -46,7 +46,7 @@ class MCTSNode(object):
 
 class MCTSAgent(Agent):
 
-    def __init__(self, model, encoder, num_rounds=10, temperature=0.1, compute_probs=False):
+    def __init__(self, model, encoder, num_rounds=1, temperature=0.1, compute_probs=False):
         super().__init__()
         self.model = model
         self.encoder = encoder
@@ -61,7 +61,7 @@ class MCTSAgent(Agent):
         exploration = math.sqrt(math.log(parent_rollouts) / child_rollouts)
         return win_pct + temperature * exploration
 
-    def select_moveMCTS(self, game_state):
+    def select_move(self, game_state):
         root = MCTSNode(game_state)
         for i in range(self.num_rounds):
             node = root
