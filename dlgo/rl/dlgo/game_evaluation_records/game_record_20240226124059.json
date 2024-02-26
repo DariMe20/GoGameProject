@@ -1,0 +1,102 @@
+[
+    {
+        "episode": 0,
+        "winner": "Player.black",
+        "score": {
+            "black": 0,
+            "white": 0
+        },
+        "black_agent": "<dlgo.agent.policy_agent.PolicyAgent object at 0x000002385D1A2770>",
+        "white_agent": "<dlgo.agent.policy_agent.PolicyAgent object at 0x000002385D1A28C0>"
+    },
+    {
+        "episode": 1,
+        "winner": "Player.white",
+        "score": {
+            "black": 1,
+            "white": 0
+        },
+        "black_agent": "<dlgo.agent.policy_agent.PolicyAgent object at 0x000002385D1A2770>",
+        "white_agent": "<dlgo.agent.policy_agent.PolicyAgent object at 0x000002385D1A28C0>"
+    },
+    {
+        "episode": 2,
+        "winner": "Player.white",
+        "score": {
+            "black": 1,
+            "white": 1
+        },
+        "black_agent": "<dlgo.agent.policy_agent.PolicyAgent object at 0x000002385D1A2770>",
+        "white_agent": "<dlgo.agent.policy_agent.PolicyAgent object at 0x000002385D1A28C0>"
+    },
+    {
+        "episode": 3,
+        "winner": "Player.white",
+        "score": {
+            "black": 1,
+            "white": 2
+        },
+        "black_agent": "<dlgo.agent.policy_agent.PolicyAgent object at 0x000002385D1A2770>",
+        "white_agent": "<dlgo.agent.policy_agent.PolicyAgent object at 0x000002385D1A28C0>"
+    },
+    {
+        "episode": 4,
+        "winner": "Player.white",
+        "score": {
+            "black": 1,
+            "white": 3
+        },
+        "black_agent": "<dlgo.agent.policy_agent.PolicyAgent object at 0x000002385D1A2770>",
+        "white_agent": "<dlgo.agent.policy_agent.PolicyAgent object at 0x000002385D1A28C0>"
+    },
+    {
+        "episode": 5,
+        "winner": "Player.black",
+        "score": {
+            "black": 1,
+            "white": 4
+        },
+        "black_agent": "<dlgo.agent.policy_agent.PolicyAgent object at 0x000002385D1A2770>",
+        "white_agent": "<dlgo.agent.policy_agent.PolicyAgent object at 0x000002385D1A28C0>"
+    },
+    {
+        "episode": 6,
+        "winner": "Player.white",
+        "score": {
+            "black": 2,
+            "white": 4
+        },
+        "black_agent": "<dlgo.agent.policy_agent.PolicyAgent object at 0x000002385D1A2770>",
+        "white_agent": "<dlgo.agent.policy_agent.PolicyAgent object at 0x000002385D1A28C0>"
+    },
+    {
+        "episode": 7,
+        "winner": "Player.white",
+        "score": {
+            "black": 2,
+            "white": 5
+        },
+        "black_agent": "<dlgo.agent.policy_agent.PolicyAgent object at 0x000002385D1A2770>",
+        "white_agent": "<dlgo.agent.policy_agent.PolicyAgent object at 0x000002385D1A28C0>"
+    },
+    {
+        "episode": 8,
+        "winner": "Player.black",
+        "score": {
+            "black": 2,
+            "white": 6
+        },
+        "black_agent": "<dlgo.agent.policy_agent.PolicyAgent object at 0x000002385D1A2770>",
+        "white_agent": "<dlgo.agent.policy_agent.PolicyAgent object at 0x000002385D1A28C0>"
+    },
+    {
+        "episode": 9,
+        "winner": "Player.white",
+        "score": {
+            "black": 3,
+            "white": 6
+        },
+        "black_agent": "<dlgo.agent.policy_agent.PolicyAgent object at 0x000002385D1A2770>",
+        "white_agent": "<dlgo.agent.policy_agent.PolicyAgent object at 0x000002385D1A28C0>"
+    }
+]

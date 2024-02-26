@@ -1,0 +1,12 @@
+[
+    {
+        "episode": 0,
+        "winner": "Player.white",
+        "score": {
+            "black": 0,
+            "white": 0
+        },
+        "black_agent": "<dlgo.agent.policy_agent.PolicyAgent object at 0x00000226446D27A0>",
+        "white_agent": "<dlgo.agent.policy_agent.PolicyAgent object at 0x00000226446D28F0>"
+    }
+]
