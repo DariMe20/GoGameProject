@@ -47,8 +47,7 @@ class BvBController(QtWidgets.QWidget):
         self.GOwin.ui.horizontalSlider.setMaximum(1500)
         self.GOwin.ui.horizontalSlider.setMinimum(50)
         self.GOwin.ui.horizontalSlider.setTickInterval(200)
-        self.GOwin.ui.horizontalSlider.setValue(1000)
-        self.update_slider_labels(1000)
+        self.timer.setInterval(1000)
         self.GOwin.ui.horizontalSlider.setInvertedAppearance(True)
         self.GOwin.ui.horizontalSlider.setTickPosition(QtWidgets.QSlider.TicksBelow)
         self.GOwin.ui.horizontalSlider.valueChanged.connect(self.update_timer_interval)
@@ -94,7 +93,6 @@ class BvBController(QtWidgets.QWidget):
 
         self.GOwin.ui.verticalWidget.setStyleSheet('#verticalWidget{border:1px solid grey;}')
         self.GOwin.ui.verticalWidget_2.setStyleSheet("#verticalWidget_2{border:none}")
-        self.timer = QtCore.QTimer()
 
         self.timer.timeout.connect(self.step_bot_game)
         self.timer.start()
