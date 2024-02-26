@@ -23,6 +23,9 @@ model_pg3 = load_model(path_pg3)
 path_pg4 = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\keras_networks\\model_gradient4.h5'
 model_pg4 = load_model(path_pg4)
 
+path_pg5 = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\keras_networks\\model_gradient5.h5'
+model_pg5 = load_model(path_pg5)
+
 path_DL = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\keras_networks\\model2.h5'
 model_DL = load_model(path_DL)
 
@@ -32,6 +35,7 @@ PG_1 = PolicyAgent(model_pg1, encoder)
 PG_2 = PolicyAgent(model_pg2, encoder)
 PG_3 = PolicyAgent(model_pg3, encoder)
 PG_4 = PolicyAgent(model_pg4, encoder)
+PG_5 = PolicyAgent(model_pg4, encoder)
 DL_BOT = DeepLearningAgent(model_DL, oneplane)
 
 # DICTIONARY FOR BOTS
@@ -41,5 +45,6 @@ BOTS = {
     "Policy Gradient 2": PG_2,
     "Policy Gradient 3": PG_3,
     "Policy Gradient 4": PG_4,
+    "Policy Gradient 5": PG_5,
     "DL Prediction Bot": DL_BOT
 }

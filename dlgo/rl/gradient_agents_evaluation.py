@@ -10,8 +10,8 @@ from dlgo.gotypes import Player
 
 board_size = 9
 
-agent1 = utils.constants.BOTS["Policy Gradient 4"]
-agent2 = utils.constants.BOTS["Policy Gradient 3"]
+agent1 = utils.constants.BOTS["Policy Gradient 3"]
+agent2 = utils.constants.BOTS["Policy Gradient 5"]
 
 black_wins = 0
 white_wins = 0
@@ -35,7 +35,7 @@ def play_game(agent_black, agent_white, board_size):
 
 
 # SETAREA NUMARULUI DE EPISOADE SI APELAREA METODELOR DE ANTRENARE
-num_episodes = 100
+num_episodes = 10
 
 for episode in range(num_episodes):
     print("Started episode: ", episode)
