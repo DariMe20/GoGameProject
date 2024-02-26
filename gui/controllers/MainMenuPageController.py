@@ -39,7 +39,7 @@ class MainMenuPageController(QtWidgets.QMainWindow, Ui_MainWindow):
             self.GoGameWindow = GoWindowController(nameB, nameW, 1, 0, board_size, handicap, komi)
             self.GoGameWindow.show()
         except Exception as e:
-            print(f"Error in bot vs bot create: {e}")
+            print(f"Error in SGF create: {e}")
 
 
     def editSGF(self):
@@ -70,7 +70,7 @@ class MainMenuPageController(QtWidgets.QMainWindow, Ui_MainWindow):
             self.GoGameWindow = GoWindowController(nameB, nameW, 3, player_color, board_size, handicap, komi)
             self.GoGameWindow.show()
         except Exception as e:
-            print(f"Error in bot vs bot create: {e}")
+            print(f"Error in player vs bot create: {e}")
 
     def bot_vs_bot_settings(self):
         self.ui.stackedWidget.setCurrentIndex(3)

@@ -111,7 +111,7 @@ class PolicyAgent(Agent):
         h5file.create_group('model')
         save_model(self._model, h5file)
 
-    def train(self, experience, lr=0.0001, clipnorm=1.0, batch_size=712):
+    def train(self, experience, lr=0.0008, clipnorm=1.0, batch_size=712):
         opt = SGD(learning_rate=lr, clipnorm=clipnorm)
         self._model.compile(loss='categorical_crossentropy', optimizer=opt)
 
