@@ -21,7 +21,13 @@ class GoBoardController(QtWidgets.QGraphicsObject):
 
         self.view_size = 850  # Dimensiunea zonei de vizualizare grafică
         self.cell_size = None
+        self.last_move = None
         self.update_cell_size()
+
+    def set_last_move(self, move):
+        # Metodă nouă pentru setarea ultimei mutări
+        self.last_move = move
+        self.update()
 
     def boundingRect(self):
         return QtCore.QRectF(0, 0, self.view_size, self.view_size)
@@ -75,6 +81,24 @@ class GoBoardController(QtWidgets.QGraphicsObject):
                     stone = board.get(gotypes.Point(row + 1, col + 1))
                     if stone is not None:
                         self.draw_stone(painter, row, col, stone)
+        if self.last_move:
+            row, col = self.last_move
+            self.draw_last_move_marker(painter, row, col)
+
+    def draw_last_move_marker(self, painter, row, col):
+        center = QPointF(self.margin + (col - 1) * self.cell_size, self.margin + (row - 1) * self.cell_size)
+        radius = self.cell_size * 0.3
+
+        # Setează penița pentru a desena conturul cercului
+        pen = QtGui.QPen(QtGui.QColor("grey"))  # Culoare gri pentru contur
+        pen.setWidth(2)  # Grosimea liniei; ajustați după preferințe
+        painter.setPen(pen)
+
+        # Setează pensula ca fiind transparentă pentru a nu umple cercul
+        painter.setBrush(QtCore.Qt.NoBrush)
+
+        # Desenează cercul gol
+        painter.drawEllipse(center, radius, radius)
 
     def draw_hoshi(self, painter, row, col):
         # Calculează centrul și raza pentru hoshi
