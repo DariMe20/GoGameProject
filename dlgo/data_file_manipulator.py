@@ -35,6 +35,10 @@ def save_summary_info(summary_info, filename):
     else:
         existing_content = []
 
+        # Determină numărul următorului antrenament pe baza numărului de intrări existente
+    evaluation_no = len(existing_content) + 1
+    summary_info["EVALUATION_NUMBER"] = evaluation_no
+
     # Adaugă noile informații de summary la conținutul existent
     existing_content.append(summary_info)
 
@@ -42,3 +46,30 @@ def save_summary_info(summary_info, filename):
     with open(filename, 'w') as f:
         json.dump(existing_content, f, indent=4)
     print("Saved summary at ", filename)
+
+
+def save_training_details(training_details, filename):
+    # Verifică dacă fișierul există pentru a încărca detalii existente
+    if os.path.exists(filename):
+        with open(filename, 'r') as f:
+            try:
+                existing_details = json.load(f)
+                # Asigură-te că existing_details este o listă
+                if not isinstance(existing_details, list):
+                    existing_details = []
+            except json.JSONDecodeError:  # Dacă fișierul este gol sau corupt
+                existing_details = []
+    else:
+        existing_details = []
+
+    # Determină numărul următorului antrenament pe baza numărului de intrări existente
+    training_no = len(existing_details) + 1
+    training_details["Training_number"] = training_no
+
+    # Adaugă noile detalii de antrenament la lista de detalii existente
+    existing_details.append(training_details)
+
+    # Salvează toate detaliile (vechi + nouă) înapoi în fișier
+    with open(filename, 'w') as f:
+        json.dump(existing_details, f, indent=4)
+    print(f"Added Training no: {training_no} to {filename}")

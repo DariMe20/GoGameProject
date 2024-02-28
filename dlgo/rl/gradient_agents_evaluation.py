@@ -1,10 +1,9 @@
 import os
+
 import utils.constants
 from dlgo import data_file_manipulator
 from dlgo.goboard import GameState
 from dlgo.gotypes import Player
-
-
 
 # Inițializarea agenților
 agent1_key = "Policy Gradient 5"
@@ -18,7 +17,7 @@ white_wins = 0
 total_black_score = 0
 total_white_score = 0
 board_size = 9
-num_episodes = 1
+num_episodes = 100
 game_results = []
 output_folder = r'..\json_data'
 filename = r'..\json_data\game_evaluation_summary.json'
@@ -49,9 +48,9 @@ def play_game(agent_black, agent_white, board_size):
         'black_agent': agent1_key,
         'white_agent': agent2_key,
         'winner': state.winner(),
-        'black_teritory': black_score,
-        'white_teritory': white_score,
-        'teritory_difference': difference
+        'black_territory': black_score,
+        'white_territory': white_score,
+        'territory_difference': difference
     }
 
 
@@ -72,11 +71,14 @@ for episode in range(num_episodes):
         'winner': str(game_info['winner']),
         'current_score': score,
         'black_agent': str(game_info['black_agent']),
-        'white_agent': str(game_info['white_agent'])
+        'white_agent': str(game_info['white_agent']),
+        'black_score': str(game_info['black_territory']),
+        'white_score': str(game_info['white_territory']),
+        'territory_difference':str(game_info['territory_difference'])
     })
 
-    total_black_score += game_info['black_teritory']
-    total_white_score += game_info['white_teritory']
+    total_black_score += game_info['black_territory']
+    total_white_score += game_info['white_territory']
     print(f"Finished episode {episode} with success!")
 
 
