@@ -1,5 +1,5 @@
 /dlgo/experience_files
-/dlgo/keras_networks/
+/dlgo/keras_networks/*.h5
 /utils/constants.py
 /unused
 /dlgo/json_data
