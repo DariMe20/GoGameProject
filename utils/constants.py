@@ -31,6 +31,10 @@ model_DL = load_model(path_DL)
 path_Q1 = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\rl\\q_value\\q_models\\model_Q1.h5'
 model_Q1 = load_model(path_Q1)
 
+path_Q2 = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\rl\\q_value\\q_models\\model_Q2.h5'
+model_Q2 = load_model(path_Q2)
+
+
 # BOT INITIALIZERS
 RANDOM_BOT = RandomBot()
 PG_1 = PolicyAgent(model_pg1, encoder)
@@ -40,6 +44,7 @@ PG_4 = PolicyAgent(model_pg4, encoder)
 PG_5 = PolicyAgent(model_pg5, encoder)
 DL_BOT = DeepLearningAgent(model_DL, oneplane)
 Q1 = QAgent(model_Q1, encoder)
+Q2 = QAgent(model_Q2, encoder)
 
 # DICTIONARY FOR BOTS
 BOTS = {
@@ -50,5 +55,6 @@ BOTS = {
     "Policy Gradient 4": PG_4,
     "Policy Gradient 5": PG_5,
     "DL Prediction Bot": DL_BOT,
-    "Q1": Q1
+    "Q1": Q1,
+    "Q2": Q2
     }
