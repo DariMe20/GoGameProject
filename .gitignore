@@ -3,3 +3,4 @@
 /utils/constants.py
 /unused
 /dlgo/json_data
+*.h5
