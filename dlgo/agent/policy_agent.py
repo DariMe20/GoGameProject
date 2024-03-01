@@ -4,11 +4,11 @@ from keras import backend as K
 from keras.optimizers import SGD
 from keras.src.saving.saving_api import save_model
 
-from dlgo.agent.base import Agent
-from dlgo.agent.helpers import is_point_an_eye
 from dlgo import encoders, utils
 from dlgo import goboard
 from dlgo import kerasutil
+from dlgo.agent.base import Agent
+from dlgo.agent.helpers import is_point_an_eye
 
 __all__ = [
     'PolicyAgent',
@@ -37,7 +37,7 @@ class PolicyAgent(Agent):
         self._model = model
         self._encoder = encoder
         self._collector = None
-        self._temperature = 0.2
+        self._temperature = 0.4
         self.probs_for_gui = ""
         self.compute_probs = compute_probs
 
@@ -111,7 +111,7 @@ class PolicyAgent(Agent):
         h5file.create_group('model')
         save_model(self._model, h5file)
 
-    def train(self, experience, lr=0.0009, clipnorm=1.0, batch_size=712):
+    def train(self, experience, lr, clipnorm, batch_size):
         opt = SGD(learning_rate=lr, clipnorm=clipnorm)
         self._model.compile(loss='categorical_crossentropy', optimizer=opt)
 

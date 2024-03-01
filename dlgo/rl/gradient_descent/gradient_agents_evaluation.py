@@ -19,8 +19,8 @@ total_white_score = 0
 board_size = 9
 num_episodes = 100
 game_results = []
-output_folder = r'..\json_data'
-filename = r'../../json_data/game_evaluation_summary.json'
+output_folder = r'../../json_data/gradient_descent'
+filename = r'../../json_data/gradient_descent/game_evaluation_summary.json'
 os.makedirs(output_folder, exist_ok=True)
 
 
