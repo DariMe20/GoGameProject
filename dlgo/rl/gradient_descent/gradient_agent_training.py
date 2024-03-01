@@ -13,10 +13,10 @@ def main():
     # Setează direct căile fișierelor și directoriilor
     board_size = 9
     encoder = SimpleEncoder((board_size, board_size))
-    agent_in_path = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\keras_networks\\model_gradient5.h5'
-    agent_out_path = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\keras_networks\\model_gradient6.h5'
+    agent_in_path = '/dlgo/keras_networks/model_gradient4.h5'
+    agent_out_path = '/dlgo/keras_networks/model_gradient5.h5'
     experience_folder = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\experience_files'
-    training_details_filename = '../json_data/training_data.json'
+    training_details_filename = '../../json_data/training_data.json'
 
     # Inițializează o listă pentru a păstra numele fișierelor de experiență
     experience_files_names = []

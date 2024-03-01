@@ -20,7 +20,7 @@ board_size = 9
 num_episodes = 100
 game_results = []
 output_folder = r'..\json_data'
-filename = r'..\json_data\game_evaluation_summary.json'
+filename = r'../../json_data/game_evaluation_summary.json'
 os.makedirs(output_folder, exist_ok=True)
 
 
