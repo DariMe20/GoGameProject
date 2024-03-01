@@ -10,7 +10,7 @@ class QAgent(Agent):
         self.model = model
         self.encoder = encoder
         self.collector = None
-        self.temperature = 0.0
+        self.temperature = 0.5
 
     # SETTER METHODS
     def set_temperature(self, temperature):
@@ -68,5 +68,5 @@ class QAgent(Agent):
                         state=board_tensor,
                         action=moves[move_idx],
                         )
-            return goboard.Move.play(point)
+                return goboard.Move.play(point)
         return goboard.Move.pass_turn()

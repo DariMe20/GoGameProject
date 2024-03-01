@@ -1,7 +1,14 @@
 from keras.layers import Input, Dense, Flatten, concatenate
 from keras.models import Model
+from keras.src.optimizers import Adam
 
+from dlgo.encoders.simple import SimpleEncoder
 from dlgo.keras_networks.large_network import layers
+
+board_size = 9
+encoder = SimpleEncoder((board_size, board_size))
+shape = encoder.shape()
+points = encoder.num_points()
 
 
 def create_q_value_network(input_shape, num_points):
@@ -31,3 +38,12 @@ def create_q_value_network(input_shape, num_points):
 
     return model
 
+
+def build_q_model():
+    q_value_model = create_q_value_network(shape, points)
+    q_value_model.compile(loss='mse', optimizer=Adam(lr=0.001))
+    return q_value_model
+
+
+q_model = build_q_model()
+q_model.save('./q_models/model_Q1.h5')
