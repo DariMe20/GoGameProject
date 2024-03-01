@@ -31,6 +31,8 @@ def create_q_value_network(input_shape, num_points):
 
     # Un layer ascuns și definirea output-ului pentru q_values
     hidden_layer = Dense(256, activation='relu')(board_and_action)
+
+    # Dense layer cu activare tip tanh pentru ca Q(s,a) sa fie intre [-1, 1]
     q_value_output = Dense(1, activation='tanh')(hidden_layer)
 
     # Crearea modelului
