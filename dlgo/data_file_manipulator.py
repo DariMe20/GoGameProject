@@ -37,7 +37,7 @@ def save_summary_info(summary_info, filename):
 
         # Determină numărul următorului antrenament pe baza numărului de intrări existente
     evaluation_no = len(existing_content) + 1
-    summary_info["EVALUATION_NUMBER"] = evaluation_no
+    summary_info["SUMMARY_NUMBER"] = evaluation_no
 
     # Adaugă noile informații de summary la conținutul existent
     existing_content.append(summary_info)
@@ -73,3 +73,15 @@ def save_training_details(training_details, filename):
     with open(filename, 'w') as f:
         json.dump(existing_details, f, indent=4)
     print(f"Added Training no: {training_no} to {filename}")
+
+
+def generate_experience_filename(output_folder, base_name="Q_experience"):
+    files = os.listdir(output_folder)
+    matching_files = [f for f in files if f.startswith(base_name) and f.endswith(".h5")]
+
+    numbers = [int(f[len(base_name):f.rfind(".")]) for f in matching_files if f[len(base_name):f.rfind(".")].isdigit()]
+    next_number = max(numbers) + 1 if numbers else 1
+
+    new_filename = f"{base_name}{next_number}.h5"
+
+    return os.path.join(output_folder, new_filename)
