@@ -12,7 +12,8 @@ class QAgent(Agent):
         self._model = model
         self._encoder = encoder
         self.collector = None
-        self.temperature = 0.5
+        self.temperature = 0.1
+        self.compute_probs = False
 
     # SETTER METHODS
     def set_temperature(self, temperature):
