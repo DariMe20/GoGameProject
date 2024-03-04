@@ -2,8 +2,8 @@ import os
 import sys
 from PyQt5 import QtWidgets
 from PyQt5.QtGui import QPixmap
-from dlgo import gotypes
-from dlgo.gotypes import Player, Point
+from dlgo.game_rules_implementation import gotypes
+from dlgo.game_rules_implementation.gotypes import Player
 from gui.generated_files.MainWindow import Ui_MainWindow
 from gui.section_controllers.Bot_vs_Bot_Controller import BvBController
 from gui.section_controllers.CreateSGFController import CreateSGFController

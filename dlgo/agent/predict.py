@@ -3,9 +3,10 @@ import random
 
 from dlgo.agent.base import Agent
 from dlgo.agent.helpers import is_point_an_eye
-from dlgo import encoders, utils
-from dlgo import goboard
-from dlgo import kerasutil
+from dlgo import encoders
+from utils import utils
+from dlgo.game_rules_implementation import goboard
+from dlgo.keras_networks import kerasutil
 
 
 class DeepLearningAgent(Agent):

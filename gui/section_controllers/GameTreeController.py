@@ -1,10 +1,9 @@
 from PyQt5.QtWidgets import QGraphicsView, QGraphicsScene, QGraphicsEllipseItem, QGraphicsSimpleTextItem, \
     QGraphicsRectItem
-from PyQt5.QtGui import QBrush, QPen, QColor
+from PyQt5.QtGui import QBrush, QPen
 from PyQt5.QtCore import Qt
-from PyQt5.uic.properties import QtCore
 
-from dlgo import gotypes
+from dlgo.game_rules_implementation import gotypes
 
 
 class MoveItem(QGraphicsEllipseItem):

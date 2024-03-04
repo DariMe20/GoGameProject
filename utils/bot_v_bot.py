@@ -1,9 +1,7 @@
 
 from dlgo import agent
-from dlgo import goboards_slow
-from dlgo import gotypes
-from dlgo.agent import naive
-from dlgo.utils import print_board, print_move
+from dlgo.game_rules_implementation import gotypes, goboards_slow
+from utils.utils import print_board, print_move
 import time
 
 

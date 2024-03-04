@@ -1,7 +1,7 @@
 from PyQt5 import QtWidgets, QtCore, QtGui
 from PyQt5.QtCore import QPointF, pyqtSignal
 
-from dlgo import gotypes
+from dlgo.game_rules_implementation import gotypes
 
 
 class GoBoardController(QtWidgets.QGraphicsObject):

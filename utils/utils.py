@@ -1,4 +1,4 @@
-from dlgo import gotypes
+from dlgo.game_rules_implementation import gotypes
 from scipy.stats import binomtest
 
 COLS = 'ABCDEFGHJKLMNOPQRST'

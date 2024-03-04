@@ -1,6 +1,5 @@
 import numpy as np
 
-from dlgo.goboard import GameState
 from dlgo.rl.experience import ExperienceBuffer
 
 

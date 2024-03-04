@@ -3,7 +3,7 @@ import os
 import h5py
 from keras.src.saving.saving_api import load_model
 
-from dlgo import data_file_manipulator
+from utils import data_file_manipulator
 from dlgo.agent import QAgent
 from dlgo.encoders.simple import SimpleEncoder
 from dlgo.rl import load_experience

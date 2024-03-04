@@ -1,11 +1,7 @@
-import h5py
 from PyQt5 import QtWidgets, QtCore
-from keras.models import load_model
 
-from dlgo.agent.policy_agent import PolicyAgent
-from dlgo import gotypes, goboard
-from dlgo.encoders.simple import SimpleEncoder
-from dlgo.gotypes import Player
+from dlgo.game_rules_implementation import goboard, gotypes
+from dlgo.game_rules_implementation.gotypes import Player
 
 
 class BvBController(QtWidgets.QWidget):

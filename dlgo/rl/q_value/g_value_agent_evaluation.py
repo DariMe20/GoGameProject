@@ -3,11 +3,11 @@ import os
 from keras import Sequential
 from keras.src.saving.saving_api import load_model
 
-from dlgo import data_file_manipulator
+from utils import data_file_manipulator
 from dlgo.agent import QAgent
 from dlgo.encoders.simple import SimpleEncoder
-from dlgo.goboard import GameState
-from dlgo.gotypes import Player
+from dlgo.game_rules_implementation.goboard import GameState
+from dlgo.game_rules_implementation.gotypes import Player
 
 # Inițializarea agenților
 agent1_key = "Q agent 1"

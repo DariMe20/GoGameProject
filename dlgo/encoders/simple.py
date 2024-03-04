@@ -2,8 +2,8 @@
 import numpy as np
 
 from dlgo.encoders.base import Encoder
-from dlgo.goboard import Move
-from dlgo.gotypes import Player, Point
+from dlgo.game_rules_implementation.goboard import Move
+from dlgo.game_rules_implementation.gotypes import Player, Point
 
 
 class SimpleEncoder(Encoder):

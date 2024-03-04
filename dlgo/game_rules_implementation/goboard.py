@@ -1,7 +1,7 @@
 import copy
 
-from dlgo import zobrist, gotypes
-from dlgo.gotypes import Player, Point
+from dlgo.game_rules_implementation import gotypes, zobrist
+from dlgo.game_rules_implementation.gotypes import Player, Point
 
 
 class Move:

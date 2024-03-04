@@ -2,7 +2,7 @@ import numpy as np
 from keras.src.optimizers import SGD
 from keras.src.saving.saving_api import save_model
 
-from dlgo import goboard
+from dlgo.game_rules_implementation import goboard
 from dlgo.agent import Agent, is_point_an_eye
 
 

@@ -3,7 +3,7 @@ from keras.src.saving.saving_api import load_model
 
 from dlgo.agent.predict import DeepLearningAgent
 from dlgo.encoders.oneplane import OnePlaneEncoder
-from dlgo import gotypes, goboard
+from dlgo.game_rules_implementation import goboard, gotypes
 
 
 class PvBController(QtWidgets.QWidget):

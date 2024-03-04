@@ -1,9 +1,6 @@
 from PyQt5 import QtWidgets, QtCore
-from PyQt5.QtGui import QStandardItemModel, QStandardItem
 
-from dlgo.agent.predict import DeepLearningAgent
-from dlgo.encoders.oneplane import OnePlaneEncoder
-from dlgo import gotypes, goboard
+from dlgo.game_rules_implementation import goboard, gotypes
 from gui.section_controllers.GameTreeController import GameTreeBoard
 
 

@@ -1,7 +1,7 @@
 import copy
 
-from dlgo import gotypes
-from dlgo.gotypes import Player, Point
+from dlgo.game_rules_implementation import gotypes
+from dlgo.game_rules_implementation.gotypes import Player, Point
 
 
 class Move:
@@ -382,7 +382,7 @@ class GameState:
         # Aceasta este o implementare foarte simplificată și probabil că va trebui să fie ajustată
         black_score = self.board.count_stones(gotypes.Player.black)
         white_score = (
-            self.board.count_stones(gotypes.Player.white) + self.komi
+                self.board.count_stones(gotypes.Player.white) + self.komi
         )  # presupunând că ai o valoare de komi
     
         if black_score > white_score:
