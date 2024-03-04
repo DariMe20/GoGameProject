@@ -13,8 +13,8 @@ def main():
     # Setează direct căile fișierelor și directoriilor
     board_size = 9
     encoder = SimpleEncoder((board_size, board_size))
-    agent_in_path = '../q_value/q_models/model_Q1.h5'
-    agent_out_path = '../q_value/q_models/model_Q2.h5'
+    agent_in_path = '../q_value/q_models/model_Q2.h5'
+    agent_out_path = '../q_value/q_models/model_Q2_V2.h5'
     experience_folder = '../q_value/q_value_experience_files'
     training_details_filename = '../../json_data/q_value/training_data.json'
 
@@ -28,9 +28,9 @@ def main():
     learning_model = load_model(agent_in_path)
     learning_agent = QAgent(learning_model, encoder)
 
-    lr = 0.01
+    lr = 0.0002
     clip_norm = 1.0
-    batch_size = 128
+    batch_size = 728
 
     # Antrenează agentul folosind fiecare fișier de experiență
     for exp_filename in experience_files:

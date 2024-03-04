@@ -25,6 +25,11 @@ model_Q2 = load_model(path_Q2)
 agent1 = QAgent(model_Q1, encoder)
 agent2 = QAgent(model_Q2, encoder)
 
+# SETARE NIVEL DE EXPLORARE PE AGENTI
+agent1.set_temperature(0.02)
+agent2.set_temperature(0.02)
+
+
 # INITIALIZARE DATE
 black_wins = 0
 white_wins = 0

@@ -1,11 +1,13 @@
 from dlgo import gotypes
+from scipy.stats import binomtest
 
 COLS = 'ABCDEFGHJKLMNOPQRST'
 STONE_TO_CHAR = {
     None: ' . ',
     gotypes.Player.black: ' B ',
     gotypes.Player.white: ' W ',
-}
+    }
+
 
 def print_move(player, move):
     if move.is_pass:
@@ -76,3 +78,6 @@ def probs_for_gui(move_probs, board_width, board_height):
     board_html += "</tbody></table></body></html>"
 
     return board_html
+
+
+print(binomtest(81, 100))

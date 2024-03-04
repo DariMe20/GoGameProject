@@ -16,9 +16,9 @@ board_size = 9
 encoder = SimpleEncoder((board_size, board_size))
 model = Sequential()
 
-path_Q1 = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\rl\\q_value\\q_models\\model_Q1.h5'
+path_Q1 = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\rl\\q_value\\q_models\\model_Q2.h5'
 model_Q1 = load_model(path_Q1)
-path_Q2 = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\rl\\q_value\\q_models\\model_Q1.h5'
+path_Q2 = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\rl\\q_value\\q_models\\model_Q2_V2.h5'
 model_Q2 = load_model(path_Q2)
 
 agent1 = QAgent(model_Q1, encoder)
@@ -33,12 +33,12 @@ agent2.set_collector(collector2)
 # STABILIRE CULORI AGENTI
 black_agent = agent1
 white_agent = agent2
-black_key = "Q agent 1"
-white_key = "Q agent 1"
+black_key = "Q agent 2 V2"
+white_key = "Q agent 2"
 
 # SETARE NIVEL DE EXPLORARE PE AGENTI
-black_agent.set_temperature(0.4)
-white_agent.set_temperature(0.5)
+black_agent.set_temperature(0.02)
+white_agent.set_temperature(0.02)
 
 # INITIALIZARE DATE
 num_episodes = 100
