@@ -2,7 +2,7 @@ import numpy as np
 import random
 
 from dlgo.agent.base import Agent
-from dlgo.agent.helpers import is_point_an_eye
+from utils.helpers import is_point_an_eye
 from dlgo import encoders
 from utils import utils
 from dlgo.game_rules_implementation import goboard

@@ -9,7 +9,7 @@ from utils import utils
 from dlgo.game_rules_implementation import goboard
 from dlgo.keras_networks import kerasutil
 from dlgo.agent.base import Agent
-from dlgo.agent.helpers import is_point_an_eye
+from utils.helpers import is_point_an_eye
 
 __all__ = [
     'PolicyAgent',
