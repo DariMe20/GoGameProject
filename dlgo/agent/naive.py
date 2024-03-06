@@ -1,9 +1,9 @@
 import random
-from dlgo.agent.base import Agent
 
-from dlgo.game_rules_implementation.goboard import Move
-from utils.helpers import is_point_an_eye
+from dlgo.agent.base import Agent
+from dlgo.game_rules_implementation.Move import Move
 from dlgo.game_rules_implementation.gotypes import Point
+from utils.helpers import is_point_an_eye
 
 
 class RandomBot(Agent):

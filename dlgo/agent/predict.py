@@ -1,12 +1,13 @@
-import numpy as np
 import random
 
-from dlgo.agent.base import Agent
-from utils.helpers import is_point_an_eye
+import numpy as np
+
+import dlgo.game_rules_implementation.Move
 from dlgo import encoders
-from utils import utils
-from dlgo.game_rules_implementation import goboard
+from dlgo.agent.base import Agent
 from dlgo.keras_networks import kerasutil
+from utils import utils
+from utils.helpers import is_point_an_eye
 
 
 class DeepLearningAgent(Agent):
@@ -49,21 +50,21 @@ class DeepLearningAgent(Agent):
         try:
             move_probs, chosen_move, num_moves = self.get_move_probs(game_state)
 
-            if game_state.is_valid_move(goboard.Move.play(chosen_move)) and \
+            if game_state.is_valid_move(dlgo.game_rules_implementation.Move.Move.play(chosen_move)) and \
                     not is_point_an_eye(game_state.board, chosen_move, game_state.next_player):
-                return goboard.Move.play(chosen_move)
+                return dlgo.game_rules_implementation.Move.Move.play(chosen_move)
 
             # Dacă cea mai probabilă mutare nu este validă, alege următoarea cea mai probabilă mutare
             # Prin sortarea probabilităților în ordine descrescătoare și verificarea fiecărei mutări
             for idx in np.argsort(move_probs)[::-1]:
                 point = self.encoder.decode_point_index(idx)
-                if game_state.is_valid_move(goboard.Move.play(point)) and \
+                if game_state.is_valid_move(dlgo.game_rules_implementation.Move.Move.play(point)) and \
                         not is_point_an_eye(game_state.board, point,
                                             game_state.next_player):
-                    return goboard.Move.play(point)
+                    return dlgo.game_rules_implementation.Move.Move.play(point)
 
             # Dacă nicio mutare validă nu este găsită, returnează o pasare
-            return goboard.Move.pass_turn()
+            return dlgo.game_rules_implementation.Move.Move.pass_turn()
         except Exception as e:
             print(f"An error occurend in select_move: {e}")
 

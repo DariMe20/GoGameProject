@@ -1,6 +1,7 @@
 from PyQt5 import QtWidgets, QtCore
 from keras.src.saving.saving_api import load_model
 
+import dlgo.game_rules_implementation.Move
 from dlgo.agent.predict import DeepLearningAgent
 from dlgo.encoders.oneplane import OnePlaneEncoder
 from dlgo.game_rules_implementation import goboard, gotypes
@@ -57,7 +58,7 @@ class PvBController(QtWidgets.QWidget):
         try:
             if self.is_player_turn and not self.game.is_over():
                 row, col = point  # Despachetarea tuplei
-                move = goboard.Move.play(gotypes.Point(row, col))
+                move = dlgo.game_rules_implementation.Move.Move.play(gotypes.Point(row, col))
                 if self.game.is_valid_move(move):
                     self.GOwin.view_move(self.game, move, self.current_player)
                     self.GOwin.emphasise_player_turn(self.current_player)

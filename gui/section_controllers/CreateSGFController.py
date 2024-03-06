@@ -1,5 +1,6 @@
 from PyQt5 import QtWidgets, QtCore
 
+import dlgo.game_rules_implementation.Move
 from dlgo.game_rules_implementation import goboard, gotypes
 from gui.section_controllers.GameTreeController import GameTreeBoard
 
@@ -63,7 +64,7 @@ class CreateSGFController(QtWidgets.QWidget):
             if not self.game.is_over():
 
                 row, col = point  # Despachetarea tuplei
-                move = goboard.Move.play(gotypes.Point(row, col))
+                move = dlgo.game_rules_implementation.Move.Move.play(gotypes.Point(row, col))
                 if self.game.is_valid_move(move) and self.game.next_player == self.current_player:
                     self.GOwin.emphasise_player_turn(self.current_player)
                     self.game = self.game.apply_move(move)
