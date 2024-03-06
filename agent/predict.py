@@ -3,8 +3,8 @@ import random
 import numpy as np
 
 import dlgo.game_rules_implementation.Move
+from agent.base import Agent
 from dlgo import encoders
-from dlgo.agent.base import Agent
 from dlgo.keras_networks import kerasutil
 from utils import utils
 from utils.helpers import is_point_an_eye

@@ -5,8 +5,8 @@ from keras.optimizers import SGD
 from keras.src.saving.saving_api import save_model
 
 import dlgo.game_rules_implementation.Move
+from agent.base import Agent
 from dlgo import encoders
-from dlgo.agent.base import Agent
 from dlgo.keras_networks import kerasutil
 from utils import utils
 from utils.helpers import is_point_an_eye
@@ -15,7 +15,7 @@ __all__ = [
     'PolicyAgent',
     'load_policy_agent',
     'policy_gradient_loss',
-]
+    ]
 
 
 # Keeping this around so we can read existing agents. But from now on
@@ -33,6 +33,7 @@ def normalize(x):
 
 class PolicyAgent(Agent):
     """An agent that uses a deep policy network to select moves."""
+
     def __init__(self, model, encoder, compute_probs=True):
         Agent.__init__(self)
         self._model = model
@@ -93,13 +94,13 @@ class PolicyAgent(Agent):
         for point_idx in ranked_moves:
             point = self._encoder.decode_point_index(point_idx)
             if game_state.is_valid_move(dlgo.game_rules_implementation.Move.Move.play(point)) \
-                    and not is_point_an_eye(game_state.board,point, game_state.next_player) \
+                    and not is_point_an_eye(game_state.board, point, game_state.next_player) \
                     and not game_state.is_move_on_edge(dlgo.game_rules_implementation.Move.Move.play(point)):
                 if self._collector is not None:
                     self._collector.record_decision(
                         state=board_tensor,
                         action=point_idx
-                    )
+                        )
                 return dlgo.game_rules_implementation.Move.Move.play(point)
         # No legal, non-self-destructive moves less.
         return dlgo.game_rules_implementation.Move.Move.pass_turn()
@@ -156,4 +157,3 @@ def print_probs(move_probs, board_width, board_height):
             row_formatted.append('{:.2f}'.format(mi) + "%")
             i += 1
         print(' '.join(row_formatted))
-

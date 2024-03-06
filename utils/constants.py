@@ -1,7 +1,7 @@
 from keras import Sequential
 from keras.src.saving.saving_api import load_model
 
-from dlgo.agent import RandomBot, PolicyAgent, DeepLearningAgent, QAgent
+from agent import RandomBot, PolicyAgent, DeepLearningAgent, QAgent
 from dlgo.encoders.oneplane import OnePlaneEncoder
 from dlgo.encoders.simple import SimpleEncoder
 

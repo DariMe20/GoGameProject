@@ -4,13 +4,13 @@ import h5py
 from keras import Sequential
 from keras.src.saving.saving_api import load_model
 
-from utils import data_file_manipulator
-from dlgo.agent import QAgent
+from agent import QAgent
 from dlgo.encoders.simple import SimpleEncoder
-from dlgo.game_rules_implementation.goboard import GameState
 from dlgo.game_rules_implementation.Player import Player
+from dlgo.game_rules_implementation.goboard import GameState
 from dlgo.rl import experience
 from dlgo.rl.experience_colector import ExperienceCollector
+from utils import data_file_manipulator
 
 board_size = 9
 encoder = SimpleEncoder((board_size, board_size))
@@ -124,7 +124,6 @@ for episode in range(num_episodes):
     total_white_score += game_info['white_territory']
     print(f"Finished episode {episode} with success!")
 
-
 experience_combined = experience.combine_experience([collector1, collector2])
 experience_filename = data_file_manipulator.generate_experience_filename(experience_directory)
 with h5py.File(experience_filename, 'w') as experience_outf:
@@ -145,7 +144,7 @@ summary_info = {
     'Average_white_score': average_white_score,
     'black_temperature (epsilon)': black_temperature,
     'white_temperature (epsilon)': white_temperature
-}
+    }
 
 # SALVARE DATE IN FISIERE JSON
 data_file_manipulator.generate_filename(black_key, white_key, output_folder)

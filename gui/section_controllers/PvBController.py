@@ -4,7 +4,7 @@ from keras.src.saving.saving_api import load_model
 import dlgo.game_rules_implementation.Move
 import dlgo.game_rules_implementation.Player
 import dlgo.game_rules_implementation.Point
-from dlgo.agent.predict import DeepLearningAgent
+from agent import DeepLearningAgent
 from dlgo.encoders.oneplane import OnePlaneEncoder
 from dlgo.game_rules_implementation import goboard
 

@@ -3,10 +3,10 @@ import os
 import h5py
 from keras.src.saving.saving_api import load_model
 
-from utils import data_file_manipulator
-from dlgo.agent import PolicyAgent
+from agent import PolicyAgent
 from dlgo.encoders.simple import SimpleEncoder
 from dlgo.rl.experience import load_experience
+from utils import data_file_manipulator
 
 
 def main():
@@ -52,10 +52,11 @@ def main():
         'clip_norm': clip_norm,
         'batch_size': batch_size,
         'experience_files': experience_files_names  # Adaugă lista de nume de fișiere de experiență
-    }
+        }
 
     # Salvează detalii despre antrenament
     data_file_manipulator.save_training_details(training_details, training_details_filename)
+
 
 if __name__ == '__main__':
     main()

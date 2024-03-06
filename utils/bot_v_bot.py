@@ -1,7 +1,7 @@
 import time
 
+import agent
 import dlgo.game_rules_implementation.Player
-from dlgo import agent
 from dlgo.game_rules_implementation import goboard
 from utils.utils import print_board, print_move
 

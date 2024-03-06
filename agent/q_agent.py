@@ -3,7 +3,7 @@ from keras.src.optimizers import SGD
 from keras.src.saving.saving_api import save_model
 
 import dlgo.game_rules_implementation.Move
-from dlgo.agent import Agent, is_point_an_eye
+from agent import Agent, is_point_an_eye
 
 
 class QAgent(Agent):
@@ -90,7 +90,7 @@ class QAgent(Agent):
         # Translate the actions/rewards.
         num_moves = self._encoder.num_points()
         actions = np.zeros((n, num_moves))
-        y = np.zeros((n, ))
+        y = np.zeros((n,))
 
         for i in range(n):
             action = experience.actions[i]
