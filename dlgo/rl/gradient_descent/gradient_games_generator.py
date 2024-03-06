@@ -1,7 +1,7 @@
 import h5py
 
 from dlgo.game_rules_implementation.goboard import GameState
-from dlgo.game_rules_implementation.gotypes import Player
+from dlgo.game_rules_implementation.Player import Player
 from dlgo.rl import experience
 from dlgo.rl.experience_colector import ExperienceCollector
 from utils import constants

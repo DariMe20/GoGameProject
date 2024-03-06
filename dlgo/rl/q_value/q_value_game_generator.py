@@ -8,7 +8,7 @@ from utils import data_file_manipulator
 from dlgo.agent import QAgent
 from dlgo.encoders.simple import SimpleEncoder
 from dlgo.game_rules_implementation.goboard import GameState
-from dlgo.game_rules_implementation.gotypes import Player
+from dlgo.game_rules_implementation.Player import Player
 from dlgo.rl import experience
 from dlgo.rl.experience_colector import ExperienceCollector
 

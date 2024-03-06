@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import QGraphicsView, QGraphicsScene, QGraphicsEllipseItem,
 from PyQt5.QtGui import QBrush, QPen
 from PyQt5.QtCore import Qt
 
+import dlgo.game_rules_implementation.Player
 from dlgo.game_rules_implementation import gotypes
 
 
@@ -42,7 +43,7 @@ class GameTreeBoard(QGraphicsView):
 
     def add_move_to_game_tree(self, move_number, player):
         # Determinați culoarea jucătorului
-        color = Qt.black if player == gotypes.Player.black else Qt.white
+        color = Qt.black if player == dlgo.game_rules_implementation.Player.Player.black else Qt.white
         move_item = MoveItem(move_number, color)
 
         x_position = move_number * 50  # Ajustați spațiul după preferințe

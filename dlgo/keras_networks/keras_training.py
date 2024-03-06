@@ -1,8 +1,8 @@
+import os
+
 import numpy as np
 from keras import Sequential
 from keras.layers import Conv2D, Dropout, MaxPooling2D, Flatten, Dense
-import os
-from keras.optimizers import Adagrad
 
 np.random.seed(123)
 X = np.load('C:/DARIA/1.FSEGA/LICENTA/GoGameProject/features-40k.npy')
@@ -58,10 +58,11 @@ model_dir = '.\\'
 if not os.path.exists(model_dir):
     os.makedirs(model_dir)
 
-model_path = os.path.join(model_dir, 'model2.h5')
+model_path = os.path.join(model_dir, 'model_PredictionAgent.h5')
 model.save(model_path)
 
 print("Modelul a fost salvat cu succes")
+
 
 def softmax(x):
     """

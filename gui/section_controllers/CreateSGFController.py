@@ -1,6 +1,8 @@
 from PyQt5 import QtWidgets, QtCore
 
 import dlgo.game_rules_implementation.Move
+import dlgo.game_rules_implementation.Player
+import dlgo.game_rules_implementation.Point
 from dlgo.game_rules_implementation import goboard, gotypes
 from gui.section_controllers.GameTreeController import GameTreeBoard
 
@@ -46,7 +48,7 @@ class CreateSGFController(QtWidgets.QWidget):
 
     def create_sgf_game(self):
         self.game = goboard.GameState.new_game(self.board_size)
-        self.current_player = gotypes.Player.black
+        self.current_player = dlgo.game_rules_implementation.Player.Player.black
         self.GOwin.ui.lineEdit_BlackCaptures.setText(str(self.game.white_prisoners)+" Prisoners")
         self.GOwin.ui.lineEdit_WhiteCaptures.setText(str(self.game.black_prisoners) + " Prisoners")
         self.board.clicked.connect(self.player_move)
@@ -64,7 +66,8 @@ class CreateSGFController(QtWidgets.QWidget):
             if not self.game.is_over():
 
                 row, col = point  # Despachetarea tuplei
-                move = dlgo.game_rules_implementation.Move.Move.play(gotypes.Point(row, col))
+                move = dlgo.game_rules_implementation.Move.Move.play(
+                    dlgo.game_rules_implementation.Point.Point(row, col))
                 if self.game.is_valid_move(move) and self.game.next_player == self.current_player:
                     self.GOwin.emphasise_player_turn(self.current_player)
                     self.game = self.game.apply_move(move)
@@ -79,7 +82,7 @@ class CreateSGFController(QtWidgets.QWidget):
                     self.moves_list.append((self.current_player, point))
 
                     # Alternează între jucătorul negru și alb
-                    self.current_player = gotypes.Player.white if self.current_player == gotypes.Player.black else gotypes.Player.black
+                    self.current_player = dlgo.game_rules_implementation.Player.Player.white if self.current_player == dlgo.game_rules_implementation.Player.Player.black else dlgo.game_rules_implementation.Player.Player.black
 
                 self.GOwin.ui.lineEdit_BlackCaptures.setText(str(self.game.white_prisoners)+" Prisoners")
                 self.GOwin.ui.lineEdit_WhiteCaptures.setText(str(self.game.black_prisoners) + " Prisoners")

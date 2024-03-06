@@ -1,6 +1,8 @@
 from PyQt5 import QtWidgets, QtCore, QtGui
 from PyQt5.QtCore import QPointF, pyqtSignal
 
+import dlgo.game_rules_implementation.Player
+import dlgo.game_rules_implementation.Point
 from dlgo.game_rules_implementation import gotypes
 
 
@@ -78,7 +80,7 @@ class GoBoardController(QtWidgets.QGraphicsObject):
             board = self.game.board
             for row in range(self.board_size):
                 for col in range(self.board_size):
-                    stone = board.get(gotypes.Point(row + 1, col + 1))
+                    stone = board.get(dlgo.game_rules_implementation.Point.Point(row + 1, col + 1))
                     if stone is not None:
                         self.draw_stone(painter, row, col, stone)
         if self.last_move:
@@ -116,7 +118,7 @@ class GoBoardController(QtWidgets.QGraphicsObject):
         center_x = self.margin + col * self.cell_size
         center_y = self.margin + row * self.cell_size
         radius = round(self.cell_size // 2)
-        color = QtCore.Qt.black if stone == gotypes.Player.black else QtCore.Qt.white
+        color = QtCore.Qt.black if stone == dlgo.game_rules_implementation.Player.Player.black else QtCore.Qt.white
         painter.setBrush(QtGui.QBrush(color))
         painter.drawEllipse(QtCore.QPointF(center_x, center_y), radius, radius)
 

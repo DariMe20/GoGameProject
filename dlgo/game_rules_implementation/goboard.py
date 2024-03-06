@@ -1,9 +1,11 @@
 import copy
 
+import dlgo.game_rules_implementation.Player
 from dlgo.game_rules_implementation import gotypes
 from dlgo.game_rules_implementation.Board import Board
 from dlgo.game_rules_implementation.Move import Move
-from dlgo.game_rules_implementation.gotypes import Player, Point
+from dlgo.game_rules_implementation.Point import Point
+from dlgo.game_rules_implementation.Player import Player
 
 
 class GameState:
@@ -167,10 +169,10 @@ class GameState:
         white_score = scores[Player.white] - scores[Player.black]
         if black_score > 0:
             print(f"Black won by {black_score}")
-            return gotypes.Player.black
+            return dlgo.game_rules_implementation.Player.Player.black
         elif white_score > 0:
             print(f"White won by {white_score}")
-            return gotypes.Player.white
+            return dlgo.game_rules_implementation.Player.Player.white
         else:
             return None
 
@@ -261,7 +263,7 @@ class GameState:
         :return: O listă de puncte unde pietrele de culoarea specificată pot fi capturate.
         """
         # Identifică culoarea adversarului
-        opponent_color = gotypes.Player.black if color == gotypes.Player.white else gotypes.Player.white
+        opponent_color = dlgo.game_rules_implementation.Player.Player.black if color == dlgo.game_rules_implementation.Player.Player.white else dlgo.game_rules_implementation.Player.Player.white
 
         # Găsește grupurile adversarului care sunt în Atari
         atari_groups = self.find_atari_groups(opponent_color)

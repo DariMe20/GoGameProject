@@ -3,7 +3,7 @@ import os
 import utils.constants
 from utils import data_file_manipulator
 from dlgo.game_rules_implementation.goboard import GameState
-from dlgo.game_rules_implementation.gotypes import Player
+from dlgo.game_rules_implementation.Player import Player
 
 # Inițializarea agenților
 agent1_key = "Policy Gradient 5"

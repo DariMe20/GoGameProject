@@ -3,7 +3,8 @@ import numpy as np
 
 from dlgo.encoders.base import Encoder
 from dlgo.game_rules_implementation.Move import Move
-from dlgo.game_rules_implementation.gotypes import Player, Point
+from dlgo.game_rules_implementation.Point import Point
+from dlgo.game_rules_implementation.Player import Player
 
 
 class SimpleEncoder(Encoder):

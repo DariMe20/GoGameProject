@@ -1,5 +1,5 @@
 from dlgo.game_rules_implementation.GoString import GoString
-from dlgo.game_rules_implementation.gotypes import Point
+from dlgo.game_rules_implementation.Point import Point
 from utils import zobrist
 
 
