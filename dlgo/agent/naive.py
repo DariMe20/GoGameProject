@@ -1,7 +1,7 @@
 import random
 from dlgo.agent.base import Agent
 from dlgo.agent.helpers import is_point_an_eye
-from dlgo.game_rules_implementation.goboards_slow import Move
+from dlgo.game_rules_implementation.goboard import Move
 from dlgo.game_rules_implementation.gotypes import Point
 
 
