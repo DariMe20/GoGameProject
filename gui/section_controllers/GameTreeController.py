@@ -1,17 +1,16 @@
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QBrush, QPen
 from PyQt5.QtWidgets import QGraphicsView, QGraphicsScene, QGraphicsEllipseItem, QGraphicsSimpleTextItem, \
     QGraphicsRectItem
-from PyQt5.QtGui import QBrush, QPen
-from PyQt5.QtCore import Qt
 
 import dlgo.game_rules_implementation.Player
-from dlgo.game_rules_implementation import gotypes
 
 
 class MoveItem(QGraphicsEllipseItem):
     def __init__(self, move_number, player_color, parent=None):
         super().__init__(parent)
         radius = 20
-        self.setRect(-radius, -radius, 2*radius, 2*radius)
+        self.setRect(-radius, -radius, 2 * radius, 2 * radius)
         self.setBrush(QBrush(player_color))
 
         # Adaugă numărul mutării
@@ -19,7 +18,7 @@ class MoveItem(QGraphicsEllipseItem):
 
         text_color = Qt.white if player_color == Qt.black else Qt.black
         text_item.setBrush(QBrush(text_color))
-        text_item.setPos(-radius/2, -radius/2)  # Centrare text
+        text_item.setPos(-radius / 2, -radius / 2)  # Centrare text
 
 
 class LastMoveMarker(QGraphicsRectItem):
@@ -48,16 +47,16 @@ class GameTreeBoard(QGraphicsView):
 
         x_position = move_number * 50  # Ajustați spațiul după preferințe
         move_item.setPos(x_position, 0)  # Setează poziția orizontală
-    
+
         # Adăugați elementul în scena GameTreeBoard
         self.scene.addItem(move_item)
-    
+
         # Actualizează markerul pentru ultima mutare
         if hasattr(self, 'last_move_marker'):
             self.scene.removeItem(self.last_move_marker)
         self.last_move_marker = LastMoveMarker()
         self.last_move_marker.setPos(x_position, 0)
         self.scene.addItem(self.last_move_marker)
-    
+
         # # Ajustați vizualizarea pentru a arăta noua mutare
         # self.fitInView(self.scene.itemsBoundingRect(), QtCore.KeepAspectRatio)

@@ -1,8 +1,9 @@
+import time
+
 import dlgo.game_rules_implementation.Player
 from dlgo import agent
-from dlgo.game_rules_implementation import gotypes,goboard
+from dlgo.game_rules_implementation import goboard
 from utils.utils import print_board, print_move
-import time
 
 
 def main():
@@ -11,7 +12,7 @@ def main():
     bots = {
         dlgo.game_rules_implementation.Player.Player.black: agent.naive.RandomBot(),
         dlgo.game_rules_implementation.Player.Player.white: agent.naive.RandomBot(),
-    }
+        }
     while not game.is_over():
         time.sleep(0.8)
         print(chr(27) + "[2J")
@@ -23,4 +24,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

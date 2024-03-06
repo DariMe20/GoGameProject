@@ -3,7 +3,6 @@ from PyQt5.QtCore import QPointF, pyqtSignal
 
 import dlgo.game_rules_implementation.Player
 import dlgo.game_rules_implementation.Point
-from dlgo.game_rules_implementation import gotypes
 
 
 class GoBoardController(QtWidgets.QGraphicsObject):

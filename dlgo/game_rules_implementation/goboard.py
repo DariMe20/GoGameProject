@@ -1,11 +1,10 @@
 import copy
 
 import dlgo.game_rules_implementation.Player
-from dlgo.game_rules_implementation import gotypes
 from dlgo.game_rules_implementation.Board import Board
 from dlgo.game_rules_implementation.Move import Move
-from dlgo.game_rules_implementation.Point import Point
 from dlgo.game_rules_implementation.Player import Player
+from dlgo.game_rules_implementation.Point import Point
 
 
 class GameState:
@@ -212,7 +211,7 @@ class GameState:
         return winner, {
             Player.black: adjusted_black_score,
             Player.white: adjusted_white_score,
-        }
+            }
 
     def collect_territory(self, board, start_point):
         territory = set()
@@ -321,7 +320,7 @@ class GameState:
                self.board.get_go_string(neighbor) and
                self.board.get_go_string(neighbor).color == self.next_player and
                self.board.get_go_string(neighbor).num_liberties == 1
-        ]
+            ]
 
         # Simulate the move
         next_board = copy.deepcopy(self.board)
@@ -336,14 +335,12 @@ class GameState:
 
         return False
 
-
     def is_move_capture(self, move):
         if not move.is_play or not self.is_valid_move(move):
             return False
         original_board = copy.deepcopy(self.board)
         captured_stones = original_board.place_stone(self.next_player, move.point)
         return captured_stones > 0
-
 
     def is_move_reducing_opponent_liberties(self, move):
         if not move.is_play:
@@ -359,9 +356,3 @@ class GameState:
             if neighbor_string.num_liberties < self.board.get_go_string(neighbor).num_liberties:
                 return True
         return False
-
-
-
-
-
-

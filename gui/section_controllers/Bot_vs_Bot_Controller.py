@@ -1,7 +1,7 @@
 from PyQt5 import QtWidgets, QtCore
 
 import dlgo.game_rules_implementation.Player
-from dlgo.game_rules_implementation import goboard, gotypes
+from dlgo.game_rules_implementation import goboard
 from dlgo.game_rules_implementation.Player import Player
 
 
@@ -19,7 +19,7 @@ class BvBController(QtWidgets.QWidget):
 
         self.GOwin = GoWin
         self.GOwin.ui.label.setText("BOT VS BOT - Set number of simulations and press Start!")
-        
+
         # INITIALIZERS
         self.board_size = self.GOwin.board_size
         self.game = None
@@ -49,7 +49,7 @@ class BvBController(QtWidgets.QWidget):
         self.GOwin.ui.horizontalSlider.setTickPosition(QtWidgets.QSlider.TicksBelow)
         self.GOwin.ui.horizontalSlider.valueChanged.connect(self.update_timer_interval)
 
-    #SLIDER METHODS
+    # SLIDER METHODS
     def update_timer_interval(self, value):
         # Aici puteți actualiza intervalele timer-ului
         self.timer.setInterval(value)
@@ -177,5 +177,3 @@ class BvBController(QtWidgets.QWidget):
     def update_prisoners(self):
         self.GOwin.ui.lineEdit_BlackCaptures.setText(str(self.game.white_prisoners) + " Prisoners")
         self.GOwin.ui.lineEdit_WhiteCaptures.setText(str(self.game.black_prisoners) + " Prisoners")
-
-

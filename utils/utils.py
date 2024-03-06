@@ -1,7 +1,7 @@
+from scipy.stats import binomtest
+
 import dlgo.game_rules_implementation.Player
 import dlgo.game_rules_implementation.Point
-from dlgo.game_rules_implementation import gotypes
-from scipy.stats import binomtest
 
 COLS = 'ABCDEFGHJKLMNOPQRST'
 STONE_TO_CHAR = {
