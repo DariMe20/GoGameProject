@@ -1,7 +1,8 @@
 from PyQt5 import QtWidgets, QtCore
 
+import dlgo.game_rules_implementation.Player
 from dlgo.game_rules_implementation import goboard, gotypes
-from dlgo.game_rules_implementation.gotypes import Player
+from dlgo.game_rules_implementation.Player import Player
 
 
 class BvBController(QtWidgets.QWidget):
@@ -99,11 +100,11 @@ class BvBController(QtWidgets.QWidget):
                 return
 
             current_player = self.game.next_player
-            bot_agent = self.bot_black if current_player == gotypes.Player.black else self.bot_white
+            bot_agent = self.bot_black if current_player == dlgo.game_rules_implementation.Player.Player.black else self.bot_white
 
             self.GOwin.ui.label_FinalResults.setText(f"Showing probs for agent: {current_player}")
 
-            bot_probs = self.bot_black if current_player == gotypes.Player.white else self.bot_white
+            bot_probs = self.bot_black if current_player == dlgo.game_rules_implementation.Player.Player.white else self.bot_white
 
             if bot_probs.compute_probs is True:
                 move_probs_html = bot_probs.generate_gui_formatted_probs(self.game)

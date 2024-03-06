@@ -4,12 +4,12 @@ from keras import backend as K
 from keras.optimizers import SGD
 from keras.src.saving.saving_api import save_model
 
+import dlgo.game_rules_implementation.Move
 from dlgo import encoders
-from utils import utils
-from dlgo.game_rules_implementation import goboard
-from dlgo.keras_networks import kerasutil
 from dlgo.agent.base import Agent
-from dlgo.agent.helpers import is_point_an_eye
+from dlgo.keras_networks import kerasutil
+from utils import utils
+from utils.helpers import is_point_an_eye
 
 __all__ = [
     'PolicyAgent',
@@ -92,17 +92,17 @@ class PolicyAgent(Agent):
 
         for point_idx in ranked_moves:
             point = self._encoder.decode_point_index(point_idx)
-            if game_state.is_valid_move(goboard.Move.play(point)) \
+            if game_state.is_valid_move(dlgo.game_rules_implementation.Move.Move.play(point)) \
                     and not is_point_an_eye(game_state.board,point, game_state.next_player) \
-                    and not game_state.is_move_on_edge(goboard.Move.play(point)):
+                    and not game_state.is_move_on_edge(dlgo.game_rules_implementation.Move.Move.play(point)):
                 if self._collector is not None:
                     self._collector.record_decision(
                         state=board_tensor,
                         action=point_idx
                     )
-                return goboard.Move.play(point)
+                return dlgo.game_rules_implementation.Move.Move.play(point)
         # No legal, non-self-destructive moves less.
-        return goboard.Move.pass_turn()
+        return dlgo.game_rules_implementation.Move.Move.pass_turn()
 
     def serialize(self, h5file):
         h5file.create_group('encoder')

@@ -1,11 +1,13 @@
+import dlgo.game_rules_implementation.Player
+import dlgo.game_rules_implementation.Point
 from dlgo.game_rules_implementation import gotypes
 from scipy.stats import binomtest
 
 COLS = 'ABCDEFGHJKLMNOPQRST'
 STONE_TO_CHAR = {
     None: ' . ',
-    gotypes.Player.black: ' B ',
-    gotypes.Player.white: ' W ',
+    dlgo.game_rules_implementation.Player.Player.black: ' B ',
+    dlgo.game_rules_implementation.Player.Player.white: ' W ',
     }
 
 
@@ -24,7 +26,7 @@ def print_board(board):
         bump = " " if row <= 9 else ""
         line = []
         for col in range(1, board.num_cols + 1):
-            stone = board.get(gotypes.Point(row=row, col=col))
+            stone = board.get(dlgo.game_rules_implementation.Point.Point(row=row, col=col))
             line.append(STONE_TO_CHAR[stone])
         print("%s%d %s" % (bump, row, "".join(line)))
     print("    " + "  ".join(COLS[: board.num_cols]))

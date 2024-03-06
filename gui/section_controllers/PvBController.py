@@ -1,9 +1,12 @@
 from PyQt5 import QtWidgets, QtCore
 from keras.src.saving.saving_api import load_model
 
+import dlgo.game_rules_implementation.Move
+import dlgo.game_rules_implementation.Player
+import dlgo.game_rules_implementation.Point
 from dlgo.agent.predict import DeepLearningAgent
 from dlgo.encoders.oneplane import OnePlaneEncoder
-from dlgo.game_rules_implementation import goboard, gotypes
+from dlgo.game_rules_implementation import goboard
 
 
 class PvBController(QtWidgets.QWidget):
@@ -28,7 +31,7 @@ class PvBController(QtWidgets.QWidget):
 
         self.GOwin.ui.pushButton_StartGame.clicked.connect(self.start_player_game)
 
-        model_path = 'C:\\DARIA\\1.FSEGA\\LICENTA\\GoGameProject\\dlgo\\keras_networks\\model2.h5'
+        model_path = 'C:\\DARIA\\1.FSEGA\\LICENTA\\GoGameProject\\dlgo\\keras_networks\\model_PredictionAgent.h5'
 
         self.model = load_model(model_path)
         self.encoder = OnePlaneEncoder(board_size=(self.board_size, self.board_size))
@@ -40,13 +43,13 @@ class PvBController(QtWidgets.QWidget):
             # Setează culoarea jucătorului și a botului
             if self.player_color == 0:
                 self.is_player_turn = True  # Jucătorul începe dacă este negru
-                self.current_player = gotypes.Player.black
-                self.current_bot = gotypes.Player.white
+                self.current_player = dlgo.game_rules_implementation.Player.Player.black
+                self.current_bot = dlgo.game_rules_implementation.Player.Player.white
             else:
                 self.is_player_turn = False  # Botul începe dacă jucătorul este alb
                 self.timer.singleShot(1000, self.agent_move)  # Întârziere pentru a începe jocul cu botul
-                self.current_bot = gotypes.Player.black
-                self.current_player = gotypes.Player.white
+                self.current_bot = dlgo.game_rules_implementation.Player.Player.black
+                self.current_player = dlgo.game_rules_implementation.Player.Player.white
 
             self.bot = DeepLearningAgent(self.model, self.encoder)
             self.board.clicked.connect(self.player_move_against_bot)
@@ -57,7 +60,8 @@ class PvBController(QtWidgets.QWidget):
         try:
             if self.is_player_turn and not self.game.is_over():
                 row, col = point  # Despachetarea tuplei
-                move = goboard.Move.play(gotypes.Point(row, col))
+                move = dlgo.game_rules_implementation.Move.Move.play(
+                    dlgo.game_rules_implementation.Point.Point(row, col))
                 if self.game.is_valid_move(move):
                     self.GOwin.view_move(self.game, move, self.current_player)
                     self.GOwin.emphasise_player_turn(self.current_player)
@@ -65,7 +69,7 @@ class PvBController(QtWidgets.QWidget):
                     self.board.update_game(self.game)
                     self.is_player_turn = False
                     self.timer.singleShot(1000, self.agent_move)
-            self.GOwin.ui.lineEdit_BlackCaptures.setText(str(self.game.white_prisoners)+" Prisoners")
+            self.GOwin.ui.lineEdit_BlackCaptures.setText(str(self.game.white_prisoners) + " Prisoners")
             self.GOwin.ui.lineEdit_WhiteCaptures.setText(str(self.game.black_prisoners) + " Prisoners")
         except Exception as e:
             print(f"An error occurend in player_move: {e}")
@@ -84,5 +88,5 @@ class PvBController(QtWidgets.QWidget):
             elif bot_move.is_resign:
                 print("Bot resigned")
             self.is_player_turn = True
-        self.GOwin.ui.lineEdit_BlackCaptures.setText(str(self.game.white_prisoners)+" Prisoners")
+        self.GOwin.ui.lineEdit_BlackCaptures.setText(str(self.game.white_prisoners) + " Prisoners")
         self.GOwin.ui.lineEdit_WhiteCaptures.setText(str(self.game.black_prisoners) + " Prisoners")

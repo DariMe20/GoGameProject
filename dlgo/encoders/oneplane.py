@@ -1,7 +1,7 @@
 import numpy as np
 
 from dlgo.encoders.base import Encoder
-from dlgo.game_rules_implementation.goboard import Point
+from dlgo.game_rules_implementation.Point import Point
 
 
 class OnePlaneEncoder(Encoder):

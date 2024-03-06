@@ -2,8 +2,10 @@ import os
 import sys
 from PyQt5 import QtWidgets
 from PyQt5.QtGui import QPixmap
+
+import dlgo.game_rules_implementation.Player
 from dlgo.game_rules_implementation import gotypes
-from dlgo.game_rules_implementation.gotypes import Player
+from dlgo.game_rules_implementation.Player import Player
 from gui.generated_files.MainWindow import Ui_MainWindow
 from gui.section_controllers.Bot_vs_Bot_Controller import BvBController
 from gui.section_controllers.CreateSGFController import CreateSGFController
@@ -82,8 +84,8 @@ class GoWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def view_move(self, state, move, current_player):
         go_coord = self.point_to_coord(move.point, self.board_size)
-        player_color = "B" if current_player == gotypes.Player.black else "W"
-        next_player = "Black" if current_player == gotypes.Player.white else "White"
+        player_color = "B" if current_player == dlgo.game_rules_implementation.Player.Player.black else "W"
+        next_player = "Black" if current_player == dlgo.game_rules_implementation.Player.Player.white else "White"
         self.ui.label.setText(f"Move {state.move_number}: {player_color} - {go_coord}. {next_player} to play.")
 
     def point_to_coord(self, point, board_size):
@@ -93,7 +95,7 @@ class GoWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
         return f"{col}{row}"
 
     def emphasise_player_turn(self, current_player):
-        if current_player == gotypes.Player.white:
+        if current_player == dlgo.game_rules_implementation.Player.Player.white:
             self.ui.verticalWidget.setStyleSheet('#verticalWidget{border:1px solid blue;}')
             self.ui.verticalWidget_2.setStyleSheet("#verticalWidget_2{border:none}")
         else:

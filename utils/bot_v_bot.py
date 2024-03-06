@@ -1,4 +1,4 @@
-
+import dlgo.game_rules_implementation.Player
 from dlgo import agent
 from dlgo.game_rules_implementation import gotypes,goboard
 from utils.utils import print_board, print_move
@@ -9,8 +9,8 @@ def main():
     board_size = 9
     game = goboard.GameState.new_game(board_size)
     bots = {
-        gotypes.Player.black: agent.naive.RandomBot(),
-        gotypes.Player.white: agent.naive.RandomBot(),
+        dlgo.game_rules_implementation.Player.Player.black: agent.naive.RandomBot(),
+        dlgo.game_rules_implementation.Player.Player.white: agent.naive.RandomBot(),
     }
     while not game.is_over():
         time.sleep(0.8)

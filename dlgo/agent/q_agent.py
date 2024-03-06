@@ -2,7 +2,7 @@ import numpy as np
 from keras.src.optimizers import SGD
 from keras.src.saving.saving_api import save_model
 
-from dlgo.game_rules_implementation import goboard
+import dlgo.game_rules_implementation.Move
 from dlgo.agent import Agent, is_point_an_eye
 
 
@@ -48,7 +48,7 @@ class QAgent(Agent):
 
         # Agentul va zice pass daca nu exista alte mutari valide
         if not moves:
-            return goboard.Move.pass_turn()
+            return dlgo.game_rules_implementation.Move.Move.pass_turn()
 
         # Formateaza mutarile
         num_moves = len(moves)
@@ -71,8 +71,8 @@ class QAgent(Agent):
                         state=board_tensor,
                         action=moves[move_idx],
                         )
-                return goboard.Move.play(point)
-        return goboard.Move.pass_turn()
+                return dlgo.game_rules_implementation.Move.Move.play(point)
+        return dlgo.game_rules_implementation.Move.Move.pass_turn()
 
     def serialize(self, h5file):
         h5file.create_group('encoder')
