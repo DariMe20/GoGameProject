@@ -2,9 +2,12 @@ import random
 from dlgo.agent.base import Agent
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 from dlgo.agent.helpers import is_point_an_eye
 from dlgo.game_rules_implementation.goboard import Move
 =======
+=======
+>>>>>>> 603e82c (Moved helpers.py in utils)
 =======
 >>>>>>> 603e82c (Moved helpers.py in utils)
 from utils.helpers import is_point_an_eye
