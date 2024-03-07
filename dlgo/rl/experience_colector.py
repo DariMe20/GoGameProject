@@ -11,7 +11,7 @@ class ExperienceCollector:
 
         self._current_episode_states = []
         self._current_episode_actions = []
-        self.experience_buffer = ExperienceBuffer
+        self.experience_buffer = None
 
     def begin_episode(self):
         self._current_episode_states = []
@@ -31,8 +31,9 @@ class ExperienceCollector:
         self._current_episode_actions = []
 
     def to_buffer(self):
-        return ExperienceBuffer(
+        self.experience_buffer = ExperienceBuffer(
             states=np.array(self.states),
             actions=np.array(self.actions),
             rewards=np.array(self.rewards)
             )
+        return self.experience_buffer

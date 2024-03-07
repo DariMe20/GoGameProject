@@ -19,8 +19,10 @@ class GameGenerator:
         self.white_key = white_key
         self.temp_black = temp_black
         self.temp_white = temp_white
-        self.agent_black.set_temperature(self.temp_black)
-        self.agent_white.set_temperature(self.temp_white)
+
+        if self.agent_white.temperature and self.agent_black.temperature:
+            self.agent_black.set_temperature(self.temp_black)
+            self.agent_white.set_temperature(self.temp_white)
         self.output_folder = output_folder
         self.filename = filename
         self.experience_directory = experience_directory
@@ -34,16 +36,13 @@ class GameGenerator:
         self.average_black_score = 0
         os.makedirs(output_folder, exist_ok=True)
 
-        self.set_collectors()
-        self.collectorB = self.agent_black.collector
-        self.collectorW = self.agent_white.collector
-
-    def set_collectors(self):
         collector1 = ExperienceCollector()
         collector2 = ExperienceCollector()
 
         self.agent_black.set_collector(collector1)
         self.agent_white.set_collector(collector2)
+        self.collectorB: ExperienceCollector = self.agent_black.collector
+        self.collectorW: ExperienceCollector = self.agent_white.collector
 
     # METODA PENTRU JOC SI COLECTARE A EXPERIENTELOR
     def play_game(self, board_size):
