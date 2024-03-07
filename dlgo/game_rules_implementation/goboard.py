@@ -29,7 +29,7 @@ class GameState:
 
         self.last_move = move
 
-    def apply_move(self, move):
+    def apply_move(self, move: Move):
         """
         Metoda care returneaza un nou GameState upa ce o mutare este plasata
         :param move: Mutarea efectuata - plasare piesa, cedare (resign) sau pass
@@ -75,7 +75,7 @@ class GameState:
             return False
         return self.last_move.is_pass and second_last_move.is_pass
 
-    def is_move_self_capture(self, player, move):
+    def is_move_self_capture(self, player: Player, move: Move):
         """
         In Go un jucator se poate autosabota prin plasarea unei piese pe tabla care ar duce automat la sinucidere
         Sinuciderea nu ese permisa, nu poti plasa o piesa pe tabla care ti-ar reduce libertatile la 0
@@ -101,7 +101,7 @@ class GameState:
         """
         return self.next_player, self.board
 
-    def does_move_violate_ko(self, player, move):
+    def does_move_violate_ko(self, player: Player, move: Move):
         """
         Ko este o situatie speciala in jocul de Go care ar putea duce la un ciclu infinit de capturi
         Aceasta metoda implementeaza o formulare cunoscuta si ca regula "situational superko" prin care nu lasa jucatorul
@@ -127,7 +127,7 @@ class GameState:
             print("Move violates Ko")
         return next_situation in self.previous_states
 
-    def is_valid_move(self, move):
+    def is_valid_move(self, move: Move):
         try:
             """
             Metoda care verifica corectitudinea unei plasari pe tabla - nu e sinucidere si nu incalca regula de ko
