@@ -46,5 +46,7 @@ class QValueGameGenerator(GameGenerator):
                          filename, experience_directory)
 
 
+# GIVE NUMBER OF SIMULATIONS AND RUN GENERATOR
+NUM_EPISODES = 100
 q_game_generator = QValueGameGenerator()
-q_game_generator.generate_games(1, encoder.board_width)
+q_game_generator.generate_games(NUM_EPISODES, encoder.board_width)
