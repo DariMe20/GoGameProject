@@ -10,8 +10,9 @@ from dlgo.game_rules_implementation.Point import Point
 class GameState:
     def __init__(self, board, next_player, previous, move, black_prisoners=0, white_prisoners=0, move_number=0):
         self.komi = 6.5
-        self.board = board
-        self.next_player = next_player
+        self.board: Board = board
+        self.move: Move = move
+        self.next_player: Player = next_player
         self.previous_state = previous
         self.move_number = move_number
 
