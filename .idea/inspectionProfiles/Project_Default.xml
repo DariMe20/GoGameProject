@@ -57,6 +57,7 @@
           <option value="tuple.encode" />
           <option value="tuple.num_points" />
           <option value="tuple.encode_point" />
+          <option value="super.generate_games" />
         </list>
       </option>
     </inspection_tool>
