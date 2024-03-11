@@ -1,11 +1,9 @@
 import math
 import random
 
-from Infrastructure.agent import naive
-from Infrastructure.agent.base import Agent
-from Infrastructure.game_rules_implementation.gotypes import Player
-
-import game_rules_implementation
+from agent import Agent, naive
+from dlgo import game_rules_implementation
+from dlgo.game_rules_implementation.Player import Player
 
 
 class MCTSNode(object):

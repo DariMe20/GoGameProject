@@ -1,11 +1,11 @@
 import argparse
 
 import numpy as np
-from Infrastructure.encoders.oneplane import OnePlaneEncoder
-from Infrastructure.game_rules_implementation.goboard import GameState
 
+from dlgo.encoders.oneplane import OnePlaneEncoder
+from dlgo.game_rules_implementation.goboard import GameState
 from unused.MonteCarloTreeSearch import MCTS
-from utils.printers import print_board, print_move
+from utils.utils import print_board, print_move
 
 
 def generate_game(board_size, rounds, max_moves, temperature):

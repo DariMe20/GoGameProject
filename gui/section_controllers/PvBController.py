@@ -1,12 +1,12 @@
 from PyQt5 import QtWidgets, QtCore
 from keras.src.saving.saving_api import load_model
 
-import dlgo.game_rules_implementation.Move
-import dlgo.game_rules_implementation.Player
-import dlgo.game_rules_implementation.Point
 from agent import DeepLearningAgent
 from dlgo.encoders.oneplane import OnePlaneEncoder
-from dlgo.game_rules_implementation import goboard
+from dlgo.game_rules_implementation.Move import Move
+from dlgo.game_rules_implementation.Move import Point
+from dlgo.game_rules_implementation.Player import Player
+from dlgo.game_rules_implementation.goboard import GameState
 
 
 class PvBController(QtWidgets.QWidget):
@@ -39,17 +39,17 @@ class PvBController(QtWidgets.QWidget):
 
     def start_player_game(self):
         try:
-            self.game = goboard.GameState.new_game(self.board_size)
+            self.game = GameState.new_game(self.board_size)
             # Setează culoarea jucătorului și a botului
             if self.player_color == 0:
                 self.is_player_turn = True  # Jucătorul începe dacă este negru
-                self.current_player = dlgo.game_rules_implementation.Player.Player.black
-                self.current_bot = dlgo.game_rules_implementation.Player.Player.white
+                self.current_player = Player.black
+                self.current_bot = Player.white
             else:
                 self.is_player_turn = False  # Botul începe dacă jucătorul este alb
                 self.timer.singleShot(1000, self.agent_move)  # Întârziere pentru a începe jocul cu botul
-                self.current_bot = dlgo.game_rules_implementation.Player.Player.black
-                self.current_player = dlgo.game_rules_implementation.Player.Player.white
+                self.current_bot = Player.black
+                self.current_player = Player.white
 
             self.bot = DeepLearningAgent(self.model, self.encoder)
             self.board.clicked.connect(self.player_move_against_bot)
@@ -60,8 +60,7 @@ class PvBController(QtWidgets.QWidget):
         try:
             if self.is_player_turn and not self.game.is_over():
                 row, col = point  # Despachetarea tuplei
-                move = dlgo.game_rules_implementation.Move.Move.play(
-                    dlgo.game_rules_implementation.Point.Point(row, col))
+                move = Move.play(Point(row, col))
                 if self.game.is_valid_move(move):
                     self.GOwin.view_move(self.game, move, self.current_player)
                     self.GOwin.emphasise_player_turn(self.current_player)

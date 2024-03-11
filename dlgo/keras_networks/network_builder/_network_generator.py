@@ -6,14 +6,14 @@ from dlgo.keras_networks.network_builder.q_value_network import QValueModel
 def generate_q_network(encoder):
     q_model_object = QValueModel(encoder)
     q_model = q_model_object.build_model()
-    q_model.save('../../../reinforcement_learning/q_value/q_models/model_QTest.h5')
+    # q_model.save('../../../reinforcement_learning/q_value/q_models/model_QTest.h5')
 
 
 def generate_gradient_network(encoder):
     gradient_model_object = GradientModel(encoder)
     gradient_model = gradient_model_object.build_model()
-    gradient_model.save(
-        '../../../reinforcement_learning/gradient_descent/gradient_descent_models/model_GradientTest.h5')
+    # gradient_model.save(
+    # '../../../reinforcement_learning/gradient_descent/gradient_descent_models/model_GradientTest.h5')
 
 
 def select_model_to_generate(model):
