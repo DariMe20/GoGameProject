@@ -1,9 +1,9 @@
 import os
 
 import utils.constants
-from utils import data_file_manipulator
-from dlgo.game_rules_implementation.goboard import GameState
 from dlgo.game_rules_implementation.Player import Player
+from dlgo.game_rules_implementation.goboard import GameState
+from utils import data_file_manipulator
 
 # Inițializarea agenților
 agent1_key = "Policy Gradient 5"
@@ -30,7 +30,7 @@ def play_game(agent_black, agent_white, board_size):
     agents = {
         Player.black: agent_black,
         Player.white: agent_white
-    }
+        }
 
     while not state.is_over():
         next_player = state.next_player
@@ -51,7 +51,7 @@ def play_game(agent_black, agent_white, board_size):
         'black_territory': black_score,
         'white_territory': white_score,
         'territory_difference': difference
-    }
+        }
 
 
 # Parcurgere episoade
@@ -74,13 +74,12 @@ for episode in range(num_episodes):
         'white_agent': str(game_info['white_agent']),
         'black_score': str(game_info['black_territory']),
         'white_score': str(game_info['white_territory']),
-        'territory_difference':str(game_info['territory_difference'])
-    })
+        'territory_difference': str(game_info['territory_difference'])
+        })
 
     total_black_score += game_info['black_territory']
     total_white_score += game_info['white_territory']
     print(f"Finished episode {episode} with success!")
-
 
 # GENERAREA DATELOR SI POPULAREA FISIERELOR JSON
 average_black_score = total_black_score / num_episodes
@@ -95,7 +94,7 @@ summary_info = {
     'White_wins': white_wins,
     'Average_black_score': average_black_score,
     'Average_white_score': average_white_score
-}
+    }
 
 # SALVARE DATE IN FISIERE JSON
 data_file_manipulator.generate_filename(agent1_key, agent2_key, output_folder)

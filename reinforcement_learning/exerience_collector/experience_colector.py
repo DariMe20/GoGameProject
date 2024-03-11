@@ -1,6 +1,6 @@
 import numpy as np
 
-from dlgo.rl.experience import ExperienceBuffer
+from reinforcement_learning.exerience_collector.experience import ExperienceBuffer
 
 
 class ExperienceCollector:

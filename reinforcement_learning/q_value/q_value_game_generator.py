@@ -4,7 +4,7 @@ from keras.src.saving.saving_api import load_model
 
 from agent import QAgent
 from dlgo.encoders.simple import SimpleEncoder
-from dlgo.rl.base_game_generator import GameGenerator
+from reinforcement_learning.base_generate_train_evaluate.base_game_generator import GameGenerator
 
 # INITIALISE VARIABLES
 
@@ -12,13 +12,13 @@ board_size = 9
 encoder = SimpleEncoder((board_size, board_size))
 
 # MODEL PATHS
-path_Q1 = os.path.join('..', '..', 'rl', 'q_value', 'q_models', 'model_Q2.h5')
-path_Q2 = os.path.join('..', '..', 'rl', 'q_value', 'q_models', 'model_Q2_V2.h5')
+path_Q1 = os.path.join('q_models', 'model_Q2.h5')
+path_Q2 = os.path.join('q_models', 'model_Q2_V2.h5')
 
 # DATA SAVING PATHS
-output_folder_outer = os.path.join('..', '..', 'json_data', 'q_value', 'game_generator')
+output_folder_outer = os.path.join('..', '..', 'dlgo', 'json_data', 'q_value', 'game_generator')
 filename_outer = os.path.join(output_folder_outer, 'game_generator_summary.json')
-experience_dir_outer = os.path.join('..', 'q_value', 'q_value_experience_files')
+experience_dir_outer = os.path.join('q_value_experience_files')
 
 # LOAD MODELS
 model_Q1 = load_model(path_Q1)
@@ -47,6 +47,6 @@ class QValueGameGenerator(GameGenerator):
 
 
 # GIVE NUMBER OF SIMULATIONS AND RUN GENERATOR
-NUM_EPISODES = 100
+NUM_EPISODES = 1
 q_game_generator = QValueGameGenerator()
 q_game_generator.generate_games(NUM_EPISODES, encoder.board_width)
