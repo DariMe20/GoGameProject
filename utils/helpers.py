@@ -33,7 +33,7 @@ def is_point_an_eye(board, point, color):
         Point(point.row - 1, point.col + 1),
         Point(point.row + 1, point.col - 1),
         Point(point.row + 1, point.col + 1),
-    ]
+        ]
     # Daca diagonelele (colturile punctului) sunt piese ale jucatorului (friendly) atunci le salvam
     for corner in corners:
         if board.is_on_grid(corner):

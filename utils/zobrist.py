@@ -1,7 +1,7 @@
 import random
 
-from dlgo.game_rules_implementation.Point import Point
 from dlgo.game_rules_implementation.Player import Player
+from dlgo.game_rules_implementation.Point import Point
 
 
 def to_python(player_state):
