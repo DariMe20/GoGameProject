@@ -18,7 +18,7 @@ def save_all_games_info(game_results, summary_info, agent1_key, agent2_key, outp
     data_to_save = {
         "summary_info": summary_info,
         "game_details": game_results
-    }
+        }
     with open(filename, 'w') as f:
         json.dump(data_to_save, f, indent=4)
     print("Saved record at ", filename)
@@ -75,7 +75,7 @@ def save_training_details(training_details, filename):
     print(f"Added Training no: {training_no} to {filename}")
 
 
-def generate_experience_filename(output_folder, base_name="Q_experience"):
+def generate_experience_filename(output_folder, base_name="Agent_experience"):
     files = os.listdir(output_folder)
     matching_files = [f for f in files if f.startswith(base_name) and f.endswith(".h5")]
 
