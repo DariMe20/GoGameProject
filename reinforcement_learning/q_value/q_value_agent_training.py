@@ -12,7 +12,7 @@ def main():
     agent_in_path = 'q_models/model_Q2.h5'
     agent_out_path = 'q_models/model_Q2_V2Test.h5'
     experience_folder = 'q_value_experience_files'
-    training_details_filename = '../../json_data/q_value/training_data.json'
+    training_details_filename = '../../dlgo/json_data/q_value/training_data.json'
 
     # Încarcă agentul de învățare
     learning_model = load_model(agent_in_path)
