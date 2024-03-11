@@ -4,6 +4,3 @@
 /unused
 /dlgo/json_data
 *.h5
-/UML
-__init__.py
-*.png
