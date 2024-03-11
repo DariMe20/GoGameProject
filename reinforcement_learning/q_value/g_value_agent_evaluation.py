@@ -4,7 +4,7 @@ from keras.src.saving.saving_api import load_model
 
 from agent import QAgent
 from dlgo.encoders.simple import SimpleEncoder
-from dlgo.rl.base_game_evaluator import GameEvaluator
+from reinforcement_learning.base_generate_train_evaluate.base_game_evaluator import GameEvaluator
 
 # INITIALISE VARIABLES
 
@@ -12,8 +12,8 @@ board_size = 9
 encoder = SimpleEncoder((board_size, board_size))
 
 # MODEL PATHS
-path_Q1 = os.path.join('..', '..', 'rl', 'q_value', 'q_models', 'model_Q2.h5')
-path_Q2 = os.path.join('..', '..', 'rl', 'q_value', 'q_models', 'model_Q2_V2.h5')
+path_Q1 = os.path.join('q_models', 'model_Q2.h5')
+path_Q2 = os.path.join('q_models', 'model_Q2_V2.h5')
 
 # LOAD MODELS
 model_Q1 = load_model(path_Q1)
@@ -28,7 +28,7 @@ black_name = os.path.splitext(os.path.basename(path_Q1))[0]
 white_name = os.path.splitext(os.path.basename(path_Q2))[0]
 
 # DATA SAVING PATHS
-output_folder_outer = os.path.join('..', '..', 'json_data', 'q_value', 'game_evaluation')
+output_folder_outer = os.path.join('..', '..', 'dlgo', 'json_data', 'q_value', 'game_evaluation')
 filename_outer = os.path.join(output_folder_outer, 'evaluation_summary.json')
 
 

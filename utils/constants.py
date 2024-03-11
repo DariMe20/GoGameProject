@@ -28,13 +28,13 @@ model_pg5 = load_model(path_pg5)
 path_DL = r'C:\Users\MED6CLJ\Desktop\FSEGA_IE\Licenta\GoGameProject\dlgo\keras_networks\model_PredictionAgent.h5'
 model_DL = load_model(path_DL)
 
-path_Q1 = r'C:\Users\MED6CLJ\Desktop\FSEGA_IE\Licenta\GoGameProject\dlgo/rl/q_value/q_models/model_Q1.h5'
+path_Q1 = r'/reinforcement_learning/q_value/q_models/model_Q1.h5'
 model_Q1 = load_model(path_Q1)
 
-path_Q2 = r'C:\Users\MED6CLJ\Desktop\FSEGA_IE\Licenta\GoGameProject\dlgo/rl/q_value/q_models/model_Q2.h5'
+path_Q2 = r'/reinforcement_learning/q_value/q_models/model_Q2.h5'
 model_Q2 = load_model(path_Q2)
 
-path_Q2_V2 = r'C:\Users\MED6CLJ\Desktop\FSEGA_IE\Licenta\GoGameProject\dlgo/rl/q_value/q_models/model_Q2_V2.h5'
+path_Q2_V2 = r'/reinforcement_learning/q_value/q_models/model_Q2_V2.h5'
 model_Q2_V2 = load_model(path_Q2_V2)
 
 # BOT INITIALIZERS

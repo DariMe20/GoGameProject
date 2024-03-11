@@ -1,9 +1,9 @@
 import h5py
 
-from dlgo.game_rules_implementation.goboard import GameState
 from dlgo.game_rules_implementation.Player import Player
-from dlgo.rl import experience
-from dlgo.rl.experience_colector import ExperienceCollector
+from dlgo.game_rules_implementation.goboard import GameState
+from reinforcement_learning.exerience_collector import experience
+from reinforcement_learning.exerience_collector.experience_colector import ExperienceCollector
 from utils import constants
 
 agent1 = constants.BOTS['Policy Gradient 5']
@@ -25,7 +25,7 @@ def play_game(agent_black, agent_white, board_size):
     agents = {
         Player.black: agent_black,
         Player.white: agent_white
-    }
+        }
 
     while not state.is_over():
         next_player = state.next_player
@@ -53,7 +53,6 @@ for episode in range(num_episodes):
         collector1.complete_episode(reward=-1)
         white_wins += 1
     print(f"Finished episode {episode} with success!")
-
 
 experience_combined = experience.combine_experience([collector1, collector2])
 experience_filename = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\experience_files\\experience21.h5'

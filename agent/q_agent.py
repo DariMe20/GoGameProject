@@ -82,7 +82,7 @@ class QAgent(Agent):
         h5file.create_group('model')
         save_model(self._model, h5file)
 
-    def train(self, experience, lr=0.1, batch_size=128):
+    def train(self, experience, lr=0.1, clip_norm=1.0, batch_size=128):
         opt = SGD(learning_rate=lr)
         self._model.compile(loss='mse', optimizer=opt)
 

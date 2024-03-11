@@ -58,7 +58,8 @@ model_dir = '.\\'
 if not os.path.exists(model_dir):
     os.makedirs(model_dir)
 
-model_path = os.path.join(model_dir, '../rl/gradient_descent/gradient_descent_models/model_PredictionAgent.h5')
+model_path = os.path.join(model_dir,
+                          '../../reinforcement_learning/gradient_descent/gradient_descent_models/model_PredictionAgent.h5')
 model.save(model_path)
 
 print("Modelul a fost salvat cu succes")

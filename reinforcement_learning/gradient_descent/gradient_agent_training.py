@@ -5,7 +5,7 @@ from keras.src.saving.saving_api import load_model
 
 from agent import PolicyAgent
 from dlgo.encoders.simple import SimpleEncoder
-from dlgo.rl.experience import load_experience
+from reinforcement_learning.exerience_collector.experience import load_experience
 from utils import data_file_manipulator
 
 
