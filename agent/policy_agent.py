@@ -38,7 +38,7 @@ class PolicyAgent(Agent):
         Agent.__init__(self)
         self._model = model
         self._encoder = encoder
-        self._collector = None
+        self.collector = None
         self._temperature = 0.4
         self.probs_for_gui = ""
         self.compute_probs = compute_probs
@@ -52,7 +52,7 @@ class PolicyAgent(Agent):
         self._temperature = temperature
 
     def set_collector(self, collector):
-        self._collector = collector
+        self.collector = collector
 
     def get_move_probs(self, game_state):
         num_moves = self._encoder.board_width * self._encoder.board_height
@@ -96,8 +96,8 @@ class PolicyAgent(Agent):
             if game_state.is_valid_move(dlgo.game_rules_implementation.Move.Move.play(point)) \
                     and not is_point_an_eye(game_state.board, point, game_state.next_player) \
                     and not game_state.is_move_on_edge(dlgo.game_rules_implementation.Move.Move.play(point)):
-                if self._collector is not None:
-                    self._collector.record_decision(
+                if self.collector is not None:
+                    self.collector.record_decision(
                         state=board_tensor,
                         action=point_idx
                         )
@@ -113,8 +113,8 @@ class PolicyAgent(Agent):
         h5file.create_group('model')
         save_model(self._model, h5file)
 
-    def train(self, experience, lr, clipnorm, batch_size):
-        opt = SGD(learning_rate=lr, clipnorm=clipnorm)
+    def train(self, experience, lr, clip_norm, batch_size):
+        opt = SGD(learning_rate=lr, clipnorm=clip_norm)
         self._model.compile(loss='categorical_crossentropy', optimizer=opt)
 
         n = experience.states.shape[0]

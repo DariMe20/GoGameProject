@@ -1,62 +1,52 @@
-import h5py
+import os
 
-from dlgo.game_rules_implementation.Player import Player
-from dlgo.game_rules_implementation.goboard import GameState
-from reinforcement_learning.exerience_collector import experience
-from reinforcement_learning.exerience_collector.experience_colector import ExperienceCollector
-from utils import constants
+from keras.src.saving.saving_api import load_model
 
-agent1 = constants.BOTS['Policy Gradient 5']
-agent2 = constants.BOTS['Policy Gradient 4']
+from agent import PolicyAgent
+from dlgo.encoders.simple import SimpleEncoder
+from reinforcement_learning.base_generate_train_evaluate.base_game_generator import GameGenerator
 
-collector1 = ExperienceCollector()
-collector2 = ExperienceCollector()
+# INITIALISE VARIABLES
 
-agent1.set_collector(collector1)
-agent2.set_collector(collector2)
+board_size = 9
+encoder = SimpleEncoder((board_size, board_size))
 
-black_wins = 0
-white_wins = 0
+# MODEL PATHS
+path_G1 = os.path.join('gradient_descent_models', 'model_gradient1.h5')
+path_G2 = os.path.join('gradient_descent_models', 'model_gradient2.h5')
+
+# LOAD MODELS
+model_G1 = load_model(path_G1)
+model_G2 = load_model(path_G2)
+
+# CREATE AGENTS
+agent1 = PolicyAgent(model_G1, encoder)
+agent2 = PolicyAgent(model_G2, encoder)
+
+# GET AGENT NAMES FROM MODEL FILES
+black_name = os.path.splitext(os.path.basename(path_G1))[0]
+white_name = os.path.splitext(os.path.basename(path_G2))[0]
+
+# SET AGENT EXPLORATION FACTOR
+temp_black = 0.02
+temp_white = 0.02
+
+# DATA SAVING PATHS
+output_folder_outer = os.path.join('..', '..', 'dlgo', 'json_data', 'gradient_descent', 'game_generator')
+filename_outer = os.path.join(output_folder_outer, 'game_generator_summary.json')
+experience_dir_outer = os.path.join('gradient_experience_files')
 
 
-# METODA PENTRU JOC SI COLECTARE A EXPERIENTELOR
-def play_game(agent_black, agent_white, board_size):
-    state = GameState.new_game(board_size)
-    agents = {
-        Player.black: agent_black,
-        Player.white: agent_white
-        }
-
-    while not state.is_over():
-        next_player = state.next_player
-        agent_next = agents[next_player]
-        move = agent_next.select_move(state)
-        state = state.apply_move(move)
-    return state.winner()
+class GradientGameGenerator(GameGenerator):
+    def __init__(self, agent_black=agent1, agent_white=agent2,
+                 black_key=black_name, white_key=white_name,
+                 black_temp=temp_black, white_temp=temp_white,
+                 output_folder=output_folder_outer, filename=filename_outer, experience_directory=experience_dir_outer):
+        super().__init__(agent_black, agent_white, black_key, white_key, black_temp, white_temp, output_folder,
+                         filename, experience_directory)
 
 
-# SETAREA NUMARULUI DE EPISOADE SI APELAREA METODELOR DE ANTRENARE
-num_episodes = 100
-
-for episode in range(num_episodes):
-    collector1.begin_episode()
-    collector2.begin_episode()
-    print("Started episode: ", episode)
-
-    game_record = play_game(agent1, agent2, 9)
-    if game_record == Player.black:
-        collector1.complete_episode(reward=1)
-        collector2.complete_episode(reward=-1)
-        black_wins += 1
-    else:
-        collector2.complete_episode(reward=1)
-        collector1.complete_episode(reward=-1)
-        white_wins += 1
-    print(f"Finished episode {episode} with success!")
-
-experience_combined = experience.combine_experience([collector1, collector2])
-experience_filename = 'C:\\Users\\MED6CLJ\\Desktop\\FSEGA_IE\\Licenta\\GoGameProject\\dlgo\\experience_files\\experience21.h5'
-with h5py.File(experience_filename, 'w') as experience_outf:
-    experience_combined.serialize(experience_outf)
-
-print(f"Black wins: {black_wins} \ {num_episodes} \n White wins: {white_wins} \ {num_episodes}")
+# GIVE NUMBER OF SIMULATIONS AND RUN GENERATOR
+NUM_EPISODES = 1
+gradient_game_generator = GradientGameGenerator()
+gradient_game_generator.generate_games(NUM_EPISODES, encoder.board_width)

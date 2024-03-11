@@ -20,9 +20,8 @@ class GameGenerator:
         self.temp_black = temp_black
         self.temp_white = temp_white
 
-        if self.agent_white.temperature and self.agent_black.temperature:
-            self.agent_black.set_temperature(self.temp_black)
-            self.agent_white.set_temperature(self.temp_white)
+        self.agent_black.set_temperature(self.temp_black)
+        self.agent_white.set_temperature(self.temp_white)
         self.output_folder = output_folder
         self.filename = filename
         self.experience_directory = experience_directory
