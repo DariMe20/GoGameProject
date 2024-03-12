@@ -15,6 +15,7 @@ class Move:
 
         # Initializari
         self.point: Point = point
+        self.aggregation_point = Point
         self.is_play = self.point is not None
         self.is_pass = is_pass
         self.is_resign = is_resign
