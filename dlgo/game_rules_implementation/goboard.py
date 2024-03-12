@@ -1,18 +1,18 @@
 import copy
 
 import dlgo.game_rules_implementation.Player
-from dlgo.game_rules_implementation import gotypes
 from dlgo.game_rules_implementation.Board import Board
 from dlgo.game_rules_implementation.Move import Move
-from dlgo.game_rules_implementation.Point import Point
 from dlgo.game_rules_implementation.Player import Player
+from dlgo.game_rules_implementation.Point import Point
 
 
 class GameState:
     def __init__(self, board, next_player, previous, move, black_prisoners=0, white_prisoners=0, move_number=0):
         self.komi = 6.5
-        self.board = board
-        self.next_player = next_player
+        self.board: Board = board
+        self.move: Move = move
+        self.next_player: Player = next_player
         self.previous_state = previous
         self.move_number = move_number
 
@@ -29,7 +29,7 @@ class GameState:
 
         self.last_move = move
 
-    def apply_move(self, move):
+    def apply_move(self, move: Move):
         """
         Metoda care returneaza un nou GameState upa ce o mutare este plasata
         :param move: Mutarea efectuata - plasare piesa, cedare (resign) sau pass
@@ -75,7 +75,7 @@ class GameState:
             return False
         return self.last_move.is_pass and second_last_move.is_pass
 
-    def is_move_self_capture(self, player, move):
+    def is_move_self_capture(self, player: Player, move: Move):
         """
         In Go un jucator se poate autosabota prin plasarea unei piese pe tabla care ar duce automat la sinucidere
         Sinuciderea nu ese permisa, nu poti plasa o piesa pe tabla care ti-ar reduce libertatile la 0
@@ -101,7 +101,7 @@ class GameState:
         """
         return self.next_player, self.board
 
-    def does_move_violate_ko(self, player, move):
+    def does_move_violate_ko(self, player: Player, move: Move):
         """
         Ko este o situatie speciala in jocul de Go care ar putea duce la un ciclu infinit de capturi
         Aceasta metoda implementeaza o formulare cunoscuta si ca regula "situational superko" prin care nu lasa jucatorul
@@ -127,7 +127,7 @@ class GameState:
             print("Move violates Ko")
         return next_situation in self.previous_states
 
-    def is_valid_move(self, move):
+    def is_valid_move(self, move: Move):
         try:
             """
             Metoda care verifica corectitudinea unei plasari pe tabla - nu e sinucidere si nu incalca regula de ko
@@ -212,7 +212,7 @@ class GameState:
         return winner, {
             Player.black: adjusted_black_score,
             Player.white: adjusted_white_score,
-        }
+            }
 
     def collect_territory(self, board, start_point):
         territory = set()
@@ -321,7 +321,7 @@ class GameState:
                self.board.get_go_string(neighbor) and
                self.board.get_go_string(neighbor).color == self.next_player and
                self.board.get_go_string(neighbor).num_liberties == 1
-        ]
+            ]
 
         # Simulate the move
         next_board = copy.deepcopy(self.board)
@@ -336,14 +336,12 @@ class GameState:
 
         return False
 
-
     def is_move_capture(self, move):
         if not move.is_play or not self.is_valid_move(move):
             return False
         original_board = copy.deepcopy(self.board)
         captured_stones = original_board.place_stone(self.next_player, move.point)
         return captured_stones > 0
-
 
     def is_move_reducing_opponent_liberties(self, move):
         if not move.is_play:
@@ -359,9 +357,3 @@ class GameState:
             if neighbor_string.num_liberties < self.board.get_go_string(neighbor).num_liberties:
                 return True
         return False
-
-
-
-
-
-

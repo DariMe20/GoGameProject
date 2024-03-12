@@ -1,7 +1,9 @@
+import os
+
 from keras import Sequential
 from keras.src.saving.saving_api import load_model
 
-from dlgo.agent import RandomBot, PolicyAgent, DeepLearningAgent, QAgent
+from agent import RandomBot, PolicyAgent, DeepLearningAgent, QAgent
 from dlgo.encoders.oneplane import OnePlaneEncoder
 from dlgo.encoders.simple import SimpleEncoder
 
@@ -10,31 +12,44 @@ encoder = SimpleEncoder((board_size, board_size))
 oneplane = OnePlaneEncoder((board_size, board_size))
 model = Sequential()
 
-path_pg1 = r'C:\Users\MED6CLJ\Desktop\FSEGA_IE\Licenta\GoGameProject\dlgo\keras_networks\model_gradient1.h5'
+
+def base_dir():
+    return os.path.join('..', '..', 'reinforcement_learning')
+
+
+def gradient_descent_models_dir():
+    return os.path.join(base_dir(), 'gradient_descent', 'gradient_descent_models')
+
+
+def q_models_dir():
+    return os.path.join(base_dir(), 'q_value', 'q_models')
+
+
+path_pg1 = os.path.join(gradient_descent_models_dir(), 'model_gradient1.h5')
 model_pg1 = load_model(path_pg1)
 
-path_pg2 = r'C:\Users\MED6CLJ\Desktop\FSEGA_IE\Licenta\GoGameProject\dlgo\keras_networks\model_gradient2.h5'
+path_pg2 = os.path.join(gradient_descent_models_dir(), 'model_gradient1.h5')
 model_pg2 = load_model(path_pg2)
 
-path_pg3 = r'C:\Users\MED6CLJ\Desktop\FSEGA_IE\Licenta\GoGameProject\dlgo\keras_networks\model_gradient3.h5'
+path_pg3 = os.path.join(gradient_descent_models_dir(), 'model_gradient1.h5')
 model_pg3 = load_model(path_pg3)
 
-path_pg4 = r'C:\Users\MED6CLJ\Desktop\FSEGA_IE\Licenta\GoGameProject\dlgo\keras_networks\model_gradient1.h5'
+path_pg4 = os.path.join(gradient_descent_models_dir(), 'model_gradient1.h5')
 model_pg4 = load_model(path_pg4)
 
-path_pg5 = r'C:\Users\MED6CLJ\Desktop\FSEGA_IE\Licenta\GoGameProject\dlgo\keras_networks\model_gradient1.h5'
+path_pg5 = os.path.join(gradient_descent_models_dir(), 'model_gradient1.h5')
 model_pg5 = load_model(path_pg5)
 
-path_DL = r'C:\Users\MED6CLJ\Desktop\FSEGA_IE\Licenta\GoGameProject\dlgo\keras_networks\model_PredictionAgent.h5'
+path_DL = os.path.join(gradient_descent_models_dir(), 'model_PredictionAgent.h5')
 model_DL = load_model(path_DL)
 
-path_Q1 = r'C:\Users\MED6CLJ\Desktop\FSEGA_IE\Licenta\GoGameProject\dlgo/rl/q_value/q_models/model_Q1.h5'
+path_Q1 = os.path.join(q_models_dir(), 'model_Q1.h5')
 model_Q1 = load_model(path_Q1)
 
-path_Q2 = r'C:\Users\MED6CLJ\Desktop\FSEGA_IE\Licenta\GoGameProject\dlgo/rl/q_value/q_models/model_Q2.h5'
+path_Q2 = os.path.join(q_models_dir(), 'model_Q2.h5')
 model_Q2 = load_model(path_Q2)
 
-path_Q2_V2 = r'C:\Users\MED6CLJ\Desktop\FSEGA_IE\Licenta\GoGameProject\dlgo/rl/q_value/q_models/model_Q2_V2.h5'
+path_Q2_V2 = os.path.join(q_models_dir(), 'model_Q2_V2.h5')
 model_Q2_V2 = load_model(path_Q2_V2)
 
 # BOT INITIALIZERS

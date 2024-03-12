@@ -15,6 +15,10 @@ class Board:
         self._grid = {}  # private variable as dictionary
         self._hash = zobrist.EMPTY_BOARD
 
+        # Define aggregation variables for explicit declaration - for pyreverse to analyse them correctly
+        self.aggregation_point = Point
+        self.aggregation_string = GoString
+
     def get_grid(self):
         return self._grid
 

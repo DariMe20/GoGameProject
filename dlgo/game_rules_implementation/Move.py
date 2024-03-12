@@ -1,3 +1,6 @@
+from dlgo.game_rules_implementation.Point import Point
+
+
 class Move:
     """
     Clasa Move incorporeaza 3 tipuri de miscari:
@@ -11,13 +14,14 @@ class Move:
         assert (point is not None) ^ is_pass ^ is_resign
 
         # Initializari
-        self.point = point
+        self.point: Point = point
+        self.aggregation_point = Point
         self.is_play = self.point is not None
         self.is_pass = is_pass
         self.is_resign = is_resign
 
     @classmethod
-    def play(cls, point):
+    def play(cls, point: Point):
         """
         Methoda pentru generarea unei mutari pe tabla
 

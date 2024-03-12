@@ -1,10 +1,10 @@
 import os
 import sys
+
 from PyQt5 import QtWidgets
 from PyQt5.QtGui import QPixmap
 
 import dlgo.game_rules_implementation.Player
-from dlgo.game_rules_implementation import gotypes
 from dlgo.game_rules_implementation.Player import Player
 from gui.generated_files.MainWindow import Ui_MainWindow
 from gui.section_controllers.Bot_vs_Bot_Controller import BvBController
@@ -77,7 +77,7 @@ class GoWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
             self.scene.addItem(self.board)
             self.scene.setSceneRect(
                 0, 0, 850, 850
-            )  # Updated to match GoBoardController's boundingRect dimensions
+                )  # Updated to match GoBoardController's boundingRect dimensions
             self.ui.graphicsView_GoBoard.setScene(self.scene)
             self.ui.graphicsView_GoBoard.setViewportMargins(0, 0, 0, 0)
             self.ui.graphicsView_GoBoard.centerOn(425, 425)
@@ -114,11 +114,12 @@ class GoWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
             territory_message = f"Black Territory: {black_score}, White Territory: {white_score}"
             self.ui.textEdit_Probs.setText(territory_message)
             self.ui.label.setText(f"GAME OVER - {winner}")
+
     @staticmethod
     def adjust_scale_factor():
         temp_app = QtWidgets.QApplication(
             sys.argv
-        )  # Instanță temporară pentru a obține informații despre ecran
+            )  # Instanță temporară pentru a obține informații despre ecran
         screen = temp_app.primaryScreen()
         resolution = screen.size()  # Ia rezolutia ecranului
         scale_factor = "1"  # Factor de scalare default
