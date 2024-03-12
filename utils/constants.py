@@ -12,37 +12,44 @@ encoder = SimpleEncoder((board_size, board_size))
 oneplane = OnePlaneEncoder((board_size, board_size))
 model = Sequential()
 
-path_pg1 = os.path.join('..', '..', 'reinforcement_learning', 'gradient_descent', 'gradient_descent_models',
-                        'model_gradient1.h5')
+
+def base_dir():
+    return os.path.join('..', '..', 'reinforcement_learning')
+
+
+def gradient_descent_models_dir():
+    return os.path.join(base_dir(), 'gradient_descent', 'gradient_descent_models')
+
+
+def q_models_dir():
+    return os.path.join(base_dir(), 'q_value', 'q_models')
+
+
+path_pg1 = os.path.join(gradient_descent_models_dir(), 'model_gradient1.h5')
 model_pg1 = load_model(path_pg1)
 
-path_pg2 = os.path.join('..', '..', 'reinforcement_learning', 'gradient_descent', 'gradient_descent_models',
-                        'model_gradient2.h5')
+path_pg2 = os.path.join(gradient_descent_models_dir(), 'model_gradient1.h5')
 model_pg2 = load_model(path_pg2)
 
-path_pg3 = os.path.join('..', '..', 'reinforcement_learning', 'gradient_descent', 'gradient_descent_models',
-                        'model_gradient3.h5')
+path_pg3 = os.path.join(gradient_descent_models_dir(), 'model_gradient1.h5')
 model_pg3 = load_model(path_pg3)
 
-path_pg4 = os.path.join('..', '..', 'reinforcement_learning', 'gradient_descent', 'gradient_descent_models',
-                        'model_gradient1.h5')
+path_pg4 = os.path.join(gradient_descent_models_dir(), 'model_gradient1.h5')
 model_pg4 = load_model(path_pg4)
 
-path_pg5 = os.path.join('..', '..', 'reinforcement_learning', 'gradient_descent', 'gradient_descent_models',
-                        'model_gradient1.h5')
+path_pg5 = os.path.join(gradient_descent_models_dir(), 'model_gradient1.h5')
 model_pg5 = load_model(path_pg5)
 
-path_DL = os.path.join('..', '..', 'reinforcement_learning', 'gradient_descent', 'gradient_descent_models',
-                       'model_PredictionAgent.h5')
+path_DL = os.path.join(gradient_descent_models_dir(), 'model_PredictionAgent.h5')
 model_DL = load_model(path_DL)
 
-path_Q1 = os.path.join('..', '..', 'reinforcement_learning', 'q_value', 'q_models', 'model_Q1.h5')
+path_Q1 = os.path.join(q_models_dir(), 'model_Q1.h5')
 model_Q1 = load_model(path_Q1)
 
-path_Q2 = os.path.join('..', '..', 'reinforcement_learning', 'q_value', 'q_models', 'model_Q2.h5')
+path_Q2 = os.path.join(q_models_dir(), 'model_Q2.h5')
 model_Q2 = load_model(path_Q2)
 
-path_Q2_V2 = os.path.join('..', '..', 'reinforcement_learning', 'q_value', 'q_models', 'model_Q2_V2.h5')
+path_Q2_V2 = os.path.join(q_models_dir(), 'model_Q2_V2.h5')
 model_Q2_V2 = load_model(path_Q2_V2)
 
 # BOT INITIALIZERS
