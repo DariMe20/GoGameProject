@@ -4,22 +4,22 @@ from keras import backend as K
 from keras.optimizers import SGD
 from keras.src.saving.saving_api import save_model
 
-import dlgo.game_rules_implementation.Move
 from agent.base import Agent
 from dlgo import encoders
+from dlgo.game_rules_implementation.Move import Move
 from dlgo.keras_networks import kerasutil
 from utils import utils
-from utils.helpers import is_point_an_eye
 
 __all__ = [
     'PolicyAgent',
     'load_policy_agent',
     'policy_gradient_loss',
-    ]
+]
+
+from utils.helpers import is_point_an_eye
 
 
-# Keeping this around so we can read existing agents. But from now on
-# we'll use the built-in crossentropy loss.
+# function that calculates the loss and encourages the model to increase the probs of actions with bigger rewards.
 def policy_gradient_loss(y_true, y_pred):
     clip_pred = K.clip(y_pred, K.epsilon(), 1 - K.epsilon())
     loss = -1 * y_true * K.log(clip_pred)
@@ -93,17 +93,17 @@ class PolicyAgent(Agent):
 
         for point_idx in ranked_moves:
             point = self._encoder.decode_point_index(point_idx)
-            if game_state.is_valid_move(dlgo.game_rules_implementation.Move.Move.play(point)) \
+            if game_state.is_valid_move(Move.play(point)) \
                     and not is_point_an_eye(game_state.board, point, game_state.next_player) \
-                    and not game_state.is_move_on_edge(dlgo.game_rules_implementation.Move.Move.play(point)):
+                    and not game_state.is_move_on_edge(Move.play(point)):
                 if self.collector is not None:
                     self.collector.record_decision(
                         state=board_tensor,
                         action=point_idx
-                        )
-                return dlgo.game_rules_implementation.Move.Move.play(point)
+                    )
+                return Move.play(point)
         # No legal, non-self-destructive moves less.
-        return dlgo.game_rules_implementation.Move.Move.pass_turn()
+        return Move.pass_turn()
 
     def serialize(self, h5file):
         h5file.create_group('encoder')

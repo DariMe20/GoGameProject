@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Black">
-    <option name="sdkUUID" value="f698b592-869f-492c-b1a8-09f8e5f3e1f1" />
+    <option name="sdkName" value="GoGameProject (2)" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="GoGameProject" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="GoGameProject (2)" project-jdk-type="Python SDK" />
   <component name="PythonCompatibilityInspectionAdvertiser">
     <option name="version" value="3" />
   </component>
