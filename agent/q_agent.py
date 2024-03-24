@@ -9,7 +9,7 @@ from dlgo.game_rules_implementation.Move import Move
 class QAgent(Agent):
     def __init__(self, model, encoder):
         super().__init__()
-        self._model = model
+        self.model = model
         self._encoder = encoder
         self.collector = None
         self.temperature = 0.1
@@ -57,7 +57,7 @@ class QAgent(Agent):
         for i, move in enumerate(moves):
             move_vectors[i][move] = 1
 
-        values = self._model.predict([board_tensors, move_vectors])
+        values = self.model.predict([board_tensors, move_vectors])
         values = values.reshape(len(moves))
 
         # Ordoneaza mutarile conform epsilon greedy
@@ -80,11 +80,11 @@ class QAgent(Agent):
         h5file['encoder'].attrs['board_width'] = self._encoder.board_width
         h5file['encoder'].attrs['board_height'] = self._encoder.board_height
         h5file.create_group('model')
-        save_model(self._model, h5file)
+        save_model(self.model, h5file)
 
     def train(self, experience, lr=0.1, clip_norm=1.0, batch_size=128):
         opt = SGD(learning_rate=lr)
-        self._model.compile(loss='mse', optimizer=opt)
+        self.model.compile(loss='mse', optimizer=opt)
 
         n = experience.states.shape[0]
         # Translate the actions/rewards.
@@ -98,7 +98,7 @@ class QAgent(Agent):
             actions[i][action] = 1
             y[i] = reward
 
-        self._model.fit(
+        self.model.fit(
             [experience.states, actions], y,
             batch_size=batch_size,
             epochs=1)

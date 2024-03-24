@@ -31,7 +31,7 @@ class PvBController(QtWidgets.QWidget):
 
         self.GOwin.ui.pushButton_StartGame.clicked.connect(self.start_player_game)
 
-        model_path = 'C:\\DARIA\\1.FSEGA\\LICENTA\\GoGameProject\\dlgo\\keras_networks\\model_PredictionAgent.h5'
+        model_path = 'C:\\DARIA\\1.FSEGA\\LICENTA\\GoGameProject\\reinforcement_learning\\gradient_descent\\gradient_descent_models\\model_PredictionAgent.h5'
 
         self.model = load_model(model_path)
         self.encoder = OnePlaneEncoder(board_size=(self.board_size, self.board_size))

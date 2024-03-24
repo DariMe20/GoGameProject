@@ -36,7 +36,7 @@ class PolicyAgent(Agent):
 
     def __init__(self, model, encoder, compute_probs=True):
         Agent.__init__(self)
-        self._model = model
+        self.model = model
         self._encoder = encoder
         self.collector = None
         self._temperature = 0.4
@@ -46,7 +46,7 @@ class PolicyAgent(Agent):
     def predict(self, game_state):
         encoded_state = self._encoder.encode(game_state)
         input_tensor = np.array([encoded_state])
-        return self._model.predict(input_tensor)[0]
+        return self.model.predict(input_tensor)[0]
 
     def set_temperature(self, temperature):
         self._temperature = temperature
@@ -65,7 +65,7 @@ class PolicyAgent(Agent):
             move_probs = np.ones(num_moves) / num_moves
         else:
             # Follow our current policy.
-            move_probs = self._model.predict(x)[0]
+            move_probs = self.model.predict(x)[0]
 
         # Prevent move probs from getting stuck at 0 or 1.
         eps = 1e-5
@@ -111,11 +111,11 @@ class PolicyAgent(Agent):
         h5file['encoder'].attrs['board_width'] = self._encoder.board_width
         h5file['encoder'].attrs['board_height'] = self._encoder.board_height
         h5file.create_group('model')
-        save_model(self._model, h5file)
+        save_model(self.model, h5file)
 
     def train(self, experience, lr, clip_norm, batch_size):
         opt = SGD(learning_rate=lr, clipnorm=clip_norm)
-        self._model.compile(loss='categorical_crossentropy', optimizer=opt)
+        self.model.compile(loss='categorical_crossentropy', optimizer=opt)
 
         n = experience.states.shape[0]
         # Translate the actions/rewards.
@@ -126,14 +126,14 @@ class PolicyAgent(Agent):
             reward = experience.rewards[i]
             y[i][action] = reward
 
-        self._model.fit(
+        self.model.fit(
             experience.states, y,
             batch_size=batch_size,
             epochs=1)
 
 
 def load_policy_agent(h5file):
-    model = kerasutil.load_model_from_hdf5_group(
+    model = kerasutil.loadmodel_from_hdf5_group(
         h5file['model'],
         custom_objects={'policy_gradient_loss': policy_gradient_loss})
     encoder_name = h5file['encoder'].attrs['name']
