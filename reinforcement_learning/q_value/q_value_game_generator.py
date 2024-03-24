@@ -12,8 +12,8 @@ board_size = 9
 encoder = SimpleEncoder((board_size, board_size))
 
 # MODEL PATHS
-path_Q1 = os.path.join('q_models', 'model_Q2.h5')
-path_Q2 = os.path.join('q_models', 'model_Q2_V2.h5')
+path_Q1 = os.path.join('q_models', 'model_Q1.h5')
+path_Q2 = os.path.join('q_models', 'model_Q1.h5')
 
 # DATA SAVING PATHS
 output_folder_outer = os.path.join('..', '..', 'dlgo', 'json_data', 'q_value', 'game_generator')
@@ -46,7 +46,12 @@ class QValueGameGenerator(GameGenerator):
                          filename, experience_directory)
 
 
-# GIVE NUMBER OF SIMULATIONS AND RUN GENERATOR
-NUM_EPISODES = 1
-q_game_generator = QValueGameGenerator()
-q_game_generator.generate_games(NUM_EPISODES, encoder.board_width)
+def main():
+    # GIVE NUMBER OF SIMULATIONS AND RUN GENERATOR
+    NUM_EPISODES = 100
+    q_game_generator = QValueGameGenerator()
+    q_game_generator.generate_games(NUM_EPISODES, encoder.board_width)
+
+
+if __name__ == '__main__':
+    main()

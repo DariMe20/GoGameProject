@@ -101,4 +101,4 @@ class QAgent(Agent):
         self.model.fit(
             [experience.states, actions], y,
             batch_size=batch_size,
-            epochs=1)
+            epochs=100, verbose=1)

@@ -25,6 +25,7 @@ def main():
 
     TrainingBase.train_agent(experience_folder, learning_agent, agent_in_path, agent_out_path,
                              lr, clip_norm, batch_size, training_details_filename)
+    learning_agent.model.summary()
 
 
 if __name__ == '__main__':
