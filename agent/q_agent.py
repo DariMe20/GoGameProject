@@ -83,7 +83,7 @@ class QAgent(Agent):
         save_model(self.model, h5file)
 
     def train(self, experience, lr=0.1, clip_norm=1.0, batch_size=128):
-        opt = SGD(learning_rate=lr)
+        opt = SGD(learning_rate=lr, clip_norm=clip_norm)
         self.model.compile(loss='mse', optimizer=opt)
 
         n = experience.states.shape[0]
@@ -101,4 +101,4 @@ class QAgent(Agent):
         self.model.fit(
             [experience.states, actions], y,
             batch_size=batch_size,
-            epochs=100, verbose=1)
+            epochs=2, verbose=1)

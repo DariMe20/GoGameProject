@@ -133,7 +133,7 @@ class PolicyAgent(Agent):
 
 
 def load_policy_agent(h5file):
-    model = kerasutil.loadmodel_from_hdf5_group(
+    model = kerasutil.load_model_from_hdf5_group(
         h5file['model'],
         custom_objects={'policy_gradient_loss': policy_gradient_loss})
     encoder_name = h5file['encoder'].attrs['name']
