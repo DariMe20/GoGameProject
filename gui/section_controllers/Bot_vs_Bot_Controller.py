@@ -1,6 +1,5 @@
 from PyQt5 import QtWidgets, QtCore
 
-import dlgo.game_rules_implementation.Player
 from dlgo.game_rules_implementation import goboard
 from dlgo.game_rules_implementation.Player import Player
 
@@ -41,10 +40,12 @@ class BvBController(QtWidgets.QWidget):
         self.GOwin.ui.pushButton_PlayStop.clicked.connect(self.toggle_play_stop)
 
         # SLIDER SETTINGS
-        self.GOwin.ui.horizontalSlider.setMaximum(1500)
-        self.GOwin.ui.horizontalSlider.setMinimum(50)
-        self.GOwin.ui.horizontalSlider.setTickInterval(200)
-        self.timer.setInterval(1000)
+        self.default_Value = 1000
+        self.GOwin.ui.horizontalSlider.setMaximum(2500)
+        self.GOwin.ui.horizontalSlider.setMinimum(200)
+        self.GOwin.ui.horizontalSlider.setTickInterval(50)
+        self.update_slider_labels(self.default_Value)
+        self.timer.setInterval(self.default_Value)
         self.GOwin.ui.horizontalSlider.setInvertedAppearance(True)
         self.GOwin.ui.horizontalSlider.setTickPosition(QtWidgets.QSlider.TicksBelow)
         self.GOwin.ui.horizontalSlider.valueChanged.connect(self.update_timer_interval)
@@ -52,6 +53,7 @@ class BvBController(QtWidgets.QWidget):
     # SLIDER METHODS
     def update_timer_interval(self, value):
         # Aici puteți actualiza intervalele timer-ului
+        self.default_Value = value
         self.timer.setInterval(value)
         self.update_slider_labels(value)
 
@@ -91,8 +93,9 @@ class BvBController(QtWidgets.QWidget):
         self.GOwin.ui.verticalWidget.setStyleSheet('#verticalWidget{border:1px solid grey;}')
         self.GOwin.ui.verticalWidget_2.setStyleSheet("#verticalWidget_2{border:none}")
 
+        self.timer = QtCore.QTimer()
         self.timer.timeout.connect(self.step_bot_game)
-        self.timer.start()
+        self.timer.start(500)
 
     def step_bot_game(self):
         try:
@@ -100,11 +103,11 @@ class BvBController(QtWidgets.QWidget):
                 return
 
             current_player = self.game.next_player
-            bot_agent = self.bot_black if current_player == dlgo.game_rules_implementation.Player.Player.black else self.bot_white
+            bot_agent = self.bot_black if current_player == Player.black else self.bot_white
 
             self.GOwin.ui.label_FinalResults.setText(f"Showing probs for agent: {current_player}")
 
-            bot_probs = self.bot_black if current_player == dlgo.game_rules_implementation.Player.Player.white else self.bot_white
+            bot_probs = self.bot_black if current_player == Player.white else self.bot_white
 
             if bot_probs.compute_probs is True:
                 move_probs_html = bot_probs.generate_gui_formatted_probs(self.game)
@@ -113,6 +116,7 @@ class BvBController(QtWidgets.QWidget):
 
             # Aplică mutarea și actualizează starea jocului
             self.game = self.game.apply_move(bot_move)
+            self.board.set_last_move(bot_move.point)
             self.update_prisoners()
 
             # Verifică pentru două pasări consecutive
