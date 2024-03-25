@@ -117,14 +117,17 @@ class GameState:
         if not move.is_play:
             return False
 
+        if self.move_number <= 5:
+            return False
+
         # Copiem tabla actuala si plasam noua piesa
-        next_board = copy.deepcopy(self.board)
+        next_board = copy.deepcopy(self.previous_state.board)
         next_board.place_stone(player, move.point)
 
         # Creem urmatoare situatie de pe tabla
-        next_situation = (player.other, next_board.zobrist_hash())
-        if next_situation in self.previous_states:
-            print("Move violates Ko")
+        next_situation = (player, next_board.zobrist_hash())
+        if next_situation == self.previous_state.previous_state:
+            return True
         return next_situation in self.previous_states
 
     def is_valid_move(self, move: Move):
@@ -212,7 +215,7 @@ class GameState:
         return winner, {
             Player.black: adjusted_black_score,
             Player.white: adjusted_white_score,
-            }
+        }
 
     def collect_territory(self, board, start_point):
         territory = set()
@@ -321,7 +324,7 @@ class GameState:
                self.board.get_go_string(neighbor) and
                self.board.get_go_string(neighbor).color == self.next_player and
                self.board.get_go_string(neighbor).num_liberties == 1
-            ]
+        ]
 
         # Simulate the move
         next_board = copy.deepcopy(self.board)
