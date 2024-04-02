@@ -13,7 +13,7 @@ encoder = SimpleEncoder((board_size, board_size))
 
 # MODEL PATHS
 path_G1 = os.path.join('gradient_descent_models', 'model_gradient1.h5')
-path_G2 = os.path.join('gradient_descent_models', 'model_gradient2.h5')
+path_G2 = os.path.join('gradient_descent_models', 'model_gradient1.h5')
 
 # LOAD MODELS
 model_G1 = load_model(path_G1)
@@ -46,7 +46,12 @@ class GradientGameGenerator(GameGenerator):
                          filename, experience_directory)
 
 
-# GIVE NUMBER OF SIMULATIONS AND RUN GENERATOR
-NUM_EPISODES = 1
-gradient_game_generator = GradientGameGenerator()
-gradient_game_generator.generate_games(NUM_EPISODES, encoder.board_width)
+def main():
+    # GIVE NUMBER OF SIMULATIONS AND RUN GENERATOR
+    NUM_EPISODES = 1
+    q_game_generator = GradientGameGenerator()
+    q_game_generator.generate_games(NUM_EPISODES, encoder.board_width)
+
+
+if __name__ == '__main__':
+    main()

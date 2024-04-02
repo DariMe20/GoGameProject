@@ -121,13 +121,13 @@ class GameState:
             return False
 
         # Copiem tabla actuala si plasam noua piesa
-        next_board = copy.deepcopy(self.previous_state.board)
+        next_board = copy.deepcopy(self.board)
         next_board.place_stone(player, move.point)
 
         # Creem urmatoare situatie de pe tabla
-        next_situation = (player, next_board.zobrist_hash())
-        if next_situation == self.previous_state.previous_state:
-            return True
+        next_situation = (player.other, next_board.zobrist_hash())
+        if next_situation in self.previous_states:
+            print("Move violates Ko")
         return next_situation in self.previous_states
 
     def is_valid_move(self, move: Move):

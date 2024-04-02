@@ -3,3 +3,4 @@
 /reinforcement_learning/q_value/q_value_experience_files/*.h5
 /unused
 dlgo/rl
+*.h5
