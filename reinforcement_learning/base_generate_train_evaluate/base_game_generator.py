@@ -29,6 +29,9 @@ def play_and_collect(board_size, agent_black, agent_white, black_key, white_key,
         game_state = game_state.apply_move(move)
 
     winner, scores = game_state.evaluate_territory()
+    black_score = scores[Player.black]
+    white_score = scores[Player.white]
+    difference = abs(black_score - white_score)
 
     # Se finalizează colectarea experienței pentru ambii agenți
     if game_state.winner() == Player.black:
@@ -38,12 +41,22 @@ def play_and_collect(board_size, agent_black, agent_white, black_key, white_key,
         agents[Player.black].collector.complete_episode(reward=-1)
         agents[Player.white].collector.complete_episode(reward=1)
 
-    return agents[Player.black].collector, agents[Player.white].collector
+    game_result = {
+        'black_agent': black_key,
+        'white_agent': white_key,
+        'winner': game_state.winner(),
+        'black_territory': black_score,
+        'white_territory': white_score,
+        'territory_difference': difference,
+    }
+
+    return [agents[Player.black].collector, agents[Player.white].collector], game_result
 
 
 class GameGenerator:
     def __init__(self, agent_black, agent_white, black_key, white_key, temp_black, temp_white, output_folder,
                  filename, experience_directory):
+        self.all_episodes_info = []
         self.agent_black = agent_black
         self.agent_white = agent_white
         self.black_key = black_key
@@ -81,19 +94,82 @@ class GameGenerator:
         with Pool(cpu_count()) as pool:
             results = pool.starmap(play_and_collect, pool_args)
 
-        # Combine experiences from all games
-        combined_experience = combine_experience([item for sublist in results for item in sublist])
+        # Inițializează o listă pentru a colecta toate experiențele
+        all_collectors_experience = []
 
-        # Save the combined experience
-        self.save_experience(combined_experience)
+        # Procesează fiecare rezultat returnat
+        for collectors, game_info in results:
+            all_collectors_experience.extend(collectors)  # Adaugă colectoarele de experiență pentru combinare
+
+            if game_info['winner'] == Player.black:
+                self.black_wins += 1
+            else:
+                self.white_wins += 1
+
+            # Adaugare informatii la game_result
+            self.game_results.append({
+                'winner': str(game_info['winner']),
+                'current_score': {'black': self.black_wins, 'white': self.white_wins},
+                'black_agent': str(game_info['black_agent']),
+                'white_agent': str(game_info['white_agent']),
+                'black_score': str(game_info['black_territory']),
+                'white_score': str(game_info['white_territory']),
+                'territory_difference': str(game_info['territory_difference'])
+            })
+
+            self.total_black_score += game_info['black_territory']
+            self.total_white_score += game_info['white_territory']
+
+        # Combinează experiențele din toate jocurile
+        combined_experience = combine_experience(all_collectors_experience)
+
+        # Salvează experiența combinată
+        # self.save_experience(combined_experience)
+
+        # GENERAREA DATELOR SI POPULAREA FISIERELOR JSON
+        self.average_black_score = self.total_black_score / num_episodes
+        self.average_white_score = self.total_white_score / num_episodes
+        print(f"Black wins: {self.black_wins} / {num_episodes} \nWhite wins: {self.white_wins} / {num_episodes}")
+        self.save_summary_info(num_episodes, combined_experience)
+        self.reset_data()
 
     def save_experience(self, combined_experience):
         # Generate a unique filename for the experience data
-        experience_filename = data_file_manipulator.generate_experience_filename(self.experience_directory)
+        experience_filename = data_file_manipulator.generate_experience_filename(self.experience_directory,
+                                                                                 self.black_key, self.white_key)
 
         # Serialize a combined experience to an HDF5 file
         with h5py.File(experience_filename, 'w') as h5file:
             combined_experience.serialize(h5file)
+
+    def save_summary_info(self, num_episodes, combined_experience):
+        # Generate a unique filename for the experience data
+        experience_filename = data_file_manipulator.generate_experience_filename(self.experience_directory,
+                                                                                 self.black_key, self.white_key)
+
+        # Serialize a combined experience to an HDF5 file
+        with h5py.File(experience_filename, 'w') as h5file:
+            combined_experience.serialize(h5file)
+
+        summary_info = {
+            'Episodes': num_episodes,
+            'Black_agent': self.black_key,
+            'White_agent': self.white_key,
+            'Black_wins': self.black_wins,
+            'White_wins': self.white_wins,
+            'Average_black_score': self.average_black_score,
+            'Average_white_score': self.average_white_score,
+        }
+
+        # SALVARE DATE IN FISIERE JSON
+        data_file_manipulator.generate_filename(self.black_key, self.white_key, self.output_folder, num_episodes)
+        data_file_manipulator.save_all_games_info(self.game_results,
+                                                  summary_info,
+                                                  self.black_key, self.white_key,
+                                                  self.output_folder, num_episodes)
+        data_file_manipulator.save_summary_info(summary_info, self.filename, experience_filename)
+
+        data_file_manipulator.save_all_episodes_info(self.game_results, self.output_folder)
 
     def reset_data(self):
         self.game_results = []

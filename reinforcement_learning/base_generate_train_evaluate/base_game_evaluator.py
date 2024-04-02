@@ -31,7 +31,7 @@ class GameEvaluator:
         agents = {
             Player.black: self.agent_black,
             Player.white: self.agent_white
-            }
+        }
 
         while not state.is_over():
             next_player = state.next_player
@@ -53,7 +53,7 @@ class GameEvaluator:
             'black_territory': black_score,
             'white_territory': white_score,
             'territory_difference': difference,
-            }
+        }
 
     def generate_games(self, num_episodes, board_size):
         for episode in range(num_episodes):
@@ -77,7 +77,7 @@ class GameEvaluator:
                 'black_score': str(game_info['black_territory']),
                 'white_score': str(game_info['white_territory']),
                 'territory_difference': str(game_info['territory_difference'])
-                })
+            })
 
             self.total_black_score += game_info['black_territory']
             self.total_white_score += game_info['white_territory']
@@ -99,14 +99,14 @@ class GameEvaluator:
             'White_wins': self.white_wins,
             'Average_black_score': self.average_black_score,
             'Average_white_score': self.average_white_score,
-            }
+        }
 
         # SALVARE DATE IN FISIERE JSON
-        data_file_manipulator.generate_filename(self.black_key, self.white_key, self.output_folder)
+        data_file_manipulator.generate_filename(self.black_key, self.white_key, self.output_folder, num_episodes)
         data_file_manipulator.save_all_games_info(self.game_results,
                                                   summary_info,
                                                   self.black_key, self.white_key,
-                                                  self.output_folder)
+                                                  self.output_folder, num_episodes)
         data_file_manipulator.save_summary_info(summary_info, self.filename)
 
     def reset_data(self):
