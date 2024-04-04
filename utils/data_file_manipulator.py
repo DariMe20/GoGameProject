@@ -22,7 +22,7 @@ def save_all_games_info(game_results, summary_info, agent1_key, agent2_key, outp
     data_to_save = {
         "summary_info": summary_info,
         "game_details": game_results
-    }
+        }
     with open(filename, 'w') as f:
         json.dump(data_to_save, f, indent=4)
     print("Saved record at ", filename)
@@ -86,7 +86,15 @@ def generate_experience_filename(output_folder, agent1_key, agent2_key, base_nam
     files = os.listdir(output_folder)
     matching_files = [f for f in files if f.startswith(base_name) and f.endswith(".h5")]
 
-    numbers = [int(f[len(base_name):f.rfind(".")]) for f in matching_files if f[len(base_name):f.rfind(".")].isdigit()]
+    numbers = []
+    for f in matching_files:
+        # Extragerea părții cu numărul presupunând că structura este base_name + număr + restul
+        start_idx = len(base_name)
+        end_idx = f.find("_", start_idx)
+        number_part = f[start_idx:end_idx] if end_idx != -1 else ""
+        if number_part.isdigit():
+            numbers.append(int(number_part))
+
     next_number = max(numbers) + 1 if numbers else 1
 
     new_filename = f"{base_name}{next_number}_{agent1_key_no_spaces}_{agent2_key_no_spaces}.h5"
