@@ -12,8 +12,8 @@ board_size = 9
 encoder = SimpleEncoder((board_size, board_size))
 
 # MODEL PATHS
-path_G1 = os.path.join('gradient_descent_models', 'model_gradient1.h5')
-path_G2 = os.path.join('gradient_descent_models', 'model_gradient1.h5')
+path_G1 = os.path.join('gradient_descent_models', 'NO1_model_Gradient.h5')
+path_G2 = os.path.join('gradient_descent_models', 'NO1_model_gradient.h5')
 
 # LOAD MODELS
 model_G1 = load_model(path_G1)
@@ -28,8 +28,8 @@ black_name = os.path.splitext(os.path.basename(path_G1))[0]
 white_name = os.path.splitext(os.path.basename(path_G2))[0]
 
 # SET AGENT EXPLORATION FACTOR
-temp_black = 0.02
-temp_white = 0.02
+temp_black = 0.05
+temp_white = 0.05
 
 # DATA SAVING PATHS
 output_folder_outer = os.path.join('..', '..', 'dlgo', 'json_data', 'gradient_descent', 'game_generator')
@@ -48,9 +48,12 @@ class GradientGameGenerator(GameGenerator):
 
 def main():
     # GIVE NUMBER OF SIMULATIONS AND RUN GENERATOR
-    NUM_EPISODES = 1
-    q_game_generator = GradientGameGenerator()
-    q_game_generator.generate_games(NUM_EPISODES, encoder.board_width)
+    loops = 10
+    for i in range(loops):
+        print("STARTING SET: ", i)
+        NUM_EPISODES = 100
+        q_game_generator = GradientGameGenerator()
+        q_game_generator.generate_games(NUM_EPISODES, encoder.board_width)
 
 
 if __name__ == '__main__':
