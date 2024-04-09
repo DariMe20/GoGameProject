@@ -12,8 +12,8 @@ board_size = 9
 encoder = SimpleEncoder((board_size, board_size))
 
 # MODEL PATHS
-path_G1 = os.path.join('gradient_descent_models', 'model_Gradient1.h5')
-path_G2 = os.path.join('gradient_descent_models', 'model_Gradient2.h5')
+path_G1 = os.path.join('gradient_descent_models', 'NO1_model_Gradient.h5')
+path_G2 = os.path.join('gradient_descent_models', 'NO2_model_Gradient.h5')
 
 # LOAD MODELS
 model_G1 = load_model(path_G1)
@@ -27,9 +27,10 @@ agent2 = PolicyAgent(model_G2, encoder)
 black_name = os.path.splitext(os.path.basename(path_G1))[0]
 white_name = os.path.splitext(os.path.basename(path_G2))[0]
 
-# DATA SAVING PATHS
-output_folder_outer = os.path.join('..', '..', 'dlgo', 'json_data', 'gradient_descent')
-filename_outer = os.path.join('..', '..', 'dlgo', 'json_data', 'gradient_descent', 'game_evaluation_summary.json')
+# DATA SAVING PATHSr
+
+output_folder_outer = os.path.join('..', '..', 'dlgo', 'json_data', 'gradient_descent', 'model_evaluation')
+filename_outer = os.path.join('..', '..', 'dlgo', 'json_data', 'gradient_descent', 'model_evaluation_summary.json')
 
 
 class GradientEvaluator(GameEvaluator):
@@ -39,6 +40,15 @@ class GradientEvaluator(GameEvaluator):
 
 
 # GIVE NUMBER OF SIMULATIONS AND RUN GENERATOR
-NUM_EPISODES = 1
-gradient_game_evaluator = GradientEvaluator()
-gradient_game_evaluator.generate_games(NUM_EPISODES, encoder.board_width)
+def main():
+    # GIVE NUMBER OF SIMULATIONS AND RUN GENERATOR
+    loops = 1
+    for i in range(loops):
+        print("STARTING SET: ", i)
+        NUM_EPISODES = 1
+        q_evaluator = GradientEvaluator()
+        q_evaluator.generate_games(NUM_EPISODES, encoder.board_width)
+
+
+if __name__ == '__main__':
+    main()

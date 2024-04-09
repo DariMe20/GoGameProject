@@ -14,7 +14,7 @@ __all__ = [
     'PolicyAgent',
     'load_policy_agent',
     'policy_gradient_loss',
-]
+    ]
 
 from utils.helpers import is_point_an_eye
 
@@ -39,7 +39,7 @@ class PolicyAgent(Agent):
         self.model = model
         self._encoder = encoder
         self.collector = None
-        self._temperature = 0.4
+        self._temperature = 0.0
         self.probs_for_gui = ""
         self.compute_probs = compute_probs
 
@@ -100,7 +100,7 @@ class PolicyAgent(Agent):
                     self.collector.record_decision(
                         state=board_tensor,
                         action=point_idx
-                    )
+                        )
                 return Move.play(point)
         # No legal, non-self-destructive moves less.
         return Move.pass_turn()

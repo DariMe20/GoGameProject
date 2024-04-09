@@ -16,7 +16,7 @@ def play_and_collect(board_size, agent_black, agent_white, black_key, white_key,
     agents = {
         Player.black: agent_black,
         Player.white: agent_white,
-    }
+        }
     agents[Player.black].set_collector(collectors[0])
     agents[Player.white].set_collector(collectors[1])
     agents[Player.black].collector.begin_episode()
@@ -48,7 +48,7 @@ def play_and_collect(board_size, agent_black, agent_white, black_key, white_key,
         'black_territory': black_score,
         'white_territory': white_score,
         'territory_difference': difference,
-    }
+        }
 
     return [agents[Player.black].collector, agents[Player.white].collector], game_result
 
@@ -105,17 +105,17 @@ class GameGenerator:
                 self.black_wins += 1
             else:
                 self.white_wins += 1
-
+            current_score = 0 if game_info['winner'] == Player.black else 1
             # Adaugare informatii la game_result
             self.game_results.append({
                 'winner': str(game_info['winner']),
-                'current_score': {'black': self.black_wins, 'white': self.white_wins},
+                'current_score': str(current_score),
                 'black_agent': str(game_info['black_agent']),
                 'white_agent': str(game_info['white_agent']),
                 'black_score': str(game_info['black_territory']),
                 'white_score': str(game_info['white_territory']),
                 'territory_difference': str(game_info['territory_difference'])
-            })
+                })
 
             self.total_black_score += game_info['black_territory']
             self.total_white_score += game_info['white_territory']
@@ -159,7 +159,7 @@ class GameGenerator:
             'White_wins': self.white_wins,
             'Average_black_score': self.average_black_score,
             'Average_white_score': self.average_white_score,
-        }
+            }
 
         # SALVARE DATE IN FISIERE JSON
         data_file_manipulator.generate_filename(self.black_key, self.white_key, self.output_folder, num_episodes)
