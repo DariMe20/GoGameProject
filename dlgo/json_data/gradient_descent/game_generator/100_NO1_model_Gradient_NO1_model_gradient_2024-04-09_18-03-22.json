@@ -1,0 +1,913 @@
+{
+  "summary_info": {
+    "Episodes": 100,
+    "Black_agent": "NO1_model_Gradient",
+    "White_agent": "NO1_model_gradient",
+    "Black_wins": 56,
+    "White_wins": 44,
+    "Average_black_score": 40.71,
+    "Average_white_score": 40.29
+  },
+  "game_details": [
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "45.75",
+      "white_score": "35.25",
+      "territory_difference": "10.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "54.75",
+      "white_score": "26.25",
+      "territory_difference": "28.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "14.75",
+      "white_score": "66.25",
+      "territory_difference": "51.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "17.75",
+      "white_score": "63.25",
+      "territory_difference": "45.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "11.75",
+      "white_score": "69.25",
+      "territory_difference": "57.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "16.75",
+      "white_score": "64.25",
+      "territory_difference": "47.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "-3.25",
+      "white_score": "84.25",
+      "territory_difference": "87.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "41.75",
+      "white_score": "39.25",
+      "territory_difference": "2.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "23.75",
+      "white_score": "57.25",
+      "territory_difference": "33.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "12.75",
+      "white_score": "68.25",
+      "territory_difference": "55.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "42.75",
+      "white_score": "38.25",
+      "territory_difference": "4.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "-3.25",
+      "white_score": "84.25",
+      "territory_difference": "87.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "40.75",
+      "white_score": "40.25",
+      "territory_difference": "0.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "-3.25",
+      "white_score": "84.25",
+      "territory_difference": "87.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "31.75",
+      "white_score": "49.25",
+      "territory_difference": "17.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "16.75",
+      "white_score": "64.25",
+      "territory_difference": "47.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "58.75",
+      "white_score": "22.25",
+      "territory_difference": "36.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "77.75",
+      "white_score": "3.25",
+      "territory_difference": "74.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "65.75",
+      "white_score": "15.25",
+      "territory_difference": "50.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "43.75",
+      "white_score": "37.25",
+      "territory_difference": "6.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "47.75",
+      "white_score": "33.25",
+      "territory_difference": "14.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "36.75",
+      "white_score": "44.25",
+      "territory_difference": "7.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "47.75",
+      "white_score": "33.25",
+      "territory_difference": "14.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "47.75",
+      "white_score": "33.25",
+      "territory_difference": "14.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "53.75",
+      "white_score": "27.25",
+      "territory_difference": "26.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "24.75",
+      "white_score": "56.25",
+      "territory_difference": "31.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "43.75",
+      "white_score": "37.25",
+      "territory_difference": "6.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "39.75",
+      "white_score": "41.25",
+      "territory_difference": "1.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "48.75",
+      "white_score": "32.25",
+      "territory_difference": "16.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "33.75",
+      "white_score": "47.25",
+      "territory_difference": "13.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "48.75",
+      "white_score": "32.25",
+      "territory_difference": "16.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "29.75",
+      "white_score": "51.25",
+      "territory_difference": "21.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "41.75",
+      "white_score": "39.25",
+      "territory_difference": "2.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "-3.25",
+      "white_score": "84.25",
+      "territory_difference": "87.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "43.75",
+      "white_score": "37.25",
+      "territory_difference": "6.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "-3.25",
+      "white_score": "84.25",
+      "territory_difference": "87.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "49.75",
+      "white_score": "31.25",
+      "territory_difference": "18.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "38.75",
+      "white_score": "42.25",
+      "territory_difference": "3.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "51.75",
+      "white_score": "29.25",
+      "territory_difference": "22.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "31.75",
+      "white_score": "49.25",
+      "territory_difference": "17.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "27.75",
+      "white_score": "53.25",
+      "territory_difference": "25.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "44.75",
+      "white_score": "36.25",
+      "territory_difference": "8.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "46.75",
+      "white_score": "34.25",
+      "territory_difference": "12.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "77.75",
+      "white_score": "3.25",
+      "territory_difference": "74.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "43.75",
+      "white_score": "37.25",
+      "territory_difference": "6.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "32.75",
+      "white_score": "48.25",
+      "territory_difference": "15.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "40.75",
+      "white_score": "40.25",
+      "territory_difference": "0.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "26.75",
+      "white_score": "54.25",
+      "territory_difference": "27.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "61.75",
+      "white_score": "19.25",
+      "territory_difference": "42.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "18.75",
+      "white_score": "62.25",
+      "territory_difference": "43.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "16.75",
+      "white_score": "64.25",
+      "territory_difference": "47.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "55.75",
+      "white_score": "25.25",
+      "territory_difference": "30.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "77.75",
+      "white_score": "3.25",
+      "territory_difference": "74.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "29.75",
+      "white_score": "51.25",
+      "territory_difference": "21.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "35.75",
+      "white_score": "45.25",
+      "territory_difference": "9.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "57.75",
+      "white_score": "23.25",
+      "territory_difference": "34.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "23.75",
+      "white_score": "57.25",
+      "territory_difference": "33.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "49.75",
+      "white_score": "31.25",
+      "territory_difference": "18.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "53.75",
+      "white_score": "27.25",
+      "territory_difference": "26.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "57.75",
+      "white_score": "23.25",
+      "territory_difference": "34.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "-3.25",
+      "white_score": "84.25",
+      "territory_difference": "87.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "21.75",
+      "white_score": "59.25",
+      "territory_difference": "37.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "43.75",
+      "white_score": "37.25",
+      "territory_difference": "6.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "77.75",
+      "white_score": "3.25",
+      "territory_difference": "74.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "59.75",
+      "white_score": "21.25",
+      "territory_difference": "38.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "22.75",
+      "white_score": "58.25",
+      "territory_difference": "35.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "42.75",
+      "white_score": "38.25",
+      "territory_difference": "4.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "77.75",
+      "white_score": "3.25",
+      "territory_difference": "74.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "77.75",
+      "white_score": "3.25",
+      "territory_difference": "74.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "77.75",
+      "white_score": "3.25",
+      "territory_difference": "74.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "48.75",
+      "white_score": "32.25",
+      "territory_difference": "16.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "31.75",
+      "white_score": "49.25",
+      "territory_difference": "17.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "77.75",
+      "white_score": "3.25",
+      "territory_difference": "74.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "77.75",
+      "white_score": "3.25",
+      "territory_difference": "74.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "77.75",
+      "white_score": "3.25",
+      "territory_difference": "74.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "54.75",
+      "white_score": "26.25",
+      "territory_difference": "28.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "49.75",
+      "white_score": "31.25",
+      "territory_difference": "18.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "51.75",
+      "white_score": "29.25",
+      "territory_difference": "22.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "40.75",
+      "white_score": "40.25",
+      "territory_difference": "0.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "18.75",
+      "white_score": "62.25",
+      "territory_difference": "43.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "10.75",
+      "white_score": "70.25",
+      "territory_difference": "59.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "36.75",
+      "white_score": "44.25",
+      "territory_difference": "7.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "-3.25",
+      "white_score": "84.25",
+      "territory_difference": "87.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "77.75",
+      "white_score": "3.25",
+      "territory_difference": "74.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "51.75",
+      "white_score": "29.25",
+      "territory_difference": "22.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "23.75",
+      "white_score": "57.25",
+      "territory_difference": "33.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "44.75",
+      "white_score": "36.25",
+      "territory_difference": "8.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "77.75",
+      "white_score": "3.25",
+      "territory_difference": "74.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "31.75",
+      "white_score": "49.25",
+      "territory_difference": "17.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "77.75",
+      "white_score": "3.25",
+      "territory_difference": "74.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "38.75",
+      "white_score": "42.25",
+      "territory_difference": "3.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "-3.25",
+      "white_score": "84.25",
+      "territory_difference": "87.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "77.75",
+      "white_score": "3.25",
+      "territory_difference": "74.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "49.75",
+      "white_score": "31.25",
+      "territory_difference": "18.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "26.75",
+      "white_score": "54.25",
+      "territory_difference": "27.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "24.75",
+      "white_score": "56.25",
+      "territory_difference": "31.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "26.75",
+      "white_score": "54.25",
+      "territory_difference": "27.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "47.75",
+      "white_score": "33.25",
+      "territory_difference": "14.5"
+    },
+    {
+      "winner": "Player.white",
+      "current_score": "1",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "32.75",
+      "white_score": "48.25",
+      "territory_difference": "15.5"
+    },
+    {
+      "winner": "Player.black",
+      "current_score": "0",
+      "black_agent": "NO1_model_Gradient",
+      "white_agent": "NO1_model_gradient",
+      "black_score": "49.75",
+      "white_score": "31.25",
+      "territory_difference": "18.5"
+    }
+  ]
+}

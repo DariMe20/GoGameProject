@@ -1,0 +1,68 @@
+Model: "sequential"
+_________________________________________________________________
+Layer (type)                Output Shape              Param #
+=================================================================
+zero_padding2d (ZeroPaddin  (None, 11, 15, 15)        0
+g2D)
+
+conv2d (Conv2D)             (None, 64, 9, 9)          34560
+
+activation (Activation)     (None, 64, 9, 9)          0
+
+zero_padding2d_1 (ZeroPadd  (None, 64, 13, 13)        0
+ing2D)
+
+conv2d_1 (Conv2D)           (None, 64, 9, 9)          102464
+
+activation_1 (Activation)   (None, 64, 9, 9)          0
+
+zero_padding2d_2 (ZeroPadd  (None, 64, 13, 13)        0
+ing2D)
+
+conv2d_2 (Conv2D)           (None, 64, 9, 9)          102464
+
+activation_2 (Activation)   (None, 64, 9, 9)          0
+
+zero_padding2d_3 (ZeroPadd  (None, 64, 13, 13)        0
+ing2D)
+
+conv2d_3 (Conv2D)           (None, 48, 9, 9)          76848
+
+activation_3 (Activation)   (None, 48, 9, 9)          0
+
+zero_padding2d_4 (ZeroPadd  (None, 48, 13, 13)        0
+ing2D)
+
+conv2d_4 (Conv2D)           (None, 48, 9, 9)          57648
+
+activation_4 (Activation)   (None, 48, 9, 9)          0
+
+zero_padding2d_5 (ZeroPadd  (None, 48, 13, 13)        0
+ing2D)
+
+conv2d_5 (Conv2D)           (None, 32, 9, 9)          38432
+
+activation_5 (Activation)   (None, 32, 9, 9)          0
+
+zero_padding2d_6 (ZeroPadd  (None, 32, 13, 13)        0
+ing2D)
+
+conv2d_6 (Conv2D)           (None, 32, 9, 9)          25632
+
+activation_6 (Activation)   (None, 32, 9, 9)          0
+
+flatten (Flatten)           (None, 2592)              0
+
+dense (Dense)               (None, 1024)              2655232
+
+activation_7 (Activation)   (None, 1024)              0
+
+dense_1 (Dense)             (None, 81)                83025
+
+activation_8 (Activation)   (None, 81)                0
+
+=================================================================
+Total params: 3176305 (12.12 MB)
+Trainable params: 3176305 (12.12 MB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
