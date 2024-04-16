@@ -82,4 +82,4 @@ def probs_for_gui(move_probs, board_width, board_height):
     return board_html
 
 
-print(binomtest(81, 100))
+print(binomtest(606, 1100))

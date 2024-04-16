@@ -1,4 +1,4 @@
-/dlgo/json_data
+
 /reinforcement_learning/gradient_descent/gradient_experience_files/*.h5
 /reinforcement_learning/q_value/q_value_experience_files/*.h5
 /unused
