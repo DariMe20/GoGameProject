@@ -4,3 +4,4 @@
 /unused
 dlgo/rl
 *.h5
+/dlgo/json_data/

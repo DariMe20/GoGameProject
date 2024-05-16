@@ -12,7 +12,7 @@ class QAgent(Agent):
         self.model = model
         self._encoder = encoder
         self.collector = None
-        self.temperature = 0.1
+        self.temperature = 0.05
         self.compute_probs = False
 
     # SETTER METHODS
@@ -70,7 +70,7 @@ class QAgent(Agent):
                     self.collector.record_decision(
                         state=board_tensor,
                         action=moves[move_idx],
-                    )
+                        )
                 return Move.play(point)
         return Move.pass_turn()
 
@@ -83,7 +83,7 @@ class QAgent(Agent):
         save_model(self.model, h5file)
 
     def train(self, experience, lr=0.1, clip_norm=1.0, batch_size=128):
-        opt = SGD(learning_rate=lr, clip_norm=clip_norm)
+        opt = SGD(learning_rate=lr, clipnorm=clip_norm)
         self.model.compile(loss='mse', optimizer=opt)
 
         n = experience.states.shape[0]
@@ -101,4 +101,4 @@ class QAgent(Agent):
         self.model.fit(
             [experience.states, actions], y,
             batch_size=batch_size,
-            epochs=2, verbose=1)
+            epochs=1, verbose=1)

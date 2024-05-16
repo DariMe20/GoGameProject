@@ -12,8 +12,8 @@ board_size = 9
 encoder = SimpleEncoder((board_size, board_size))
 
 # MODEL PATHS
-path_Q1 = os.path.join('q_models', 'model_Q2.h5')
-path_Q2 = os.path.join('q_models', 'model_Q2_V2.h5')
+path_Q1 = os.path.join('q_models', 'Model3_QValue.h5')
+path_Q2 = os.path.join('..', 'gradient_descent', 'gradient_descent_models', 'NO3_model_Gradient.h5')
 
 # LOAD MODELS
 model_Q1 = load_model(path_Q1)
@@ -39,6 +39,15 @@ class QValueEvaluator(GameEvaluator):
 
 
 # GIVE NUMBER OF SIMULATIONS AND RUN GENERATOR
-NUM_EPISODES = 1
-q_game_evaluator = QValueEvaluator()
-q_game_evaluator.generate_games(NUM_EPISODES, encoder.board_width)
+def main():
+    # GIVE NUMBER OF SIMULATIONS AND RUN GENERATOR
+    loops = 5
+    for i in range(loops):
+        print("STARTING SET: ", i)
+        NUM_EPISODES = 100
+        q_game_generator = QValueEvaluator()
+        q_game_generator.generate_games(NUM_EPISODES, encoder.board_width)
+
+
+if __name__ == '__main__':
+    main()
