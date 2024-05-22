@@ -145,10 +145,14 @@ class PolicyAgent(Agent):
             reward = experience.rewards[i]
             y[i][action] = reward
 
-        self.model.fit(
+        history = self.model.fit(
             experience.states, y,
             batch_size=batch_size,
-            epochs=1)
+            epochs=1,
+            verbose=1,  # Set verbose to 1 to print the loss during training
+            validation_split=0.1  # Optionally add a validation split if you have enough data
+            )
+        return history
 
 
 def load_policy_agent(h5file):

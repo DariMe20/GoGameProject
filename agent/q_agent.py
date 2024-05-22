@@ -106,7 +106,6 @@ class QAgent(Agent):
         self.model.compile(loss='mse', optimizer=opt)
 
         n = experience.states.shape[0]
-        # Translate the actions/rewards.
         num_moves = self._encoder.num_points()
         actions = np.zeros((n, num_moves))
         y = np.zeros((n,))
@@ -117,7 +116,10 @@ class QAgent(Agent):
             actions[i][action] = 1
             y[i] = reward
 
-        self.model.fit(
+        history = self.model.fit(
             [experience.states, actions], y,
             batch_size=batch_size,
-            epochs=1, verbose=1)
+            epochs=1, verbose=1
+            )
+
+        return history

@@ -12,8 +12,8 @@ def main():
     board_size = 9
     encoder = SimpleEncoder((board_size, board_size))
     agent_in_path = os.path.join('gradient_descent_models', 'NO1_model_Gradient.h5')
-    agent_out_path = os.path.join('gradient_descent_models', 'NO2_model_Gradient.h5')
-    experience_folder = 'gradient_experience_files'
+    agent_out_path = os.path.join('gradient_descent_models', 'PlotTest_model_Gradient.h5')
+    experience_folder = 'gradient_experience_files/Model1_Model1_6000games'
     training_details_filename = os.path.join('..', '..', 'dlgo', 'json_data', 'gradient_descent', 'training_data.json')
 
     # Încarcă agentul de învățare
@@ -21,7 +21,7 @@ def main():
     learning_agent = PolicyAgent(learning_model, encoder)
 
     # Setarea datelor de antrenament si antrenarea
-    lr = 0.005
+    lr = 0.0008
     clip_norm = 1.0
     batch_size = 2048
 
