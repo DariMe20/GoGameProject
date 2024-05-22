@@ -11,7 +11,7 @@ class GoBoardController(QtWidgets.QGraphicsObject):
     def __init__(self, board_size):
         super().__init__()
         self.game = None
-        self.board_size = board_size
+        self.board_size = 9
 
         if self.board_size == 9:
             self.margin = 56

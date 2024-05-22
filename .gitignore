@@ -5,3 +5,4 @@
 dlgo/rl
 *.h5
 *.pyc
+/dlgo/json_data/

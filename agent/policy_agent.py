@@ -91,6 +91,25 @@ class PolicyAgent(Agent):
         candidates = np.arange(num_moves)
         ranked_moves = np.random.choice(candidates, num_moves, replace=False, p=move_probs)
 
+        for move_idx in ranked_moves:
+            point = self._encoder.decode_point_index(move_idx)
+            if not is_point_an_eye(game_state.board, point, game_state.next_player) and game_state.is_valid_move(
+                    Move.play(point)):
+                if game_state.is_move_protect(Move.play(point)) or game_state.is_move_atari(Move.play(point)):
+                    if self.collector is not None:
+                        self.collector.record_decision(
+                            state=board_tensor,
+                            action=move_idx,
+                            )
+                    return Move.play(point)
+                if game_state.is_move_capture(Move.play(point)):
+                    if self.collector is not None:
+                        self.collector.record_decision(
+                            state=board_tensor,
+                            action=move_idx,
+                            )
+                    return Move.play(point)
+
         for point_idx in ranked_moves:
             point = self._encoder.decode_point_index(point_idx)
             if game_state.is_valid_move(Move.play(point)) \

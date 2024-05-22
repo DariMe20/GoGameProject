@@ -48,9 +48,12 @@ class QValueGameGenerator(GameGenerator):
 
 def main():
     # GIVE NUMBER OF SIMULATIONS AND RUN GENERATOR
-    NUM_EPISODES = 100
-    q_game_generator = QValueGameGenerator()
-    q_game_generator.generate_games(NUM_EPISODES, encoder.board_width)
+    loops = 4
+    for i in range(loops):
+        print("STARTING SET: ", i)
+        NUM_EPISODES = 200
+        q_game_generator = QValueGameGenerator()
+        q_game_generator.generate_games(NUM_EPISODES, encoder.board_width)
 
 
 if __name__ == '__main__':

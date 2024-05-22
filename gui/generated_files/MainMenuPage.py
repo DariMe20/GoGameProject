@@ -14,20 +14,20 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(783, 524)
-        MainWindow.setMaximumSize(QtCore.QSize(798, 613))
+        MainWindow.resize(1116, 864)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setMinimumSize(QtCore.QSize(1116, 823))
+        self.centralwidget.setMaximumSize(QtCore.QSize(1116, 823))
         self.centralwidget.setObjectName("centralwidget")
         self.widget_MenuButtons = QtWidgets.QWidget(self.centralwidget)
-        self.widget_MenuButtons.setGeometry(QtCore.QRect(10, 120, 761, 71))
+        self.widget_MenuButtons.setGeometry(QtCore.QRect(10, 130, 1101, 81))
         self.widget_MenuButtons.setMinimumSize(QtCore.QSize(761, 71))
-        self.widget_MenuButtons.setMaximumSize(QtCore.QSize(761, 71))
         self.widget_MenuButtons.setObjectName("widget_MenuButtons")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.widget_MenuButtons)
         self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.pushButton_CreateSGF = QtWidgets.QPushButton(self.widget_MenuButtons)
-        self.pushButton_CreateSGF.setMinimumSize(QtCore.QSize(120, 40))
+        self.pushButton_CreateSGF.setEnabled(False)
         self.pushButton_CreateSGF.setMaximumSize(QtCore.QSize(120, 40))
         font = QtGui.QFont()
         font.setFamily("MS Shell Dlg 2")
@@ -40,40 +40,107 @@ class Ui_MainWindow(object):
         self.pushButton_CreateSGF.setDefault(False)
         self.pushButton_CreateSGF.setFlat(False)
         self.pushButton_CreateSGF.setObjectName("pushButton_CreateSGF")
-        self.horizontalLayout_2.addWidget(self.pushButton_CreateSGF, 0, QtCore.Qt.AlignHCenter)
-        self.pushButton_PlayerVSBot = QtWidgets.QPushButton(self.widget_MenuButtons)
-        self.pushButton_PlayerVSBot.setMinimumSize(QtCore.QSize(120, 40))
-        self.pushButton_PlayerVSBot.setMaximumSize(QtCore.QSize(120, 40))
-        font = QtGui.QFont()
-        font.setFamily("MS Shell Dlg 2")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.pushButton_PlayerVSBot.setFont(font)
-        self.pushButton_PlayerVSBot.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.pushButton_PlayerVSBot.setAutoDefault(False)
-        self.pushButton_PlayerVSBot.setDefault(False)
-        self.pushButton_PlayerVSBot.setFlat(False)
-        self.pushButton_PlayerVSBot.setObjectName("pushButton_PlayerVSBot")
-        self.horizontalLayout_2.addWidget(self.pushButton_PlayerVSBot, 0, QtCore.Qt.AlignHCenter)
+        self.horizontalLayout_2.addWidget(self.pushButton_CreateSGF)
         self.pushButton_BotVBot = QtWidgets.QPushButton(self.widget_MenuButtons)
         self.pushButton_BotVBot.setMinimumSize(QtCore.QSize(120, 40))
-        self.pushButton_BotVBot.setMaximumSize(QtCore.QSize(120, 40))
         font = QtGui.QFont()
-        font.setFamily("MS Shell Dlg 2")
-        font.setPointSize(10)
+        font.setPointSize(-1)
         font.setBold(True)
         font.setWeight(75)
         self.pushButton_BotVBot.setFont(font)
         self.pushButton_BotVBot.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_BotVBot.setFocusPolicy(QtCore.Qt.ClickFocus)
+        self.pushButton_BotVBot.setStyleSheet("QPushButton {\n"
+"                background-color: #5A9; \n"
+"                color: white; \n"
+"                padding: 10px 20px; \n"
+"                border: 2px solid #476;\n"
+"                border-radius: 10px;\n"
+"                font-size: 16px;\n"
+"                font-weight: bold;\n"
+"                box-shadow: 3px 3px 5px #888888;\n"
+"                transition: background-color 0.3s, transform 0.3s;\n"
+"            }\n"
+"            QPushButton:hover {\n"
+"                background-color: #476;\n"
+"                transform: scale(1.05);\n"
+"            }\n"
+"            QPushButton:pressed {\n"
+"                background-color: #354;\n"
+"                transform: scale(0.95);\n"
+"            }")
         self.pushButton_BotVBot.setCheckable(False)
         self.pushButton_BotVBot.setAutoDefault(False)
         self.pushButton_BotVBot.setDefault(False)
         self.pushButton_BotVBot.setFlat(False)
         self.pushButton_BotVBot.setObjectName("pushButton_BotVBot")
-        self.horizontalLayout_2.addWidget(self.pushButton_BotVBot, 0, QtCore.Qt.AlignHCenter)
+        self.horizontalLayout_2.addWidget(self.pushButton_BotVBot)
+        self.pushButton_AboutGo = QtWidgets.QPushButton(self.widget_MenuButtons)
+        self.pushButton_AboutGo.setMinimumSize(QtCore.QSize(120, 40))
+        font = QtGui.QFont()
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setWeight(75)
+        self.pushButton_AboutGo.setFont(font)
+        self.pushButton_AboutGo.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.pushButton_AboutGo.setStyleSheet("QPushButton {\n"
+"                background-color: #5A9; \n"
+"                color: white; \n"
+"                padding: 10px 20px; \n"
+"                border: 2px solid #476;\n"
+"                border-radius: 10px;\n"
+"                font-size: 16px;\n"
+"                font-weight: bold;\n"
+"                box-shadow: 3px 3px 5px #888888;\n"
+"                transition: background-color 0.3s, transform 0.3s;\n"
+"            }\n"
+"            QPushButton:hover {\n"
+"                background-color: #476;\n"
+"                transform: scale(1.05);\n"
+"            }\n"
+"            QPushButton:pressed {\n"
+"                background-color: #354;\n"
+"                transform: scale(0.95);\n"
+"            }")
+        self.pushButton_AboutGo.setAutoDefault(True)
+        self.pushButton_AboutGo.setDefault(False)
+        self.pushButton_AboutGo.setFlat(False)
+        self.pushButton_AboutGo.setObjectName("pushButton_AboutGo")
+        self.horizontalLayout_2.addWidget(self.pushButton_AboutGo)
+        self.pushButton_PlayerVSBot = QtWidgets.QPushButton(self.widget_MenuButtons)
+        self.pushButton_PlayerVSBot.setMinimumSize(QtCore.QSize(120, 40))
+        font = QtGui.QFont()
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setWeight(75)
+        self.pushButton_PlayerVSBot.setFont(font)
+        self.pushButton_PlayerVSBot.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.pushButton_PlayerVSBot.setStyleSheet("QPushButton {\n"
+"                background-color: #5A9; \n"
+"                color: white; \n"
+"                padding: 10px 20px; \n"
+"                border: 2px solid #476;\n"
+"                border-radius: 10px;\n"
+"                font-size: 16px;\n"
+"                font-weight: bold;\n"
+"                box-shadow: 3px 3px 5px #888888;\n"
+"                transition: background-color 0.3s, transform 0.3s;\n"
+"            }\n"
+"            QPushButton:hover {\n"
+"                background-color: #476;\n"
+"                transform: scale(1.05);\n"
+"            }\n"
+"            QPushButton:pressed {\n"
+"                background-color: #354;\n"
+"                transform: scale(0.95);\n"
+"            }")
+        self.pushButton_PlayerVSBot.setAutoDefault(False)
+        self.pushButton_PlayerVSBot.setDefault(False)
+        self.pushButton_PlayerVSBot.setFlat(False)
+        self.pushButton_PlayerVSBot.setObjectName("pushButton_PlayerVSBot")
+        self.horizontalLayout_2.addWidget(self.pushButton_PlayerVSBot)
         self.pushButton_EditSGF = QtWidgets.QPushButton(self.widget_MenuButtons)
+        self.pushButton_EditSGF.setEnabled(False)
         self.pushButton_EditSGF.setMinimumSize(QtCore.QSize(120, 40))
         self.pushButton_EditSGF.setMaximumSize(QtCore.QSize(120, 40))
         font = QtGui.QFont()
@@ -87,67 +154,112 @@ class Ui_MainWindow(object):
         self.pushButton_EditSGF.setDefault(False)
         self.pushButton_EditSGF.setFlat(False)
         self.pushButton_EditSGF.setObjectName("pushButton_EditSGF")
-        self.horizontalLayout_2.addWidget(self.pushButton_EditSGF, 0, QtCore.Qt.AlignHCenter)
-        self.pushButton_AboutGo = QtWidgets.QPushButton(self.widget_MenuButtons)
-        self.pushButton_AboutGo.setMinimumSize(QtCore.QSize(120, 40))
-        self.pushButton_AboutGo.setMaximumSize(QtCore.QSize(120, 40))
-        font = QtGui.QFont()
-        font.setFamily("MS Shell Dlg 2")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.pushButton_AboutGo.setFont(font)
-        self.pushButton_AboutGo.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.pushButton_AboutGo.setAutoDefault(False)
-        self.pushButton_AboutGo.setDefault(False)
-        self.pushButton_AboutGo.setFlat(False)
-        self.pushButton_AboutGo.setObjectName("pushButton_AboutGo")
-        self.horizontalLayout_2.addWidget(self.pushButton_AboutGo, 0, QtCore.Qt.AlignHCenter)
+        self.horizontalLayout_2.addWidget(self.pushButton_EditSGF)
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(0, 0, 801, 141))
-        self.label.setMinimumSize(QtCore.QSize(801, 141))
-        self.label.setMaximumSize(QtCore.QSize(801, 141))
+        self.label.setGeometry(QtCore.QRect(0, 0, 1111, 141))
         font = QtGui.QFont()
-        font.setFamily("MS Shell Dlg 2")
-        font.setPointSize(35)
+        font.setPointSize(-1)
         font.setBold(True)
         font.setWeight(75)
         self.label.setFont(font)
+        self.label.setStyleSheet("QLabel {\n"
+"                font-size: 30px;\n"
+"                font-weight: bold;\n"
+"                color: rgb(70, 70, 70);\n"
+"                padding: 20px;\n"
+"\n"
+"            }")
         self.label.setScaledContents(True)
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
         self.stackedWidget = QtWidgets.QStackedWidget(self.centralwidget)
-        self.stackedWidget.setGeometry(QtCore.QRect(19, 209, 751, 341))
+        self.stackedWidget.setGeometry(QtCore.QRect(10, 210, 1101, 581))
         self.stackedWidget.setMinimumSize(QtCore.QSize(751, 341))
-        self.stackedWidget.setMaximumSize(QtCore.QSize(751, 341))
+        self.stackedWidget.setMaximumSize(QtCore.QSize(1101, 611))
         font = QtGui.QFont()
         font.setFamily("MS Shell Dlg 2")
         font.setPointSize(10)
         font.setBold(True)
         font.setWeight(75)
         self.stackedWidget.setFont(font)
+        self.stackedWidget.setStyleSheet("/* QRadioButton Styles */\n"
+"QRadioButton {\n"
+"    font-size: 14px;\n"
+"    color: #5A9; \n"
+"    padding: 5px;\n"
+"}\n"
+"\n"
+"QRadioButton::indicator {\n"
+"    width: 15px;\n"
+"    height: 15px;\n"
+"    border-radius: 7.5px;\n"
+"}\n"
+"\n"
+"QRadioButton::indicator::unchecked {\n"
+"    border: 2px solid #2E8B57;\n"
+"    background-color: #FFFFFF;\n"
+"}\n"
+"\n"
+"QRadioButton::indicator::checked {\n"
+"    border: 2px solid #2E8B57;\n"
+"    background-color: #5A9; \n"
+"}")
         self.stackedWidget.setObjectName("stackedWidget")
         self.page_Hello = QtWidgets.QWidget()
         self.page_Hello.setObjectName("page_Hello")
-        self.label_7 = QtWidgets.QLabel(self.page_Hello)
-        self.label_7.setGeometry(QtCore.QRect(250, 110, 251, 41))
-        self.label_7.setObjectName("label_7")
+        self.verticalLayoutWidget = QtWidgets.QWidget(self.page_Hello)
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(9, 9, 1071, 601))
+        self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.scrollArea = QtWidgets.QScrollArea(self.verticalLayoutWidget)
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollArea.setObjectName("scrollArea")
+        self.scrollAreaWidgetContents = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 1067, 597))
+        self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
+        self.label_2 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.label_2.setGeometry(QtCore.QRect(70, 80, 921, 181))
+        font = QtGui.QFont()
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_2.setFont(font)
+        self.label_2.setStyleSheet("QLabel {\n"
+"                font-size: 30px;\n"
+"                font-weight: bold;\n"
+"                color: rgb(70, 70, 70);\n"
+"                padding: 20px;\n"
+"\n"
+"            }")
+        self.label_2.setScaledContents(True)
+        self.label_2.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_2.setObjectName("label_2")
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+        self.verticalLayout_2.addWidget(self.scrollArea)
         self.stackedWidget.addWidget(self.page_Hello)
         self.page_CreateSGF = QtWidgets.QWidget()
         self.page_CreateSGF.setObjectName("page_CreateSGF")
         self.label_CreateSGF = QtWidgets.QLabel(self.page_CreateSGF)
-        self.label_CreateSGF.setGeometry(QtCore.QRect(10, 10, 731, 41))
+        self.label_CreateSGF.setGeometry(QtCore.QRect(190, 30, 731, 81))
         self.label_CreateSGF.setMinimumSize(QtCore.QSize(731, 41))
-        self.label_CreateSGF.setMaximumSize(QtCore.QSize(731, 41))
+        self.label_CreateSGF.setStyleSheet("QLabel {\n"
+"                font-size: 24px;\n"
+"                font-weight: bold;\n"
+"                color: #476;\n"
+"                padding: 20px;\n"
+"                background-color: #F0F0F0;\n"
+"            }")
         self.label_CreateSGF.setScaledContents(True)
         self.label_CreateSGF.setAlignment(QtCore.Qt.AlignCenter)
         self.label_CreateSGF.setWordWrap(True)
         self.label_CreateSGF.setObjectName("label_CreateSGF")
         self.pushButton_CreateOk = QtWidgets.QPushButton(self.page_CreateSGF)
-        self.pushButton_CreateOk.setGeometry(QtCore.QRect(340, 200, 75, 41))
+        self.pushButton_CreateOk.setGeometry(QtCore.QRect(530, 450, 75, 41))
         self.pushButton_CreateOk.setObjectName("pushButton_CreateOk")
         self.layoutWidget = QtWidgets.QWidget(self.page_CreateSGF)
-        self.layoutWidget.setGeometry(QtCore.QRect(240, 90, 498, 43))
+        self.layoutWidget.setGeometry(QtCore.QRect(430, 340, 498, 43))
         self.layoutWidget.setObjectName("layoutWidget")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.layoutWidget)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
@@ -221,20 +333,24 @@ class Ui_MainWindow(object):
         self.doubleSpinBox_Komi.setObjectName("doubleSpinBox_Komi")
         self.horizontalLayout.addWidget(self.doubleSpinBox_Komi)
         self.layoutWidget1 = QtWidgets.QWidget(self.page_CreateSGF)
-        self.layoutWidget1.setGeometry(QtCore.QRect(20, 60, 203, 106))
+        self.layoutWidget1.setGeometry(QtCore.QRect(62, 150, 261, 201))
         self.layoutWidget1.setObjectName("layoutWidget1")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.layoutWidget1)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setObjectName("verticalLayout")
         self.label_WhiteName = QtWidgets.QLabel(self.layoutWidget1)
         self.label_WhiteName.setMinimumSize(QtCore.QSize(201, 19))
-        self.label_WhiteName.setMaximumSize(QtCore.QSize(201, 19))
         font = QtGui.QFont()
-        font.setFamily("MS Shell Dlg 2")
-        font.setPointSize(10)
+        font.setPointSize(-1)
         font.setBold(True)
         font.setWeight(75)
         self.label_WhiteName.setFont(font)
+        self.label_WhiteName.setStyleSheet("QLabel {\n"
+"    font-size: 16px;\n"
+"    font-weight: bold;\n"
+"    color: #2E8B57; /* Sea green */\n"
+"    padding: 5px;\n"
+"}")
         self.label_WhiteName.setObjectName("label_WhiteName")
         self.verticalLayout.addWidget(self.label_WhiteName)
         self.lineEdit_WhiteName = QtWidgets.QLineEdit(self.layoutWidget1)
@@ -252,7 +368,6 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.lineEdit_WhiteName)
         self.label_BlackName = QtWidgets.QLabel(self.layoutWidget1)
         self.label_BlackName.setMinimumSize(QtCore.QSize(201, 19))
-        self.label_BlackName.setMaximumSize(QtCore.QSize(201, 19))
         font = QtGui.QFont()
         font.setFamily("MS Shell Dlg 2")
         font.setPointSize(10)
@@ -277,169 +392,331 @@ class Ui_MainWindow(object):
         self.stackedWidget.addWidget(self.page_CreateSGF)
         self.page_PlayWithBot = QtWidgets.QWidget()
         self.page_PlayWithBot.setObjectName("page_PlayWithBot")
-        self.label_CreateSGF_2 = QtWidgets.QLabel(self.page_PlayWithBot)
-        self.label_CreateSGF_2.setGeometry(QtCore.QRect(10, 20, 731, 41))
+        self.widget_PvsB = QtWidgets.QWidget(self.page_PlayWithBot)
+        self.widget_PvsB.setGeometry(QtCore.QRect(170, 150, 771, 311))
+        self.widget_PvsB.setStyleSheet("QWidget#widget_PvsB{\n"
+"border-radius: 10px;\n"
+"border: 1px solid grey\n"
+"}")
+        self.widget_PvsB.setObjectName("widget_PvsB")
+        self.widget = QtWidgets.QWidget(self.widget_PvsB)
+        self.widget.setGeometry(QtCore.QRect(20, 30, 733, 283))
+        self.widget.setObjectName("widget")
+        self.gridLayout = QtWidgets.QGridLayout(self.widget)
+        self.gridLayout.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout.setObjectName("gridLayout")
+        self.line_3 = QtWidgets.QFrame(self.widget)
+        self.line_3.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line_3.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_3.setObjectName("line_3")
+        self.gridLayout.addWidget(self.line_3, 1, 0, 1, 1)
+        self.pushButton_PlayWithBotOk = QtWidgets.QPushButton(self.widget)
+        self.pushButton_PlayWithBotOk.setStyleSheet("QPushButton {\n"
+"                background-color: #5A9; \n"
+"                color: white; \n"
+"                padding: 10px 20px; \n"
+"                border: 2px solid #476;\n"
+"                border-radius: 10px;\n"
+"                font-size: 16px;\n"
+"                font-weight: bold;\n"
+"                box-shadow: 3px 3px 5px #888888;\n"
+"                transition: background-color 0.3s, transform 0.3s;\n"
+"margin:10px;\n"
+"            }\n"
+"            QPushButton:hover {\n"
+"                background-color: #476;\n"
+"                transform: scale(1.05);\n"
+"            }\n"
+"            QPushButton:pressed {\n"
+"                background-color: #354;\n"
+"                transform: scale(0.95);\n"
+"            }")
+        self.pushButton_PlayWithBotOk.setObjectName("pushButton_PlayWithBotOk")
+        self.gridLayout.addWidget(self.pushButton_PlayWithBotOk, 4, 0, 1, 1)
+        self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        self.verticalLayout_3 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.label_PlayerColor = QtWidgets.QLabel(self.widget)
+        font = QtGui.QFont()
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_PlayerColor.setFont(font)
+        self.label_PlayerColor.setStyleSheet("QLabel {\n"
+"                font-size: 24px;\n"
+"                font-weight: bold;\n"
+"                color: rgb(70, 70, 70);\n"
+"                padding: 10px;\n"
+"            }")
+        self.label_PlayerColor.setObjectName("label_PlayerColor")
+        self.verticalLayout_3.addWidget(self.label_PlayerColor, 0, QtCore.Qt.AlignHCenter)
+        self.radioButton_Black = QtWidgets.QRadioButton(self.widget)
+        font = QtGui.QFont()
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setWeight(75)
+        self.radioButton_Black.setFont(font)
+        self.radioButton_Black.setStyleSheet("/* QRadioButton Styles */\n"
+"QRadioButton {\n"
+"       font-size: 24px;\n"
+"                font-weight: bold;\n"
+"                color: rgb(70, 70, 70);\n"
+"                padding: 10px;\n"
+"                background-color: #F0F0F0;\n"
+"    color: #5A9; \n"
+"    padding: 5px;\n"
+"}\n"
+"\n"
+"QRadioButton::indicator {\n"
+"    width: 15px;\n"
+"    height: 15px;\n"
+"    border-radius: 7.5px;\n"
+"}\n"
+"\n"
+"QRadioButton::indicator::unchecked {\n"
+"    border: 2px solid #2E8B57;\n"
+"    background-color: #FFFFFF;\n"
+"}\n"
+"\n"
+"QRadioButton::indicator::checked {\n"
+"    border: 2px solid #2E8B57;\n"
+"    background-color: #5A9; \n"
+"}")
+        self.radioButton_Black.setObjectName("radioButton_Black")
+        self.verticalLayout_3.addWidget(self.radioButton_Black, 0, QtCore.Qt.AlignHCenter)
+        self.radioButton_White = QtWidgets.QRadioButton(self.widget)
+        font = QtGui.QFont()
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setWeight(75)
+        self.radioButton_White.setFont(font)
+        self.radioButton_White.setStyleSheet("/* QRadioButton Styles */\n"
+"QRadioButton {\n"
+"       font-size: 24px;\n"
+"                font-weight: bold;\n"
+"                color: rgb(70, 70, 70);\n"
+"                padding: 10px;\n"
+"                background-color: #F0F0F0;\n"
+"    color: #5A9; \n"
+"    padding: 5px;\n"
+"}\n"
+"\n"
+"QRadioButton::indicator {\n"
+"    width: 15px;\n"
+"    height: 15px;\n"
+"    border-radius: 7.5px;\n"
+"}\n"
+"\n"
+"QRadioButton::indicator::unchecked {\n"
+"    border: 2px solid #2E8B57;\n"
+"    background-color: #FFFFFF;\n"
+"}\n"
+"\n"
+"QRadioButton::indicator::checked {\n"
+"    border: 2px solid #2E8B57;\n"
+"    background-color: #5A9; \n"
+"}")
+        self.radioButton_White.setObjectName("radioButton_White")
+        self.verticalLayout_3.addWidget(self.radioButton_White, 0, QtCore.Qt.AlignHCenter)
+        self.horizontalLayout_4.addLayout(self.verticalLayout_3)
+        self.line = QtWidgets.QFrame(self.widget)
+        self.line.setFrameShape(QtWidgets.QFrame.VLine)
+        self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line.setObjectName("line")
+        self.horizontalLayout_4.addWidget(self.line)
+        self.verticalLayout_4 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_4.setObjectName("verticalLayout_4")
+        self.comboBox_OpponentBot = QtWidgets.QComboBox(self.widget)
+        font = QtGui.QFont()
+        font.setPointSize(-1)
+        self.comboBox_OpponentBot.setFont(font)
+        self.comboBox_OpponentBot.setAutoFillBackground(False)
+        self.comboBox_OpponentBot.setStyleSheet("/* QComboBox Styles */\n"
+"QComboBox {\n"
+"    font-size: 24px;\n"
+"    padding: 5px;\n"
+"    border: 2px solid #5A9;\n"
+"    border-radius: 5px;\n"
+"                color: rgb(70, 70, 70);\n"
+"margin:20px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView {\n"
+"    border: 2px solid rgb(40,40,40);\n"
+"    selection-background-color:#5A9;\n"
+"}")
+        self.comboBox_OpponentBot.setFrame(True)
+        self.comboBox_OpponentBot.setObjectName("comboBox_OpponentBot")
+        self.comboBox_OpponentBot.addItem("")
+        self.verticalLayout_4.addWidget(self.comboBox_OpponentBot)
+        self.horizontalLayout_4.addLayout(self.verticalLayout_4)
+        self.gridLayout.addLayout(self.horizontalLayout_4, 2, 0, 1, 1)
+        self.label_CreateSGF_2 = QtWidgets.QLabel(self.widget)
         self.label_CreateSGF_2.setMinimumSize(QtCore.QSize(731, 41))
-        self.label_CreateSGF_2.setMaximumSize(QtCore.QSize(731, 41))
+        self.label_CreateSGF_2.setStyleSheet("QLabel {\n"
+"                font-size: 24px;\n"
+"                font-weight: bold;\n"
+"                color: rgb(70, 70, 70);\n"
+"            }")
         self.label_CreateSGF_2.setScaledContents(True)
         self.label_CreateSGF_2.setAlignment(QtCore.Qt.AlignCenter)
         self.label_CreateSGF_2.setWordWrap(True)
         self.label_CreateSGF_2.setObjectName("label_CreateSGF_2")
-        self.layoutWidget_2 = QtWidgets.QWidget(self.page_PlayWithBot)
-        self.layoutWidget_2.setGeometry(QtCore.QRect(0, 100, 741, 43))
-        self.layoutWidget_2.setObjectName("layoutWidget_2")
-        self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.layoutWidget_2)
-        self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.label_PlayerColor = QtWidgets.QLabel(self.layoutWidget_2)
-        self.label_PlayerColor.setObjectName("label_PlayerColor")
-        self.horizontalLayout_3.addWidget(self.label_PlayerColor)
-        self.radioButton_Black = QtWidgets.QRadioButton(self.layoutWidget_2)
-        font = QtGui.QFont()
-        font.setFamily("MS Shell Dlg 2")
-        font.setPointSize(8)
-        font.setBold(True)
-        font.setWeight(75)
-        self.radioButton_Black.setFont(font)
-        self.radioButton_Black.setObjectName("radioButton_Black")
-        self.horizontalLayout_3.addWidget(self.radioButton_Black)
-        self.radioButton_White = QtWidgets.QRadioButton(self.layoutWidget_2)
-        font = QtGui.QFont()
-        font.setFamily("MS Shell Dlg 2")
-        font.setPointSize(8)
-        font.setBold(True)
-        font.setWeight(75)
-        self.radioButton_White.setFont(font)
-        self.radioButton_White.setObjectName("radioButton_White")
-        self.horizontalLayout_3.addWidget(self.radioButton_White)
-        self.line = QtWidgets.QFrame(self.layoutWidget_2)
-        self.line.setFrameShape(QtWidgets.QFrame.VLine)
-        self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
-        self.line.setObjectName("line")
-        self.horizontalLayout_3.addWidget(self.line)
-        self.label_PBoardSize = QtWidgets.QLabel(self.layoutWidget_2)
-        self.label_PBoardSize.setMinimumSize(QtCore.QSize(91, 41))
-        self.label_PBoardSize.setMaximumSize(QtCore.QSize(91, 41))
-        self.label_PBoardSize.setObjectName("label_PBoardSize")
-        self.horizontalLayout_3.addWidget(self.label_PBoardSize)
-        self.spinBox_BoardSizeP = QtWidgets.QSpinBox(self.layoutWidget_2)
-        self.spinBox_BoardSizeP.setMinimumSize(QtCore.QSize(56, 41))
-        self.spinBox_BoardSizeP.setMaximumSize(QtCore.QSize(56, 41))
-        font = QtGui.QFont()
-        font.setFamily("MS Shell Dlg 2")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.spinBox_BoardSizeP.setFont(font)
-        self.spinBox_BoardSizeP.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.spinBox_BoardSizeP.setReadOnly(False)
-        self.spinBox_BoardSizeP.setButtonSymbols(QtWidgets.QAbstractSpinBox.UpDownArrows)
-        self.spinBox_BoardSizeP.setSpecialValueText("")
-        self.spinBox_BoardSizeP.setMinimum(9)
-        self.spinBox_BoardSizeP.setMaximum(19)
-        self.spinBox_BoardSizeP.setSingleStep(4)
-        self.spinBox_BoardSizeP.setObjectName("spinBox_BoardSizeP")
-        self.horizontalLayout_3.addWidget(self.spinBox_BoardSizeP)
-        self.label_9 = QtWidgets.QLabel(self.layoutWidget_2)
-        self.label_9.setMinimumSize(QtCore.QSize(90, 41))
-        self.label_9.setMaximumSize(QtCore.QSize(90, 41))
-        self.label_9.setObjectName("label_9")
-        self.horizontalLayout_3.addWidget(self.label_9)
-        self.spinBox_HandicapP = QtWidgets.QSpinBox(self.layoutWidget_2)
-        self.spinBox_HandicapP.setMinimumSize(QtCore.QSize(56, 41))
-        self.spinBox_HandicapP.setMaximumSize(QtCore.QSize(56, 41))
-        self.spinBox_HandicapP.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.spinBox_HandicapP.setMouseTracking(True)
-        self.spinBox_HandicapP.setContextMenuPolicy(QtCore.Qt.ActionsContextMenu)
-        self.spinBox_HandicapP.setWrapping(True)
-        self.spinBox_HandicapP.setButtonSymbols(QtWidgets.QAbstractSpinBox.PlusMinus)
-        self.spinBox_HandicapP.setSuffix("")
-        self.spinBox_HandicapP.setObjectName("spinBox_HandicapP")
-        self.horizontalLayout_3.addWidget(self.spinBox_HandicapP)
-        self.label_10 = QtWidgets.QLabel(self.layoutWidget_2)
-        self.label_10.setMinimumSize(QtCore.QSize(90, 41))
-        self.label_10.setMaximumSize(QtCore.QSize(90, 41))
-        self.label_10.setObjectName("label_10")
-        self.horizontalLayout_3.addWidget(self.label_10)
-        self.doubleSpinBox_KomiP = QtWidgets.QDoubleSpinBox(self.layoutWidget_2)
-        self.doubleSpinBox_KomiP.setMinimumSize(QtCore.QSize(83, 41))
-        self.doubleSpinBox_KomiP.setMaximumSize(QtCore.QSize(83, 41))
-        font = QtGui.QFont()
-        font.setFamily("MS Shell Dlg 2")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        font.setKerning(True)
-        self.doubleSpinBox_KomiP.setFont(font)
-        self.doubleSpinBox_KomiP.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.doubleSpinBox_KomiP.setFocusPolicy(QtCore.Qt.ClickFocus)
-        self.doubleSpinBox_KomiP.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
-        self.doubleSpinBox_KomiP.setAcceptDrops(False)
-        self.doubleSpinBox_KomiP.setAutoFillBackground(True)
-        self.doubleSpinBox_KomiP.setInputMethodHints(QtCore.Qt.ImhPreferNumbers)
-        self.doubleSpinBox_KomiP.setWrapping(True)
-        self.doubleSpinBox_KomiP.setButtonSymbols(QtWidgets.QAbstractSpinBox.PlusMinus)
-        self.doubleSpinBox_KomiP.setDecimals(1)
-        self.doubleSpinBox_KomiP.setMinimum(-1444.0)
-        self.doubleSpinBox_KomiP.setMaximum(1444.0)
-        self.doubleSpinBox_KomiP.setProperty("value", 6.5)
-        self.doubleSpinBox_KomiP.setObjectName("doubleSpinBox_KomiP")
-        self.horizontalLayout_3.addWidget(self.doubleSpinBox_KomiP)
-        self.pushButton_PlayWithBotOk = QtWidgets.QPushButton(self.page_PlayWithBot)
-        self.pushButton_PlayWithBotOk.setGeometry(QtCore.QRect(340, 210, 75, 41))
-        self.pushButton_PlayWithBotOk.setObjectName("pushButton_PlayWithBotOk")
+        self.gridLayout.addWidget(self.label_CreateSGF_2, 0, 0, 1, 1)
+        self.line_4 = QtWidgets.QFrame(self.widget)
+        self.line_4.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line_4.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_4.setObjectName("line_4")
+        self.gridLayout.addWidget(self.line_4, 3, 0, 1, 1)
         self.stackedWidget.addWidget(self.page_PlayWithBot)
         self.page_bot_vs_bot = QtWidgets.QWidget()
         self.page_bot_vs_bot.setObjectName("page_bot_vs_bot")
-        self.label_CreateSGF_3 = QtWidgets.QLabel(self.page_bot_vs_bot)
-        self.label_CreateSGF_3.setGeometry(QtCore.QRect(10, 20, 731, 41))
-        self.label_CreateSGF_3.setMinimumSize(QtCore.QSize(731, 41))
-        self.label_CreateSGF_3.setMaximumSize(QtCore.QSize(731, 41))
-        self.label_CreateSGF_3.setScaledContents(True)
-        self.label_CreateSGF_3.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_CreateSGF_3.setWordWrap(True)
-        self.label_CreateSGF_3.setObjectName("label_CreateSGF_3")
-        self.comboBox_WhiteBot = QtWidgets.QComboBox(self.page_bot_vs_bot)
-        self.comboBox_WhiteBot.setGeometry(QtCore.QRect(350, 110, 171, 22))
-        self.comboBox_WhiteBot.setAutoFillBackground(False)
-        self.comboBox_WhiteBot.setFrame(True)
-        self.comboBox_WhiteBot.setObjectName("comboBox_WhiteBot")
-        self.comboBox_WhiteBot.addItem("")
-        self.comboBox_BlackBot = QtWidgets.QComboBox(self.page_bot_vs_bot)
-        self.comboBox_BlackBot.setGeometry(QtCore.QRect(40, 110, 171, 22))
-        self.comboBox_BlackBot.setAutoFillBackground(False)
-        self.comboBox_BlackBot.setFrame(True)
-        self.comboBox_BlackBot.setObjectName("comboBox_BlackBot")
-        self.comboBox_BlackBot.addItem("")
-        self.label_WhiteName_2 = QtWidgets.QLabel(self.page_bot_vs_bot)
-        self.label_WhiteName_2.setGeometry(QtCore.QRect(351, 81, 201, 19))
-        self.label_WhiteName_2.setMinimumSize(QtCore.QSize(201, 19))
-        self.label_WhiteName_2.setMaximumSize(QtCore.QSize(201, 19))
-        font = QtGui.QFont()
-        font.setFamily("MS Shell Dlg 2")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_WhiteName_2.setFont(font)
-        self.label_WhiteName_2.setObjectName("label_WhiteName_2")
-        self.label_BlackName_2 = QtWidgets.QLabel(self.page_bot_vs_bot)
-        self.label_BlackName_2.setGeometry(QtCore.QRect(30, 80, 201, 19))
+        self.widget_BvsB = QtWidgets.QWidget(self.page_bot_vs_bot)
+        self.widget_BvsB.setGeometry(QtCore.QRect(170, 150, 771, 341))
+        self.widget_BvsB.setStyleSheet("QWidget#widget_BvsB{\n"
+"border-radius: 10px;\n"
+"border: 1px solid grey\n"
+"}")
+        self.widget_BvsB.setObjectName("widget_BvsB")
+        self.layoutWidget_2 = QtWidgets.QWidget(self.widget_BvsB)
+        self.layoutWidget_2.setGeometry(QtCore.QRect(12, 12, 751, 311))
+        self.layoutWidget_2.setObjectName("layoutWidget_2")
+        self.gridLayout_2 = QtWidgets.QGridLayout(self.layoutWidget_2)
+        self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout_2.setObjectName("gridLayout_2")
+        self.label_CreateSGF_4 = QtWidgets.QLabel(self.layoutWidget_2)
+        self.label_CreateSGF_4.setStyleSheet("QLabel {\n"
+"                font-size: 24px;\n"
+"                font-weight: bold;\n"
+"                color: rgb(70, 70, 70);\n"
+"            }")
+        self.label_CreateSGF_4.setScaledContents(True)
+        self.label_CreateSGF_4.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_CreateSGF_4.setWordWrap(True)
+        self.label_CreateSGF_4.setObjectName("label_CreateSGF_4")
+        self.gridLayout_2.addWidget(self.label_CreateSGF_4, 0, 0, 1, 1, QtCore.Qt.AlignTop)
+        self.pushButton_BotVsBotOK = QtWidgets.QPushButton(self.layoutWidget_2)
+        self.pushButton_BotVsBotOK.setStyleSheet("QPushButton {\n"
+"                background-color: #5A9; \n"
+"                color: white; \n"
+"                padding: 10px 20px; \n"
+"                border: 2px solid #476;\n"
+"                border-radius: 10px;\n"
+"                font-size: 16px;\n"
+"                font-weight: bold;\n"
+"                box-shadow: 3px 3px 5px #888888;\n"
+"                transition: background-color 0.3s, transform 0.3s;\n"
+"margin:20px;\n"
+"            }\n"
+"            QPushButton:hover {\n"
+"                background-color: #476;\n"
+"                transform: scale(1.05);\n"
+"            }\n"
+"            QPushButton:pressed {\n"
+"                background-color: #354;\n"
+"                transform: scale(0.95);\n"
+"            }")
+        self.pushButton_BotVsBotOK.setObjectName("pushButton_BotVsBotOK")
+        self.gridLayout_2.addWidget(self.pushButton_BotVsBotOK, 6, 0, 1, 1)
+        self.horizontalLayout_5 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_5.setObjectName("horizontalLayout_5")
+        self.verticalLayout_5 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_5.setObjectName("verticalLayout_5")
+        self.label_BlackName_2 = QtWidgets.QLabel(self.layoutWidget_2)
         self.label_BlackName_2.setMinimumSize(QtCore.QSize(201, 19))
-        self.label_BlackName_2.setMaximumSize(QtCore.QSize(201, 19))
         font = QtGui.QFont()
-        font.setFamily("MS Shell Dlg 2")
-        font.setPointSize(10)
+        font.setPointSize(-1)
         font.setBold(True)
         font.setWeight(75)
         self.label_BlackName_2.setFont(font)
+        self.label_BlackName_2.setStyleSheet("QLabel {\n"
+"                font-size: 24px;\n"
+"                font-weight: bold;\n"
+"                color: rgb(70, 70, 70);\n"
+"            }")
+        self.label_BlackName_2.setAlignment(QtCore.Qt.AlignCenter)
         self.label_BlackName_2.setObjectName("label_BlackName_2")
-        self.pushButton_BotVsBotOK = QtWidgets.QPushButton(self.page_bot_vs_bot)
-        self.pushButton_BotVsBotOK.setGeometry(QtCore.QRect(340, 180, 75, 41))
-        self.pushButton_BotVsBotOK.setObjectName("pushButton_BotVsBotOK")
+        self.verticalLayout_5.addWidget(self.label_BlackName_2, 0, QtCore.Qt.AlignHCenter)
+        self.comboBox_BlackBot = QtWidgets.QComboBox(self.layoutWidget_2)
+        self.comboBox_BlackBot.setAutoFillBackground(False)
+        self.comboBox_BlackBot.setStyleSheet("/* QComboBox Styles */\n"
+"QComboBox {\n"
+"    font-size: 24px;\n"
+"    padding: 5px;\n"
+"    border: 2px solid #5A9;\n"
+"    border-radius: 5px;\n"
+"                color: rgb(70, 70, 70);\n"
+"margin:20px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView {\n"
+"    border: 2px solid rgb(40,40,40);\n"
+"    selection-background-color:#5A9;\n"
+"}")
+        self.comboBox_BlackBot.setFrame(True)
+        self.comboBox_BlackBot.setObjectName("comboBox_BlackBot")
+        self.comboBox_BlackBot.addItem("")
+        self.verticalLayout_5.addWidget(self.comboBox_BlackBot)
+        self.horizontalLayout_5.addLayout(self.verticalLayout_5)
+        self.line_2 = QtWidgets.QFrame(self.layoutWidget_2)
+        self.line_2.setFrameShape(QtWidgets.QFrame.VLine)
+        self.line_2.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_2.setObjectName("line_2")
+        self.horizontalLayout_5.addWidget(self.line_2)
+        self.verticalLayout_6 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_6.setObjectName("verticalLayout_6")
+        self.label_WhiteName_2 = QtWidgets.QLabel(self.layoutWidget_2)
+        self.label_WhiteName_2.setMinimumSize(QtCore.QSize(201, 19))
+        font = QtGui.QFont()
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_WhiteName_2.setFont(font)
+        self.label_WhiteName_2.setStyleSheet("QLabel {\n"
+"                font-size: 24px;\n"
+"                font-weight: bold;\n"
+"                color: rgb(70, 70, 70);\n"
+"            }")
+        self.label_WhiteName_2.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_WhiteName_2.setObjectName("label_WhiteName_2")
+        self.verticalLayout_6.addWidget(self.label_WhiteName_2, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
+        self.comboBox_WhiteBot = QtWidgets.QComboBox(self.layoutWidget_2)
+        self.comboBox_WhiteBot.setAutoFillBackground(False)
+        self.comboBox_WhiteBot.setStyleSheet("/* QComboBox Styles */\n"
+"QComboBox {\n"
+"    font-size: 24px;\n"
+"    padding: 5px;\n"
+"    border: 2px solid #5A9;\n"
+"    border-radius: 5px;\n"
+"                color: rgb(70, 70, 70);\n"
+"margin:20px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView {\n"
+"    border: 2px solid rgb(40,40,40);\n"
+"    selection-background-color:#5A9;\n"
+"}")
+        self.comboBox_WhiteBot.setFrame(True)
+        self.comboBox_WhiteBot.setObjectName("comboBox_WhiteBot")
+        self.comboBox_WhiteBot.addItem("")
+        self.verticalLayout_6.addWidget(self.comboBox_WhiteBot)
+        self.horizontalLayout_5.addLayout(self.verticalLayout_6)
+        self.gridLayout_2.addLayout(self.horizontalLayout_5, 4, 0, 1, 1)
+        self.line_6 = QtWidgets.QFrame(self.layoutWidget_2)
+        self.line_6.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line_6.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_6.setObjectName("line_6")
+        self.gridLayout_2.addWidget(self.line_6, 5, 0, 1, 1)
+        self.line_5 = QtWidgets.QFrame(self.layoutWidget_2)
+        self.line_5.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line_5.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_5.setObjectName("line_5")
+        self.gridLayout_2.addWidget(self.line_5, 1, 0, 1, 1)
         self.stackedWidget.addWidget(self.page_bot_vs_bot)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 783, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1116, 21))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -448,20 +725,23 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.stackedWidget.setCurrentIndex(0)
-        self.comboBox_WhiteBot.setCurrentIndex(0)
+        self.comboBox_OpponentBot.setCurrentIndex(0)
         self.comboBox_BlackBot.setCurrentIndex(0)
+        self.comboBox_WhiteBot.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.pushButton_CreateSGF.setText(_translate("MainWindow", "Create SGF"))
-        self.pushButton_PlayerVSBot.setText(_translate("MainWindow", "Play with Bot"))
         self.pushButton_BotVBot.setText(_translate("MainWindow", "Bot VS Bot"))
-        self.pushButton_EditSGF.setText(_translate("MainWindow", "Open SGF"))
         self.pushButton_AboutGo.setText(_translate("MainWindow", "About GO"))
-        self.label.setText(_translate("MainWindow", "Welcome to ToraGO"))
-        self.label_7.setText(_translate("MainWindow", "Prima Pagina"))
+        self.pushButton_PlayerVSBot.setText(_translate("MainWindow", "Play with Bot"))
+        self.pushButton_EditSGF.setText(_translate("MainWindow", "Open SGF"))
+        self.label.setText(_translate("MainWindow", "Go playing Agents on standard computing resources \n"
+"Using reinforcement learning methods"))
+        self.label_2.setText(_translate("MainWindow", "Go playing Agents on standard computing resources \n"
+"Using reinforcement learning methods"))
         self.label_CreateSGF.setText(_translate("MainWindow", "Create SGF "))
         self.pushButton_CreateOk.setText(_translate("MainWindow", "Ok"))
         self.label_4.setText(_translate("MainWindow", "Board Size"))
@@ -471,22 +751,21 @@ class Ui_MainWindow(object):
         self.lineEdit_WhiteName.setPlaceholderText(_translate("MainWindow", "White"))
         self.label_BlackName.setText(_translate("MainWindow", "Black Player\'s Name "))
         self.lineEdit_BlackName.setPlaceholderText(_translate("MainWindow", "Black"))
-        self.label_CreateSGF_2.setText(_translate("MainWindow", "Play With Bot"))
+        self.pushButton_PlayWithBotOk.setText(_translate("MainWindow", "Start"))
         self.label_PlayerColor.setText(_translate("MainWindow", "Your Color"))
         self.radioButton_Black.setText(_translate("MainWindow", "Black"))
         self.radioButton_White.setText(_translate("MainWindow", "White"))
-        self.label_PBoardSize.setText(_translate("MainWindow", "Board Size"))
-        self.label_9.setText(_translate("MainWindow", "Handicap"))
-        self.label_10.setText(_translate("MainWindow", "Komi "))
-        self.pushButton_PlayWithBotOk.setText(_translate("MainWindow", "Ok"))
-        self.label_CreateSGF_3.setText(_translate("MainWindow", "Bot vs Bot Game"))
-        self.comboBox_WhiteBot.setCurrentText(_translate("MainWindow", "Drop down to choose"))
-        self.comboBox_WhiteBot.setItemText(0, _translate("MainWindow", "Drop down to choose"))
+        self.comboBox_OpponentBot.setCurrentText(_translate("MainWindow", "Choose Opponent"))
+        self.comboBox_OpponentBot.setItemText(0, _translate("MainWindow", "Choose Opponent"))
+        self.label_CreateSGF_2.setText(_translate("MainWindow", "Play With Bot"))
+        self.label_CreateSGF_4.setText(_translate("MainWindow", "Bot against Bot game"))
+        self.pushButton_BotVsBotOK.setText(_translate("MainWindow", "Start"))
+        self.label_BlackName_2.setText(_translate("MainWindow", "Black Bot"))
         self.comboBox_BlackBot.setCurrentText(_translate("MainWindow", "Drop down to choose"))
         self.comboBox_BlackBot.setItemText(0, _translate("MainWindow", "Drop down to choose"))
         self.label_WhiteName_2.setText(_translate("MainWindow", "White Bot"))
-        self.label_BlackName_2.setText(_translate("MainWindow", "Black Bot"))
-        self.pushButton_BotVsBotOK.setText(_translate("MainWindow", "Ok"))
+        self.comboBox_WhiteBot.setCurrentText(_translate("MainWindow", "Drop down to choose"))
+        self.comboBox_WhiteBot.setItemText(0, _translate("MainWindow", "Drop down to choose"))
 
 
 if __name__ == "__main__":

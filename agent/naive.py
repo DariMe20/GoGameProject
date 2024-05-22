@@ -3,7 +3,7 @@ import random
 from agent.base import Agent
 from dlgo.game_rules_implementation.Move import Move
 from dlgo.game_rules_implementation.Point import Point
-from utils.helpers import is_point_an_eye
+from utils import helpers
 
 
 class RandomBot(Agent):
@@ -18,7 +18,7 @@ class RandomBot(Agent):
             for c in range(1, game_state.board.num_cols + 1):
                 candidate = Point(row=r, col=c)
                 if (game_state.is_valid_move(Move.play(candidate))
-                        and not is_point_an_eye(game_state.board, candidate, game_state.next_player)):
+                        and not helpers.is_point_an_eye(game_state.board, candidate, game_state.next_player)):
                     candidates.append(candidate)
         if not candidates:
             return Move.pass_turn()

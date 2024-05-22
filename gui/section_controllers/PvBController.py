@@ -1,8 +1,5 @@
 from PyQt5 import QtWidgets, QtCore
-from keras.src.saving.saving_api import load_model
 
-from agent import DeepLearningAgent
-from dlgo.encoders.oneplane import OnePlaneEncoder
 from dlgo.game_rules_implementation.Move import Move
 from dlgo.game_rules_implementation.Move import Point
 from dlgo.game_rules_implementation.Player import Player
@@ -10,7 +7,7 @@ from dlgo.game_rules_implementation.goboard import GameState
 
 
 class PvBController(QtWidgets.QWidget):
-    def __init__(self, GoWin):
+    def __init__(self, GoWin, bot):
         super().__init__()
 
         self.current_bot = None
@@ -19,9 +16,9 @@ class PvBController(QtWidgets.QWidget):
         self.GOwin.ui.label.setText("Player VS BOT YAAY")
 
         # INITIALIZERS
-        self.board_size = self.GOwin.board_size
+        self.board_size = 9
         self.game = None
-        self.bot = None
+        self.bot = bot
         self.is_player_turn = True
         self.board = self.GOwin.board
         self.player_color = self.GOwin.player_color
@@ -31,14 +28,9 @@ class PvBController(QtWidgets.QWidget):
 
         self.GOwin.ui.pushButton_StartGame.clicked.connect(self.start_player_game)
 
-        model_path = 'C:\\DARIA\\1.FSEGA\\LICENTA\\GoGameProject\\reinforcement_learning\\gradient_descent\\gradient_descent_models\\model_PredictionAgent.h5'
-
-        self.model = load_model(model_path)
-        self.encoder = OnePlaneEncoder(board_size=(self.board_size, self.board_size))
-        self.deep_learning_agent = DeepLearningAgent(self.model, self.encoder)
-
     def start_player_game(self):
         try:
+            self.GOwin.ui.widget_gameStarter.hide()
             self.game = GameState.new_game(self.board_size)
             # Setează culoarea jucătorului și a botului
             if self.player_color == 0:
@@ -51,7 +43,6 @@ class PvBController(QtWidgets.QWidget):
                 self.current_bot = Player.black
                 self.current_player = Player.white
 
-            self.bot = DeepLearningAgent(self.model, self.encoder)
             self.board.clicked.connect(self.player_move_against_bot)
         except Exception as e:
             print(f"An error occurred in start player_game: {e}")
@@ -75,7 +66,7 @@ class PvBController(QtWidgets.QWidget):
 
     def agent_move(self):
         if not self.game.is_over() and not self.is_player_turn:
-            bot_move = self.deep_learning_agent.select_move(self.game)
+            bot_move = self.bot.select_move(self.game)
             if bot_move.is_play:
                 self.GOwin.view_move(self.game, bot_move, self.current_bot)
                 self.GOwin.emphasise_player_turn(self.current_bot)
