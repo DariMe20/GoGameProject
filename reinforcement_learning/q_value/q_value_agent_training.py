@@ -11,7 +11,7 @@ def main():
     encoder = SimpleEncoder((board_size, board_size))
     agent_in_path = 'q_models/Model1_QValue.h5'
     agent_out_path = 'q_models/ModelTest_QValue.h5'
-    experience_folder = 'q_value_experience_files/Model1_Model1_6000'
+    experience_folder = 'q_value_experience_files/Model2_Model2_14000'
     training_details_filename = '../../dlgo/json_data/q_value/training_data.json'
 
     # Încarcă agentul de învățare

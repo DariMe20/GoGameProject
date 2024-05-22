@@ -55,10 +55,10 @@ class TrainingBase:
 
         epochs = range(1, len(loss) + 1)
         plt.plot(epochs, loss, 'bo', label='Training loss')
-       
+
         plt.title('Training and validation loss')
         plt.legend()
-        plt.savefig('training_validation_loss_QAgent14k.png')  # Save the plot as an image file
+        plt.savefig('training_validation_loss_GradientDescent.png')  # Save the plot as an image file
 
     @staticmethod
     def save_training_data_to_json(agent_in_path, agent_out_path, lr, clip_norm, batch_size, experience_files_names,
