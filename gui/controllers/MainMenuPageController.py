@@ -1,5 +1,6 @@
 import os
 import sys
+
 from PyQt5 import QtWidgets
 
 from gui.controllers.GoWindowController import GoWindowController
@@ -21,6 +22,7 @@ class MainMenuPageController(QtWidgets.QMainWindow, Ui_MainWindow):
 
         self.ui.comboBox_BlackBot.addItems(list(constants.BOTS.keys()))
         self.ui.comboBox_WhiteBot.addItems(list(constants.BOTS.keys()))
+        self.ui.comboBox_OpponentBot.addItems(list(constants.BOTS.keys()))
 
         self.GoGameWindow = None
 
@@ -41,7 +43,6 @@ class MainMenuPageController(QtWidgets.QMainWindow, Ui_MainWindow):
         except Exception as e:
             print(f"Error in SGF create: {e}")
 
-
     def editSGF(self):
         pass
 
@@ -50,24 +51,23 @@ class MainMenuPageController(QtWidgets.QMainWindow, Ui_MainWindow):
         self.ui.pushButton_PlayWithBotOk.clicked.connect(self.playerVSbot_game)
 
     def playerVSbot_game(self):
+        bot_name = self.ui.comboBox_OpponentBot.currentText()
         if self.ui.radioButton_Black.isChecked():
             nameB = "You"
-            nameW = "Bot"
+            nameW = bot_name
             player_color = 0
         elif self.ui.radioButton_White.isChecked():
-            nameB = "Bot"
+            nameB = bot_name
             nameW = "You"
             player_color = 1
         else:
             QtWidgets.QMessageBox.critical(self, "Eroare de selecție", "Te rog alege culoarea cu care dorești să joci!")
             return
 
-        board_size = self.ui.spinBox_BoardSizeP.value()
-        handicap = self.ui.spinBox_HandicapP.value()
-        komi = self.ui.doubleSpinBox_KomiP.value()
+        # komi = self.ui.doubleSpinBox_KomiP.value()
 
         try:
-            self.GoGameWindow = GoWindowController(nameB, nameW, 3, player_color, board_size, handicap, komi)
+            self.GoGameWindow = GoWindowController(nameB, nameW, 3, player_color)
             self.GoGameWindow.show()
         except Exception as e:
             print(f"Error in player vs bot create: {e}")
@@ -87,12 +87,11 @@ class MainMenuPageController(QtWidgets.QMainWindow, Ui_MainWindow):
         except Exception as e:
             print(f"Error in bot vs bot create: {e}")
 
-
     @staticmethod
     def adjust_scale_factor():
         temp_app = QtWidgets.QApplication(
             sys.argv
-        )  # Instanță temporară pentru a obține informații despre ecran
+            )  # Instanță temporară pentru a obține informații despre ecran
         screen = temp_app.primaryScreen()
         resolution = screen.size()  # Ia rezolutia ecranului
         scale_factor = "1"  # Factor de scalare default

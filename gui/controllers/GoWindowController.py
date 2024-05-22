@@ -59,7 +59,11 @@ class GoWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
             self.CreateSGFController = CreateSGFController(self)
 
         if self.situation_controller == 3:
-            self.PvBController = PvBController(self)
+            if self.player_color == 0:
+                bot = constants.BOTS[self.nameW]
+            else:
+                bot = constants.BOTS[self.nameB]
+            self.PvBController = PvBController(self, bot)
 
         if self.situation_controller == 4:
             bot_black, bot_white = self.get_bots()

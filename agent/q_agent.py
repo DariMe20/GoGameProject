@@ -66,6 +66,25 @@ class QAgent(Agent):
         for move_idx in ranked_moves:
             point = self._encoder.decode_point_index(moves[move_idx])
             if not is_point_an_eye(game_state.board, point, game_state.next_player):
+                if game_state.is_move_atari(Move.play(point)):
+                    if self.collector is not None:
+                        self.collector.record_decision(
+                            state=board_tensor,
+                            action=moves[move_idx],
+                            )
+                    return Move.play(point)
+                if game_state.is_move_capture(Move.play(point)):
+                    if self.collector is not None:
+                        self.collector.record_decision(
+                            state=board_tensor,
+                            action=moves[move_idx],
+                            )
+                    return Move.play(point)
+
+        for move_idx in ranked_moves:
+            point = self._encoder.decode_point_index(moves[move_idx])
+            if not is_point_an_eye(game_state.board, point, game_state.next_player) \
+                    and not game_state.is_move_on_edge(Move.play(point)):
                 if self.collector is not None:
                     self.collector.record_decision(
                         state=board_tensor,

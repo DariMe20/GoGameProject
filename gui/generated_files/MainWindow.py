@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1666, 1153)
+        MainWindow.resize(1666, 1289)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -25,19 +25,25 @@ class Ui_MainWindow(object):
         self.widget.setObjectName("widget")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.widget)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.toolButton = QtWidgets.QToolButton(self.widget)
-        self.toolButton.setMinimumSize(QtCore.QSize(30, 30))
-        self.toolButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.toolButton.setPopupMode(QtWidgets.QToolButton.DelayedPopup)
-        self.toolButton.setToolButtonStyle(QtCore.Qt.ToolButtonIconOnly)
-        self.toolButton.setObjectName("toolButton")
-        self.verticalLayout_2.addWidget(self.toolButton)
         self.label = QtWidgets.QLabel(self.widget)
-        self.label.setMaximumSize(QtCore.QSize(16777215, 40))
+        self.label.setMaximumSize(QtCore.QSize(16777215, 70))
         font = QtGui.QFont()
-        font.setFamily("MS Shell Dlg 2")
-        font.setPointSize(11)
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setWeight(75)
         self.label.setFont(font)
+        self.label.setStyleSheet("\n"
+"    font-size: 18px;\n"
+"    font-weight: bold;\n"
+"    padding: 10px;\n"
+"    border: 2px solid #5A9; /* Sea green */\n"
+"    border-radius: 10px;\n"
+"    background-color: #F5F5F5; /* Cream */\n"
+"    color: rgb(40, 40, 40); /* Dark grey */\n"
+"    margin: 5px;\n"
+"\n"
+"\n"
+"")
         self.label.setScaledContents(True)
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
@@ -67,35 +73,97 @@ class Ui_MainWindow(object):
         self.widget_gameStarter.setGeometry(QtCore.QRect(220, 370, 421, 55))
         self.widget_gameStarter.setMinimumSize(QtCore.QSize(0, 20))
         self.widget_gameStarter.setMaximumSize(QtCore.QSize(450, 55))
-        self.widget_gameStarter.setAutoFillBackground(True)
-        self.widget_gameStarter.setStyleSheet("background:light;")
+        self.widget_gameStarter.setAutoFillBackground(False)
+        self.widget_gameStarter.setStyleSheet("background:rgb(247, 255, 250);\n"
+"border-radius:20px;")
         self.widget_gameStarter.setObjectName("widget_gameStarter")
         self.gridLayout = QtWidgets.QGridLayout(self.widget_gameStarter)
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
         self.gridLayout.setObjectName("gridLayout")
         self.label_middleBoard = QtWidgets.QLabel(self.widget_gameStarter)
         font = QtGui.QFont()
-        font.setPointSize(11)
+        font.setPointSize(-1)
         font.setBold(True)
         font.setWeight(75)
         self.label_middleBoard.setFont(font)
+        self.label_middleBoard.setStyleSheet("QLabel {\n"
+"                font-size: 15px;\n"
+"                font-weight: bold;\n"
+"                color: rgb(70, 70, 70);\n"
+"                padding: 5px;\n"
+"\n"
+"            }")
         self.label_middleBoard.setObjectName("label_middleBoard")
         self.gridLayout.addWidget(self.label_middleBoard, 0, 0, 1, 1)
         self.spinBox_numberOfSimulations = QtWidgets.QSpinBox(self.widget_gameStarter)
         self.spinBox_numberOfSimulations.setMinimumSize(QtCore.QSize(70, 30))
         palette = QtGui.QPalette()
+        brush = QtGui.QBrush(QtGui.QColor(40, 40, 40))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(40, 40, 40))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(40, 40, 40))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Window, brush)
         brush = QtGui.QBrush(QtGui.QColor(0, 120, 215, 1))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Highlight, brush)
         brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.HighlightedText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(40, 40, 40))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(40, 40, 40))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(40, 40, 40))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Window, brush)
         brush = QtGui.QBrush(QtGui.QColor(0, 120, 215, 1))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Highlight, brush)
         brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.HighlightedText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(40, 40, 40))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(40, 40, 40))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(40, 40, 40))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Window, brush)
         brush = QtGui.QBrush(QtGui.QColor(0, 120, 215))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Highlight, brush)
@@ -104,15 +172,50 @@ class Ui_MainWindow(object):
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.HighlightedText, brush)
         self.spinBox_numberOfSimulations.setPalette(palette)
         font = QtGui.QFont()
-        font.setPointSize(12)
-        font.setBold(True)
-        font.setWeight(75)
-        font.setStrikeOut(False)
-        font.setStyleStrategy(QtGui.QFont.NoAntialias)
+        font.setPointSize(-1)
         self.spinBox_numberOfSimulations.setFont(font)
         self.spinBox_numberOfSimulations.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.spinBox_numberOfSimulations.setWhatsThis("")
         self.spinBox_numberOfSimulations.setAutoFillBackground(True)
+        self.spinBox_numberOfSimulations.setStyleSheet("/* QSpinBox Styles */\n"
+"QSpinBox {\n"
+"    font-size: 14px;\n"
+"    padding: 5px;\n"
+"    border: 2px solid rgb(40, 40, 40); /* Dark grey */\n"
+"    border-radius: 5px;\n"
+"    background-color: #FFFFFF; /* White */\n"
+"    color: rgb(40, 40, 40); /* Dark grey */\n"
+"}\n"
+"\n"
+"QSpinBox::up-button, QSpinBox::down-button {\n"
+"    background-color: #5A9; /* Sea green */\n"
+"    border: none;\n"
+"    width: 16px;\n"
+"    height: 16px;\n"
+"    border-radius: 2px;\n"
+"}\n"
+"\n"
+"QSpinBox::up-button:hover, QSpinBox::down-button:hover {\n"
+"    background-color: rgb(40, 40, 40); /* Dark grey */\n"
+"}\n"
+"\n"
+"QSpinBox::up-button:pressed, QSpinBox::down-button:pressed {\n"
+"    background-color: #333333; /* Even darker grey */\n"
+"}\n"
+"\n"
+"QSpinBox::up-arrow, QSpinBox::down-arrow {\n"
+"    width: 10px;\n"
+"    height: 10px;\n"
+"}\n"
+"\n"
+"QSpinBox::up-arrow {\n"
+"    image: url(:/images/up-arrow.png); /* Replace with your up arrow image path */\n"
+"}\n"
+"\n"
+"QSpinBox::down-arrow {\n"
+"    image: url(:/images/down-arrow.png); /* Replace with your down arrow image path */\n"
+"}\n"
+"")
         self.spinBox_numberOfSimulations.setLocale(QtCore.QLocale(QtCore.QLocale.English, QtCore.QLocale.UnitedStates))
         self.spinBox_numberOfSimulations.setWrapping(False)
         self.spinBox_numberOfSimulations.setFrame(False)
@@ -126,11 +229,30 @@ class Ui_MainWindow(object):
         self.pushButton_StartGame.setMinimumSize(QtCore.QSize(70, 40))
         self.pushButton_StartGame.setMaximumSize(QtCore.QSize(70, 40))
         font = QtGui.QFont()
-        font.setPointSize(11)
+        font.setPointSize(-1)
         font.setBold(True)
         font.setWeight(75)
         self.pushButton_StartGame.setFont(font)
         self.pushButton_StartGame.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.pushButton_StartGame.setStyleSheet("QPushButton {\n"
+"                background-color: #5A9; \n"
+"                color: white; \n"
+"                padding: 10px 10px; \n"
+"                border: 2px solid #476;\n"
+"                border-radius: 10px;\n"
+"                font-size: 16px;\n"
+"                font-weight: bold;\n"
+"                box-shadow: 3px 3px 5px #888888;\n"
+"                transition: background-color 0.3s, transform 0.3s;\n"
+"            }\n"
+"            QPushButton:hover {\n"
+"                background-color: #476;\n"
+"                transform: scale(1.05);\n"
+"            }\n"
+"            QPushButton:pressed {\n"
+"                background-color: #354;\n"
+"                transform: scale(0.95);\n"
+"            }")
         self.pushButton_StartGame.setObjectName("pushButton_StartGame")
         self.gridLayout.addWidget(self.pushButton_StartGame, 0, 2, 1, 1)
         self.verticalLayout_2.addWidget(self.widget_GoBoard, 0, QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
@@ -148,46 +270,112 @@ class Ui_MainWindow(object):
         self.widget1.setObjectName("widget1")
         self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.widget1)
         self.verticalLayout_5.setObjectName("verticalLayout_5")
-        self.label_game = QtWidgets.QLabel(self.widget1)
-        self.label_game.setMinimumSize(QtCore.QSize(0, 70))
-        font = QtGui.QFont()
-        font.setPointSize(12)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_game.setFont(font)
-        self.label_game.setStyleSheet("color:brown")
-        self.label_game.setText("")
-        self.label_game.setScaledContents(True)
-        self.label_game.setWordWrap(True)
-        self.label_game.setObjectName("label_game")
-        self.verticalLayout_5.addWidget(self.label_game, 0, QtCore.Qt.AlignTop)
         self.widget_9 = QtWidgets.QWidget(self.widget1)
+        self.widget_9.setMinimumSize(QtCore.QSize(0, 60))
         self.widget_9.setObjectName("widget_9")
         self.horizontalLayout_6 = QtWidgets.QHBoxLayout(self.widget_9)
         self.horizontalLayout_6.setObjectName("horizontalLayout_6")
         self.pushButton_best5Moves = QtWidgets.QPushButton(self.widget_9)
+        self.pushButton_best5Moves.setEnabled(True)
         self.pushButton_best5Moves.setMinimumSize(QtCore.QSize(0, 30))
-        self.pushButton_best5Moves.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.pushButton_best5Moves.setAutoFillBackground(True)
+        self.pushButton_best5Moves.setCursor(QtGui.QCursor(QtCore.Qt.ForbiddenCursor))
+        self.pushButton_best5Moves.setAutoFillBackground(False)
+        self.pushButton_best5Moves.setStyleSheet("QPushButton {\n"
+"                background-color: #5A9; \n"
+"                color: white; \n"
+"                padding: 10px 20px; \n"
+"                border: 2px solid #476;\n"
+"                border-radius: 10px;\n"
+"                font-size: 16px;\n"
+"                font-weight: bold;\n"
+"                box-shadow: 3px 3px 5px #888888;\n"
+"                transition: background-color 0.3s, transform 0.3s;\n"
+"            }\n"
+"            QPushButton:hover {\n"
+"                background-color: #476;\n"
+"                transform: scale(1.05);\n"
+"            }\n"
+"            QPushButton:pressed {\n"
+"                background-color: #354;\n"
+"                transform: scale(0.95);\n"
+"            }")
         self.pushButton_best5Moves.setFlat(False)
         self.pushButton_best5Moves.setObjectName("pushButton_best5Moves")
         self.horizontalLayout_6.addWidget(self.pushButton_best5Moves)
         self.pushButton_PlayStop = QtWidgets.QPushButton(self.widget_9)
         self.pushButton_PlayStop.setMinimumSize(QtCore.QSize(0, 30))
         self.pushButton_PlayStop.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.pushButton_PlayStop.setStyleSheet("QPushButton {\n"
+"                background-color: #5A9; \n"
+"                color: white; \n"
+"                padding: 10px 20px; \n"
+"                border: 2px solid #476;\n"
+"                border-radius: 10px;\n"
+"                font-size: 16px;\n"
+"                font-weight: bold;\n"
+"                box-shadow: 3px 3px 5px #888888;\n"
+"                transition: background-color 0.3s, transform 0.3s;\n"
+"            }\n"
+"            QPushButton:hover {\n"
+"                background-color: #476;\n"
+"                transform: scale(1.05);\n"
+"            }\n"
+"            QPushButton:pressed {\n"
+"                background-color: #354;\n"
+"                transform: scale(0.95);\n"
+"            }")
         self.pushButton_PlayStop.setObjectName("pushButton_PlayStop")
         self.horizontalLayout_6.addWidget(self.pushButton_PlayStop)
         self.pushButton_EndSimulations = QtWidgets.QPushButton(self.widget_9)
         self.pushButton_EndSimulations.setMinimumSize(QtCore.QSize(0, 30))
         self.pushButton_EndSimulations.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.pushButton_EndSimulations.setAutoFillBackground(True)
+        self.pushButton_EndSimulations.setAutoFillBackground(False)
+        self.pushButton_EndSimulations.setStyleSheet("QPushButton {\n"
+"                background-color: #5A9; \n"
+"                color: white; \n"
+"                padding: 10px 20px; \n"
+"                border: 2px solid #476;\n"
+"                border-radius: 10px;\n"
+"                font-size: 16px;\n"
+"                font-weight: bold;\n"
+"                box-shadow: 3px 3px 5px #888888;\n"
+"                transition: background-color 0.3s, transform 0.3s;\n"
+"            }\n"
+"            QPushButton:hover {\n"
+"                background-color: #476;\n"
+"                transform: scale(1.05);\n"
+"            }\n"
+"            QPushButton:pressed {\n"
+"                background-color: #354;\n"
+"                transform: scale(0.95);\n"
+"            }")
         self.pushButton_EndSimulations.setFlat(False)
         self.pushButton_EndSimulations.setObjectName("pushButton_EndSimulations")
         self.horizontalLayout_6.addWidget(self.pushButton_EndSimulations)
         self.pushButton_SaveGame = QtWidgets.QPushButton(self.widget_9)
+        self.pushButton_SaveGame.setEnabled(True)
         self.pushButton_SaveGame.setMinimumSize(QtCore.QSize(0, 30))
-        self.pushButton_SaveGame.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.pushButton_SaveGame.setAutoFillBackground(True)
+        self.pushButton_SaveGame.setCursor(QtGui.QCursor(QtCore.Qt.ForbiddenCursor))
+        self.pushButton_SaveGame.setAutoFillBackground(False)
+        self.pushButton_SaveGame.setStyleSheet("QPushButton {\n"
+"                background-color: #5A9; \n"
+"                color: white; \n"
+"                padding: 10px 20px; \n"
+"                border: 2px solid #476;\n"
+"                border-radius: 10px;\n"
+"                font-size: 16px;\n"
+"                font-weight: bold;\n"
+"                box-shadow: 3px 3px 5px #888888;\n"
+"                transition: background-color 0.3s, transform 0.3s;\n"
+"            }\n"
+"            QPushButton:hover {\n"
+"                background-color: #476;\n"
+"                transform: scale(1.05);\n"
+"            }\n"
+"            QPushButton:pressed {\n"
+"                background-color: #354;\n"
+"                transform: scale(0.95);\n"
+"            }")
         self.pushButton_SaveGame.setFlat(False)
         self.pushButton_SaveGame.setObjectName("pushButton_SaveGame")
         self.horizontalLayout_6.addWidget(self.pushButton_SaveGame)
@@ -195,12 +383,57 @@ class Ui_MainWindow(object):
         self.label_2 = QtWidgets.QLabel(self.widget1)
         self.label_2.setMinimumSize(QtCore.QSize(80, 0))
         font = QtGui.QFont()
-        font.setPointSize(10)
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setWeight(75)
         self.label_2.setFont(font)
+        self.label_2.setStyleSheet("QLabel {\n"
+"                font-size: 15px;\n"
+"                font-weight: bold;\n"
+"                color: rgb(70, 70, 70);\n"
+"                padding: 5px;\n"
+"                margin-top:20px;\n"
+"            }")
         self.label_2.setObjectName("label_2")
-        self.verticalLayout_5.addWidget(self.label_2, 0, QtCore.Qt.AlignTop)
+        self.verticalLayout_5.addWidget(self.label_2)
         self.horizontalSlider = QtWidgets.QSlider(self.widget1)
         self.horizontalSlider.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.horizontalSlider.setStyleSheet("/* QSlider Styles */\n"
+"QSlider::groove:horizontal {\n"
+"    border: 1px solid #5A9; /* Sea green */\n"
+"    height: 8px;\n"
+"    background: #F5F5F5; /* Cream */\n"
+"    margin: 2px 0;\n"
+"    border-radius: 4px;\n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal {\n"
+"    background: rgb(40, 40, 40); /* Dark grey */\n"
+"    border: 1px solid #5A9; /* Sea green */\n"
+"    width: 18px;\n"
+"    height: 18px;\n"
+"    border-radius: 9px;\n"
+"    margin: -5px 0; /* Center the handle vertically */\n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal:hover {\n"
+"    background: #333333; /* Even darker grey */\n"
+"}\n"
+"\n"
+"QSlider::sub-page:horizontal {\n"
+"    background: #5A9; /* Sea green */\n"
+"    border: 1px solid #5A9;\n"
+"    height: 8px;\n"
+"    border-radius: 4px;\n"
+"}\n"
+"\n"
+"QSlider::add-page:horizontal {\n"
+"    background: #F5F5F5; /* Cream */\n"
+"    border: 1px solid #5A9; /* Sea green */\n"
+"    height: 8px;\n"
+"    border-radius: 4px;\n"
+"}\n"
+"")
         self.horizontalSlider.setMinimum(100)
         self.horizontalSlider.setMaximum(3100)
         self.horizontalSlider.setSingleStep(500)
@@ -225,6 +458,8 @@ class Ui_MainWindow(object):
         self.horizontalWidget_2.setSizePolicy(sizePolicy)
         self.horizontalWidget_2.setMinimumSize(QtCore.QSize(0, 300))
         self.horizontalWidget_2.setMaximumSize(QtCore.QSize(16777215, 300))
+        self.horizontalWidget_2.setStyleSheet("QWidget#horizontalWidget_2{\n"
+"margin: 10px, 0px;}")
         self.horizontalWidget_2.setObjectName("horizontalWidget_2")
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.horizontalWidget_2)
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
@@ -240,14 +475,23 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.lineEdit_2 = QtWidgets.QLineEdit(self.verticalWidget)
         font = QtGui.QFont()
-        font.setFamily("MS Shell Dlg 2")
-        font.setPointSize(10)
+        font.setPointSize(-1)
         font.setBold(True)
         font.setWeight(75)
         self.lineEdit_2.setFont(font)
         self.lineEdit_2.setCursor(QtGui.QCursor(QtCore.Qt.IBeamCursor))
+        self.lineEdit_2.setAutoFillBackground(False)
         self.lineEdit_2.setStyleSheet("\n"
-"background-color: rgba(255, 255, 255, 0);")
+"    font-size: 16px;\n"
+"    font-weight: bold;\n"
+"    border: 2px solid #5A9; /* Sea green */\n"
+"    border-radius: 10px;\n"
+"    background-color: #F5F5F5; /* Cream */\n"
+"    color: rgb(40, 40, 40); /* Dark grey */\n"
+"    margin: 2px;\n"
+"\n"
+"\n"
+"")
         self.lineEdit_2.setFrame(False)
         self.lineEdit_2.setAlignment(QtCore.Qt.AlignCenter)
         self.lineEdit_2.setReadOnly(True)
@@ -266,8 +510,9 @@ class Ui_MainWindow(object):
         self.BlackPlayerName = QtWidgets.QLineEdit(self.verticalWidget)
         self.BlackPlayerName.setMinimumSize(QtCore.QSize(114, 19))
         font = QtGui.QFont()
-        font.setFamily("MS Shell Dlg 2")
-        font.setPointSize(12)
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setWeight(75)
         self.BlackPlayerName.setFont(font)
         self.BlackPlayerName.setFrame(False)
         self.BlackPlayerName.setAlignment(QtCore.Qt.AlignCenter)
@@ -276,10 +521,19 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.addWidget(self.BlackPlayerName, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignBottom)
         self.lineEdit_BlackCaptures = QtWidgets.QLineEdit(self.verticalWidget)
         font = QtGui.QFont()
-        font.setFamily("MS Shell Dlg 2")
-        font.setPointSize(10)
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setWeight(75)
         self.lineEdit_BlackCaptures.setFont(font)
-        self.lineEdit_BlackCaptures.setStyleSheet("background:transparent;")
+        self.lineEdit_BlackCaptures.setStyleSheet("\n"
+"    font-size: 18px;\n"
+"    font-weight: bold;\n"
+"    background-color: transparent;\n"
+"    color: rgb(40, 40, 40); /* Dark grey */\n"
+"    margin: 2px;\n"
+"\n"
+"\n"
+"")
         self.lineEdit_BlackCaptures.setFrame(False)
         self.lineEdit_BlackCaptures.setAlignment(QtCore.Qt.AlignCenter)
         self.lineEdit_BlackCaptures.setReadOnly(True)
@@ -298,6 +552,13 @@ class Ui_MainWindow(object):
         self.widget_3.setObjectName("widget_3")
         self.verticalWidget_2 = QtWidgets.QWidget(self.widget_3)
         self.verticalWidget_2.setGeometry(QtCore.QRect(0, 0, 241, 261))
+        self.verticalWidget_2.setStyleSheet("QLabel {\n"
+"                font-size: 15px;\n"
+"                font-weight: bold;\n"
+"                color: rgb(70, 70, 70);\n"
+"                padding: 5px;\n"
+"\n"
+"            }")
         self.verticalWidget_2.setObjectName("verticalWidget_2")
         self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.verticalWidget_2)
         self.verticalLayout_4.setSizeConstraint(QtWidgets.QLayout.SetMinimumSize)
@@ -305,14 +566,23 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.setObjectName("verticalLayout_4")
         self.lineEdit_4 = QtWidgets.QLineEdit(self.verticalWidget_2)
         font = QtGui.QFont()
-        font.setFamily("MS Shell Dlg 2")
-        font.setPointSize(10)
+        font.setPointSize(-1)
         font.setBold(True)
         font.setWeight(75)
         self.lineEdit_4.setFont(font)
         self.lineEdit_4.setCursor(QtGui.QCursor(QtCore.Qt.IBeamCursor))
+        self.lineEdit_4.setAutoFillBackground(False)
         self.lineEdit_4.setStyleSheet("\n"
-"background-color: rgba(255, 255, 255, 0);")
+"    font-size: 16px;\n"
+"    font-weight: bold;\n"
+"    border: 2px solid #5A9; /* Sea green */\n"
+"    border-radius: 10px;\n"
+"    background-color: #F5F5F5; /* Cream */\n"
+"    color: rgb(40, 40, 40); /* Dark grey */\n"
+"    margin: 2px;\n"
+"\n"
+"\n"
+"")
         self.lineEdit_4.setFrame(False)
         self.lineEdit_4.setAlignment(QtCore.Qt.AlignCenter)
         self.lineEdit_4.setReadOnly(True)
@@ -331,8 +601,9 @@ class Ui_MainWindow(object):
         self.WhitePlayerName = QtWidgets.QLineEdit(self.verticalWidget_2)
         self.WhitePlayerName.setMinimumSize(QtCore.QSize(114, 19))
         font = QtGui.QFont()
-        font.setFamily("MS Shell Dlg 2")
-        font.setPointSize(12)
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setWeight(75)
         self.WhitePlayerName.setFont(font)
         self.WhitePlayerName.setText("")
         self.WhitePlayerName.setFrame(False)
@@ -342,10 +613,19 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.addWidget(self.WhitePlayerName, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignBottom)
         self.lineEdit_WhiteCaptures = QtWidgets.QLineEdit(self.verticalWidget_2)
         font = QtGui.QFont()
-        font.setFamily("MS Shell Dlg 2")
-        font.setPointSize(10)
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setWeight(75)
         self.lineEdit_WhiteCaptures.setFont(font)
-        self.lineEdit_WhiteCaptures.setStyleSheet("background:transparent;")
+        self.lineEdit_WhiteCaptures.setStyleSheet("\n"
+"    font-size: 18px;\n"
+"    font-weight: bold;\n"
+"    background-color: transparent;\n"
+"    color: rgb(40, 40, 40); /* Dark grey */\n"
+"    margin: 2px;\n"
+"\n"
+"\n"
+"")
         self.lineEdit_WhiteCaptures.setFrame(False)
         self.lineEdit_WhiteCaptures.setAlignment(QtCore.Qt.AlignCenter)
         self.lineEdit_WhiteCaptures.setReadOnly(True)
@@ -354,18 +634,80 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3.addWidget(self.widget_3, 0, QtCore.Qt.AlignHCenter)
         self.verticalLayout_5.addWidget(self.horizontalWidget_2)
         self.widget_5 = QtWidgets.QWidget(self.widget1)
+        self.widget_5.setMinimumSize(QtCore.QSize(0, 60))
         self.widget_5.setObjectName("widget_5")
         self.horizontalLayout_7 = QtWidgets.QHBoxLayout(self.widget_5)
         self.horizontalLayout_7.setObjectName("horizontalLayout_7")
-        self.pushButton = QtWidgets.QPushButton(self.widget_5)
-        self.pushButton.setMinimumSize(QtCore.QSize(0, 30))
-        self.pushButton.setObjectName("pushButton")
-        self.horizontalLayout_7.addWidget(self.pushButton)
+        self.pushButton_Pass = QtWidgets.QPushButton(self.widget_5)
+        self.pushButton_Pass.setMinimumSize(QtCore.QSize(0, 30))
+        self.pushButton_Pass.setStyleSheet("QPushButton {\n"
+"                background-color: #5A9; \n"
+"                color: white; \n"
+"                padding: 10px 20px; \n"
+"                border: 2px solid #476;\n"
+"                border-radius: 10px;\n"
+"                font-size: 16px;\n"
+"                font-weight: bold;\n"
+"                box-shadow: 3px 3px 5px #888888;\n"
+"                transition: background-color 0.3s, transform 0.3s;\n"
+"            }\n"
+"            QPushButton:hover {\n"
+"                background-color: #476;\n"
+"                transform: scale(1.05);\n"
+"            }\n"
+"            QPushButton:pressed {\n"
+"                background-color: #354;\n"
+"                transform: scale(0.95);\n"
+"            }")
+        self.pushButton_Pass.setObjectName("pushButton_Pass")
+        self.horizontalLayout_7.addWidget(self.pushButton_Pass)
         self.pushButton_Resign = QtWidgets.QPushButton(self.widget_5)
         self.pushButton_Resign.setMinimumSize(QtCore.QSize(0, 30))
+        self.pushButton_Resign.setStyleSheet("QPushButton {\n"
+"                background-color: #5A9; \n"
+"                color: white; \n"
+"                padding: 10px 20px; \n"
+"                border: 2px solid #476;\n"
+"                border-radius: 10px;\n"
+"                font-size: 16px;\n"
+"                font-weight: bold;\n"
+"                box-shadow: 3px 3px 5px #888888;\n"
+"                transition: background-color 0.3s, transform 0.3s;\n"
+"            }\n"
+"            QPushButton:hover {\n"
+"                background-color: #476;\n"
+"                transform: scale(1.05);\n"
+"            }\n"
+"            QPushButton:pressed {\n"
+"                background-color: #354;\n"
+"                transform: scale(0.95);\n"
+"            }")
         self.pushButton_Resign.setObjectName("pushButton_Resign")
         self.horizontalLayout_7.addWidget(self.pushButton_Resign)
         self.verticalLayout_5.addWidget(self.widget_5)
+        self.label_game = QtWidgets.QLabel(self.widget1)
+        font = QtGui.QFont()
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_game.setFont(font)
+        self.label_game.setStyleSheet("\n"
+"    font-size: 18px;\n"
+"    font-weight: bold;\n"
+"    padding: 10px;\n"
+"    border: 2px solid #5A9; /* Sea green */\n"
+"    border-radius: 10px;\n"
+"    background-color: #F5F5F5; /* Cream */\n"
+"    color: rgb(40, 40, 40); /* Dark grey */\n"
+"    margin: 5px;\n"
+"\n"
+"\n"
+"")
+        self.label_game.setText("")
+        self.label_game.setScaledContents(True)
+        self.label_game.setWordWrap(True)
+        self.label_game.setObjectName("label_game")
+        self.verticalLayout_5.addWidget(self.label_game)
         self.stackedWidget_Probs_TreeView = QtWidgets.QStackedWidget(self.widget1)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.MinimumExpanding)
         sizePolicy.setHorizontalStretch(0)
@@ -390,6 +732,9 @@ class Ui_MainWindow(object):
         self.textEdit_Probs.setObjectName("textEdit_Probs")
         self.horizontalLayout_4.addWidget(self.textEdit_Probs, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
         self.stackedWidget_Probs_TreeView.addWidget(self.page_Probs)
+        self.page = QtWidgets.QWidget()
+        self.page.setObjectName("page")
+        self.stackedWidget_Probs_TreeView.addWidget(self.page)
         self.page_TreeView = QtWidgets.QWidget()
         self.page_TreeView.setObjectName("page_TreeView")
         self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.page_TreeView)
@@ -428,6 +773,8 @@ class Ui_MainWindow(object):
         spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout_5.addItem(spacerItem2)
         self.label_FinalResults = QtWidgets.QLabel(self.widget1)
+        self.label_FinalResults.setEnabled(True)
+        self.label_FinalResults.setText("")
         self.label_FinalResults.setObjectName("label_FinalResults")
         self.verticalLayout_5.addWidget(self.label_FinalResults)
         self.horizontalLayout.addWidget(self.widget1)
@@ -447,30 +794,45 @@ class Ui_MainWindow(object):
         self.label_middleBoard.setBuddy(self.spinBox_numberOfSimulations)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget_Probs_TreeView.setCurrentIndex(0)
+        self.stackedWidget_Probs_TreeView.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.toolButton.setText(_translate("MainWindow", "..."))
         self.label.setText(_translate("MainWindow", "Moves info"))
         self.label_middleBoard.setText(_translate("MainWindow", "Number of episodes to simulate"))
         self.pushButton_StartGame.setText(_translate("MainWindow", "Start"))
+        self.pushButton_best5Moves.setToolTip(_translate("MainWindow", "This feature is not available at the moment"))
         self.pushButton_best5Moves.setText(_translate("MainWindow", "See Best 5"))
         self.pushButton_PlayStop.setText(_translate("MainWindow", "Stop Game"))
         self.pushButton_EndSimulations.setText(_translate("MainWindow", "End Simulations "))
+        self.pushButton_SaveGame.setToolTip(_translate("MainWindow", "This feature is not available at the moment"))
         self.pushButton_SaveGame.setText(_translate("MainWindow", "Save Game"))
         self.label_2.setText(_translate("MainWindow", "Playing Speed"))
         self.lineEdit_2.setText(_translate("MainWindow", "BLACK"))
         self.BlackPlayerName.setStyleSheet(_translate("MainWindow", "\n"
-"background-color: rgba(255, 255, 255, 0);"))
+"    font-size: 18px;\n"
+"    font-weight: bold;\n"
+"    background-color: transparent;\n"
+"    color: rgb(40, 40, 40); /* Dark grey */\n"
+"    margin: 2px;\n"
+"\n"
+"\n"
+""))
         self.BlackPlayerName.setPlaceholderText(_translate("MainWindow", "Black Player"))
         self.lineEdit_4.setText(_translate("MainWindow", "WHITE"))
         self.WhitePlayerName.setStyleSheet(_translate("MainWindow", "\n"
-"background-color: rgba(255, 255, 255, 0);"))
+"    font-size: 18px;\n"
+"    font-weight: bold;\n"
+"    background-color: transparent;\n"
+"    color: rgb(40, 40, 40); /* Dark grey */\n"
+"    margin: 2px;\n"
+"\n"
+"\n"
+""))
         self.WhitePlayerName.setPlaceholderText(_translate("MainWindow", "White Player"))
-        self.pushButton.setText(_translate("MainWindow", "PASS"))
+        self.pushButton_Pass.setText(_translate("MainWindow", "PASS"))
         self.pushButton_Resign.setText(_translate("MainWindow", "RESIGN"))
         self.textEdit_Probs.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -481,7 +843,6 @@ class Ui_MainWindow(object):
         self.pushButton_prevMove.setText(_translate("MainWindow", "<"))
         self.pushButton_nextMove.setText(_translate("MainWindow", ">"))
         self.pushButton_lastMove.setText(_translate("MainWindow", ">>"))
-        self.label_FinalResults.setText(_translate("MainWindow", "LabelFinalResult"))
         self.toolBar.setWindowTitle(_translate("MainWindow", "toolBar"))
 
 
