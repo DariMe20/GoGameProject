@@ -1,0 +1,13 @@
+[
+    {
+        "Episodes": 100,
+        "Black_agent": "model_Q1",
+        "White_agent": "model_Q1",
+        "Black_wins": 47,
+        "White_wins": 53,
+        "Average_black_score": 38.11,
+        "Average_white_score": 42.89,
+        "SUMMARY_NUMBER": 1,
+        "Generated Experience File": "q_value_experience_files\\AgentExperience1_model_Q1_model_Q1.h5"
+    }
+]

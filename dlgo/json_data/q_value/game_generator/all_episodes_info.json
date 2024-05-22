@@ -1,0 +1,1004 @@
+{
+    "all_episodes_info": [
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "-3.25",
+            "white_score": "84.25",
+            "territory_difference": "87.5",
+            "episode_number": 1
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "44.75",
+            "white_score": "36.25",
+            "territory_difference": "8.5",
+            "episode_number": 2
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "35.75",
+            "white_score": "45.25",
+            "territory_difference": "9.5",
+            "episode_number": 3
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "17.75",
+            "white_score": "63.25",
+            "territory_difference": "45.5",
+            "episode_number": 4
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "-3.25",
+            "white_score": "84.25",
+            "territory_difference": "87.5",
+            "episode_number": 5
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "52.75",
+            "white_score": "28.25",
+            "territory_difference": "24.5",
+            "episode_number": 6
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "37.75",
+            "white_score": "43.25",
+            "territory_difference": "5.5",
+            "episode_number": 7
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "-3.25",
+            "white_score": "84.25",
+            "territory_difference": "87.5",
+            "episode_number": 8
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "49.75",
+            "white_score": "31.25",
+            "territory_difference": "18.5",
+            "episode_number": 9
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "50.75",
+            "white_score": "30.25",
+            "territory_difference": "20.5",
+            "episode_number": 10
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "41.75",
+            "white_score": "39.25",
+            "territory_difference": "2.5",
+            "episode_number": 11
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "43.75",
+            "white_score": "37.25",
+            "territory_difference": "6.5",
+            "episode_number": 12
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "56.75",
+            "white_score": "24.25",
+            "territory_difference": "32.5",
+            "episode_number": 13
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "32.75",
+            "white_score": "48.25",
+            "territory_difference": "15.5",
+            "episode_number": 14
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "61.75",
+            "white_score": "19.25",
+            "territory_difference": "42.5",
+            "episode_number": 15
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "17.75",
+            "white_score": "63.25",
+            "territory_difference": "45.5",
+            "episode_number": 16
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "34.75",
+            "white_score": "46.25",
+            "territory_difference": "11.5",
+            "episode_number": 17
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "18.75",
+            "white_score": "62.25",
+            "territory_difference": "43.5",
+            "episode_number": 18
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "77.75",
+            "white_score": "3.25",
+            "territory_difference": "74.5",
+            "episode_number": 19
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "-3.25",
+            "white_score": "84.25",
+            "territory_difference": "87.5",
+            "episode_number": 20
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "45.75",
+            "white_score": "35.25",
+            "territory_difference": "10.5",
+            "episode_number": 21
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "77.75",
+            "white_score": "3.25",
+            "territory_difference": "74.5",
+            "episode_number": 22
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "46.75",
+            "white_score": "34.25",
+            "territory_difference": "12.5",
+            "episode_number": 23
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "53.75",
+            "white_score": "27.25",
+            "territory_difference": "26.5",
+            "episode_number": 24
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "24.75",
+            "white_score": "56.25",
+            "territory_difference": "31.5",
+            "episode_number": 25
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "37.75",
+            "white_score": "43.25",
+            "territory_difference": "5.5",
+            "episode_number": 26
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "41.75",
+            "white_score": "39.25",
+            "territory_difference": "2.5",
+            "episode_number": 27
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "-3.25",
+            "white_score": "84.25",
+            "territory_difference": "87.5",
+            "episode_number": 28
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "59.75",
+            "white_score": "21.25",
+            "territory_difference": "38.5",
+            "episode_number": 29
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "48.75",
+            "white_score": "32.25",
+            "territory_difference": "16.5",
+            "episode_number": 30
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "10.75",
+            "white_score": "70.25",
+            "territory_difference": "59.5",
+            "episode_number": 31
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "45.75",
+            "white_score": "35.25",
+            "territory_difference": "10.5",
+            "episode_number": 32
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "60.75",
+            "white_score": "20.25",
+            "territory_difference": "40.5",
+            "episode_number": 33
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "77.75",
+            "white_score": "3.25",
+            "territory_difference": "74.5",
+            "episode_number": 34
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "43.75",
+            "white_score": "37.25",
+            "territory_difference": "6.5",
+            "episode_number": 35
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "32.75",
+            "white_score": "48.25",
+            "territory_difference": "15.5",
+            "episode_number": 36
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "15.75",
+            "white_score": "65.25",
+            "territory_difference": "49.5",
+            "episode_number": 37
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "6.75",
+            "white_score": "74.25",
+            "territory_difference": "67.5",
+            "episode_number": 38
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "44.75",
+            "white_score": "36.25",
+            "territory_difference": "8.5",
+            "episode_number": 39
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "32.75",
+            "white_score": "48.25",
+            "territory_difference": "15.5",
+            "episode_number": 40
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "39.75",
+            "white_score": "41.25",
+            "territory_difference": "1.5",
+            "episode_number": 41
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "41.75",
+            "white_score": "39.25",
+            "territory_difference": "2.5",
+            "episode_number": 42
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "35.75",
+            "white_score": "45.25",
+            "territory_difference": "9.5",
+            "episode_number": 43
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "37.75",
+            "white_score": "43.25",
+            "territory_difference": "5.5",
+            "episode_number": 44
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "30.75",
+            "white_score": "50.25",
+            "territory_difference": "19.5",
+            "episode_number": 45
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "19.75",
+            "white_score": "61.25",
+            "territory_difference": "41.5",
+            "episode_number": 46
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "51.75",
+            "white_score": "29.25",
+            "territory_difference": "22.5",
+            "episode_number": 47
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "35.75",
+            "white_score": "45.25",
+            "territory_difference": "9.5",
+            "episode_number": 48
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "18.75",
+            "white_score": "62.25",
+            "territory_difference": "43.5",
+            "episode_number": 49
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "60.75",
+            "white_score": "20.25",
+            "territory_difference": "40.5",
+            "episode_number": 50
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "37.75",
+            "white_score": "43.25",
+            "territory_difference": "5.5",
+            "episode_number": 51
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "61.75",
+            "white_score": "19.25",
+            "territory_difference": "42.5",
+            "episode_number": 52
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "34.75",
+            "white_score": "46.25",
+            "territory_difference": "11.5",
+            "episode_number": 53
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "18.75",
+            "white_score": "62.25",
+            "territory_difference": "43.5",
+            "episode_number": 54
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "77.75",
+            "white_score": "3.25",
+            "territory_difference": "74.5",
+            "episode_number": 55
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "25.75",
+            "white_score": "55.25",
+            "territory_difference": "29.5",
+            "episode_number": 56
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "35.75",
+            "white_score": "45.25",
+            "territory_difference": "9.5",
+            "episode_number": 57
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "64.75",
+            "white_score": "16.25",
+            "territory_difference": "48.5",
+            "episode_number": 58
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "31.75",
+            "white_score": "49.25",
+            "territory_difference": "17.5",
+            "episode_number": 59
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "18.75",
+            "white_score": "62.25",
+            "territory_difference": "43.5",
+            "episode_number": 60
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "58.75",
+            "white_score": "22.25",
+            "territory_difference": "36.5",
+            "episode_number": 61
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "38.75",
+            "white_score": "42.25",
+            "territory_difference": "3.5",
+            "episode_number": 62
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "28.75",
+            "white_score": "52.25",
+            "territory_difference": "23.5",
+            "episode_number": 63
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "46.75",
+            "white_score": "34.25",
+            "territory_difference": "12.5",
+            "episode_number": 64
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "55.75",
+            "white_score": "25.25",
+            "territory_difference": "30.5",
+            "episode_number": 65
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "47.75",
+            "white_score": "33.25",
+            "territory_difference": "14.5",
+            "episode_number": 66
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "-3.25",
+            "white_score": "84.25",
+            "territory_difference": "87.5",
+            "episode_number": 67
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "39.75",
+            "white_score": "41.25",
+            "territory_difference": "1.5",
+            "episode_number": 68
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "-3.25",
+            "white_score": "84.25",
+            "territory_difference": "87.5",
+            "episode_number": 69
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "65.75",
+            "white_score": "15.25",
+            "territory_difference": "50.5",
+            "episode_number": 70
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "35.75",
+            "white_score": "45.25",
+            "territory_difference": "9.5",
+            "episode_number": 71
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "30.75",
+            "white_score": "50.25",
+            "territory_difference": "19.5",
+            "episode_number": 72
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "8.75",
+            "white_score": "72.25",
+            "territory_difference": "63.5",
+            "episode_number": 73
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "43.75",
+            "white_score": "37.25",
+            "territory_difference": "6.5",
+            "episode_number": 74
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "52.75",
+            "white_score": "28.25",
+            "territory_difference": "24.5",
+            "episode_number": 75
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "77.75",
+            "white_score": "3.25",
+            "territory_difference": "74.5",
+            "episode_number": 76
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "-3.25",
+            "white_score": "84.25",
+            "territory_difference": "87.5",
+            "episode_number": 77
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "40.75",
+            "white_score": "40.25",
+            "territory_difference": "0.5",
+            "episode_number": 78
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "41.75",
+            "white_score": "39.25",
+            "territory_difference": "2.5",
+            "episode_number": 79
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "77.75",
+            "white_score": "3.25",
+            "territory_difference": "74.5",
+            "episode_number": 80
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "20.75",
+            "white_score": "60.25",
+            "territory_difference": "39.5",
+            "episode_number": 81
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "42.75",
+            "white_score": "38.25",
+            "territory_difference": "4.5",
+            "episode_number": 82
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "52.75",
+            "white_score": "28.25",
+            "territory_difference": "24.5",
+            "episode_number": 83
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "49.75",
+            "white_score": "31.25",
+            "territory_difference": "18.5",
+            "episode_number": 84
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "38.75",
+            "white_score": "42.25",
+            "territory_difference": "3.5",
+            "episode_number": 85
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "44.75",
+            "white_score": "36.25",
+            "territory_difference": "8.5",
+            "episode_number": 86
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "39.75",
+            "white_score": "41.25",
+            "territory_difference": "1.5",
+            "episode_number": 87
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "46.75",
+            "white_score": "34.25",
+            "territory_difference": "12.5",
+            "episode_number": 88
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "34.75",
+            "white_score": "46.25",
+            "territory_difference": "11.5",
+            "episode_number": 89
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "65.75",
+            "white_score": "15.25",
+            "territory_difference": "50.5",
+            "episode_number": 90
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "47.75",
+            "white_score": "33.25",
+            "territory_difference": "14.5",
+            "episode_number": 91
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "-3.25",
+            "white_score": "84.25",
+            "territory_difference": "87.5",
+            "episode_number": 92
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "42.75",
+            "white_score": "38.25",
+            "territory_difference": "4.5",
+            "episode_number": 93
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "33.75",
+            "white_score": "47.25",
+            "territory_difference": "13.5",
+            "episode_number": 94
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "32.75",
+            "white_score": "48.25",
+            "territory_difference": "15.5",
+            "episode_number": 95
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "38.75",
+            "white_score": "42.25",
+            "territory_difference": "3.5",
+            "episode_number": 96
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "39.75",
+            "white_score": "41.25",
+            "territory_difference": "1.5",
+            "episode_number": 97
+        },
+        {
+            "winner": "Player.black",
+            "current_score": "0",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "60.75",
+            "white_score": "20.25",
+            "territory_difference": "40.5",
+            "episode_number": 98
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "24.75",
+            "white_score": "56.25",
+            "territory_difference": "31.5",
+            "episode_number": 99
+        },
+        {
+            "winner": "Player.white",
+            "current_score": "1",
+            "black_agent": "model_Q1",
+            "white_agent": "model_Q1",
+            "black_score": "27.75",
+            "white_score": "53.25",
+            "territory_difference": "25.5",
+            "episode_number": 100
+        }
+    ]
+}
