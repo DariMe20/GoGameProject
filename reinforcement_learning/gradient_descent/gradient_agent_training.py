@@ -13,7 +13,7 @@ def main():
     encoder = SimpleEncoder((board_size, board_size))
     agent_in_path = os.path.join('gradient_descent_models', 'NO1_model_Gradient.h5')
     agent_out_path = os.path.join('gradient_descent_models', 'PlotTest_model_Gradient.h5')
-    experience_folder = 'gradient_experience_files/Model1_Model1_6000games'
+    experience_folder = 'gradient_experience_files/Model2_Model2_14000games'
     training_details_filename = os.path.join('..', '..', 'dlgo', 'json_data', 'gradient_descent', 'training_data.json')
 
     # Încarcă agentul de învățare
