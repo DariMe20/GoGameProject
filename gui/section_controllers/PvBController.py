@@ -109,7 +109,7 @@ class PvBController(QtWidgets.QWidget):
         try:
             if not self.game.is_over() and self.is_player_turn:
                 self.player_pass = True
-                self.GOwin.ui.label.setText(f"{self.current_player} passed")
+                self.GOwin.ui.label.setText(f"Player passed")
 
                 self.game = self.game.apply_move(Move.pass_turn())
                 self.moves_list.append((self.current_player, None))  # Store pass move
