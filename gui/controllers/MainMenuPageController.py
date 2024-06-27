@@ -2,6 +2,7 @@ import os
 import sys
 
 from PyQt5 import QtWidgets
+from PyQt5.QtGui import QPixmap
 
 from gui.controllers.GoWindowController import GoWindowController
 from gui.generated_files.MainMenuPage import Ui_MainWindow
@@ -19,6 +20,7 @@ class MainMenuPageController(QtWidgets.QMainWindow, Ui_MainWindow):
         self.ui.pushButton_EditSGF.clicked.connect(self.editSGF)
         self.ui.pushButton_PlayerVSBot.clicked.connect(self.playerVSbot)
         self.ui.pushButton_BotVBot.clicked.connect(self.bot_vs_bot_settings)
+        self.ui.pushButton_AboutGo.clicked.connect(self.aboutGo)
 
         self.ui.comboBox_BlackBot.addItems(list(constants.BOTS.keys()))
         self.ui.comboBox_WhiteBot.addItems(list(constants.BOTS.keys()))
@@ -26,8 +28,16 @@ class MainMenuPageController(QtWidgets.QMainWindow, Ui_MainWindow):
 
         self.GoGameWindow = None
 
-    def createSGF(self):
+        self.ui.label_2.setPixmap(QPixmap("../resources/Background.png"))
+        self.ui.label_3.setPixmap(QPixmap("../resources/Picture2.jpg"))
+        self.ui.label_7.setPixmap(QPixmap("../resources/Picture3.jpg"))
+        self.ui.label_8.setPixmap(QPixmap("../resources/Picture4.jpg"))
+
+    def aboutGo(self):
         self.ui.stackedWidget.setCurrentIndex(1)
+
+    def createSGF(self):
+        self.ui.stackedWidget.setCurrentIndex(2)
         self.ui.pushButton_CreateOk.clicked.connect(self.createSGF_game)
 
     def createSGF_game(self):
@@ -47,7 +57,7 @@ class MainMenuPageController(QtWidgets.QMainWindow, Ui_MainWindow):
         pass
 
     def playerVSbot(self):
-        self.ui.stackedWidget.setCurrentIndex(2)
+        self.ui.stackedWidget.setCurrentIndex(3)
         self.ui.pushButton_PlayWithBotOk.clicked.connect(self.playerVSbot_game)
 
     def playerVSbot_game(self):
@@ -73,7 +83,7 @@ class MainMenuPageController(QtWidgets.QMainWindow, Ui_MainWindow):
             print(f"Error in player vs bot create: {e}")
 
     def bot_vs_bot_settings(self):
-        self.ui.stackedWidget.setCurrentIndex(3)
+        self.ui.stackedWidget.setCurrentIndex(4)
         self.ui.pushButton_BotVsBotOK.clicked.connect(self.botVSbot)
 
     def botVSbot(self):
@@ -91,7 +101,7 @@ class MainMenuPageController(QtWidgets.QMainWindow, Ui_MainWindow):
     def adjust_scale_factor():
         temp_app = QtWidgets.QApplication(
             sys.argv
-            )  # Instanță temporară pentru a obține informații despre ecran
+        )  # Instanță temporară pentru a obține informații despre ecran
         screen = temp_app.primaryScreen()
         resolution = screen.size()  # Ia rezolutia ecranului
         scale_factor = "1"  # Factor de scalare default

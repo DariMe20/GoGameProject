@@ -81,7 +81,7 @@ class GoWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
             self.scene.addItem(self.board)
             self.scene.setSceneRect(
                 0, 0, 850, 850
-                )  # Updated to match GoBoardController's boundingRect dimensions
+            )  # Updated to match GoBoardController's boundingRect dimensions
             self.ui.graphicsView_GoBoard.setScene(self.scene)
             self.ui.graphicsView_GoBoard.setViewportMargins(0, 0, 0, 0)
             self.ui.graphicsView_GoBoard.centerOn(425, 425)
@@ -123,7 +123,7 @@ class GoWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
     def adjust_scale_factor():
         temp_app = QtWidgets.QApplication(
             sys.argv
-            )  # Instanță temporară pentru a obține informații despre ecran
+        )  # Instanță temporară pentru a obține informații despre ecran
         screen = temp_app.primaryScreen()
         resolution = screen.size()  # Ia rezolutia ecranului
         scale_factor = "1"  # Factor de scalare default
@@ -141,18 +141,3 @@ class GoWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
         # Setare factor de scalare
         os.environ["QT_SCALE_FACTOR"] = scale_factor
         temp_app.quit()  # Închideți instanța temporară
-
-
-# Main
-if __name__ == "__main__":
-    # Ajustez factorul de scalare înainte de a crea QApplication
-    GoWindowController.adjust_scale_factor()
-
-    # Generearea instanței reale pentru aplicație
-    app = QtWidgets.QApplication(sys.argv)
-    # Instantiere obiect
-    ui = GoWindowController()
-    # Afisare obiect in fereastra deschisa larg
-    ui.show()
-    # Inchidere aplicatie
-    sys.exit(app.exec_())

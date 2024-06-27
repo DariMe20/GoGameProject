@@ -16,7 +16,6 @@ class CreateSGFController(QtWidgets.QWidget):
 
         # PAGE EDITORS AND HIDERS
         self.GOwin.ui.widget_gameStarter.hide()
-        self.GOwin.ui.pushButton_best5Moves.hide()
         self.GOwin.ui.pushButton_PlayStop.hide()
         self.GOwin.ui.pushButton_EndSimulations.hide()
         self.GOwin.ui.label_2.hide()

@@ -1,1371 +1,1542 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>1116</width>
-    <height>864</height>
-   </rect>
-  </property>
-  <property name="windowTitle">
-   <string>MainWindow</string>
-  </property>
-  <widget class="QWidget" name="centralwidget">
-   <property name="minimumSize">
-    <size>
-     <width>1116</width>
-     <height>823</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>1116</width>
-     <height>823</height>
-    </size>
-   </property>
-   <widget class="QWidget" name="widget_MenuButtons" native="true">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>130</y>
-      <width>1101</width>
-      <height>81</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>761</width>
-      <height>71</height>
-     </size>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <widget class="QPushButton" name="pushButton_CreateSGF">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>120</width>
-         <height>40</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <family>MS Shell Dlg 2</family>
-         <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="cursor">
-        <cursorShape>PointingHandCursor</cursorShape>
-       </property>
-       <property name="text">
-        <string>Create SGF</string>
-       </property>
-       <property name="autoDefault">
-        <bool>false</bool>
-       </property>
-       <property name="default">
-        <bool>false</bool>
-       </property>
-       <property name="flat">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_BotVBot">
-       <property name="minimumSize">
-        <size>
-         <width>120</width>
-         <height>40</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>-1</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="cursor">
-        <cursorShape>PointingHandCursor</cursorShape>
-       </property>
-       <property name="focusPolicy">
-        <enum>Qt::ClickFocus</enum>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton {
-                background-color: #5A9; 
-                color: white; 
-                padding: 10px 20px; 
-                border: 2px solid #476;
-                border-radius: 10px;
-                font-size: 16px;
-                font-weight: bold;
-                box-shadow: 3px 3px 5px #888888;
-                transition: background-color 0.3s, transform 0.3s;
-            }
-            QPushButton:hover {
-                background-color: #476;
-                transform: scale(1.05);
-            }
-            QPushButton:pressed {
-                background-color: #354;
-                transform: scale(0.95);
-            }</string>
-       </property>
-       <property name="text">
-        <string>Bot VS Bot</string>
-       </property>
-       <property name="checkable">
-        <bool>false</bool>
-       </property>
-       <property name="autoDefault">
-        <bool>false</bool>
-       </property>
-       <property name="default">
-        <bool>false</bool>
-       </property>
-       <property name="flat">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_AboutGo">
-       <property name="minimumSize">
-        <size>
-         <width>120</width>
-         <height>40</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>-1</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="cursor">
-        <cursorShape>PointingHandCursor</cursorShape>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton {
-                background-color: #5A9; 
-                color: white; 
-                padding: 10px 20px; 
-                border: 2px solid #476;
-                border-radius: 10px;
-                font-size: 16px;
-                font-weight: bold;
-                box-shadow: 3px 3px 5px #888888;
-                transition: background-color 0.3s, transform 0.3s;
-            }
-            QPushButton:hover {
-                background-color: #476;
-                transform: scale(1.05);
-            }
-            QPushButton:pressed {
-                background-color: #354;
-                transform: scale(0.95);
-            }</string>
-       </property>
-       <property name="text">
-        <string>About GO</string>
-       </property>
-       <property name="autoDefault">
-        <bool>true</bool>
-       </property>
-       <property name="default">
-        <bool>false</bool>
-       </property>
-       <property name="flat">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_PlayerVSBot">
-       <property name="minimumSize">
-        <size>
-         <width>120</width>
-         <height>40</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>-1</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="cursor">
-        <cursorShape>PointingHandCursor</cursorShape>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton {
-                background-color: #5A9; 
-                color: white; 
-                padding: 10px 20px; 
-                border: 2px solid #476;
-                border-radius: 10px;
-                font-size: 16px;
-                font-weight: bold;
-                box-shadow: 3px 3px 5px #888888;
-                transition: background-color 0.3s, transform 0.3s;
-            }
-            QPushButton:hover {
-                background-color: #476;
-                transform: scale(1.05);
-            }
-            QPushButton:pressed {
-                background-color: #354;
-                transform: scale(0.95);
-            }</string>
-       </property>
-       <property name="text">
-        <string>Play with Bot</string>
-       </property>
-       <property name="autoDefault">
-        <bool>false</bool>
-       </property>
-       <property name="default">
-        <bool>false</bool>
-       </property>
-       <property name="flat">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_EditSGF">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>120</width>
-         <height>40</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>120</width>
-         <height>40</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <family>MS Shell Dlg 2</family>
-         <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="cursor">
-        <cursorShape>PointingHandCursor</cursorShape>
-       </property>
-       <property name="text">
-        <string>Open SGF</string>
-       </property>
-       <property name="autoDefault">
-        <bool>false</bool>
-       </property>
-       <property name="default">
-        <bool>false</bool>
-       </property>
-       <property name="flat">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>1111</width>
-      <height>141</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>-1</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLabel {
-                font-size: 30px;
-                font-weight: bold;
-                color: rgb(70, 70, 70);
-                padding: 20px;
-
-            }</string>
-    </property>
-    <property name="text">
-     <string>Go playing Agents on standard computing resources 
-Using reinforcement learning methods</string>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QStackedWidget" name="stackedWidget">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>210</y>
-      <width>1101</width>
-      <height>581</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>751</width>
-      <height>341</height>
-     </size>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>1101</width>
-      <height>611</height>
-     </size>
-    </property>
-    <property name="font">
-     <font>
-      <family>MS Shell Dlg 2</family>
-      <pointsize>10</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">/* QRadioButton Styles */
-QRadioButton {
-    font-size: 14px;
-    color: #5A9; 
-    padding: 5px;
-}
-
-QRadioButton::indicator {
-    width: 15px;
-    height: 15px;
-    border-radius: 7.5px;
-}
-
-QRadioButton::indicator::unchecked {
-    border: 2px solid #2E8B57;
-    background-color: #FFFFFF;
-}
-
-QRadioButton::indicator::checked {
-    border: 2px solid #2E8B57;
-    background-color: #5A9; 
-}</string>
-    </property>
-    <property name="currentIndex">
-     <number>0</number>
-    </property>
-    <widget class="QWidget" name="page_Hello">
-     <widget class="QWidget" name="verticalLayoutWidget">
-      <property name="geometry">
-       <rect>
-        <x>9</x>
-        <y>9</y>
-        <width>1071</width>
-        <height>601</height>
-       </rect>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
-       <item>
-        <widget class="QScrollArea" name="scrollArea">
-         <property name="widgetResizable">
-          <bool>true</bool>
-         </property>
-         <widget class="QWidget" name="scrollAreaWidgetContents">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>1067</width>
-            <height>597</height>
-           </rect>
-          </property>
-          <widget class="QLabel" name="label_2">
-           <property name="geometry">
+    <class>MainWindow</class>
+    <widget class="QMainWindow" name="MainWindow">
+        <property name="geometry">
             <rect>
-             <x>70</x>
-             <y>80</y>
-             <width>921</width>
-             <height>181</height>
+                <x>0</x>
+                <y>0</y>
+                <width>1116</width>
+                <height>864</height>
             </rect>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>-1</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QLabel {
-                font-size: 30px;
-                font-weight: bold;
-                color: rgb(70, 70, 70);
-                padding: 20px;
-
-            }</string>
-           </property>
-           <property name="text">
-            <string>Go playing Agents on standard computing resources 
-Using reinforcement learning methods</string>
-           </property>
-           <property name="scaledContents">
-            <bool>true</bool>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </widget>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="page_CreateSGF">
-     <widget class="QLabel" name="label_CreateSGF">
-      <property name="geometry">
-       <rect>
-        <x>190</x>
-        <y>30</y>
-        <width>731</width>
-        <height>81</height>
-       </rect>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>731</width>
-        <height>41</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QLabel {
-                font-size: 24px;
-                font-weight: bold;
-                color: #476;
-                padding: 20px;
-                background-color: #F0F0F0;
-            }</string>
-      </property>
-      <property name="text">
-       <string>Create SGF </string>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="wordWrap">
-       <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_CreateOk">
-      <property name="geometry">
-       <rect>
-        <x>530</x>
-        <y>450</y>
-        <width>75</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Ok</string>
-      </property>
-     </widget>
-     <widget class="QWidget" name="layoutWidget">
-      <property name="geometry">
-       <rect>
-        <x>430</x>
-        <y>340</y>
-        <width>498</width>
-        <height>43</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout">
-       <item>
-        <widget class="QLabel" name="label_4">
-         <property name="minimumSize">
-          <size>
-           <width>91</width>
-           <height>41</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>91</width>
-           <height>41</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>Board Size</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QSpinBox" name="spinBox_BoardSize">
-         <property name="minimumSize">
-          <size>
-           <width>56</width>
-           <height>41</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>56</width>
-           <height>41</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>MS Shell Dlg 2</family>
-           <pointsize>10</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
-         </property>
-         <property name="readOnly">
-          <bool>false</bool>
-         </property>
-         <property name="buttonSymbols">
-          <enum>QAbstractSpinBox::UpDownArrows</enum>
-         </property>
-         <property name="specialValueText">
-          <string/>
-         </property>
-         <property name="minimum">
-          <number>9</number>
-         </property>
-         <property name="maximum">
-          <number>19</number>
-         </property>
-         <property name="singleStep">
-          <number>4</number>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_5">
-         <property name="minimumSize">
-          <size>
-           <width>90</width>
-           <height>41</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>90</width>
-           <height>41</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>Handicap</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QSpinBox" name="spinBox_Handicap">
-         <property name="minimumSize">
-          <size>
-           <width>56</width>
-           <height>41</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>56</width>
-           <height>41</height>
-          </size>
-         </property>
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
-         </property>
-         <property name="mouseTracking">
-          <bool>true</bool>
-         </property>
-         <property name="contextMenuPolicy">
-          <enum>Qt::ActionsContextMenu</enum>
-         </property>
-         <property name="wrapping">
-          <bool>true</bool>
-         </property>
-         <property name="buttonSymbols">
-          <enum>QAbstractSpinBox::PlusMinus</enum>
-         </property>
-         <property name="suffix">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_6">
-         <property name="minimumSize">
-          <size>
-           <width>90</width>
-           <height>41</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>90</width>
-           <height>41</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>Komi </string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QDoubleSpinBox" name="doubleSpinBox_Komi">
-         <property name="minimumSize">
-          <size>
-           <width>83</width>
-           <height>41</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>83</width>
-           <height>41</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>MS Shell Dlg 2</family>
-           <pointsize>10</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-           <kerning>true</kerning>
-          </font>
-         </property>
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
-         </property>
-         <property name="focusPolicy">
-          <enum>Qt::ClickFocus</enum>
-         </property>
-         <property name="contextMenuPolicy">
-          <enum>Qt::NoContextMenu</enum>
-         </property>
-         <property name="acceptDrops">
-          <bool>false</bool>
-         </property>
-         <property name="autoFillBackground">
-          <bool>true</bool>
-         </property>
-         <property name="inputMethodHints">
-          <set>Qt::ImhPreferNumbers</set>
-         </property>
-         <property name="wrapping">
-          <bool>true</bool>
-         </property>
-         <property name="buttonSymbols">
-          <enum>QAbstractSpinBox::PlusMinus</enum>
-         </property>
-         <property name="decimals">
-          <number>1</number>
-         </property>
-         <property name="minimum">
-          <double>-1444.000000000000000</double>
-         </property>
-         <property name="maximum">
-          <double>1444.000000000000000</double>
-         </property>
-         <property name="value">
-          <double>6.500000000000000</double>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="layoutWidget">
-      <property name="geometry">
-       <rect>
-        <x>62</x>
-        <y>150</y>
-        <width>261</width>
-        <height>201</height>
-       </rect>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <item>
-        <widget class="QLabel" name="label_WhiteName">
-         <property name="minimumSize">
-          <size>
-           <width>201</width>
-           <height>19</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>-1</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLabel {
-    font-size: 16px;
-    font-weight: bold;
-    color: #2E8B57; /* Sea green */
-    padding: 5px;
-}</string>
-         </property>
-         <property name="text">
-          <string>White Player's Name</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="lineEdit_WhiteName">
-         <property name="minimumSize">
-          <size>
-           <width>201</width>
-           <height>24</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>201</width>
-           <height>24</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>MS Shell Dlg 2</family>
-           <pointsize>11</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="autoFillBackground">
-          <bool>false</bool>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background: none;</string>
-         </property>
-         <property name="placeholderText">
-          <string>White</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_BlackName">
-         <property name="minimumSize">
-          <size>
-           <width>201</width>
-           <height>19</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>MS Shell Dlg 2</family>
-           <pointsize>10</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Black Player's Name </string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="lineEdit_BlackName">
-         <property name="minimumSize">
-          <size>
-           <width>201</width>
-           <height>24</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>201</width>
-           <height>24</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>MS Shell Dlg 2</family>
-           <pointsize>11</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="autoFillBackground">
-          <bool>false</bool>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background: none;</string>
-         </property>
-         <property name="placeholderText">
-          <string>Black</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="page_PlayWithBot">
-     <widget class="QWidget" name="widget_PvsB" native="true">
-      <property name="geometry">
-       <rect>
-        <x>170</x>
-        <y>150</y>
-        <width>771</width>
-        <height>311</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QWidget#widget_PvsB{
-border-radius: 10px;
-border: 1px solid grey
-}</string>
-      </property>
-      <widget class="QWidget" name="">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>30</y>
-         <width>733</width>
-         <height>283</height>
-        </rect>
-       </property>
-       <layout class="QGridLayout" name="gridLayout">
-        <item row="1" column="0">
-         <widget class="Line" name="line_3">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="0">
-         <widget class="QPushButton" name="pushButton_PlayWithBotOk">
-          <property name="styleSheet">
-           <string notr="true">QPushButton {
-                background-color: #5A9; 
-                color: white; 
-                padding: 10px 20px; 
-                border: 2px solid #476;
-                border-radius: 10px;
-                font-size: 16px;
-                font-weight: bold;
-                box-shadow: 3px 3px 5px #888888;
-                transition: background-color 0.3s, transform 0.3s;
-margin:10px;
-            }
-            QPushButton:hover {
-                background-color: #476;
-                transform: scale(1.05);
-            }
-            QPushButton:pressed {
-                background-color: #354;
-                transform: scale(0.95);
-            }</string>
-          </property>
-          <property name="text">
-           <string>Start</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <layout class="QHBoxLayout" name="horizontalLayout_4">
-          <item>
-           <layout class="QVBoxLayout" name="verticalLayout_3">
-            <item alignment="Qt::AlignHCenter">
-             <widget class="QLabel" name="label_PlayerColor">
-              <property name="font">
-               <font>
-                <pointsize>-1</pointsize>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">QLabel {
-                font-size: 24px;
-                font-weight: bold;
-                color: rgb(70, 70, 70);
-                padding: 10px;
-            }</string>
-              </property>
-              <property name="text">
-               <string>Your Color</string>
-              </property>
-             </widget>
-            </item>
-            <item alignment="Qt::AlignHCenter">
-             <widget class="QRadioButton" name="radioButton_Black">
-              <property name="font">
-               <font>
-                <pointsize>-1</pointsize>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">/* QRadioButton Styles */
-QRadioButton {
-       font-size: 24px;
-                font-weight: bold;
-                color: rgb(70, 70, 70);
-                padding: 10px;
-                background-color: #F0F0F0;
-    color: #5A9; 
-    padding: 5px;
-}
-
-QRadioButton::indicator {
-    width: 15px;
-    height: 15px;
-    border-radius: 7.5px;
-}
-
-QRadioButton::indicator::unchecked {
-    border: 2px solid #2E8B57;
-    background-color: #FFFFFF;
-}
-
-QRadioButton::indicator::checked {
-    border: 2px solid #2E8B57;
-    background-color: #5A9; 
-}</string>
-              </property>
-              <property name="text">
-               <string>Black</string>
-              </property>
-             </widget>
-            </item>
-            <item alignment="Qt::AlignHCenter">
-             <widget class="QRadioButton" name="radioButton_White">
-              <property name="font">
-               <font>
-                <pointsize>-1</pointsize>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">/* QRadioButton Styles */
-QRadioButton {
-       font-size: 24px;
-                font-weight: bold;
-                color: rgb(70, 70, 70);
-                padding: 10px;
-                background-color: #F0F0F0;
-    color: #5A9; 
-    padding: 5px;
-}
-
-QRadioButton::indicator {
-    width: 15px;
-    height: 15px;
-    border-radius: 7.5px;
-}
-
-QRadioButton::indicator::unchecked {
-    border: 2px solid #2E8B57;
-    background-color: #FFFFFF;
-}
-
-QRadioButton::indicator::checked {
-    border: 2px solid #2E8B57;
-    background-color: #5A9; 
-}</string>
-              </property>
-              <property name="text">
-               <string>White</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <widget class="Line" name="line">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
+        </property>
+        <property name="windowTitle">
+            <string>MainWindow</string>
+        </property>
+        <widget class="QWidget" name="centralwidget">
+            <property name="minimumSize">
+                <size>
+                    <width>1116</width>
+                    <height>823</height>
+                </size>
             </property>
-           </widget>
-          </item>
-          <item>
-           <layout class="QVBoxLayout" name="verticalLayout_4">
-            <item>
-             <widget class="QComboBox" name="comboBox_OpponentBot">
-              <property name="font">
-               <font>
-                <pointsize>-1</pointsize>
-               </font>
-              </property>
-              <property name="autoFillBackground">
-               <bool>false</bool>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">/* QComboBox Styles */
-QComboBox {
-    font-size: 24px;
-    padding: 5px;
-    border: 2px solid #5A9;
-    border-radius: 5px;
-                color: rgb(70, 70, 70);
-margin:20px;
-}
-
-QComboBox QAbstractItemView {
-    border: 2px solid rgb(40,40,40);
-    selection-background-color:#5A9;
-}</string>
-              </property>
-              <property name="currentText">
-               <string>Choose Opponent</string>
-              </property>
-              <property name="currentIndex">
-               <number>0</number>
-              </property>
-              <property name="frame">
-               <bool>true</bool>
-              </property>
-              <item>
-               <property name="text">
-                <string>Choose Opponent</string>
-               </property>
-              </item>
-             </widget>
-            </item>
-           </layout>
-          </item>
-         </layout>
-        </item>
-        <item row="0" column="0">
-         <widget class="QLabel" name="label_CreateSGF_2">
-          <property name="minimumSize">
-           <size>
-            <width>731</width>
-            <height>41</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel {
-                font-size: 24px;
-                font-weight: bold;
-                color: rgb(70, 70, 70);
-            }</string>
-          </property>
-          <property name="text">
-           <string>Play With Bot</string>
-          </property>
-          <property name="scaledContents">
-           <bool>true</bool>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-          <property name="wordWrap">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="0">
-         <widget class="Line" name="line_4">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="page_bot_vs_bot">
-     <widget class="QWidget" name="widget_BvsB" native="true">
-      <property name="geometry">
-       <rect>
-        <x>170</x>
-        <y>150</y>
-        <width>771</width>
-        <height>341</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QWidget#widget_BvsB{
-border-radius: 10px;
-border: 1px solid grey
-}</string>
-      </property>
-      <widget class="QWidget" name="layoutWidget_2">
-       <property name="geometry">
-        <rect>
-         <x>12</x>
-         <y>12</y>
-         <width>751</width>
-         <height>311</height>
-        </rect>
-       </property>
-       <layout class="QGridLayout" name="gridLayout_2">
-        <item row="0" column="0" alignment="Qt::AlignTop">
-         <widget class="QLabel" name="label_CreateSGF_4">
-          <property name="styleSheet">
-           <string notr="true">QLabel {
-                font-size: 24px;
-                font-weight: bold;
-                color: rgb(70, 70, 70);
-            }</string>
-          </property>
-          <property name="text">
-           <string>Bot against Bot game</string>
-          </property>
-          <property name="scaledContents">
-           <bool>true</bool>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-          <property name="wordWrap">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="6" column="0">
-         <widget class="QPushButton" name="pushButton_BotVsBotOK">
-          <property name="styleSheet">
-           <string notr="true">QPushButton {
-                background-color: #5A9; 
-                color: white; 
-                padding: 10px 20px; 
-                border: 2px solid #476;
-                border-radius: 10px;
-                font-size: 16px;
-                font-weight: bold;
-                box-shadow: 3px 3px 5px #888888;
-                transition: background-color 0.3s, transform 0.3s;
-margin:20px;
-            }
-            QPushButton:hover {
-                background-color: #476;
-                transform: scale(1.05);
-            }
-            QPushButton:pressed {
-                background-color: #354;
-                transform: scale(0.95);
-            }</string>
-          </property>
-          <property name="text">
-           <string>Start</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="0">
-         <layout class="QHBoxLayout" name="horizontalLayout_5">
-          <item>
-           <layout class="QVBoxLayout" name="verticalLayout_5">
-            <item alignment="Qt::AlignHCenter">
-             <widget class="QLabel" name="label_BlackName_2">
-              <property name="minimumSize">
-               <size>
-                <width>201</width>
-                <height>19</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <pointsize>-1</pointsize>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">QLabel {
-                font-size: 24px;
-                font-weight: bold;
-                color: rgb(70, 70, 70);
-            }</string>
-              </property>
-              <property name="text">
-               <string>Black Bot</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QComboBox" name="comboBox_BlackBot">
-              <property name="autoFillBackground">
-               <bool>false</bool>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">/* QComboBox Styles */
-QComboBox {
-    font-size: 24px;
-    padding: 5px;
-    border: 2px solid #5A9;
-    border-radius: 5px;
-                color: rgb(70, 70, 70);
-margin:20px;
-}
-
-QComboBox QAbstractItemView {
-    border: 2px solid rgb(40,40,40);
-    selection-background-color:#5A9;
-}</string>
-              </property>
-              <property name="currentText">
-               <string>Drop down to choose</string>
-              </property>
-              <property name="currentIndex">
-               <number>0</number>
-              </property>
-              <property name="frame">
-               <bool>true</bool>
-              </property>
-              <item>
-               <property name="text">
-                <string>Drop down to choose</string>
-               </property>
-              </item>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <widget class="Line" name="line_2">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
+            <property name="maximumSize">
+                <size>
+                    <width>1116</width>
+                    <height>823</height>
+                </size>
             </property>
-           </widget>
-          </item>
-          <item>
-           <layout class="QVBoxLayout" name="verticalLayout_6">
-            <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-             <widget class="QLabel" name="label_WhiteName_2">
-              <property name="minimumSize">
-               <size>
-                <width>201</width>
-                <height>19</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <pointsize>-1</pointsize>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">QLabel {
-                font-size: 24px;
-                font-weight: bold;
-                color: rgb(70, 70, 70);
-            }</string>
-              </property>
-              <property name="text">
-               <string>White Bot</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QComboBox" name="comboBox_WhiteBot">
-              <property name="autoFillBackground">
-               <bool>false</bool>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">/* QComboBox Styles */
-QComboBox {
-    font-size: 24px;
-    padding: 5px;
-    border: 2px solid #5A9;
-    border-radius: 5px;
-                color: rgb(70, 70, 70);
-margin:20px;
-}
+            <widget class="QWidget" name="widget_MenuButtons" native="true">
+                <property name="geometry">
+                    <rect>
+                        <x>10</x>
+                        <y>130</y>
+                        <width>1081</width>
+                        <height>71</height>
+                    </rect>
+                </property>
+                <property name="minimumSize">
+                    <size>
+                        <width>761</width>
+                        <height>71</height>
+                    </size>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_2">
+                    <item>
+                        <widget class="QPushButton" name="pushButton_BotVBot">
+                            <property name="minimumSize">
+                                <size>
+                                    <width>120</width>
+                                    <height>40</height>
+                                </size>
+                            </property>
+                            <property name="font">
+                                <font>
+                                    <pointsize>-1</pointsize>
+                                    <weight>75</weight>
+                                    <bold>true</bold>
+                                </font>
+                            </property>
+                            <property name="cursor">
+                                <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
+                            <property name="focusPolicy">
+                                <enum>Qt::ClickFocus</enum>
+                            </property>
+                            <property name="styleSheet">
+                                <string notr="true">QPushButton {
+                                    background-color: #5A9;
+                                    color: white;
+                                    padding: 10px 20px;
+                                    border: 2px solid #476;
+                                    border-radius: 10px;
+                                    font-size: 16px;
+                                    font-weight: bold;
+                                    box-shadow: 3px 3px 5px #888888;
+                                    transition: background-color 0.3s, transform 0.3s;
+                                    }
+                                    QPushButton:hover {
+                                    background-color: #476;
+                                    transform: scale(1.05);
+                                    }
+                                    QPushButton:pressed {
+                                    background-color: #354;
+                                    transform: scale(0.95);
+                                    }
+                                </string>
+                            </property>
+                            <property name="text">
+                                <string>Bot VS Bot</string>
+                            </property>
+                            <property name="checkable">
+                                <bool>false</bool>
+                            </property>
+                            <property name="autoDefault">
+                                <bool>false</bool>
+                            </property>
+                            <property name="default">
+                                <bool>false</bool>
+                            </property>
+                            <property name="flat">
+                                <bool>false</bool>
+                            </property>
+                        </widget>
+                    </item>
+                    <item>
+                        <widget class="QPushButton" name="pushButton_AboutGo">
+                            <property name="minimumSize">
+                                <size>
+                                    <width>120</width>
+                                    <height>40</height>
+                                </size>
+                            </property>
+                            <property name="font">
+                                <font>
+                                    <pointsize>-1</pointsize>
+                                    <weight>75</weight>
+                                    <bold>true</bold>
+                                </font>
+                            </property>
+                            <property name="cursor">
+                                <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
+                            <property name="styleSheet">
+                                <string notr="true">QPushButton {
+                                    background-color: #5A9;
+                                    color: white;
+                                    padding: 10px 20px;
+                                    border: 2px solid #476;
+                                    border-radius: 10px;
+                                    font-size: 16px;
+                                    font-weight: bold;
+                                    box-shadow: 3px 3px 5px #888888;
+                                    transition: background-color 0.3s, transform 0.3s;
+                                    }
+                                    QPushButton:hover {
+                                    background-color: #476;
+                                    transform: scale(1.05);
+                                    }
+                                    QPushButton:pressed {
+                                    background-color: #354;
+                                    transform: scale(0.95);
+                                    }
+                                </string>
+                            </property>
+                            <property name="text">
+                                <string>About GO</string>
+                            </property>
+                            <property name="autoDefault">
+                                <bool>true</bool>
+                            </property>
+                            <property name="default">
+                                <bool>false</bool>
+                            </property>
+                            <property name="flat">
+                                <bool>false</bool>
+                            </property>
+                        </widget>
+                    </item>
+                    <item>
+                        <widget class="QPushButton" name="pushButton_PlayerVSBot">
+                            <property name="minimumSize">
+                                <size>
+                                    <width>120</width>
+                                    <height>40</height>
+                                </size>
+                            </property>
+                            <property name="font">
+                                <font>
+                                    <pointsize>-1</pointsize>
+                                    <weight>75</weight>
+                                    <bold>true</bold>
+                                </font>
+                            </property>
+                            <property name="cursor">
+                                <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
+                            <property name="styleSheet">
+                                <string notr="true">QPushButton {
+                                    background-color: #5A9;
+                                    color: white;
+                                    padding: 10px 20px;
+                                    border: 2px solid #476;
+                                    border-radius: 10px;
+                                    font-size: 16px;
+                                    font-weight: bold;
+                                    box-shadow: 3px 3px 5px #888888;
+                                    transition: background-color 0.3s, transform 0.3s;
+                                    }
+                                    QPushButton:hover {
+                                    background-color: #476;
+                                    transform: scale(1.05);
+                                    }
+                                    QPushButton:pressed {
+                                    background-color: #354;
+                                    transform: scale(0.95);
+                                    }
+                                </string>
+                            </property>
+                            <property name="text">
+                                <string>Play with Bot</string>
+                            </property>
+                            <property name="autoDefault">
+                                <bool>false</bool>
+                            </property>
+                            <property name="default">
+                                <bool>false</bool>
+                            </property>
+                            <property name="flat">
+                                <bool>false</bool>
+                            </property>
+                        </widget>
+                    </item>
+                </layout>
+            </widget>
+            <widget class="QLabel" name="label">
+                <property name="geometry">
+                    <rect>
+                        <x>0</x>
+                        <y>0</y>
+                        <width>1111</width>
+                        <height>141</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>-1</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                    </font>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">QLabel {
+                        font-size: 30px;
+                        font-weight: bold;
+                        color: rgb(70, 70, 70);
+                        padding: 20px;
 
-QComboBox QAbstractItemView {
-    border: 2px solid rgb(40,40,40);
-    selection-background-color:#5A9;
-}</string>
-              </property>
-              <property name="currentText">
-               <string>Drop down to choose</string>
-              </property>
-              <property name="currentIndex">
-               <number>0</number>
-              </property>
-              <property name="frame">
-               <bool>true</bool>
-              </property>
-              <item>
-               <property name="text">
-                <string>Drop down to choose</string>
-               </property>
-              </item>
-             </widget>
-            </item>
-           </layout>
-          </item>
-         </layout>
-        </item>
-        <item row="5" column="0">
-         <widget class="Line" name="line_6">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="Line" name="line_5">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </widget>
+                        }
+                    </string>
+                </property>
+                <property name="text">
+                    <string>Welcome to my Go testing App - Choose your options!</string>
+                </property>
+                <property name="scaledContents">
+                    <bool>true</bool>
+                </property>
+                <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                </property>
+            </widget>
+            <widget class="QStackedWidget" name="stackedWidget">
+                <property name="geometry">
+                    <rect>
+                        <x>10</x>
+                        <y>210</y>
+                        <width>1101</width>
+                        <height>581</height>
+                    </rect>
+                </property>
+                <property name="minimumSize">
+                    <size>
+                        <width>751</width>
+                        <height>341</height>
+                    </size>
+                </property>
+                <property name="maximumSize">
+                    <size>
+                        <width>1101</width>
+                        <height>611</height>
+                    </size>
+                </property>
+                <property name="font">
+                    <font>
+                        <family>MS Shell Dlg 2</family>
+                        <pointsize>10</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                    </font>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">/* QRadioButton Styles */
+                        QRadioButton {
+                        font-size: 14px;
+                        color: #5A9;
+                        padding: 5px;
+                        }
+
+                        QRadioButton::indicator {
+                        width: 15px;
+                        height: 15px;
+                        border-radius: 7.5px;
+                        }
+
+                        QRadioButton::indicator::unchecked {
+                        border: 2px solid #2E8B57;
+                        background-color: #FFFFFF;
+                        }
+
+                        QRadioButton::indicator::checked {
+                        border: 2px solid #2E8B57;
+                        background-color: #5A9;
+                        }
+                    </string>
+                </property>
+                <property name="currentIndex">
+                    <number>0</number>
+                </property>
+                <widget class="QWidget" name="page_Hello">
+                    <widget class="QWidget" name="verticalLayoutWidget">
+                        <property name="geometry">
+                            <rect>
+                                <x>9</x>
+                                <y>9</y>
+                                <width>1071</width>
+                                <height>571</height>
+                            </rect>
+                        </property>
+                        <layout class="QVBoxLayout" name="verticalLayout_2">
+                            <item>
+                                <widget class="QScrollArea" name="scrollArea">
+                                    <property name="widgetResizable">
+                                        <bool>true</bool>
+                                    </property>
+                                    <widget class="QWidget" name="scrollAreaWidgetContents">
+                                        <property name="geometry">
+                                            <rect>
+                                                <x>0</x>
+                                                <y>0</y>
+                                                <width>1067</width>
+                                                <height>567</height>
+                                            </rect>
+                                        </property>
+                                        <widget class="QLabel" name="label_2">
+                                            <property name="geometry">
+                                                <rect>
+                                                    <x>0</x>
+                                                    <y>0</y>
+                                                    <width>1071</width>
+                                                    <height>571</height>
+                                                </rect>
+                                            </property>
+                                            <property name="text">
+                                                <string/>
+                                            </property>
+                                            <property name="pixmap">
+                                                <pixmap>../../../Background.png</pixmap>
+                                            </property>
+                                            <property name="scaledContents">
+                                                <bool>true</bool>
+                                            </property>
+                                        </widget>
+                                    </widget>
+                                </widget>
+                            </item>
+                        </layout>
+                    </widget>
+                </widget>
+                <widget class="QWidget" name="page_AboutGo">
+                    <widget class="QSplitter" name="splitter">
+                        <property name="geometry">
+                            <rect>
+                                <x>15</x>
+                                <y>90</y>
+                                <width>1061</width>
+                                <height>461</height>
+                            </rect>
+                        </property>
+                        <property name="orientation">
+                            <enum>Qt::Vertical</enum>
+                        </property>
+                        <widget class="QWidget" name="">
+                            <layout class="QGridLayout" name="gridLayout_3">
+                                <item row="0" column="0">
+                                    <widget class="QLabel" name="label_3">
+                                        <property name="maximumSize">
+                                            <size>
+                                                <width>291</width>
+                                                <height>261</height>
+                                            </size>
+                                        </property>
+                                        <property name="text">
+                                            <string/>
+                                        </property>
+                                        <property name="pixmap">
+                                            <pixmap>../../../Picture2.jpg</pixmap>
+                                        </property>
+                                        <property name="scaledContents">
+                                            <bool>true</bool>
+                                        </property>
+                                    </widget>
+                                </item>
+                                <item row="0" column="1">
+                                    <widget class="QLabel" name="label_7">
+                                        <property name="maximumSize">
+                                            <size>
+                                                <width>291</width>
+                                                <height>261</height>
+                                            </size>
+                                        </property>
+                                        <property name="text">
+                                            <string/>
+                                        </property>
+                                        <property name="pixmap">
+                                            <pixmap>../../../Picture3.jpg</pixmap>
+                                        </property>
+                                        <property name="scaledContents">
+                                            <bool>true</bool>
+                                        </property>
+                                    </widget>
+                                </item>
+                                <item row="0" column="2">
+                                    <widget class="QLabel" name="label_8">
+                                        <property name="maximumSize">
+                                            <size>
+                                                <width>291</width>
+                                                <height>261</height>
+                                            </size>
+                                        </property>
+                                        <property name="text">
+                                            <string/>
+                                        </property>
+                                        <property name="pixmap">
+                                            <pixmap>../../../Picture4.jpg</pixmap>
+                                        </property>
+                                        <property name="scaledContents">
+                                            <bool>true</bool>
+                                        </property>
+                                    </widget>
+                                </item>
+                            </layout>
+                        </widget>
+                        <widget class="QWidget" name="">
+                            <layout class="QGridLayout" name="gridLayout_4">
+                                <item row="0" column="0">
+                                    <widget class="QTextBrowser" name="textBrowser">
+                                        <property name="maximumSize">
+                                            <size>
+                                                <width>301</width>
+                                                <height>121</height>
+                                            </size>
+                                        </property>
+                                        <property name="html">
+                                            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+                                                &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot;
+                                                /&gt;&lt;style type=&quot;text/css&quot;&gt;
+                                                p, li { white-space: pre-wrap; }
+                                                &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell
+                                                Dlg 2';
+                                                font-size:15.75pt; font-weight:400; font-style:normal;&quot;&gt;
+                                                &lt;p align=&quot;center&quot; style=&quot; margin-top:0px;
+                                                margin-bottom:0px;
+                                                margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;
+                                                line-height:90%;&quot;&gt;&lt;span style=&quot; font-family:'Aptos';
+                                                font-size:17pt; color:#000000;&quot;&gt;Go is an ancient Chinese
+                                                strategy game&lt;/span&gt;&lt;span
+                                                style=&quot; font-size:16pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                            </string>
+                                        </property>
+                                    </widget>
+                                </item>
+                                <item row="0" column="1">
+                                    <widget class="QTextBrowser" name="textBrowser_2">
+                                        <property name="maximumSize">
+                                            <size>
+                                                <width>301</width>
+                                                <height>121</height>
+                                            </size>
+                                        </property>
+                                        <property name="html">
+                                            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+                                                &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot;
+                                                /&gt;&lt;style type=&quot;text/css&quot;&gt;
+                                                p, li { white-space: pre-wrap; }
+                                                &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell
+                                                Dlg 2';
+                                                font-size:15.75pt; font-weight:400; font-style:normal;&quot;&gt;
+                                                &lt;p align=&quot;center&quot; style=&quot; margin-top:0px;
+                                                margin-bottom:0px;
+                                                margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;
+                                                line-height:90%;&quot;&gt;&lt;span style=&quot; font-family:'Aptos';
+                                                font-size:17pt; color:#000000;&quot;&gt;The goal is to surround board
+                                                points and
+                                                enemy stones to capture them. &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                            </string>
+                                        </property>
+                                    </widget>
+                                </item>
+                                <item row="0" column="2">
+                                    <widget class="QTextBrowser" name="textBrowser_3">
+                                        <property name="maximumSize">
+                                            <size>
+                                                <width>311</width>
+                                                <height>121</height>
+                                            </size>
+                                        </property>
+                                        <property name="html">
+                                            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+                                                &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot;
+                                                /&gt;&lt;style type=&quot;text/css&quot;&gt;
+                                                p, li { white-space: pre-wrap; }
+                                                &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell
+                                                Dlg 2';
+                                                font-size:15.75pt; font-weight:400; font-style:normal;&quot;&gt;
+                                                &lt;p align=&quot;center&quot; style=&quot; margin-top:0px;
+                                                margin-bottom:0px;
+                                                margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;
+                                                line-height:90%;&quot;&gt;&lt;span style=&quot; font-family:'Aptos';
+                                                font-size:17pt; color:#000000;&quot;&gt;Go was labeled as a great
+                                                challenge for
+                                                AI due to its great computational complexity&lt;/span&gt;&lt;span style=&quot;
+                                                font-size:16pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                            </string>
+                                        </property>
+                                    </widget>
+                                </item>
+                            </layout>
+                        </widget>
+                    </widget>
+                </widget>
+                <widget class="QWidget" name="page_CreateSGF">
+                    <widget class="QLabel" name="label_CreateSGF">
+                        <property name="geometry">
+                            <rect>
+                                <x>190</x>
+                                <y>30</y>
+                                <width>731</width>
+                                <height>81</height>
+                            </rect>
+                        </property>
+                        <property name="minimumSize">
+                            <size>
+                                <width>731</width>
+                                <height>41</height>
+                            </size>
+                        </property>
+                        <property name="styleSheet">
+                            <string notr="true">QLabel {
+                                font-size: 24px;
+                                font-weight: bold;
+                                color: #476;
+                                padding: 20px;
+                                background-color: #F0F0F0;
+                                }
+                            </string>
+                        </property>
+                        <property name="text">
+                            <string>Create SGF</string>
+                        </property>
+                        <property name="scaledContents">
+                            <bool>true</bool>
+                        </property>
+                        <property name="alignment">
+                            <set>Qt::AlignCenter</set>
+                        </property>
+                        <property name="wordWrap">
+                            <bool>true</bool>
+                        </property>
+                    </widget>
+                    <widget class="QPushButton" name="pushButton_CreateOk">
+                        <property name="geometry">
+                            <rect>
+                                <x>530</x>
+                                <y>450</y>
+                                <width>75</width>
+                                <height>41</height>
+                            </rect>
+                        </property>
+                        <property name="text">
+                            <string>Ok</string>
+                        </property>
+                    </widget>
+                    <widget class="QWidget" name="layoutWidget">
+                        <property name="geometry">
+                            <rect>
+                                <x>430</x>
+                                <y>340</y>
+                                <width>498</width>
+                                <height>43</height>
+                            </rect>
+                        </property>
+                        <layout class="QHBoxLayout" name="horizontalLayout">
+                            <item>
+                                <widget class="QLabel" name="label_4">
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>91</width>
+                                            <height>41</height>
+                                        </size>
+                                    </property>
+                                    <property name="maximumSize">
+                                        <size>
+                                            <width>91</width>
+                                            <height>41</height>
+                                        </size>
+                                    </property>
+                                    <property name="text">
+                                        <string>Board Size</string>
+                                    </property>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QSpinBox" name="spinBox_BoardSize">
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>56</width>
+                                            <height>41</height>
+                                        </size>
+                                    </property>
+                                    <property name="maximumSize">
+                                        <size>
+                                            <width>56</width>
+                                            <height>41</height>
+                                        </size>
+                                    </property>
+                                    <property name="font">
+                                        <font>
+                                            <family>MS Shell Dlg 2</family>
+                                            <pointsize>10</pointsize>
+                                            <weight>75</weight>
+                                            <bold>true</bold>
+                                        </font>
+                                    </property>
+                                    <property name="cursor">
+                                        <cursorShape>PointingHandCursor</cursorShape>
+                                    </property>
+                                    <property name="readOnly">
+                                        <bool>false</bool>
+                                    </property>
+                                    <property name="buttonSymbols">
+                                        <enum>QAbstractSpinBox::UpDownArrows</enum>
+                                    </property>
+                                    <property name="specialValueText">
+                                        <string/>
+                                    </property>
+                                    <property name="minimum">
+                                        <number>9</number>
+                                    </property>
+                                    <property name="maximum">
+                                        <number>19</number>
+                                    </property>
+                                    <property name="singleStep">
+                                        <number>4</number>
+                                    </property>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QLabel" name="label_5">
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>90</width>
+                                            <height>41</height>
+                                        </size>
+                                    </property>
+                                    <property name="maximumSize">
+                                        <size>
+                                            <width>90</width>
+                                            <height>41</height>
+                                        </size>
+                                    </property>
+                                    <property name="text">
+                                        <string>Handicap</string>
+                                    </property>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QSpinBox" name="spinBox_Handicap">
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>56</width>
+                                            <height>41</height>
+                                        </size>
+                                    </property>
+                                    <property name="maximumSize">
+                                        <size>
+                                            <width>56</width>
+                                            <height>41</height>
+                                        </size>
+                                    </property>
+                                    <property name="cursor">
+                                        <cursorShape>PointingHandCursor</cursorShape>
+                                    </property>
+                                    <property name="mouseTracking">
+                                        <bool>true</bool>
+                                    </property>
+                                    <property name="contextMenuPolicy">
+                                        <enum>Qt::ActionsContextMenu</enum>
+                                    </property>
+                                    <property name="wrapping">
+                                        <bool>true</bool>
+                                    </property>
+                                    <property name="buttonSymbols">
+                                        <enum>QAbstractSpinBox::PlusMinus</enum>
+                                    </property>
+                                    <property name="suffix">
+                                        <string/>
+                                    </property>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QLabel" name="label_6">
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>90</width>
+                                            <height>41</height>
+                                        </size>
+                                    </property>
+                                    <property name="maximumSize">
+                                        <size>
+                                            <width>90</width>
+                                            <height>41</height>
+                                        </size>
+                                    </property>
+                                    <property name="text">
+                                        <string>Komi</string>
+                                    </property>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QDoubleSpinBox" name="doubleSpinBox_Komi">
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>83</width>
+                                            <height>41</height>
+                                        </size>
+                                    </property>
+                                    <property name="maximumSize">
+                                        <size>
+                                            <width>83</width>
+                                            <height>41</height>
+                                        </size>
+                                    </property>
+                                    <property name="font">
+                                        <font>
+                                            <family>MS Shell Dlg 2</family>
+                                            <pointsize>10</pointsize>
+                                            <weight>75</weight>
+                                            <bold>true</bold>
+                                            <kerning>true</kerning>
+                                        </font>
+                                    </property>
+                                    <property name="cursor">
+                                        <cursorShape>PointingHandCursor</cursorShape>
+                                    </property>
+                                    <property name="focusPolicy">
+                                        <enum>Qt::ClickFocus</enum>
+                                    </property>
+                                    <property name="contextMenuPolicy">
+                                        <enum>Qt::NoContextMenu</enum>
+                                    </property>
+                                    <property name="acceptDrops">
+                                        <bool>false</bool>
+                                    </property>
+                                    <property name="autoFillBackground">
+                                        <bool>true</bool>
+                                    </property>
+                                    <property name="inputMethodHints">
+                                        <set>Qt::ImhPreferNumbers</set>
+                                    </property>
+                                    <property name="wrapping">
+                                        <bool>true</bool>
+                                    </property>
+                                    <property name="buttonSymbols">
+                                        <enum>QAbstractSpinBox::PlusMinus</enum>
+                                    </property>
+                                    <property name="decimals">
+                                        <number>1</number>
+                                    </property>
+                                    <property name="minimum">
+                                        <double>-1444.000000000000000</double>
+                                    </property>
+                                    <property name="maximum">
+                                        <double>1444.000000000000000</double>
+                                    </property>
+                                    <property name="value">
+                                        <double>6.500000000000000</double>
+                                    </property>
+                                </widget>
+                            </item>
+                        </layout>
+                    </widget>
+                    <widget class="QWidget" name="layoutWidget">
+                        <property name="geometry">
+                            <rect>
+                                <x>62</x>
+                                <y>150</y>
+                                <width>261</width>
+                                <height>201</height>
+                            </rect>
+                        </property>
+                        <layout class="QVBoxLayout" name="verticalLayout">
+                            <item>
+                                <widget class="QLabel" name="label_WhiteName">
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>201</width>
+                                            <height>19</height>
+                                        </size>
+                                    </property>
+                                    <property name="font">
+                                        <font>
+                                            <pointsize>-1</pointsize>
+                                            <weight>75</weight>
+                                            <bold>true</bold>
+                                        </font>
+                                    </property>
+                                    <property name="styleSheet">
+                                        <string notr="true">QLabel {
+                                            font-size: 16px;
+                                            font-weight: bold;
+                                            color: #2E8B57; /* Sea green */
+                                            padding: 5px;
+                                            }
+                                        </string>
+                                    </property>
+                                    <property name="text">
+                                        <string>White Player's Name</string>
+                                    </property>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QLineEdit" name="lineEdit_WhiteName">
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>201</width>
+                                            <height>24</height>
+                                        </size>
+                                    </property>
+                                    <property name="maximumSize">
+                                        <size>
+                                            <width>201</width>
+                                            <height>24</height>
+                                        </size>
+                                    </property>
+                                    <property name="font">
+                                        <font>
+                                            <family>MS Shell Dlg 2</family>
+                                            <pointsize>11</pointsize>
+                                            <weight>75</weight>
+                                            <bold>true</bold>
+                                        </font>
+                                    </property>
+                                    <property name="autoFillBackground">
+                                        <bool>false</bool>
+                                    </property>
+                                    <property name="styleSheet">
+                                        <string notr="true">background: none;</string>
+                                    </property>
+                                    <property name="placeholderText">
+                                        <string>White</string>
+                                    </property>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QLabel" name="label_BlackName">
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>201</width>
+                                            <height>19</height>
+                                        </size>
+                                    </property>
+                                    <property name="font">
+                                        <font>
+                                            <family>MS Shell Dlg 2</family>
+                                            <pointsize>10</pointsize>
+                                            <weight>75</weight>
+                                            <bold>true</bold>
+                                        </font>
+                                    </property>
+                                    <property name="text">
+                                        <string>Black Player's Name</string>
+                                    </property>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QLineEdit" name="lineEdit_BlackName">
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>201</width>
+                                            <height>24</height>
+                                        </size>
+                                    </property>
+                                    <property name="maximumSize">
+                                        <size>
+                                            <width>201</width>
+                                            <height>24</height>
+                                        </size>
+                                    </property>
+                                    <property name="font">
+                                        <font>
+                                            <family>MS Shell Dlg 2</family>
+                                            <pointsize>11</pointsize>
+                                            <weight>75</weight>
+                                            <bold>true</bold>
+                                        </font>
+                                    </property>
+                                    <property name="autoFillBackground">
+                                        <bool>false</bool>
+                                    </property>
+                                    <property name="styleSheet">
+                                        <string notr="true">background: none;</string>
+                                    </property>
+                                    <property name="placeholderText">
+                                        <string>Black</string>
+                                    </property>
+                                </widget>
+                            </item>
+                        </layout>
+                    </widget>
+                </widget>
+                <widget class="QWidget" name="page_PlayWithBot">
+                    <widget class="QWidget" name="widget_PvsB" native="true">
+                        <property name="geometry">
+                            <rect>
+                                <x>170</x>
+                                <y>150</y>
+                                <width>771</width>
+                                <height>311</height>
+                            </rect>
+                        </property>
+                        <property name="styleSheet">
+                            <string notr="true">QWidget#widget_PvsB{
+                                border-radius: 10px;
+                                border: 1px solid grey
+                                }
+                            </string>
+                        </property>
+                        <widget class="QWidget" name="layoutWidget">
+                            <property name="geometry">
+                                <rect>
+                                    <x>20</x>
+                                    <y>30</y>
+                                    <width>733</width>
+                                    <height>283</height>
+                                </rect>
+                            </property>
+                            <layout class="QGridLayout" name="gridLayout">
+                                <item row="1" column="0">
+                                    <widget class="Line" name="line_3">
+                                        <property name="orientation">
+                                            <enum>Qt::Horizontal</enum>
+                                        </property>
+                                    </widget>
+                                </item>
+                                <item row="4" column="0">
+                                    <widget class="QPushButton" name="pushButton_PlayWithBotOk">
+                                        <property name="styleSheet">
+                                            <string notr="true">QPushButton {
+                                                background-color: #5A9;
+                                                color: white;
+                                                padding: 10px 20px;
+                                                border: 2px solid #476;
+                                                border-radius: 10px;
+                                                font-size: 16px;
+                                                font-weight: bold;
+                                                box-shadow: 3px 3px 5px #888888;
+                                                transition: background-color 0.3s, transform 0.3s;
+                                                margin:10px;
+                                                }
+                                                QPushButton:hover {
+                                                background-color: #476;
+                                                transform: scale(1.05);
+                                                }
+                                                QPushButton:pressed {
+                                                background-color: #354;
+                                                transform: scale(0.95);
+                                                }
+                                            </string>
+                                        </property>
+                                        <property name="text">
+                                            <string>Start</string>
+                                        </property>
+                                    </widget>
+                                </item>
+                                <item row="2" column="0">
+                                    <layout class="QHBoxLayout" name="horizontalLayout_4">
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_3">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_PlayerColor">
+                                                        <property name="font">
+                                                            <font>
+                                                                <pointsize>-1</pointsize>
+                                                                <weight>75</weight>
+                                                                <bold>true</bold>
+                                                            </font>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">QLabel {
+                                                                font-size: 24px;
+                                                                font-weight: bold;
+                                                                color: rgb(70, 70, 70);
+                                                                padding: 10px;
+                                                                }
+                                                            </string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>Your Color</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QRadioButton" name="radioButton_Black">
+                                                        <property name="font">
+                                                            <font>
+                                                                <pointsize>-1</pointsize>
+                                                                <weight>75</weight>
+                                                                <bold>true</bold>
+                                                            </font>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">/* QRadioButton Styles */
+                                                                QRadioButton {
+                                                                font-size: 24px;
+                                                                font-weight: bold;
+                                                                color: rgb(70, 70, 70);
+                                                                padding: 10px;
+                                                                background-color: #F0F0F0;
+                                                                color: #5A9;
+                                                                padding: 5px;
+                                                                }
+
+                                                                QRadioButton::indicator {
+                                                                width: 15px;
+                                                                height: 15px;
+                                                                border-radius: 7.5px;
+                                                                }
+
+                                                                QRadioButton::indicator::unchecked {
+                                                                border: 2px solid #2E8B57;
+                                                                background-color: #FFFFFF;
+                                                                }
+
+                                                                QRadioButton::indicator::checked {
+                                                                border: 2px solid #2E8B57;
+                                                                background-color: #5A9;
+                                                                }
+                                                            </string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>Black</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QRadioButton" name="radioButton_White">
+                                                        <property name="font">
+                                                            <font>
+                                                                <pointsize>-1</pointsize>
+                                                                <weight>75</weight>
+                                                                <bold>true</bold>
+                                                            </font>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">/* QRadioButton Styles */
+                                                                QRadioButton {
+                                                                font-size: 24px;
+                                                                font-weight: bold;
+                                                                color: rgb(70, 70, 70);
+                                                                padding: 10px;
+                                                                background-color: #F0F0F0;
+                                                                color: #5A9;
+                                                                padding: 5px;
+                                                                }
+
+                                                                QRadioButton::indicator {
+                                                                width: 15px;
+                                                                height: 15px;
+                                                                border-radius: 7.5px;
+                                                                }
+
+                                                                QRadioButton::indicator::unchecked {
+                                                                border: 2px solid #2E8B57;
+                                                                background-color: #FFFFFF;
+                                                                }
+
+                                                                QRadioButton::indicator::checked {
+                                                                border: 2px solid #2E8B57;
+                                                                background-color: #5A9;
+                                                                }
+                                                            </string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>White</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                        <item>
+                                            <widget class="Line" name="line">
+                                                <property name="orientation">
+                                                    <enum>Qt::Vertical</enum>
+                                                </property>
+                                            </widget>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_4">
+                                                <item>
+                                                    <widget class="QComboBox" name="comboBox_OpponentBot">
+                                                        <property name="font">
+                                                            <font>
+                                                                <pointsize>-1</pointsize>
+                                                            </font>
+                                                        </property>
+                                                        <property name="autoFillBackground">
+                                                            <bool>false</bool>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">/* QComboBox Styles */
+                                                                QComboBox {
+                                                                font-size: 24px;
+                                                                padding: 5px;
+                                                                border: 2px solid #5A9;
+                                                                border-radius: 5px;
+                                                                color: rgb(70, 70, 70);
+                                                                margin:20px;
+                                                                }
+
+                                                                QComboBox QAbstractItemView {
+                                                                border: 2px solid rgb(40,40,40);
+                                                                selection-background-color:#5A9;
+                                                                }
+                                                            </string>
+                                                        </property>
+                                                        <property name="currentText">
+                                                            <string>Choose Opponent</string>
+                                                        </property>
+                                                        <property name="currentIndex">
+                                                            <number>0</number>
+                                                        </property>
+                                                        <property name="frame">
+                                                            <bool>true</bool>
+                                                        </property>
+                                                        <item>
+                                                            <property name="text">
+                                                                <string>Choose Opponent</string>
+                                                            </property>
+                                                        </item>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                    </layout>
+                                </item>
+                                <item row="0" column="0">
+                                    <widget class="QLabel" name="label_CreateSGF_2">
+                                        <property name="minimumSize">
+                                            <size>
+                                                <width>731</width>
+                                                <height>41</height>
+                                            </size>
+                                        </property>
+                                        <property name="styleSheet">
+                                            <string notr="true">QLabel {
+                                                font-size: 24px;
+                                                font-weight: bold;
+                                                color: rgb(70, 70, 70);
+                                                }
+                                            </string>
+                                        </property>
+                                        <property name="text">
+                                            <string>Play With Bot</string>
+                                        </property>
+                                        <property name="scaledContents">
+                                            <bool>true</bool>
+                                        </property>
+                                        <property name="alignment">
+                                            <set>Qt::AlignCenter</set>
+                                        </property>
+                                        <property name="wordWrap">
+                                            <bool>true</bool>
+                                        </property>
+                                    </widget>
+                                </item>
+                                <item row="3" column="0">
+                                    <widget class="Line" name="line_4">
+                                        <property name="orientation">
+                                            <enum>Qt::Horizontal</enum>
+                                        </property>
+                                    </widget>
+                                </item>
+                            </layout>
+                        </widget>
+                    </widget>
+                </widget>
+                <widget class="QWidget" name="page_bot_vs_bot">
+                    <widget class="QWidget" name="widget_BvsB" native="true">
+                        <property name="geometry">
+                            <rect>
+                                <x>170</x>
+                                <y>150</y>
+                                <width>771</width>
+                                <height>341</height>
+                            </rect>
+                        </property>
+                        <property name="styleSheet">
+                            <string notr="true">QWidget#widget_BvsB{
+                                border-radius: 10px;
+                                border: 1px solid grey
+                                }
+                            </string>
+                        </property>
+                        <widget class="QWidget" name="layoutWidget_2">
+                            <property name="geometry">
+                                <rect>
+                                    <x>12</x>
+                                    <y>12</y>
+                                    <width>751</width>
+                                    <height>311</height>
+                                </rect>
+                            </property>
+                            <layout class="QGridLayout" name="gridLayout_2">
+                                <item row="0" column="0" alignment="Qt::AlignTop">
+                                    <widget class="QLabel" name="label_CreateSGF_4">
+                                        <property name="styleSheet">
+                                            <string notr="true">QLabel {
+                                                font-size: 24px;
+                                                font-weight: bold;
+                                                color: rgb(70, 70, 70);
+                                                }
+                                            </string>
+                                        </property>
+                                        <property name="text">
+                                            <string>Bot against Bot game</string>
+                                        </property>
+                                        <property name="scaledContents">
+                                            <bool>true</bool>
+                                        </property>
+                                        <property name="alignment">
+                                            <set>Qt::AlignCenter</set>
+                                        </property>
+                                        <property name="wordWrap">
+                                            <bool>true</bool>
+                                        </property>
+                                    </widget>
+                                </item>
+                                <item row="6" column="0">
+                                    <widget class="QPushButton" name="pushButton_BotVsBotOK">
+                                        <property name="styleSheet">
+                                            <string notr="true">QPushButton {
+                                                background-color: #5A9;
+                                                color: white;
+                                                padding: 10px 20px;
+                                                border: 2px solid #476;
+                                                border-radius: 10px;
+                                                font-size: 16px;
+                                                font-weight: bold;
+                                                box-shadow: 3px 3px 5px #888888;
+                                                transition: background-color 0.3s, transform 0.3s;
+                                                margin:20px;
+                                                }
+                                                QPushButton:hover {
+                                                background-color: #476;
+                                                transform: scale(1.05);
+                                                }
+                                                QPushButton:pressed {
+                                                background-color: #354;
+                                                transform: scale(0.95);
+                                                }
+                                            </string>
+                                        </property>
+                                        <property name="text">
+                                            <string>Start</string>
+                                        </property>
+                                    </widget>
+                                </item>
+                                <item row="4" column="0">
+                                    <layout class="QHBoxLayout" name="horizontalLayout_5">
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_5">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_BlackName_2">
+                                                        <property name="minimumSize">
+                                                            <size>
+                                                                <width>201</width>
+                                                                <height>19</height>
+                                                            </size>
+                                                        </property>
+                                                        <property name="font">
+                                                            <font>
+                                                                <pointsize>-1</pointsize>
+                                                                <weight>75</weight>
+                                                                <bold>true</bold>
+                                                            </font>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">QLabel {
+                                                                font-size: 24px;
+                                                                font-weight: bold;
+                                                                color: rgb(70, 70, 70);
+                                                                }
+                                                            </string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>Black Bot</string>
+                                                        </property>
+                                                        <property name="alignment">
+                                                            <set>Qt::AlignCenter</set>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QComboBox" name="comboBox_BlackBot">
+                                                        <property name="autoFillBackground">
+                                                            <bool>false</bool>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">/* QComboBox Styles */
+                                                                QComboBox {
+                                                                font-size: 24px;
+                                                                padding: 5px;
+                                                                border: 2px solid #5A9;
+                                                                border-radius: 5px;
+                                                                color: rgb(70, 70, 70);
+                                                                margin:20px;
+                                                                }
+
+                                                                QComboBox QAbstractItemView {
+                                                                border: 2px solid rgb(40,40,40);
+                                                                selection-background-color:#5A9;
+                                                                }
+                                                            </string>
+                                                        </property>
+                                                        <property name="currentText">
+                                                            <string>Drop down to choose</string>
+                                                        </property>
+                                                        <property name="currentIndex">
+                                                            <number>0</number>
+                                                        </property>
+                                                        <property name="frame">
+                                                            <bool>true</bool>
+                                                        </property>
+                                                        <item>
+                                                            <property name="text">
+                                                                <string>Drop down to choose</string>
+                                                            </property>
+                                                        </item>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                        <item>
+                                            <widget class="Line" name="line_2">
+                                                <property name="orientation">
+                                                    <enum>Qt::Vertical</enum>
+                                                </property>
+                                            </widget>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_6">
+                                                <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+                                                    <widget class="QLabel" name="label_WhiteName_2">
+                                                        <property name="minimumSize">
+                                                            <size>
+                                                                <width>201</width>
+                                                                <height>19</height>
+                                                            </size>
+                                                        </property>
+                                                        <property name="font">
+                                                            <font>
+                                                                <pointsize>-1</pointsize>
+                                                                <weight>75</weight>
+                                                                <bold>true</bold>
+                                                            </font>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">QLabel {
+                                                                font-size: 24px;
+                                                                font-weight: bold;
+                                                                color: rgb(70, 70, 70);
+                                                                }
+                                                            </string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>White Bot</string>
+                                                        </property>
+                                                        <property name="alignment">
+                                                            <set>Qt::AlignCenter</set>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QComboBox" name="comboBox_WhiteBot">
+                                                        <property name="autoFillBackground">
+                                                            <bool>false</bool>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">/* QComboBox Styles */
+                                                                QComboBox {
+                                                                font-size: 24px;
+                                                                padding: 5px;
+                                                                border: 2px solid #5A9;
+                                                                border-radius: 5px;
+                                                                color: rgb(70, 70, 70);
+                                                                margin:20px;
+                                                                }
+
+                                                                QComboBox QAbstractItemView {
+                                                                border: 2px solid rgb(40,40,40);
+                                                                selection-background-color:#5A9;
+                                                                }
+                                                            </string>
+                                                        </property>
+                                                        <property name="currentText">
+                                                            <string>Drop down to choose</string>
+                                                        </property>
+                                                        <property name="currentIndex">
+                                                            <number>0</number>
+                                                        </property>
+                                                        <property name="frame">
+                                                            <bool>true</bool>
+                                                        </property>
+                                                        <item>
+                                                            <property name="text">
+                                                                <string>Drop down to choose</string>
+                                                            </property>
+                                                        </item>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                    </layout>
+                                </item>
+                                <item row="5" column="0">
+                                    <widget class="Line" name="line_6">
+                                        <property name="orientation">
+                                            <enum>Qt::Horizontal</enum>
+                                        </property>
+                                    </widget>
+                                </item>
+                                <item row="1" column="0">
+                                    <widget class="Line" name="line_5">
+                                        <property name="orientation">
+                                            <enum>Qt::Horizontal</enum>
+                                        </property>
+                                    </widget>
+                                </item>
+                            </layout>
+                        </widget>
+                    </widget>
+                </widget>
+            </widget>
+            <widget class="QPushButton" name="pushButton_EditSGF">
+                <property name="enabled">
+                    <bool>false</bool>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>990</x>
+                        <y>70</y>
+                        <width>120</width>
+                        <height>40</height>
+                    </rect>
+                </property>
+                <property name="minimumSize">
+                    <size>
+                        <width>120</width>
+                        <height>40</height>
+                    </size>
+                </property>
+                <property name="maximumSize">
+                    <size>
+                        <width>120</width>
+                        <height>40</height>
+                    </size>
+                </property>
+                <property name="font">
+                    <font>
+                        <family>MS Shell Dlg 2</family>
+                        <pointsize>10</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                    </font>
+                </property>
+                <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="text">
+                    <string/>
+                </property>
+                <property name="autoDefault">
+                    <bool>false</bool>
+                </property>
+                <property name="default">
+                    <bool>false</bool>
+                </property>
+                <property name="flat">
+                    <bool>true</bool>
+                </property>
+            </widget>
+            <widget class="QPushButton" name="pushButton_CreateSGF">
+                <property name="enabled">
+                    <bool>true</bool>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>1040</x>
+                        <y>20</y>
+                        <width>41</width>
+                        <height>41</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <family>MS Shell Dlg 2</family>
+                        <pointsize>10</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                    </font>
+                </property>
+                <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="text">
+                    <string/>
+                </property>
+                <property name="autoDefault">
+                    <bool>false</bool>
+                </property>
+                <property name="default">
+                    <bool>false</bool>
+                </property>
+                <property name="flat">
+                    <bool>true</bool>
+                </property>
+            </widget>
+        </widget>
+        <widget class="QMenuBar" name="menubar">
+            <property name="geometry">
+                <rect>
+                    <x>0</x>
+                    <y>0</y>
+                    <width>1116</width>
+                    <height>20</height>
+                </rect>
+            </property>
+        </widget>
+        <widget class="QStatusBar" name="statusbar"/>
     </widget>
-   </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1116</width>
-     <height>21</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QStatusBar" name="statusbar"/>
- </widget>
- <resources/>
- <connections/>
+    <resources/>
+    <connections/>
 </ui>
