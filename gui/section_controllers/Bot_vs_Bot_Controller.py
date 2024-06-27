@@ -38,6 +38,7 @@ class BvBController(QtWidgets.QWidget):
         self.GOwin.ui.pushButton_StartGame.clicked.connect(self.start_bot_game)
         self.GOwin.ui.pushButton_EndSimulations.clicked.connect(self.end_state)
         self.GOwin.ui.pushButton_PlayStop.clicked.connect(self.toggle_play_stop)
+        self.GOwin.ui.pushButton_SaveGame.hide()
 
         # SLIDER SETTINGS
         self.default_Value = 1000
@@ -52,13 +53,11 @@ class BvBController(QtWidgets.QWidget):
 
     # SLIDER METHODS
     def update_timer_interval(self, value):
-        # Aici puteți actualiza intervalele timer-ului
         self.default_Value = value
         self.timer.setInterval(value)
         self.update_slider_labels(value)
 
     def update_slider_labels(self, value):
-        # Aici puteți actualiza etichetele dacă aveți nevoie
         self.GOwin.ui.label_2.setText(f"Playing speed: {value} ms")
 
     # TOGGLER
