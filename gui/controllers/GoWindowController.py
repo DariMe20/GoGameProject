@@ -39,11 +39,11 @@ class GoWindowController(QtWidgets.QMainWindow, Ui_MainWindow):
         self.ui.setupUi(self)
         self.init_GoBoard()
 
-        pixmapW = QPixmap("../resources/TigerW.jpg")
+        pixmapW = QPixmap("C:/DARIA/1.FSEGA/LICENTA/GoGameProject/gui/resources/TigerW.jpg")
         self.ui.label_IconW.setPixmap(pixmapW)
         self.ui.label_IconW.setScaledContents(True)
 
-        pixmapB = QPixmap("../resources/TigerB.jpg")
+        pixmapB = QPixmap("C:/DARIA/1.FSEGA/LICENTA/GoGameProject/gui/resources/TigerB.jpg")
         self.ui.label_IconB.setPixmap(pixmapB)
         self.ui.label_IconB.setScaledContents(True)
 

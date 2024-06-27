@@ -28,10 +28,10 @@ class MainMenuPageController(QtWidgets.QMainWindow, Ui_MainWindow):
 
         self.GoGameWindow = None
 
-        self.ui.label_2.setPixmap(QPixmap("../resources/Background.png"))
-        self.ui.label_3.setPixmap(QPixmap("../resources/Picture2.jpg"))
-        self.ui.label_7.setPixmap(QPixmap("../resources/Picture3.jpg"))
-        self.ui.label_8.setPixmap(QPixmap("../resources/Picture4.jpg"))
+        self.ui.label_2.setPixmap(QPixmap("C:/DARIA/1.FSEGA/LICENTA/GoGameProject/gui/resources/Background.png"))
+        self.ui.label_3.setPixmap(QPixmap("C:/DARIA/1.FSEGA/LICENTA/GoGameProject/gui/resources/Picture2.jpg"))
+        self.ui.label_7.setPixmap(QPixmap("C:/DARIA/1.FSEGA/LICENTA/GoGameProject/gui/resources/Picture3.jpg"))
+        self.ui.label_8.setPixmap(QPixmap("C:/DARIA/1.FSEGA/LICENTA/GoGameProject/gui/resources/Picture4.jpg"))
 
     def aboutGo(self):
         self.ui.stackedWidget.setCurrentIndex(1)
