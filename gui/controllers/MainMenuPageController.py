@@ -2,7 +2,7 @@ import os
 import sys
 
 from PyQt5 import QtWidgets
-from PyQt5.QtGui import QPixmap
+from PyQt5.QtGui import QPixmap, QIcon
 
 from gui.controllers.GoWindowController import GoWindowController
 from gui.generated_files.MainMenuPage import Ui_MainWindow
@@ -25,6 +25,8 @@ class MainMenuPageController(QtWidgets.QMainWindow, Ui_MainWindow):
         self.ui.comboBox_BlackBot.addItems(list(constants.BOTS.keys()))
         self.ui.comboBox_WhiteBot.addItems(list(constants.BOTS.keys()))
         self.ui.comboBox_OpponentBot.addItems(list(constants.BOTS.keys()))
+
+        self.setWindowIcon(QIcon("C:/DARIA/1.FSEGA/LICENTA/GoGameProject/gui/resources/icon.ico"))
 
         self.GoGameWindow = None
 
