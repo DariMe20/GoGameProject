@@ -12,7 +12,7 @@ Inspired by the groundbreaking work of Google DeepMind's AlphaGo Zero, this proj
 
 ### Code Infrastructure
 
-The neuronal network implemented in this study was developed following the guidelines from "Deep Learning and the Game of Go" by Max Pumperla and Kevin Ferguson, particularly outlined in chapter 6. For more in-depth information on the architecture and methodologies, please refer to their work:
+The neuronal network and game infrastructure implemented in this study were developed following the guidelines from "Deep Learning and the Game of Go" by Max Pumperla and Kevin Ferguson. For more in-depth information on the architecture and methodologies, please refer to their work:
 [Deep Learning and the Game of Go GitHub Repository](https://github.com/maxpumperla/deep_learning_and_the_game_of_go).
 
 ### Technologies Used
