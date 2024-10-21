@@ -11,3 +11,4 @@ dlgo/rl
 *.npy
 *.txt
 /deep_learning/data/
+*.csv
