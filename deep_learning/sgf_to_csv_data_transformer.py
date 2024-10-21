@@ -72,8 +72,8 @@ def mark_as_processed(sgf_file, processed_file_list):
 def main():
     # Assuming you are already in the 'deep_learning' directory
     sgf_directory = "data/sgf"
-    csv_file = "go_training_data.csv"
-    processed_file_list = "processed_sgf_files.txt"
+    csv_file = "data/go_training_data.csv"
+    processed_file_list = "data/processed_sgf_files.txt"
 
     # Check if the processed file list exists, create if not
     if not os.path.isfile(processed_file_list):
