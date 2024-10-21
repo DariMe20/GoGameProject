@@ -7,3 +7,7 @@ dlgo/rl
 *.pyc
 /dlgo/json_data/
 /dlgo/gpt
+*.sgf
+*.npy
+*.txt
+/deep_learning/data/
