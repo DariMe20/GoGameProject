@@ -54,12 +54,12 @@ score = model.evaluate(X_test, Y_test, verbose=0)
 print('Test loss:', score[0])
 print('Test accuracy:', score[1])
 
-model_dir = '.\\'
+model_dir = '../dlgo/keras_networks\\'
 if not os.path.exists(model_dir):
     os.makedirs(model_dir)
 
 model_path = os.path.join(model_dir,
-                          '../../reinforcement_learning/gradient_descent/gradient_descent_models/model_PredictionAgent.h5')
+                          '../reinforcement_learning/gradient_descent/gradient_descent_models/model_PredictionAgent.h5')
 model.save(model_path)
 
 print("Modelul a fost salvat cu succes")
