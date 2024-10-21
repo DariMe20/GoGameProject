@@ -12,3 +12,4 @@ dlgo/rl
 *.txt
 /deep_learning/data/
 *.csv
+/deep_learning/models
