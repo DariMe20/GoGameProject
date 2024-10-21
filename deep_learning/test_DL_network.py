@@ -64,17 +64,6 @@ model.save(model_path)
 
 print("Modelul a fost salvat cu succes")
 
-
-def softmax(x):
-    """
-
-    :param x:
-    :return:
-    """
-    e_x = np.exp(x)
-    e_x_sum = np.sum(e_x)
-    return e_x / e_x_sum
-
 # test_board = np.array([[
 #  0, 0, 0, 0, 0, 0, 0, 0, 0,
 #  0, 0, 0, 0, 0, 0, 0, 0, 0,
