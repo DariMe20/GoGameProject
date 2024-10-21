@@ -9,6 +9,8 @@ from sgfmill import sgf, boards
 def sgf_to_states_and_moves(sgf_file):
     with open(sgf_file, "rb") as f:
         sgf_game = sgf.Sgf_game.from_bytes(f.read())
+        root_node = sgf_game.get_root()  # Access the root node
+        result = root_node.get("RE")  # Get the result of the game (e.g., B+R, W+R, or W+7.5)
         moves = sgf_game.get_main_sequence()
 
     # Initial state of the board (19x19 Go board)
@@ -16,12 +18,36 @@ def sgf_to_states_and_moves(sgf_file):
     board = boards.Board(19)  # Create a board of size 19x19
     state_move_pairs = []
 
-    # Loop through all the moves
-    for node in moves:
+    # Track consecutive passes (Go game ends with two consecutive passes)
+    pass_count = 0
+
+    # Loop through all the moves, but shift state to capture the state before the move
+    for index, node in enumerate(moves):
         color, move = node.get_move()
-        if move is None:  # Skip if it's not a move node (comments, etc.)
+
+        # If the move is None, it's a "pass"
+        if move == (None, None) or move is None:
+            if index == 0:  # Ensure the first move is not considered a "pass"
+                continue
+
+            # Append the state BEFORE the "pass" and mark the "pass" as the next move
+            state_move_pairs.append((board_state.copy(), "pass"))
+            pass_count += 1
+
+            # Check if there are two consecutive passes
+            if pass_count == 2:
+                print(f"Game ended with two consecutive passes at move {index}")
+                break
+
             continue
 
+        # Reset pass count because a valid move was made after a "pass"
+        pass_count = 0
+
+        # Capture the state BEFORE the move
+        state_move_pairs.append((board_state.copy(), (move[0], move[1])))
+
+        # Now apply the move to the board
         x, y = move
         if color == 'b':  # Black is represented by 1
             board.play(x, y, 'b')  # Update the internal board state
@@ -30,8 +56,16 @@ def sgf_to_states_and_moves(sgf_file):
             board.play(x, y, 'w')  # Update the internal board state
             board_state[x, y] = -1  # Update our matrix representation
 
-        # Append the current board state and move
-        state_move_pairs.append((board_state.copy(), (x, y)))
+    # If the game ended with resign (RE contains 'R'), add "resign" move
+    if result and 'R' in result:  # Game ended with resign
+        state_move_pairs.append((board_state.copy(), "resign"))
+        return state_move_pairs  # End the game immediately after resign
+
+    # If the game ended with points (RE contains a score like W+7.5), add two "pass" moves if they are missing
+    if result and ("+" in result) and pass_count < 2:
+        # Append two consecutive pass moves
+        state_move_pairs.append((board_state.copy(), "pass"))
+        state_move_pairs.append((board_state.copy(), "pass"))
 
     return state_move_pairs
 
@@ -47,7 +81,12 @@ def append_to_csv(csv_file, state_move_pairs):
     # Prepare data for appending to CSV
     data = {
         'Board State': [pair[0].tolist() for pair in state_move_pairs],  # The board state matrix
-        'Next Move': [f"{pair[1][0]}{pair[1][1]}" for pair in state_move_pairs]  # The move coordinates
+        'Next Move': [
+            "pass" if pair[1] == "pass" else
+            "resign" if pair[1] == "resign" else
+            f"{str(pair[1][0]).zfill(2)}{str(pair[1][1]).zfill(2)}"
+            for pair in state_move_pairs
+            ]  # Move as string "xy", "pass", or "resign"
         }
 
     df = pd.DataFrame(data)
